@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from xion import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('xion.urls')),
+    path('xion/', include('xion.urls')),
+    path('common/', include('common.urls')),
+    path('', index.index, name='index'),  # '/' 에 해당되는 path
+    path('dashboard/', index.dashboard, name='dashboard'),
+    path('asset/', index.asset, name='asset'),
+    path('software/', index.software, name='software'),
+    path('security/', index.security, name='security'),
+    path('report/', index.report, name='report'),
 ]

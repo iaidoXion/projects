@@ -1,14 +1,28 @@
 from django.urls import path
-from . import main
-from .tanium import taniumMain
-from .ipu import ipuMain
+from . import index
+
 
 app_name = 'xion'
 
 urlpatterns = [
-    path('', main.index),
-    path('tanium/', taniumMain.index, name='index'),
-    path('ipu/', ipuMain.index),
-    path('xion/<int:question_id>/', main.detail, name='detail'),
-path('answer/create/<int:question_id>/', main.answer_create, name='answer_create'),
+
+    #/xion/monitorig/
+    #
+    #path('asset/', index.asset, name='asset'),
+    #path('monitorig/', index.monitorig, name='monitorig'),
+    path('index/', index.index, name='index'),
+    path('list/', index.list, name='list'),
+    path('detail/<int:question_id>/', index.detail, name='detail'),
+    path('answer/create/<int:question_id>/', index.answerCreate, name='answerCreate'),
+    path('question/create/', index.questionCreate, name='questionCreate'),
+    path('question/modify/<int:question_id>/', index.questionModify, name='questionModify'),
+    path('question/delete/<int:question_id>/', index.questionDelete, name='questionDelete'),
+    path('answer/modify/<int:answer_id>/', index.answerModify, name='answerModify'),
+    path('answer/delete/<int:answer_id>/', index.answerDelete, name='answerDelete'),
+    path('comment/create/question/<int:question_id>/', index.comment_create_question, name='comment_create_question'),
+    path('comment/modify/question/<int:comment_id>/', index.comment_modify_question, name='comment_modify_question'),
+    path('comment/delete/question/<int:comment_id>/', index.comment_delete_question, name='comment_delete_question'),
+    path('comment/create/answer/<int:answer_id>/', index.comment_create_answer, name='comment_create_answer'),
+    path('comment/modify/answer/<int:comment_id>/', index.comment_modify_answer, name='comment_modify_answer'),
+    path('comment/delete/answer/<int:comment_id>/', index.comment_delete_answer, name='comment_delete_answer'),
 ]
