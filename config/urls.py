@@ -1,9 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 from web import views
+from api.views import MenuListAPI
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/menuList/', MenuListAPI.as_view()),
     path('web/', include('web.urls')),
     path('xion/', include('xion.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
