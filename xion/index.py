@@ -1,42 +1,13 @@
 #from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Question, Answer, Comment
+from .models import Question, Answer, Comment, MenuSetting
 from .forms import QuestionForm, AnswerForm, CommentForm
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-def index(request):
-
-    return render(request, 'xion/index.html')
-
-
-def dashboard(request):
-
-    return render(request, 'tanium/dashboard.html')
-
-def asset(request):
-
-    return render(request, 'tanium/asset.html')
-
-def software(request):
-
-    return render(request, 'tanium/software.html')
-
-def security(request):
-
-    return render(request, 'tanium/security.html')
-
-def report(request):
-
-    return render(request, 'tanium/report.html')
-
-
-
-
 def list(request):
-    #return HttpResponse("안녕하세요 xion에 오신것을 환영합니다.")
     """ 목록 출력 """
     # 입력 파라미터
     page = request.GET.get('page', '1')  # 페이지

@@ -1,16 +1,9 @@
 from django.urls import path
 from . import index
 
-
 app_name = 'xion'
 
 urlpatterns = [
-
-    #/xion/monitorig/
-    #
-    #path('asset/', index.asset, name='asset'),
-    #path('monitorig/', index.monitorig, name='monitorig'),
-    path('index/', index.index, name='index'),
     path('list/', index.list, name='list'),
     path('detail/<int:question_id>/', index.detail, name='detail'),
     path('answer/create/<int:question_id>/', index.answerCreate, name='answerCreate'),
