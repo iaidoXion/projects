@@ -1,14 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 from web import views
-from api.views import MenuListAPI
-from api import views as APIviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/menuList/', MenuListAPI.as_view()),
-    path('api/test/', APIviews.index, name='apitest'),
     path('web/', include('web.urls')),
+    path('api/', include('api.urls')),
     path('xion/', include('xion.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
     path('signup/', views.signup, name='signup'),
@@ -18,4 +15,5 @@ urlpatterns = [
     path('security/', views.security, name='security'),
     path('report/', views.report, name='report'),
     path('setting/', views.report, name='setting'),
+    path('externalAPI/', views.ExternalApi, name='ExternalApi'),
 ]

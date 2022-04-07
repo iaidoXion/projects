@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from web.forms import UserForm
+from .dataParsing import External
 
 def index(request):
     return render(request, 'common/login.html')
@@ -45,3 +46,9 @@ def report(request):
 @login_required(login_url='common:login')
 def setting(request):
     return render(request, 'common/setting.html')
+
+def ExternalApi(request):
+    res = External.DataParsing()
+    pm10 = res.get('남산1동')
+    context = {'station': '남산1동', 'pm10': pm10}
+    return render(request, 'API/external.html', context)
