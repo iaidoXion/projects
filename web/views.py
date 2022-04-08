@@ -1,11 +1,19 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
 from web.forms import UserForm
 from .dataParsing import External
+from .models import MenuSetting
+
 
 def index(request):
     return render(request, 'common/login.html')
+
+def MenuList(request) :
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList' : menuList}
+    return render(request, 'navbar.html', context)
 
 def signup(request):
     """ 계정생성 """
@@ -25,27 +33,41 @@ def signup(request):
 
 @login_required(login_url='common:login')
 def dashboard(request):
-    return render(request, 'tanium/dashboard.html')
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList': menuList}
+
+    return render(request, 'tanium/dashboard.html', context)
 
 @login_required(login_url='common:login')
 def asset(request):
-    return render(request, 'tanium/asset.html')
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList': menuList}
+
+    return render(request, 'tanium/asset.html', context)
 
 @login_required(login_url='common:login')
 def software(request):
-    return render(request, 'tanium/software.html')
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList': menuList}
+    return render(request, 'tanium/software.html', context)
 
 @login_required(login_url='common:login')
 def security(request):
-    return render(request, 'tanium/security.html')
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList': menuList}
+    return render(request, 'tanium/security.html', context)
 
 @login_required(login_url='common:login')
 def report(request):
-    return render(request, 'tanium/report.html')
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList': menuList}
+    return render(request, 'tanium/report.html', context)
 
 @login_required(login_url='common:login')
 def setting(request):
-    return render(request, 'common/setting.html')
+    menuList = MenuSetting.objects.order_by('id')
+    context = {'menuList': menuList}
+    return render(request, 'common/setting.html', context)
 
 def ExternalApi(request):
     res = External.DataParsing()
