@@ -19,6 +19,7 @@
     <link href="{% static 'css/common/sbAdmin2.min.css' %}" rel="stylesheet">
     <!-- xion CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/common/reset.css' %}">
 
 </head>
 <body>
@@ -30,7 +31,11 @@
     {% block content %}
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    <!-- 푸터 -->
+<footer class="bg-light border-top footer-frame">
 
+</footer>
+    <!-- 푸터 End -->
 <script src="{% static 'js/common/jquery-3.6.0.min.js' %}"></script>
 <!-- Core plugin JavaScript 3-->
 <script src="{% static 'js/common/jquery.easing.min.js' %}"></script>
