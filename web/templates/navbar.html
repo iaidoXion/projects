@@ -11,9 +11,13 @@
         {% if menuList %}
         <ul class="navbar-nav">
             {% for menu in menuList %}
-                <li class="nav-item ">
-                    <a  class="nav-link" href="/{{menu.menuUrl}}/">{{ menu.menuName }}</a>
-                </li>
+                {% if menu.menuUse == '1' %}
+                    <li class="nav-item ">
+                        <a  class="nav-link" href="/{{menu.menuUrl}}/">
+                            {{ menu.menuName }}
+                        </a>
+                    </li>
+                {% endif %}
             {% endfor %}
         </ul>
         {% else %}
