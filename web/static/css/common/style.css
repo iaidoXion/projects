@@ -76,6 +76,7 @@
     margin-left: 1%;
 }
 .container-center-top {
+    position: relative;
     width: 96%;
     height: 452px;
     margin: 0 auto;
@@ -138,4 +139,26 @@
     margin-bottom: 1rem;
     background-color: #ffffff;
 }
-
+.chart-blue{
+    background: #5abae6;
+}
+.chart-red{
+    background: #d34e4e;
+}
+.chart-green{
+    background: #9dbb19;
+}
+.chart-yellow{
+    background: #f7b358;
+}
+.container-center-top span{
+    position: absolute;
+    display: inline-block;
+    width: 60px;
+    bottom: 0;
+    font-size: 20px;
+    line-height: 1.8em;
+    color: #FFF;
+    text-align: center;
+    border-radius: 15px;
+}
