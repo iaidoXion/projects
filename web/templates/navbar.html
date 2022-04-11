@@ -1,9 +1,7 @@
 <!-- 네비게이션바 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <a class="navbar-brand" href="/">Xion</a>
-
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
@@ -13,7 +11,7 @@
             {% for menu in menuList %}
                 {% if menu.menuUse == '1' %}
                     <li class="nav-item ">
-                        <a  class="nav-link" href="/{{menu.menuUrl}}/">
+                        <a  class="nav-link" style="font-weight : bold" href="/{{menu.menuUrl}}/">
                             {{ menu.menuName }}
                         </a>
                     </li>
@@ -21,7 +19,7 @@
             {% endfor %}
         </ul>
         {% else %}
-            <p>메뉴가 없습니다.</p>
+            <li class="nav-item ">메뉴가 없습니다.</li>
         {% endif %}
     </div>
     <div class="my-float-right">
