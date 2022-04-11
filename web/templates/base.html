@@ -33,9 +33,7 @@
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
     <!-- 푸터 -->
-<footer class="bg-light border-top footer-frame">
-
-</footer>
+    {% include "footer.html" %}
     <!-- 푸터 End -->
 <script src="{% static 'js/common/jquery-3.6.0.min.js' %}"></script>
 <!-- Core plugin JavaScript 3-->
@@ -52,6 +50,10 @@
 <!-- Page level custom scripts
 <script src="{% static 'js/chart/chart-area-demo.js' %}"></script>
 <script src="{% static 'js/chart/chart-pie-demo.js' %}"></script-->
+<!-- d3.js -->
+<script src="{% static 'js/d3/d3.js' %}"></script>
+<script src="{% static 'js/d3/d3.min.js' %}"></script>
+<script src="{% static 'js/common/index.js' %}"></script>
 <!-- 자바스크립트 Start -->
 {% block script %}
 {% endblock %}
