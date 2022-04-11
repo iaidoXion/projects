@@ -2,16 +2,19 @@ from urllib.parse import urlencode, unquote, quote_plus
 import requests
 import json
 
-serviceKey = "A3V9KkJz8Dbpgn6i4PaIGHOKNDDytz5rxrbM+QExTdCCIYVadW4FLAkEzOHGYg3QEWjBnYbF3Z6BZMLzef582A=="
+with open("setting.json", encoding="UTF-8") as f:
+    APISETTING = json.loads(f.read())
+
+serviceKey = APISETTING['API']['serviceKey']
 serviceKeyDecoded = unquote(serviceKey, 'UTF-8')
 
 def ApiModels():
-    apiUrl = "http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"
-    dataReturnType = "json"
-    dataRows = "100"
-    dataPageNo = "1"
-    sidoName = "대구"
-    ver = "1.0"
+    apiUrl = APISETTING['API']['apiUrl']
+    dataReturnType = APISETTING['API']['dataReturnType']
+    dataRows = APISETTING['API']['dataRows']
+    dataPageNo = APISETTING['API']['dataPageNo']
+    sidoName = APISETTING['API']['sidoName']
+    ver = APISETTING['API']['ver']
     queryParams = '?' + urlencode(
         {
             quote_plus('ServiceKey'): serviceKeyDecoded,

@@ -71,6 +71,13 @@ def setting(request):
 
 def ExternalApi(request):
     res = External.DataParsing()
+    #print(res)
     pm10 = res.get('남산1동')
     context = {'station': '남산1동', 'pm10': pm10}
     return render(request, 'API/external.html', context)
+
+def ExternalApiDetail(request):
+    res = External.DataParsing()
+    context = {'dust': res}
+    print(res.keys())
+    return render(request, 'API/externalApiDetail.html')
