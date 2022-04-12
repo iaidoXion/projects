@@ -1,93 +1,76 @@
-var dataset = [
-    { month: "Jan", orange: 7, pear: 5, apple: 1 },
-    { month: "Feb", orange: 8, pear: 2, apple: 9 },
-    { month: "Mar", orange: 5, pear: 8, apple: 2 },
-    { month: "Apr", orange: 10, pear: 1, apple: 7 },
-    { month: "May", orange: 3, pear: 8, apple: 9 },
-    { month: "Jun", orange: 0, pear: 6, apple: 8 },
-    { month: "July", orange: 7, pear: 5, apple: 1 },
-    { month: "Aug", orange: 8, pear: 2, apple: 9 },
-    { month: "Sept", orange: 5, pear: 8, apple: 2 },
-    { month: "Oct", orange: 10, pear: 1, apple: 7 },
-    { month: "Nov", orange: 3, pear: 8, apple: 9 },
-    { month: "Dec", orange: 0, pear: 6, apple: 8 },
-  ]
+const barSvg = d3
+  .select("#barChart")
+  .append("svg")
+  .attr("width", 600)
+  .attr("height", 600);
 
-let fruits = ["orange", "pear", "apple"]
+// 차트에 여백 만들기
+const margin = { top: 20, right: 20, bottom: 100, left: 100 };
+const graphWidth = 600 - margin.left - margin.right;
+const graphHeight = 600 - margin.top - margin.bottom;
 
-dataset.forEach(d => {
-    fruits.forEach((f,i) => {
-        let entry = {month: d.month, count: d[f], prevSum:0 }
-        if (i > 0) {
-            entry.prevSum += d[fruits[i-1]][0].count + d[fruits[i-1]][0].prevSum
-        }
-        d[f] = [entry]
-    })
-})
+const graph = barSvg
+  .append("g")
+  .attr("width", graphWidth)
+  .attr("height", graphHeight)
+  .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-var margin = {top: 20, right: 15, bottom: 35, left: 15};
+const xAxisGroup = graph
+  .append("g")
+  .attr("transform", `translate(0, ${graphHeight})`); // x축 아래로 translate
+const yAxisGroup = graph.append("g");
 
-var barWidth = 500 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+// Data 적용해서 차트 만들기
+d3.json("/web/static/data/barchart.json").then(data => {
+  const rects = graph.selectAll("rect").data(data);
 
-var totalWidth = 500;
-var totalHeight = 400;
+  const y = d3
+    .scaleLinear() // 한계치 설정
+    .domain([0, d3.max(data, d => d.orders)])
+    .range([graphHeight, 0]);
 
+  const min = d3.min(data, d => d.orders); // 가장 작은 수 반환
+  const max = d3.max(data, d => d.orders); // 가장 큰 수 반환
+  const extent = d3.extent(data, d => d.orders); // [min, max] 반환
 
-  var svg = d3.select("barChart")
-    .append("svg")
-    .attr("barWidth", totalWidth)
-    .attr("height", totalHeight)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+  const x = d3
+    .scaleBand()
+    .domain(data.map(item => item.name)) // data 각각의 이름 설정
+    .range([0, 500])
+    .paddingInner(0.2) // 0.2 padding
+    .paddingOuter(0.2);
 
-var xScale = d3.scaleBand()
-    .domain(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "July", "Aug", "Sept","Oct", "Nov", "Dec"])
-    .rangeRound([0, barWidth])
-    .padding(0.1)
+  rects
+    .attr("width", x.bandwidth)
+    .attr("height", d => graphHeight - y(d.orders)) // data의 orders 값 적용
+    .attr("fill", "orange")
+    .attr("x", d => x(d.name)) // data index 값 * 70
+    .attr("y", d => y(d.orders));
 
-var maxFruit = 20
-var yScale = d3.scaleLinear()
-        .domain([0, maxFruit])
-        .rangeRound([0, height])
-
-console.log(xScale("2007"))
-console.log(yScale(1))
-
-var groups = svg.selectAll("g.cost")
-  .data(dataset)
-  .enter().append("g")
-  .attr("class", "cost")
-
-let selections = ["rect.orange"]
-
-var colorFunc = d3.scaleOrdinal()
-        .domain(['orange', 'pear', 'apple'] )
-        .range(["orange", "green", "red"])
-
-fruits.forEach(fruit => {
-    groups.selectAll("rect." + fruit)
-    .data(function(d) { return d[fruit]; })
+  // 반환되지 못한 나머지 data 가상 DOM으로 생성
+  rects
     .enter()
     .append("rect")
-    .attr("x", function(d) { console.log(d); return xScale(d.month); })
-    .attr("y", function(d) { console.log(yScale(d.count)); return yScale(maxFruit) - yScale(d.prevSum) - yScale(d.count); })
-    .attr("height", function(d) { return yScale(d.count); })
-    .attr("barWidth", xScale.bandwidth())
-    .attr("fill", colorFunc(fruit))
-    .attr("class", fruit);
-})
-var yScaleDraw = d3.scaleLinear()
-  .domain([0, maxFruit])
-  .rangeRound([height, 0])
-var yAxis = d3.axisLeft(yScaleDraw);
-var xAxis = d3.axisBottom(xScale);
+    .attr("width", x.bandwidth)
+    .attr("height", d => graphHeight - y(d.orders))
+    .attr("fill", "orange")
+    .attr("x", d => x(d.name))
+    .attr("y", d => y(d.orders)); // 위에 있는 그래프 뒤집기
 
-svg.append("g")
-  .attr("class", "y axis")
-  .call(yAxis);
+  // x축 y축 (axis) 생성
+  const xAxis = d3.axisBottom(x);
+  const yAxis = d3
+    .axisLeft(y)
+    .ticks(3) //ticks 는 y축 눈금 갯수
+    .tickFormat(d => d + " orders"); // 눈금 값 설정
 
-svg.append("g")
-  .attr("class", "x axis")
-  .attr("transform", "translate(0," + height + ")")
-  .call(xAxis);
+  // 축 적용
+  xAxisGroup.call(xAxis);
+  yAxisGroup.call(yAxis);
+
+  xAxisGroup
+    .selectAll("text") // x축 눈금 값. text 선택
+    .attr("transform", "rotate(-40)")
+    .attr("text-anchor", "end")
+    .attr("fill", "orange");
+});
