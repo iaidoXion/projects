@@ -21,6 +21,26 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/reset.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/style.css' %}">
 
+    <script src="{% static 'js/common/jquery-3.6.0.min.js' %}"></script>
+    <!-- Core plugin JavaScript 3-->
+    <script src="{% static 'js/common/jquery.easing.min.js' %}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{% static 'js/common/bootstrap.js' %}"></script>
+    <script src="{% static 'js/common/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript 2 -->
+    <script src="{% static 'js/common/bootstrap.bundle.min.js' %}"></script>
+    <!-- Custom scripts for all pages 4-->
+    <script src="{% static 'js/common/sbAdmin2.min.js' %}"></script>
+    <!-- Page level plugins 5
+    <script src="{% static 'js/chart/Chart.min.js' %}"></script-->
+    <!-- Page level custom scripts
+    <script src="{% static 'js/chart/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/chart/chart-pie-demo.js' %}"></script-->
+    <!-- d3.js -->
+    <script src="{% static 'js/d3/d3-5.9.2.js' %}"></script>
+    <script src="{% static 'js/d3/d3-5.9.2.min.js' %}"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+
 
 </head>
 <body>
@@ -35,26 +55,9 @@
     <!-- 푸터 -->
     {% include "footer.html" %}
     <!-- 푸터 End -->
-<script src="{% static 'js/common/jquery-3.6.0.min.js' %}"></script>
-<!-- Core plugin JavaScript 3-->
-<script src="{% static 'js/common/jquery.easing.min.js' %}"></script>
-<!-- Bootstrap JS -->
-<script src="{% static 'js/common/bootstrap.js' %}"></script>
-<script src="{% static 'js/common/bootstrap.min.js' %}"></script>
-<!-- Bootstrap core JavaScript 2 -->
-<script src="{% static 'js/common/bootstrap.bundle.min.js' %}"></script>
-<!-- Custom scripts for all pages 4-->
-<script src="{% static 'js/common/sbAdmin2.min.js' %}"></script>
-<!-- Page level plugins 5
-<script src="{% static 'js/chart/Chart.min.js' %}"></script-->
-<!-- Page level custom scripts
-<script src="{% static 'js/chart/chart-area-demo.js' %}"></script>
-<script src="{% static 'js/chart/chart-pie-demo.js' %}"></script-->
-<!-- d3.js -->
-<script src="{% static 'js/d3/d3.js' %}"></script>
-<script src="{% static 'js/d3/d3.min.js' %}"></script>
-<script src="{% static 'js/common/index.js' %}"></script>
 <!-- 자바스크립트 Start -->
+    <script src="{% static 'js/chart/mapchart.js' %}"></script>
+    <script src="{% static 'js/chart/barchart.js' %}"></script>
 {% block script %}
 {% endblock %}
 <!-- 자바스크립트 End -->
