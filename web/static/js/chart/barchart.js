@@ -1,3 +1,6 @@
+function center(){
+    $("#barChart").css({"width" : "80% ","margin":"0 auto"});
+};
 function barChart() {
     // 차트에 여백 만들기
     const margin = { top: 20, right: 70, bottom: 100, left: 70 };
@@ -79,8 +82,8 @@ function barChart() {
 
 
 function barChart2() {
-    const width = 500;
-    const height = 500;
+    const width = 400;
+    const height = 200;
     const margin = {top: 40, left: 40, bottom: 40, right: 40};
 
     const data = [
@@ -145,4 +148,5 @@ function barChart2() {
 
     svg.node();
 }
-barChart();
+barChart2();
+center();
