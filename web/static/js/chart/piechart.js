@@ -1,7 +1,7 @@
 function piechart() {
 
-    const width = 250;
-    const height = 250;
+    const width = 200;
+    const height = 200;
     const data = [
       {name: 'A', value: 1000, color: '#efa86b'},
       {name: 'B', value: 1500, color: '#c1484f'},

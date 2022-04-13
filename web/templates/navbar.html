@@ -19,12 +19,12 @@
             {% endfor %}
         </ul>
         {% else %}
-            <li class="nav-item ">메뉴가 없습니다.</li>
+            <li class="nav-item">메뉴가 없습니다.</li>
         {% endif %}
     </div>
     <div class="my-float-right">
         <ul>
-            <li class="nav-item">
+            <li class="nav-item text-right">
                 {% if user.is_authenticated %}
                 <a class="nav-link" href="{% url 'web:logout' %}">{{ user.username }} (로그아웃)</a>
                 {% else %}

@@ -143,3 +143,7 @@ body {
     weight: 500px;
     min-height: 500px;
 }
+
+.my-center{
+    margin: 0 auto;
+}
