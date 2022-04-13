@@ -23,6 +23,7 @@ body {
 .container-frame {
     width: 100%;
     background-color: #f8f9fc;
+    min-height: 100%;
 }
 .container-color {
     background-color: #f8f9fc;
@@ -134,3 +135,11 @@ body {
     margin-top: 28px;
 }
 
+.login-top{
+    margin-bottom: 50px;
+}
+
+.login-frame{
+    weight: 500px;
+    min-height: 500px;
+}
