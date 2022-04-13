@@ -1,6 +1,6 @@
 function lineChart() {
-    const width = 500;
-    const height = 500;
+    const width = 400;
+    const height = 200;
     const margin = {top: 40, right: 40, bottom: 40, left: 40};
     const data = [
       {date: new Date('2018-01-01'), value: 10},
