@@ -31,11 +31,6 @@
     <script src="{% static 'js/common/bootstrap.bundle.min.js' %}"></script>
     <!-- Custom scripts for all pages 4-->
     <script src="{% static 'js/common/sbAdmin2.min.js' %}"></script>
-    <!-- Page level plugins 5
-    <script src="{% static 'js/chart/Chart.min.js' %}"></script-->
-    <!-- Page level custom scripts
-    <script src="{% static 'js/chart/chart-area-demo.js' %}"></script>
-    <script src="{% static 'js/chart/chart-pie-demo.js' %}"></script-->
     <!-- d3.js -->
     <script type="text/javascript" src="{% static 'js/d3/d3-7.4.4.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/d3/d3-7.4.4.min.js' %}"></script>
@@ -53,11 +48,11 @@
     <!-- 푸터 -->
     {% include "footer.html" %}
     <!-- 푸터 End -->
-<!-- 자바스크립트 Start -->
+    <!-- Dashboard Chart Start -->
     <script src="{% static 'js/chart/mapchart.js' %}"></script>
     <script src="{% static 'js/chart/barchart.js' %}"></script>
-{% block script %}
-{% endblock %}
-<!-- 자바스크립트 End -->
+    <script src="{% static 'js/chart/piechart.js' %}"></script>
+    <script src="{% static 'js/chart/linechart.js' %}"></script>
+    <!-- Dashboard Chart End -->
 </body>
 </html>

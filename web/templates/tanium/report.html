@@ -1,49 +1,52 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="my-3 container-frame">
-        <div class="container-color container-top">
-            <div class="container-section-color container-left my-float-left">
-                <div class="container-child-color container-left-child-no-margin my-border">
-                    <p class="content-title"></p>
-                </div>
-                <div class="container-child-color container-left-child my-border">
-                    <p class="content-title"></p>
-                </div>
-                <div class="container-child-color container-left-child my-border">
-                    <p class="content-title"></p>
-                </div>
-                <div class="container-child-color container-left-child my-border">
-                    <p class="content-title"></p>
-                </div>
+<div class="my-3 container-frame">
+    <div class="container-color container-top">
+        <div class="container-section-color container-left my-float-left">
+            <div class="container-child-color container-left-child-no-margin my-border-2px">
+                <div class="content-title"></div>
             </div>
-            <div class="container-section-color container-center my-float-left my-border">
-                <div class="container-child-color container-center-top">
-
-                </div>
-                <div class="container-child-color container-center-bot my-border"></div>
+            <div class="container-child-color container-left-child my-border-2px">
+                <div class="content-title"></div>
             </div>
-            <div class="container-section-color container-right my-float-left">
-                <div class="container-child-color container-right-top my-border">
-                    <p class="content-title"></p>
-                </div>
-                <div class="container-child-color container-right-bot my-border">
-                    <p class="content-title"></p>
-                </div>
+            <div class="container-child-color container-left-child my-border-2px">
+                <div class="content-title"></div>
+            </div>
+            <div class="container-child-color container-left-child my-border-2px">
+                <div class="content-title"></div>
             </div>
         </div>
-        <div class="container-color container-bot my-border">
-            <div class="container-bot-wrapper">
-                <button class="container-bot-side my-float-left my-border"></button>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content my-border"></div>
-                <div class="my-float-left container-bot-content2 my-border"></div>
-                <button class="container-bot-side my-float-left my-border"></button>
+        <div class="container-section-color container-center my-float-left my-border-2px">
+            <div class="container-child-color container-center-top">
+                <div id="worldMap"></div>
+            </div>
+
+        </div>
+        <div class="container-section-color container-right my-float-left">
+            <div class="container-child-color container-right-top my-border-2px">
+                <div class="content-title"></div>
+                <div id="barChart"></div>
+                <!--div id="lineChart"></div-->
+            </div>
+            <div class="container-child-color container-right-bot my-border-2px">
+                <div class="content-title"></div>
+                <div id="pieChart"></div>
             </div>
         </div>
     </div>
+    <div class="container-color container-bot my-border-2px">
+        <div class="container-bot-wrapper">
+            <button class="container-bot-side my-float-left my-border"></button>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content my-border-2px"></div>
+            <div class="my-float-left container-bot-content2 my-border-2px"></div>
+            <button class="container-bot-side my-float-left my-border"></button>
+        </div>
+    </div>
+</div>
 {% endblock %}
