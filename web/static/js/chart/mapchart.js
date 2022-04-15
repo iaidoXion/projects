@@ -1,6 +1,6 @@
 function wordMapChart() {
 
-    const width = 1025;
+    const width = 987;
     const height = 590;
 
     const svg = d3.select('#worldMap').append('svg').attr('width', width).attr('height', height);

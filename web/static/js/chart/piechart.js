@@ -1,41 +1,38 @@
 function piechart() {
-
-    const width = 200;
-    const height = 200;
+    const width = 170;
+    const height = 170;
     const data = [
-      {name: 'A', value: 1000, color: '#efa86b'},
-      {name: 'B', value: 1500, color: '#c1484f'},
-      {name: 'C', value: 1300, color: '#d35d50'},
-      {name: 'D', value: 900, color: '#f4c17c'},
-      {name: 'E', value: 400, color: '#fae8a4'},
-      {name: 'F', value: 1200, color: '#df7454'},
-      {name: 'G', value: 1100, color: '#e88d5d'},
-      {name: 'H', value: 600, color: '#f8d690'}
+      {name: 'Mac', value: 1000, color: '#f4c17c'},
+      {name: 'Windows', value: 1500, color: '#fae8a4'},
+      {name: 'Linux', value: 1300, color: '#df7454'},
+      {name: 'Android', value: 900, color: '#e88d5d'},
+      {name: 'ios', value: 400, color: '#f8d690'},
     ];
+    //'#efa86b', '#c1484f', '#d35d50', '#f4c17c', '#fae8a4', '#df7454', '#e88d5d', '#f8d690'
+    const arc = d3.arc() // .arc() 새로운 기본값의 아치(호) 생성
+        .innerRadius(30) // .innerRadius() 안쪽 반지름 값, 0이면 완전한 원이되고 값이 있으면 도넛 형태가 됩니다.
+        .outerRadius(Math.min(width, height) / 2); // .outerRadius() 바깥쪽 반지름값
 
-    const arc = d3.arc().innerRadius(50).outerRadius(Math.min(width, height) / 2);
-    // .arc() 새로운 기본값의 아치(호) 생성
-    // .innerRadius() 안쪽 반지름 값, 0이면 완전한 원이되고 값이 있으면 도넛 형태가 됩니다.
-    // .outerRadius() 바깥쪽 반지름값
-
+    // 라벨이 위치할 반지름 값을 설정합니다.
     const arcLabel = (() => {
-      const radius = Math.min(width, height) / 2 * 0.8;
+      const radius = Math.min(width, height) / 3;
       return d3.arc().innerRadius(radius).outerRadius(radius);
     })();
-    // 라벨이 위치할 반지름 값을 설정합니다.
 
-    const pie = d3.pie()
-      // 새로운 기본값의 파이 모양의 생성
-      .sort((a, b) => b.value - a.value)
-      // data의 value 큰값 > 작은값 순으로 정렬합니다. ex. 반대 순서는 a.value - b.value
-      .value(d => d.value);
+    const pie = d3.pie()  // 새로운 기본값의 파이 모양의 생성
+        .sort((a, b) => b.value - a.value) // data의 value 큰값 > 작은값 순으로 정렬 ex. 반대 순서는 a.value - b.value
+        .value(d => d.value);
 
     const arcs = pie(data);
+    const svg = d3.select('#pieChart')
+        .append('svg')
+        .style('width', width)
+        .style('height', height)
+        .style("margin", '20 123')
+        .attr('text-anchor', 'middle') // text-anchor 텍스트의 정렬을 설정 ( start | middle | end | inherit )
+        .style('font-size', '10px sans-serif');
 
-    const svg = d3.select('#pieChart').append('svg').style('width', width).style('height', height).style("margin", '20 65')
-      .attr('text-anchor', 'middle')
-      // text-anchor 텍스트의 정렬을 설정합니다 ( start | middle | end | inherit )
-      .style('font-size', '12px sans-serif');
+
 
     const g = svg.append('g')
       .attr('transform', `translate(${width/2}, ${height/2})`);
@@ -59,16 +56,15 @@ function piechart() {
     const text = g.selectAll('text')
       .data(arcs)
       .enter().append('text')
-        .attr('transform', d => `translate(${arcLabel.centroid(d)})`)
-        .attr('dy', '0.35em');
+      .attr('transform', d => `translate(${arcLabel.centroid(d)})`)
+      .attr('dy', '0.35em');
       // 라벨을 취가하기 위한 text 엘리먼트를 만들고 위치를 지정합니다.
 
     text.append('tspan')
       .attr('x', 0)
       .attr('y', '-0.7em')
-      .style('font-weight', 'bold')
-      .text(d => d.data.name)
-      // 해당 데이터 항목의 이름을 두꺼운 글씨로 출력합니다. ex. A
+      .text(d => d.data.name);
+
 
     text.filter(d => (d.endAngle - d.startAngle > 0.25)).append('tspan')
       .attr('x', 0)

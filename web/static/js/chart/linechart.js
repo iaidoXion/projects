@@ -1,16 +1,20 @@
 function lineChart() {
     const width = 400;
     const height = 200;
-    const margin = {top: 40, right: 40, bottom: 40, left: 40};
+    const margin = {top: 10, right: 10, bottom: 20, left: 40};
     const data = [
-      {date: new Date('2018-01-01'), value: 10},
-      {date: new Date('2018-01-02'), value: 20},
-      {date: new Date('2018-01-03'), value: 30},
-      {date: new Date('2018-01-04'), value: 25},
-      {date: new Date('2018-01-05'), value: 35},
-      {date: new Date('2018-01-06'), value: 45},
-      {date: new Date('2018-01-07'), value: 60},
-      {date: new Date('2018-01-08'), value: 50}
+      //{date: new Date('2021-05'), value: 100},
+      //{date: new Date('2021-06'), value: 200},
+      //{date: new Date('2021-07'), value: 300},
+      //{date: new Date('2021-08'), value: 250},
+      //{date: new Date('2021-09'), value: 350},
+      //{date: new Date('2021-10'), value: 450},
+      {date: new Date('2021-11-30'), value: 600},
+      {date: new Date('2021-12-31'), value: 350},
+      {date: new Date('2022-01-'), value: 480},
+      {date: new Date('2022-02'), value: 960},
+      {date: new Date('2022-03'), value: 100},
+      {date: new Date('2022-04'), value: 500},
     ];
 
     const x = d3.scaleTime()
@@ -33,9 +37,9 @@ function lineChart() {
         return g.select(".tick:last-of-type text").clone()
           .attr("x", 3)
           .attr("text-anchor", "start")
-          .attr("font-weight", "bold")
-          .attr("font-size", '20px')
-          .text('Y축')
+         // .attr("font-weight", "bold")
+          .attr("font-size", '10px')
+          //.text('Count')
         });
 
     const line = d3.line()
@@ -47,8 +51,8 @@ function lineChart() {
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "steelblue")
-      .attr("stroke-width", 1)
+      .attr("stroke", "#efa86b")
+      .attr("stroke-width", 2)
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
       .attr("d", line);
