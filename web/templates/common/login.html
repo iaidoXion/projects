@@ -1,29 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-3 login-frame">
+<div class="login-form">
+    <form method="post" action="{% url 'web:login' %}">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">  <!-- 로그인 성공후 이동되는 URL -->
+        {% include "form_errors.html" %}
+        <h2 class="text-center">Log in</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password" id="password"
+                   value="{{ form.password.value|default_if_none:'' }}">
+        </div>
+        <div class="form group">
+            <button type="submit" class="btn btn-secondary btn-block">Log in</button>
+        </div>
+    </form>
+    <p class="text-center text-muted small">Don't have an account? <a href="/signup/">Sign up here!</a></p>
+</div>
+<!--<div class="container my-3 login-frame">
     <div class="row login-top">
-        <div class="col-4">
+        <div class="col-4 my-margin-top">
             <h4>로그인</h4>
         </div>
-        <div class="col-8 text-right">
+        <div class="col-8 text-right my-margin-top">
             <span>또는 <a href="/signup/">계정을 만드세요.</a></span>
         </div>
     </div>
     <form method="post" class="post-form" action="{% url 'web:login' %}">
         {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}">  <!-- 로그인 성공후 이동되는 URL -->
+        <input type="hidden" name="next" value="{{ next }}">  &lt;!&ndash; 로그인 성공후 이동되는 URL &ndash;&gt;
         {% include "form_errors.html" %}
         <div class="form-group">
-            <label for="username">사용자ID</label>
+            <label for="username" class="my-margin-bot-half">사용자ID</label>
             <input type="text" class="form-control" name="username" id="username"
                    value="{{ form.username.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
-            <label for="password">비밀번호</label>
+            <label for="password" class="my-margin-bot-half">비밀번호</label>
             <input type="password" class="form-control" name="password" id="password"
                    value="{{ form.password.value|default_if_none:'' }}">
         </div>
         <button type="submit" class="btn btn-primary">로그인</button>
     </form>
-</div>
+</div>-->
 {% endblock %}

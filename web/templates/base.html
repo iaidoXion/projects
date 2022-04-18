@@ -35,10 +35,11 @@
     <!-- Custom scripts for all pages 4-->
     <script src="{% static 'js/common/sbAdmin2.min.js' %}"></script>
     <!-- d3 js -->
-    <script type="text/javascript" src="{% static 'js/common/d3/d3.v4.min.js"></script>
+    <!--<script type="text/javascript" src="{% static 'js/common/d3/d3.v4.min.js"></script>-->
     <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/common/topojson.v1.min.js' %}"></script>
+
 </head>
 <body>
     {% if request.get_full_path == '/' or request.get_full_path == '/signup/' %}
@@ -50,7 +51,10 @@
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
     <!-- 푸터 -->
-    {% include "footer.html" %}
+    {% if request.get_full_path == '/' or request.get_full_path == '/signup/' %}
+    {% else %}
+        {% include "footer.html" %}
+    {% endif %}
     <!-- 푸터 End -->
     <!-- Dashboard Chart Start -->
     <script src="{% static 'js/chart/gaugeChart.js' %}"></script>

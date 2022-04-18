@@ -32,3 +32,15 @@ body {
 .my-center{
     margin: 0 auto;
 }
+
+.my-margin-top{
+    margin-top: 20px;
+}
+
+.my-margin-bot{
+    margin-bottom: 20px;
+}
+
+.my-margin-bot-half{
+    margin-bottom: 10px;
+}
