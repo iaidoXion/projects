@@ -1,43 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+
 <div class="my-3 container-frame">
     <div class="container-color container-top">
+        <div class="container-child-color container-top-child my-border">
+            <p class="content-title"></p>
+            <svg id="gaugeChart1"></svg>
+            <svg id="gaugeChart2"></svg>
+            <svg id="gaugeChart3"></svg>
+            <svg id="gaugeChart4"></svg>
+            <svg id="gaugeChart5"></svg>
+            <svg id="gaugeChart6"></svg>
+        </div>
+    </div>
+    <div class="container-color container-mid">
         <div class="container-section-color container-left my-float-left">
-            <div class="container-child-color container-left-child-no-margin my-border">
-                <p class="content-title">Title</p>
-            </div>
-            <div class="container-child-color container-left-child my-border">
-                <p class="content-title">Title</p>
-            </div>
-            <div class="container-child-color container-left-child my-border">
-                <p class="content-title">Title</p>
-            </div>
-            <div class="container-child-color container-left-child my-border">
-                <p class="content-title">Title</p>
-            </div>
-        </div>
-        <div class="container-child-color container-center my-float-left my-border">
-            <div class="container-child-color container-center-top">
-                <p class="content-title">Title</p>
-                <div id="worldMap"></div>
-            </div>
-        </div>
-        <div class="container-section-color container-right my-float-left">
-            <div class="container-child-color container-right-top my-border">
+            <div class="container-child-color container-left-top my-border">
                 <p class="content-title">
                     <img src="{% static 'img/dashboard/barchart.png' %}"/>
                     <a>Asset Statistics</a>
                 </p>
                 <div id="barChart"></div>
             </div>
-            <div class="container-child-color container-right-mid my-border">
-                <p class="content-title">OS Statistics</p>
-                <div id="pieChart"></div>
-            </div>
-            <div class="container-child-color container-right-bot my-border">
-                <p class="content-title">Title</p>
+                    <!--img src="{% static 'img/dashboard/pie.png' %}"/>
+                    <div id="pieChart"></div-->
+            <div class="container-child-color container-left-bot my-border">
+                <p class="content-title">
+                    <img src="{% static 'img/dashboard/linechart.png' %}"/>
+                    <a>OS Statistics</a>
+                </p>
                 <div id="lineChart"></div>
+            </div>
+        </div>
+        <div class="container-child-color container-center my-float-left my-border">
+            <p class="content-title">Title</p>
+            <div class="container-child-color container-center-top">
+                <div id="worldMap"></div>
+                <!--div class="netwrok-graph">
+                    <svg id="NETWORK_GRAPH">
+                    </svg>
+                </div-->
             </div>
         </div>
     </div>

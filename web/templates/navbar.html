@@ -1,4 +1,5 @@
 <!-- 네비게이션바 -->
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <a class="navbar-brand" href="/">Xion</a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +12,8 @@
             {% for menu in menuList %}
                 {% if menu.menuUse == '1' %}
                     <li class="nav-item ">
-                        <a  class="nav-link" style="font-weight : bold" href="/{{menu.menuUrl}}/">
+                        <!--img class="navImg" src="{% static menu.menuImg %}"/-->
+                        <a  class="nav-link navTxt" style="font-weight : bold" href="/{{menu.menuUrl}}/">
                             {{ menu.menuName }}
                         </a>
                     </li>

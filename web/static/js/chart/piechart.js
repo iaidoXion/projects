@@ -28,7 +28,7 @@ function piechart() {
         .append('svg')
         .style('width', width)
         .style('height', height)
-        .style("margin", '20 123')
+        .style("margin", '18.5 123')
         .attr('text-anchor', 'middle') // text-anchor 텍스트의 정렬을 설정 ( start | middle | end | inherit )
         .style('font-size', '10px sans-serif');
 
