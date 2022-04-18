@@ -1,38 +1,65 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container my-3">
+<div class="login-form">
+    <form method="post" action="/signup/">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <h2 class="text-center">Sign up</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password1" placeholder="Password" id="password1"
+                   value="{{ form.password1.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="password2" placeholder="Confirm Password" id="password2"
+                   value="{{ form.password2.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="email" placeholder="Email Address" id="email"
+                   value="{{ form.email.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-secondary login-btn btn-block">Sign up</button>
+        </div>
+    </form>
+    <p class="text-center text-muted small">Already have an account? <a href="/">Login here!</a></p>
+</div>
+<!--<div class="container login-frame">
     <div class="row login-top">
-        <div class="col-4">
+        <div class="col-4 my-margin-top">
             <h4>계정생성</h4>
         </div>
-        <div class="col-8 text-right">
+        <div class="col-8 text-right my-margin-top">
             <span>또는 <a href="/">로그인 하세요.</a></span>
         </div>
     </div>
-    <form method="post" class="post-form login-frame" action="/signup/">
+    <form method="post" class="post-form" action="/signup/">
         {% csrf_token %}
         {% include "form_errors.html" %}
         <div class="form-group">
-            <label for="username">사용자 이름</label>
+            <label for="username" class="my-margin-bot-half">사용자 이름</label>
             <input type="text" class="form-control" name="username" id="username"
                    value="{{ form.username.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
-            <label for="password1">비밀번호</label>
+            <label for="password1" class="my-margin-bot-half">비밀번호</label>
             <input type="password" class="form-control" name="password1" id="password1"
                    value="{{ form.password1.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
-            <label for="password2">비밀번호 확인</label>
+            <label for="password2" class="my-margin-bot-half">비밀번호 확인</label>
             <input type="password" class="form-control" name="password2" id="password2"
                    value="{{ form.password2.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
-            <label for="email">이메일</label>
+            <label for="email" class="my-margin-bot-half">이메일</label>
             <input type="text" class="form-control" name="email" id="email"
                    value="{{ form.email.value|default_if_none:'' }}">
         </div>
         <button type="submit" class="btn btn-primary">생성하기</button>
     </form>
-</div>
+</div>-->
 {% endblock %}
