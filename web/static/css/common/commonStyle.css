@@ -44,3 +44,10 @@ body {
 .my-margin-bot-half{
     margin-bottom: 10px;
 }
+.btn-border-none {
+    border:0;
+}
+
+.mouse-over-cursor {
+    pointer : cursor;
+}

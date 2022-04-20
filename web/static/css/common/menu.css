@@ -7,3 +7,11 @@
 .navTxt {
     float:left;
 }
+
+.navMenuWrap{
+    width:89%;
+}
+
+.navUser{
+    width:8%;
+}
