@@ -14,7 +14,7 @@ urlpatterns = [
     path('software/', views.software, name='software'),
     path('security/', views.security, name='security'),
     path('report/', views.report, name='report'),
-    path('setting/', views.report, name='setting'),
+    path('setting/', views.setting, name='setting'),
     path('externalAPI/', views.ExternalApi, name='ExternalApi'),
     path('externalApiDetail/', views.ExternalApiDetail, name='ExternalApiDetail'),
 ]
