@@ -1,7 +1,7 @@
 .container-frame {
     width: 100%;
     background-color: #f8f9fc;
-    min-height: 100%;
+    min-height: 891px;
 }
 
 .container-color {
@@ -31,7 +31,15 @@
     background-color: #ffffff;
     margin: 0 auto;
 }
-
+.gaugeWrap {
+    width:100%;
+    float:left;
+}
+.gaugeWrap>li{
+    display:block;
+    width:16.66%;
+    float:left;
+}
 .container-mid{
     width: 100%;
     min-height: 513px;
@@ -39,13 +47,13 @@
 }
 
 .container-center {
-    width: 75%;
+    width: 72%;
     min-height: 513px;
 
 }
 
 .container-left {
-    width: 22%;
+    width: 25%;
     min-height: 513px;
     margin-left: 1%;
     margin-right: 1%;
