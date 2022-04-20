@@ -1,19 +1,13 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-
 from web.forms import UserForm
 from .dataParsing import External
-from .models import MenuSetting
+from .commonFun import MenuList
 
 
 def index(request):
     return render(request, 'common/login.html')
-
-def MenuList(request) :
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList' : menuList}
-    return render(request, 'navbar.html', context)
 
 def signup(request):
     """ 계정생성 """
@@ -33,41 +27,33 @@ def signup(request):
 
 @login_required(login_url='common:login')
 def dashboard(request):
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList': menuList}
-
-    return render(request, 'tanium/dashboard.html', context)
+    menuSettingList = MenuList()
+    return render(request, 'tanium/dashboard.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def asset(request):
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList': menuList}
-
-    return render(request, 'tanium/asset.html', context)
+    menuSettingList = MenuList()
+    return render(request, 'tanium/asset.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def software(request):
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList': menuList}
-    return render(request, 'tanium/software.html', context)
+    menuSettingList = MenuList()
+    return render(request, 'tanium/software.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def security(request):
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList': menuList}
-    return render(request, 'tanium/security.html', context)
+    menuSettingList = MenuList()
+    return render(request, 'tanium/security.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def report(request):
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList': menuList}
-    return render(request, 'tanium/report.html', context)
+    menuSettingList = MenuList()
+    return render(request, 'tanium/report.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def setting(request):
-    menuList = MenuSetting.objects.order_by('id')
-    context = {'menuList': menuList}
-    return render(request, 'common/setting.html', context)
+    menuSettingList = MenuList()
+    return render(request, 'common/setting.html', menuSettingList)
 
 def ExternalApi(request):
     res = External.DataParsing()
