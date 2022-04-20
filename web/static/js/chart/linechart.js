@@ -1,5 +1,5 @@
 function lineChart() {
-    const width = 400;
+    const width = 465;
     const height = 200;
     const margin = {top: 10, right: 10, bottom: 20, left: 40};
     const data = [

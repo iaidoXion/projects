@@ -3,7 +3,7 @@ function center(){
 };
 
 function barChart() {
-    const width = 400;
+    const width = 465;
     const height = 196;
     const margin = {top: 20, left: 40, bottom: 20, right: 5};
 
