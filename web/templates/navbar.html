@@ -5,32 +5,47 @@
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+    <div class="collapse navbar-collapse flex-grow-0 navMenuWrap" id="navbarNav">
 
         {% if menuList %}
-        <ul class="navbar-nav">
-            {% for menu in menuList %}
-                {% if menu.menuUse == '1' %}
-                    <li class="nav-item ">
-                        <!--img class="navImg" src="{% static menu.menuImg %}"/-->
-                        <a  class="nav-link navTxt" style="font-weight : bold" href="/{{menu.menuUrl}}/">
-                            {{ menu.menuName }}
-                        </a>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+            <ul class="navbar-nav">
+                {% for menu in menuList %}
+                    {% if menu.menuUse == '1' %}
+                        <li class="nav-item ">
+                            <!--img class="navImg" src="{% static menu.menuImg %}"/-->
+                            <a  class="nav-link navTxt" style="font-weight : bold" href="/{{menu.menuUrl}}/">
+                                {{ menu.menuName }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         {% else %}
-            <li class="nav-item">메뉴가 없습니다.</li>
+            <ul class="navbar-nav">
+                <li class="nav-item">메뉴를 설정해 주세요</li>
+            </ul>
         {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
-    <div class="my-float-right">
+    <div class="my-float-right navUser">
         <ul>
             <li class="nav-item text-right">
                 {% if user.is_authenticated %}
-                <a class="nav-link" href="{% url 'web:logout' %}">{{ user.username }} (로그아웃)</a>
+                    <a class="nav-link" href="{% url 'web:logout' %}">{{ user.username }} (로그아웃)</a>
                 {% else %}
-                <a class="nav-link" href="{% url 'web:login' %}">로그인</a>
+                    <a class="nav-link" href="{% url 'web:login' %}">로그인</a>
                 {% endif %}
             </li>
         </ul>
