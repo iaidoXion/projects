@@ -2,16 +2,18 @@
 {% block content %}
 {% load static %}
 
-<div class="my-3 container-frame">
-    <div class="container-color container-top">
+<div class="my-3 container-frame container-color">
+    <div class="container-top">
         <div class="container-child-color container-top-child my-border">
             <p class="content-title"></p>
-            <svg id="gaugeChart1"></svg>
-            <svg id="gaugeChart2"></svg>
-            <svg id="gaugeChart3"></svg>
-            <svg id="gaugeChart4"></svg>
-            <svg id="gaugeChart5"></svg>
-            <svg id="gaugeChart6"></svg>
+            <ul class="gaugeWrap">
+                <li><svg id="gaugeChart1"></svg></li>
+                <li><svg id="gaugeChart2"></svg></li>
+                <li><svg id="gaugeChart3"></svg></li>
+                <li><svg id="gaugeChart4"></svg></li>
+                <li><svg id="gaugeChart5"></svg></li>
+                <li><svg id="gaugeChart6"></svg></li>
+            </ul>
         </div>
     </div>
     <div class="container-color container-mid">
@@ -34,7 +36,7 @@
             </div>
         </div>
         <div class="container-child-color container-center my-float-left my-border">
-            <p class="content-title">Title</p>
+            <p class="content-title">Anomaly Notification</p>
             <div class="container-child-color container-center-top">
                 <div id="worldMap"></div>
                 <!--div class="netwrok-graph">
@@ -45,16 +47,20 @@
         </div>
     </div>
     <div class="container-color container-bot my-border">
-        <button class="container-bot-side my-float-left my-border" id="prevbtn" onClick="prev()"><img src="{% static 'img/dashboard/leftbutton.png' %}" width="80%" height="27px"/></button>
-        <div class="my-float-left container-bot-content my-border">Information 1</div>
-        <div class="my-float-left container-bot-content my-border">Information 2</div>
-        <div class="my-float-left container-bot-content my-border">Information 3</div>
-        <div class="my-float-left container-bot-content my-border">Information 4</div>
-        <div class="my-float-left container-bot-content my-border">Information 5</div>
-        <div class="my-float-left container-bot-content my-border">Information 6</div>
-        <div class="my-float-left container-bot-content my-border">Information 7</div>
-        <div class="my-float-left container-bot-content2 my-border">Information 8</div>
-        <button class="container-bot-side my-float-left my-border"><img src="{% static 'img/dashboard/rightbutton.png' %}" width="80%" height="27px"/></button>
+        <button class="container-bot-side my-float-left btn-border-none mouse-over-cursor" id="prevbtn" onClick="prev()">
+            <img src="{% static 'img/dashboard/leftbutton.png' %}" width="20%" height="10px"/>
+        </button>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content my-border"></div>
+        <div class="my-float-left container-bot-content2 my-border"></div>
+        <button class="container-bot-side my-float-left btn-border-none mouse-over-cursor">
+            <img src="{% static 'img/dashboard/rightbutton.png' %}" width="20%" height="10px"/>
+        </button>
     </div>
 </div>
 {% endblock %}
