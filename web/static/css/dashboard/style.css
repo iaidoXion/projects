@@ -78,7 +78,7 @@
 
 .container-bot {
     width: 98%;
-    min-height: 138px;
+    height: 138px;
     background-color: #ffffff;
     margin: 0 auto;
 }
@@ -88,19 +88,9 @@
     margin: 0 auto;
 }
 
-.container-bot-side {
-    display: block;
-    width: 2%;
-    min-height: 27px;
-    margin-left: 1%;
-    margin-right: 1%;
-    background-color: #ffffff;
-    margin-top: 55px;
-}
-
 .container-bot-content {
     width: 9.7%;
-    min-height: 82px;
+    height: 82px;
     margin-right: 2%;
     background-color: #ffffff;
     margin-top: 28px;
@@ -108,7 +98,62 @@
 
 .container-bot-content2 {
     width: 9.7%;
-    min-height: 82px;
+    height: 82px;
     background-color: #ffffff;
     margin-top: 28px;
+}
+
+.col-center {
+	margin: 0 auto;
+	float: none !important;
+}
+
+.carousel .item {
+    text-align: center;
+	overflow: hidden;
+    height: 160px;
+}
+.carousel .item .img-box {
+	background: #fff;
+	padding: 9px;
+	box-shadow: 0 6px 20px -6px rgba(0,0,0,0.4);
+}
+.carousel .item img {
+    margin: 0 auto;
+}
+.carousel .carousel-control {
+	width: 68px;
+	background: none;
+}
+.carousel .carousel-control i {
+    font-size: 20px;
+    top: 50%;
+    display: inline-block;
+    margin-top: -15px;
+    z-index: 5;
+    left: 0;
+    right: 0;
+	color: rgba(0, 0, 0, 0.8);
+    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
+}
+
+.conBotPrev{
+    margin-top: 55px;
+}
+.conBotNext{
+    margin-top: 55px;
+}
+
+.container-bot-content {
+    width: 9.7%;
+    height: 82px;
+    margin-right: 2%;
+    background-color: #ffffff;
+    margin-top: 28px;
+}
+
+.conBotWrap {
+    width: 98%;
+    height: 138px;
+    margin: 0 auto;
 }
