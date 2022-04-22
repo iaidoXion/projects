@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from web.forms import UserForm
 from .dataParsing import External
+from .API.Call.SessionLogin import Login
 from .commonFun import MenuList
 
 
@@ -55,9 +56,18 @@ def setting(request):
     menuSettingList = MenuList()
     return render(request, 'common/setting.html', menuSettingList)
 
+def SessionLogin(request):
+    ApiSessionKeyList = Login()
+    print(ApiSessionKeyList)
+    return render(request, 'API/sessionLogin.html', ApiSessionKeyList)
+
+def SystemStatus(request):
+    ApiSessionKeyList = Login()
+    print(ApiSessionKeyList)
+    return render(request, 'API/systemStatus.html', ApiSessionKeyList)
+
 def ExternalApi(request):
     res = External.DataParsing()
-    #print(res)
     pm10 = res.get('남산1동')
     context = {'station': '남산1동', 'pm10': pm10}
     return render(request, 'API/external.html', context)

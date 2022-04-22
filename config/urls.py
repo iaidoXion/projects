@@ -15,6 +15,8 @@ urlpatterns = [
     path('security/', views.security, name='security'),
     path('report/', views.report, name='report'),
     path('setting/', views.setting, name='setting'),
+    path('sessionLogin/', views.SessionLogin, name='SessionLogin'),
+    path('systemStatus/', views.SystemStatus, name='systemStatus'),
     path('externalAPI/', views.ExternalApi, name='ExternalApi'),
     path('externalApiDetail/', views.ExternalApiDetail, name='ExternalApiDetail'),
 ]

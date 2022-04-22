@@ -2,7 +2,7 @@ from urllib.parse import urlencode, unquote, quote_plus
 import requests
 import json
 
-with open("setting.json", encoding="UTF-8") as f:
+with open("externalSetting.json", encoding="UTF-8") as f:
     APISETTING = json.loads(f.read())
 
 serviceKey = APISETTING['API']['serviceKey']

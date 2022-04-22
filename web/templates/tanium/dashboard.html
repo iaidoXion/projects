@@ -1,76 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
-<div class="my-3 container-frame container-color">
-    <div class="container-top">
-        <div class="container-child-color container-top-child my-border">
-            <p class="content-title"></p>
-            <ul class="gaugeWrap">
-                <li><svg id="gaugeChart1"></svg></li>
-                <li><svg id="gaugeChart2"></svg></li>
-                <li><svg id="gaugeChart3"></svg></li>
-                <li><svg id="gaugeChart4"></svg></li>
-                <li><svg id="gaugeChart5"></svg></li>
-                <li><svg id="gaugeChart6"></svg></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container-color container-mid">
-        <div class="container-section-color container-left my-float-left">
-            <div class="container-child-color container-left-top my-border">
-                <p class="content-title">
-                    <img src="{% static 'img/dashboard/barchart.png' %}"/>
-                    <a>Asset Statistics</a>
-                </p>
-                <div id="barChart"></div>
-            </div>
-                    <!--img src="{% static 'img/dashboard/pie.png' %}"/>
-                    <div id="pieChart"></div-->
-            <div class="container-child-color container-left-bot my-border">
-                <p class="content-title">
-                    <img src="{% static 'img/dashboard/linechart.png' %}"/>
-                    <a>OS Statistics</a>
-                </p>
-                <div id="lineChart"></div>
-            </div>
-        </div>
-        <div class="container-child-color container-center my-float-left my-border">
-            <p class="content-title">Anomaly Notification</p>
-            <div class="container-child-color container-center-top">
-                <div id="worldMap"></div>
-                <!--div class="netwrok-graph">
-                    <svg id="NETWORK_GRAPH">
-                    </svg>
-                </div-->
-            </div>
-        </div>
-    </div>
-<!--
-    <div class="container-color container-bot my-border slide_wrapper">
-        <p class="controls">
-            <span class="prev">prev</span>
-        </p>
-        <ul class="slides">
-            <li>slide 01</li>
-            <li>slide 02</li>
-            <li>slide 03</li>
-            <li>slide 04</li>
-            <li>slide 05</li>
-            <li>slide 06</li>
-            <li>slide 07</li>
-            <li>slide 08</li>
-        </ul>
-        <p class="controls">
-            <span class="next">next</span>
-        </p>
-    </div>
--->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<div class="container-bot my-border">
+<div class="my-3 container-frame container-color">
+	<div class="container-color container-bot my-border">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
 			<div class="carousel-inner">
 				<div class="item active">
@@ -179,30 +115,33 @@
 			</a>
 		</div>
 	</div>
-
-
-
-
-
-
-
-<!--
-    <div class="container-color container-bot my-border">
-        <button class="container-bot-side my-float-left btn-border-none mouse-over-cursor">
-            <img src="{% static 'img/dashboard/leftbutton.png' %}" width="20%" height="10px"/>
-        </button>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content my-border"></div>
-        <div class="my-float-left container-bot-content2 my-border"></div>
-        <button class="container-bot-side my-float-left btn-border-none mouse-over-cursor">
-            <img src="{% static 'img/dashboard/rightbutton.png' %}" width="20%" height="10px"/>
-        </button>
+    <div class="container-color container-mid">
+        <div class="container-section-color container-left my-float-left">
+            <div class="container-child-color container-left-top my-border">
+                <p class="content-title">
+                    <img src="{% static 'img/dashboard/barchart.png' %}"/>
+                    <a>Asset Statistics</a>
+                </p>
+                <div id="barChart"></div>
+            </div>
+            <div class="container-child-color container-left-bot my-border">
+                <p class="content-title">
+                    <img src="{% static 'img/dashboard/linechart.png' %}"/>
+                    <a>OS Statistics</a>
+                </p>
+                <div id="lineChart"></div>
+            </div>
+        </div>
+        <div class="container-child-color container-center my-float-left my-border">
+            <p class="content-title">Anomaly Notification</p>
+            <div class="container-child-color container-center-top">
+                <div id="worldMap"></div>
+                <!--div class="netwrok-graph">
+                    <svg id="NETWORK_GRAPH">
+                    </svg>
+                </div-->
+            </div>
+        </div>
     </div>
--->
 </div>
 {% endblock %}

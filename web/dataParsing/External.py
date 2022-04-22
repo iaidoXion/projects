@@ -1,4 +1,5 @@
-from web.ApiCall import External
+from web.API.Call import External
+
 
 def DataParsing():
     items = External.ApiModels()
