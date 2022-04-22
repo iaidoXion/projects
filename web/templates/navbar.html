@@ -6,7 +6,6 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse flex-grow-0 navMenuWrap" id="navbarNav">
-
         {% if menuList %}
             <ul class="navbar-nav">
                 {% for menu in menuList %}
@@ -25,25 +24,23 @@
                 <li class="nav-item">메뉴를 설정해 주세요</li>
             </ul>
         {% endif %}
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
+
+
+
+
+
+
+
+
     <div class="my-float-right navUser">
         <ul>
             <li class="nav-item text-right">
                 {% if user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'web:logout' %}">{{ user.username }} (로그아웃)</a>
+                    <a class="nav-link navRight" href="javascript:void(0);" onclick="confirmLogout();">
+                       {{ user.username }}
+                        <button type="button" class="btn"><img src="{% static 'img/common/menu/logout.png' %}" /></button>
+                    </a>
                 {% else %}
                     <a class="nav-link" href="{% url 'web:login' %}">로그인</a>
                 {% endif %}
