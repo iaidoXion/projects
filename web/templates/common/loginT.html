@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login-form">
+    <form method="POST" action="/loginT/">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">  <!-- 로그인 성공후 이동되는 URL -->
+        {% include "form_errors.html" %}
+        <h2 class="text-center">Login</h2>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" name="username">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password">
+        </div>
+        <div class="form group">
+            <button type="submit" class="btn btn-secondary btn-block">Log in</button>
+        </div>
+    </form>
+    <p class="text-center text-muted small">Don't have an account? <a href="/signup/">Sign up here!</a></p>
+</div>
+{% endblock %}

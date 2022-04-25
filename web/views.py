@@ -7,11 +7,16 @@ from .API.Common.Auth import ApiAuth
 from .API.Call.SessionLogin import Login
 from .API.Call.System import Status
 from .API.Call.Server import Info, Host
+from .API.Call.Export import Export
 from .commonFun import MenuList
 
 
 def index(request):
     return render(request, 'common/login.html')
+
+def loginT(request) :
+
+    return render(request, 'common/loginT.html')
 
 def signup(request):
     """ 계정생성 """
@@ -62,8 +67,7 @@ def setting(request):
 def SessionLogin(request):
     sessionKey = ApiAuth()
     sesstionLoginList = Login(sessionKey)
-    print(sesstionLoginList)
-    return render(request, 'API/sessionLogin.html')
+    return render(request, 'API/sessionLogin.html', sesstionLoginList)
 
 def SystemStatus(request):
     sessionKey = ApiAuth()
@@ -79,6 +83,12 @@ def ServerHost(request):
     sessionKey = ApiAuth()
     serverHostList = Host(sessionKey)
     return render(request, 'API/server/host.html', serverHostList)
+
+def Export(request):
+    sessionKey = ApiAuth()
+    ExportList = Export(sessionKey)
+    return render(request, 'API/export.html')
+
 
 def ExternalApi(request):
     res = External.DataParsing()
