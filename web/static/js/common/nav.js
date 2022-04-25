@@ -3,3 +3,8 @@ function confirmLogout() {
         location.href = "/web/logout";
     }
 }
+
+// 유저 정보 클릭시 토글
+$(".userInfo").on("click", function() {
+  $(".userInfoOpen").toggle();
+});

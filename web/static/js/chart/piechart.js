@@ -1,6 +1,6 @@
 function piechart() {
-    const width = 170;
-    const height = 170;
+    const width = 150;
+    const height = 150;
     const data = [
       {name: 'Mac', value: 1000, color: '#f4c17c'},
       {name: 'Windows', value: 1500, color: '#fae8a4'},
