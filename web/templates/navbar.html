@@ -44,15 +44,43 @@
                     <p class="navUserTime">
                         Time Duration:2020-03-01~2022-04-01
                     </p>
-                    <div class="mouse-over-cursor navUserImg">
-                        <img class="my-float-left" src="{% static 'img/common/menu/user.png' %}" width="20px" height="20px" />
-                        <div class="navUserName navUserImg">
-                            {{ user.username }}
-                        </div>
-                    </div>
+                  <ul>
+                     <li class="userInfo">
+                        <a class="mouse-over-cursor navUserImg" href="#">
+                            <img class="my-float-left" src="{% static 'img/common/menu/user.png' %}" width="20px" height="20px" />
+                            <div class="navUserName navUserImg">
+                                {{ user.username }}
+                            </div>
+                        </a>
+                        <ul class="userInfoOpen">
+                           <li>
+                            <div class="userInfoTop">
+                                <div class="userInfoTopLeft">
+                                    <img src="{% static 'img/common/menu/user.png' %}" width="70px" height="70px" />
+                                </div>
+                                <div class="userInfoTopRight">
+                                    <p>최수경</p>
+                                    <p>
+                                        {{ user.email }}<br>
+                                        대화 가능 | 상태 메시지 설정
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="userInfoMid">
+                                <p>저장됨</p>
+                            </div>
+                            <div class="userInfoBot">
+                                <p>계정 관리</p>
+                                <p>개인 계정</p>
+                            </div>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
                     <div class="my-float-left navLogout" href="javascript:void(0);" onclick="confirmLogout();">
-                        <a class="mouse-over-cursor">
-                            <img src="{% static 'img/common/menu/logout.png' %}" />
+                        <a class="logoutWrap mouse-over-cursor">
+                            <img class="logout" src="{% static 'img/common/menu/logout.png' %}" />
+                            <img class="logoutDark" src="{% static 'img/common/menu/logout-dark.png' %}" />
                         </a>
                     </div>
                     {% else %}
