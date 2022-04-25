@@ -1,10 +1,8 @@
-from urllib.parse import urlencode, unquote, quote_plus
 import requests
 import json
 
 def ApiModels():
     apiUrl = "http://localhost:8000/api/menuList/"
-
     urls = apiUrl
     res = requests.get(urls)
     print(res)
