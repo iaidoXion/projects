@@ -131,10 +131,7 @@
                 <div id="lineChart"></div>
             </div>
 			<div class="container-child-color container-left-top my-border my-margin-top">
-                <p class="content-title">
-                    <a></a>
-                </p>
-                <div id=""></div>
+                <div id="pieChart"></div>
             </div>
         </div>
         <div class="container-child-color container-center my-float-left my-border">
@@ -142,18 +139,22 @@
 				<div class="mapChartMenuWrap">
 					<button type="button" class="btn btn-secondary">World</button>
 					<button type="button" class="btn btn-secondary">Korea</button>
-					<a href="#a" class="expansionWrap mouse-over-cursor">
+					<a class="expansionWrap mouse-over-cursor" id="popBt">
 						<img class="expansion" src="{% static 'img/dashboard/expansion.png' %}" />
 						<img class="expansionDark" src="{% static 'img/dashboard/expansionDark.png' %}" />
 					</a>
+					<div class="shadow"></div>
+					<div id="pop" style="display: none;">
+						<a id="close" class="popClose mouse-over-cursor">
+							close
+						</a>
+						<div class="popMap">
+						</div>
+					</div>
 				</div>
 			</div>
             <div class="container-child-color container-center-top">
                 <div id="worldMap"></div>
-                <!--div class="netwrok-graph">
-                    <svg id="NETWORK_GRAPH">
-                    </svg>
-                </div-->
             </div>
         </div>
     </div>
