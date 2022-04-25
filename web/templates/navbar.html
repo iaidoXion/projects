@@ -1,7 +1,7 @@
 <!-- 네비게이션바 -->
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
-    <a class="navbar-brand" href="/">Xion</a>
+<nav class="navWrap navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <a class="navbar-brand navCop" href="/">Xion</a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -33,18 +33,33 @@
 
 
 
-    <div class="my-float-right navUser">
-        <ul>
-            <li class="nav-item text-right">
-                {% if user.is_authenticated %}
-                    <a class="nav-link navRight" href="javascript:void(0);" onclick="confirmLogout();">
-                       {{ user.username }}
-                        <button type="button" class="btn"><img src="{% static 'img/common/menu/logout.png' %}" /></button>
-                    </a>
-                {% else %}
-                    <a class="nav-link" href="{% url 'web:login' %}">로그인</a>
-                {% endif %}
-            </li>
-        </ul>
-    </div>
+    <ul class="my-float-right navUser">
+        <li class="navRight nav-item">
+            {% if user.is_authenticated %}
+                <div class="navUserInfo">
+                    <select name="language" class="navLanguage">
+                      <option value="English" selected="selected">English(English)</option>
+                      <option value="Chinese">Chinese(中文)</option>
+                    </select>
+                    <p class="navUserTime">
+                        Time Duration:2020-03-01~2022-04-01
+                    </p>
+                    <div class="mouse-over-cursor navUserImg">
+                        <img class="my-float-left" src="{% static 'img/common/menu/user.png' %}" width="20px" height="20px" />
+                        <div class="navUserName navUserImg">
+                            {{ user.username }}
+                        </div>
+                    </div>
+                    <div class="my-float-left navLogout" href="javascript:void(0);" onclick="confirmLogout();">
+                        <a class="mouse-over-cursor">
+                            <img src="{% static 'img/common/menu/logout.png' %}" />
+                        </a>
+                    </div>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'web:login' %}">로그인</a>
+                    {% endif %}
+                </div>
+
+        </li>
+    </ul>
 </nav>
