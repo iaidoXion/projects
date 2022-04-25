@@ -1,7 +1,9 @@
 .container-frame {
     width: 100%;
     background-color: #f8f9fc;
-    min-height: 843px;
+    min-height: 837px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .container-color {
@@ -17,6 +19,50 @@
     min-height: 25px;
     padding:10px;
     font-size:12px;
+}
+
+.mapChartTitle {
+    width: 30%;
+    min-height: 25px;
+    padding:10px;
+    font-size:12px;
+    float: left;
+}
+
+.mapChartMenu{
+    display: inline-block;
+    width: 54%;
+    min-height: 25px;
+    padding:10px;
+}
+
+.mapChartMenuWrap{
+    float: right;
+}
+
+.mapChartMenuWrap a{
+    text-decoration: none;
+}
+
+.expansionWrap{
+    position: relative;
+}
+
+.expansion{
+    margin-left: 2px;
+}
+
+.expansionDark{
+    position: absolute;
+    margin-left: 2px;
+    margin-top: 8px;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+.expansionWrap:hover .expansionDark{
+    display: block;
 }
 
 .container-top{
@@ -61,19 +107,13 @@
 
 .container-left-top{
     width: 100%;
-    min-height: 246px;
-}
-
-.container-left-mid{
-    width: 100%;
-    min-height: 246px;
-    margin-top: 21px;
+    min-height: 213px;
 }
 
 .container-left-bot{
     width: 100%;
-    min-height: 246px;
-    margin-top: 21px;
+    min-height: 214px;
+    margin-top: 20px;
 }
 
 .container-bot {
@@ -95,6 +135,7 @@
     margin-right: 2%;
     background-color: #ffffff;
     margin-top: 28px;
+    line-height: 82px;
 }
 
 .container-bot-content2 {
@@ -102,6 +143,15 @@
     height: 82px;
     background-color: #ffffff;
     margin-top: 28px;
+    line-height: 82px;
+}
+
+.container-bot-content3 {
+    width: 9.7%;
+    height: 82px;
+    background-color: #ffffff;
+    margin-top: 28px;
+    margin-left: 4%;
 }
 
 .col-center {
@@ -158,3 +208,4 @@
     height: 138px;
     margin: 0 auto;
 }
+
