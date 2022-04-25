@@ -49,5 +49,6 @@ body {
 }
 
 .mouse-over-cursor {
-    pointer : cursor;
+    cursor: pointer;
 }
+
