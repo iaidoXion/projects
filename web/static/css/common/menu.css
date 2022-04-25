@@ -31,6 +31,10 @@
     float: left;
 }
 
+.navUserName:hover{
+    color: #000;
+}
+
 .navCop{
     line-height: 21px;
 }
@@ -64,8 +68,98 @@
     margin-top: 5px;
     display: block;
     float: left;
+    color: #858796;
 }
 
 .navbar-brand{
     height: 36px;
+}
+
+.logoutWrap{
+    position: relative;
+}
+
+.logoutWrap:hover .logoutDark{
+    display: block;
+}
+
+.logoutDark{
+    position: absolute;
+    top: 1px;
+    left: 0px;
+    display: none;
+}
+
+.userInfoOpen{
+    display: none;
+}
+
+.userInfoOpen li{
+    position: absolute;
+    width: 300px;
+    height: 230px;
+    top: 51px;
+    right: 0px;
+    background-color: #fff;
+    border: 1px solid #e3e6f0;
+    color: blue;
+    z-index: 999;
+    color: #858796;
+}
+
+.userInfoTop{
+    width: 100%;
+    height: 98px;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.userInfoTopLeft{
+    width: 30%;
+    height: 70px;
+    margin-top: 14px;
+    margin-left: 10%;
+    float: left;
+}
+
+.userInfoTopRight{
+    font-size: 11px;
+    width: 60%;
+    height: 48px;
+    float: left;
+    margin-top: 25px;
+}
+
+.userInfoTopRight p:nth-child(1){
+    font-weight: bold;
+}
+
+.userInfoTopRight p:nth-child(2){
+    line-height: 175%;
+}
+
+.userInfoMid{
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.userInfoMid p{
+    margin-left: 10%;
+    font-size: 12px;
+    padding-top: 19px;
+}
+
+.userInfoBot{
+    width: 100%;
+    height: 82px;
+    padding-top: 17px;
+}
+
+.userInfoBot p{
+    font-size: 12px;
+    margin-left: 10%;
+}
+
+.userInfoBot p:nth-child(2){
+    line-height: 300%;
 }
