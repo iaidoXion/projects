@@ -9,16 +9,19 @@ ContentType = APISETTING['API']['ContentType']
 def Export(sessionKey) :
     path = "/api/v2/export"
     urls = apiUrl + path
-    payload = json.dumps({ "dashboards" : { "include_all" : True } })
+    exportData = json.dumps({ "dashboards" : { "include_all" : True } })
     headers = {
         'session': sessionKey,
         'Authorization': Authorization,
         'Content-Type': ContentType,
 
     }
-
-    response = requests.request("POST", urls, headers=headers, data=payload, verify=False)
-    export = response.text
+    response = requests.request("POST", urls, headers=headers, data=exportData, verify=False)
+    resCode = response.status_code
+    if resCode == 200:
+        export = response.text
+    else :
+        export = resCode
     print(export)
-    #exportList = {'exportList': export}
-    #return exportList
+    exportList = {'exportList': export}
+    return exportList

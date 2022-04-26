@@ -6,8 +6,8 @@ with open("setting.json", encoding="UTF-8") as f:
 apiUrl = APISETTING['API']['apiUrl']
 Authorization = APISETTING['API']['Authorization']
 ContentType = APISETTING['API']['ContentType']
-def Login(sessionKey) :
-    path = "/api/v2/session/login"
+def Tokens(sessionKey) :
+    path = "/api/v2/api_tokens"
     urls = apiUrl + path
     headers = {
         'session': sessionKey,
@@ -15,8 +15,12 @@ def Login(sessionKey) :
         'Content-Type': ContentType,
 
     }
-    authJSON = json.dumps({"username": "Administrator", "domain": "", "password": "xion123!"})
-    response = requests.request("POST", urls, headers=headers, data=authJSON, verify=False)
-    sessionLogin=response.text
-    sessionLoginList = {'sessionLoginList': sessionLogin}
-    return sessionLoginList
+    tokensData = json.dumps({})
+    response = requests.request("POST", urls, headers=headers, data=tokensData, verify=False)
+    resCode = response.status_code
+    if resCode == 200:
+        apiTokens = response.text
+    else :
+        apiTokens = resCode
+    apiTokensList = {'apiTokensList': apiTokens}
+    return apiTokensList

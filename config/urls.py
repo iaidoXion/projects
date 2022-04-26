@@ -7,9 +7,14 @@ urlpatterns = [
     path('web/', include('web.urls')),
     path('api/', include('api.urls')),
     path('xion/', include('xion.urls')),
+
     path('', views.index, name='index'),  # '/' 에 해당되는 path
+    path('loginT/', views.LoginT, name='loginT'),
+    path('logout/', views.Logout, name='logout'),
+    path('apiTokens/', views.ApiTokens, name='apiTokens'),
     path('signup/', views.signup, name='signup'),
-    path('loginT/', views.loginT, name='loginT'),
+    path('userInfo/', views.UserGet, name='userInfo'),
+
 
     path('dashboard/', views.dashboard, name='dashboard'),
     path('asset/', views.asset, name='asset'),
@@ -18,10 +23,10 @@ urlpatterns = [
     path('report/', views.report, name='report'),
     path('setting/', views.setting, name='setting'),
 
-    path('sessionLogin/', views.SessionLogin, name='SessionLogin'),
-    path('systemStatus/', views.SystemStatus, name='systemStatus'),
-    path('serverInfo/', views.ServerInfo, name='serverInfo'),
-    path('serverHost/', views.ServerHost, name='serverHost'),
+    path('system/status/', views.SystemStatus, name='systemStatus'),
+    path('server/info/', views.ServerInfo, name='serverInfo'),
+    path('server/host/', views.ServerHost, name='serverHost'),
+
     path('export/', views.Export, name='export'),
 
     path('externalAPI/', views.ExternalApi, name='ExternalApi'),
