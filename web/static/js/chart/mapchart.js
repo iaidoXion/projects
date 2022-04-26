@@ -1,9 +1,9 @@
 function wordMapChart() {
 
-    const width = 1050;
-    const height = 475;
+    const width = 1000;
+    const height = 620;
     const svg = d3.select('#worldMap').append('svg').attr('width', width).attr('height', height);
-    const projection = d3.geoMercator().scale(100).translate([width / 2.5, height /1.4]);
+    const projection = d3.geoMercator().scale(100).translate([width / 2.5, height /2.5]);
     const path = d3.geoPath(projection);
     const g = svg.append('g');
 
