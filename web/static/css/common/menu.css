@@ -13,7 +13,7 @@
 }
 
 .navUser{
-    width:27%;
+    width:30%;
 }
 
 .navUserInfo{
@@ -51,9 +51,31 @@
 }
 
 .navLanguage{
+    font-family: Georgia, "Malgun Gothic";
     font-size: 10px;
+    height: 25px;
     float: left;
-    margin-top: 8px;
+    -o-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 150px;
+    background: url('../../img/common/arrowBot.png') calc(100% - 5px) center no-repeat;
+    background-size: 10px;
+    padding: 5px 30px 5px 10px;
+    border-radius: 0px;
+    outline: 0 none;
+    margin-top: 2px;
+}
+
+.navLanguage option {
+    background: black;
+    color: #fff;
+    padding: 3px 0;
+}
+
+.navLanguage::-ms-expand {
+    display:none;
 }
 
 .navUserTime{
@@ -76,18 +98,13 @@
 }
 
 .logoutWrap{
-    position: relative;
+    text-decoration: none;
+    color: #858796;
 }
 
-.logoutWrap:hover .logoutDark{
-    display: block;
-}
-
-.logoutDark{
-    position: absolute;
-    top: 1px;
-    left: 0px;
-    display: none;
+.logoutWrap:hover{
+    text-decoration: none;
+    color: #000;
 }
 
 .userInfoOpen{
@@ -105,6 +122,7 @@
     color: blue;
     z-index: 999;
     color: #858796;
+    box-shadow: -5px 5px 10px -5px gray;
 }
 
 .userInfoTop{
@@ -139,7 +157,7 @@
 
 .userInfoMid{
     width: 100%;
-    height: 50px;
+    height: 81px;
     border-bottom: 1px solid #e3e6f0;
 }
 
@@ -151,15 +169,37 @@
 
 .userInfoBot{
     width: 100%;
-    height: 82px;
+    height: 50px;
     padding-top: 17px;
 }
 
-.userInfoBot p{
+.userInfoBot a{
     font-size: 12px;
     margin-left: 10%;
 }
 
-.userInfoBot p:nth-child(2){
+.userInfoBot a:nth-child(2){
     line-height: 300%;
+}
+
+.userInfoClose{
+    width: 30px;
+    height: 36px;
+    position: absolute;
+    right: 0;
+    padding: 10px;
+}
+
+.userInfoClose:hover .imgCloseDark{
+
+    display: block;
+}
+
+.userInfoClose:hover .imgCloseGray{
+    display: none;
+}
+
+.imgCloseDark{
+    display: none;
+    margin-top: 4px;
 }

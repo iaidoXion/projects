@@ -1,12 +1,10 @@
 function piechart() {
-    const width = 150;
-    const height = 150;
+    const width = 138;
+    const height = 138;
     const data = [
-      {name: 'Mac', value: 1000, color: '#f4c17c'},
-      {name: 'Windows', value: 1500, color: '#fae8a4'},
-      {name: 'Linux', value: 1300, color: '#df7454'},
-      {name: 'Android', value: 900, color: '#e88d5d'},
-      {name: 'ios', value: 400, color: '#f8d690'},
+      {name: 'Mac', value: 44654, color: '#f4c17c'},
+      {name: 'Windows', value: 54654, color: '#fae8a4'},
+      {name: 'Linux', value: 50654, color: '#df7454'}
     ];
     //'#efa86b', '#c1484f', '#d35d50', '#f4c17c', '#fae8a4', '#df7454', '#e88d5d', '#f8d690'
     const arc = d3.arc() // .arc() 새로운 기본값의 아치(호) 생성
@@ -28,9 +26,9 @@ function piechart() {
         .append('svg')
         .style('width', width)
         .style('height', height)
-        .style("margin", '18.5 123')
+        .style("margin-left", '34%')
         .attr('text-anchor', 'middle') // text-anchor 텍스트의 정렬을 설정 ( start | middle | end | inherit )
-        .style('font-size', '10px sans-serif');
+        .style('font-size', '11px');
 
 
 
