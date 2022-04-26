@@ -16,8 +16,11 @@ def Info(sessionKey) :
         'Authorization': Authorization,
     }
     response = requests.request("GET", urls, headers=headers, verify=False)
-    serverInfo = response.text
-
+    resCode = response.status_code
+    if resCode == 200:
+        serverInfo = response.text
+    else :
+        serverInfo = resCode
     serverInfoList = {'serverInfoList': serverInfo}
     return serverInfoList
 
@@ -30,7 +33,10 @@ def Host(sessionKey) :
         'Authorization': Authorization,
     }
     response = requests.request("GET", urls, headers=headers, verify=False)
-    serverHost = response.text
-
+    resCode = response.status_code
+    if resCode == 200:
+        serverHost = response.text
+    else :
+        serverHost = resCode
     serverHostList = {'serverHostList': serverHost}
     return serverHostList
