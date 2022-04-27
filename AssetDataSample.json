@@ -1,0 +1,1948 @@
+data{
+  'computer_name': 'desktop-vek69ms',
+  'serial_number': '203NZGK024303',
+  'os_platform': 'Windows',
+  'operating_system': 'Windows 10 Home',
+  'service_pack': 'No Service Pack found',
+  'manufacturer': 'LG Electronics',
+  'model': '15ZD95P-GX56K',
+  'domain_name': 'WORKGROUP',
+  'ram': 16891510784,
+  'uptime': 691200000,
+  'is_virtual': 0,
+  'disk_total_space': 511101108224,
+  'ip_address': '192.168.0.10',
+  'system_uuid': 'C1A7859A-A95A-1358-8102-21192D1EE009',
+  'cpu_name': '11th Gen Intel(R) Core(TM) i5-1155G7',
+  'cpu_speed': 2500000000,
+  'cpu_processor': 1,
+  'cpu_core': 4,
+  'user_name': '.\\skchoi',
+  'department': 'Not Set',
+  'country': 'Not Set',
+  'city': 'Not Set',
+  'email': 'Not Set',
+  'phone_number': 'Not Set',
+  'computer_id': '3917362396',
+  'os_version': '10.0.19044',
+  'number_of_fixed_drive': 1,
+  'display_adapter_count': 1,
+  'chassis_type': 'Notebook',
+  'number_of_logical_processor': 8,
+  'cpu_manufacturer': 'GenuineIntel',
+  'id': 7,
+  'created_at': '2022-04-22T05:41:28.000Z',
+  'updated_at': '2022-04-27T07:00:02.000Z',
+  'last_seen_at': '2022-04-27T07:00:02.000Z',
+  'ci_installed_application': [
+    {
+      'id': 935,
+      'name': 'Microsoft Edge Update',
+      'version': '1.3.157.61',
+      'vendor': '',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Edge Update',
+      'normalized_vendor': ''
+    },
+    {
+      'id': 1083,
+      'name': 'Adobe AIR',
+      'version': '1.5.3.9120',
+      'vendor': 'Adobe Systems Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Adobe AIR',
+      'normalized_vendor': 'Adobe Systems'
+    },
+    {
+      'id': 1084,
+      'name': 'Adobe Photoshop CS5',
+      'version': '12.0',
+      'vendor': 'Adobe Systems Incorporated',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Adobe Photoshop CS5',
+      'normalized_vendor': 'Adobe Systems'
+    },
+    {
+      'id': 1085,
+      'name': '인증서 로밍 클라이언트 오픈뱅킹 (1.04)',
+      'version': '1.04',
+      'vendor': 'BTWorks, Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': '인증서 로밍 클라이언트 오픈뱅킹',
+      'normalized_vendor': 'BTWorks'
+    },
+    {
+      'id': 1086,
+      'name': 'REPORTX',
+      'version': '',
+      'vendor': 'DigitalZone Co., Ltd',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'REPORTX',
+      'normalized_vendor': 'DigitalZone'
+    },
+    {
+      'id': 1008,
+      'name': 'MagicLine4NX',
+      'version': '1.0.0.20',
+      'vendor': 'Dreamsecurity, Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'MagicLine4NX',
+      'normalized_vendor': 'Dreamsecurity'
+    },
+    {
+      'id': 940,
+      'name': 'Chrome',
+      'version': '100.0.4896.127',
+      'vendor': 'Google LLC',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Chrome',
+      'normalized_vendor': 'Google'
+    },
+    {
+      'id': 1013,
+      'name': 'AnySign4PC 1.1.2.7',
+      'version': '1.1.2.7',
+      'vendor': 'HANCOM WITH Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'AnySign4PC',
+      'normalized_vendor': 'HANCOM WITH'
+    },
+    {
+      'id': 1087,
+      'name': 'nProtect Online Security V1.0(PFS)',
+      'version': '2022.3.7.1',
+      'vendor': 'INCA Internet Co., Ltd.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'nProtect Online Security V1.0(PFS)',
+      'normalized_vendor': 'INCA Internet'
+    },
+    {
+      'id': 1088,
+      'name': 'Intel(R) Dynamic Tuning',
+      'version': '8.7.10402.18389',
+      'vendor': 'Intel Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Intel(R) Dynamic Tuning',
+      'normalized_vendor': 'Intel'
+    },
+    {
+      'id': 1089,
+      'name': 'Intel(R) Chipset Device Software',
+      'version': '10.1.18698.8258',
+      'vendor': 'Intel(R) Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Intel(R) Chipset Device Software',
+      'normalized_vendor': 'Intel(R)'
+    },
+    {
+      'id': 947,
+      'name': 'IPinside LWS Agent',
+      'version': '3.0.0.9',
+      'vendor': 'interezen',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'IPinside LWS Agent',
+      'normalized_vendor': 'interezen'
+    },
+    {
+      'id': 1090,
+      'name': 'PyCharm Community Edition 2021.3.3',
+      'version': '213.7172.26',
+      'vendor': 'JetBrains s.r.o.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'PyCharm Community Edition',
+      'normalized_vendor': 'JetBrains'
+    },
+    {
+      'id': 948,
+      'name': '카카오톡',
+      'version': '3.3.9.3088',
+      'vendor': 'Kakao Corp.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': '카카오톡',
+      'normalized_vendor': 'Kakao'
+    },
+    {
+      'id': 1091,
+      'name': 'LG Control Center',
+      'version': '1.0.2107.3001',
+      'vendor': 'LG Electronics Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'LG Control Center',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1051,
+      'name': 'LG Device Manager',
+      'version': '1.0.2107.3001',
+      'vendor': 'LG Electronics Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'LG Device Manager',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1092,
+      'name': 'LG DnA Center Plus',
+      'version': '1.0.2111.1901',
+      'vendor': 'LG Electronics Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'LG DnA Center Plus',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1093,
+      'name': 'LG Reader Mode',
+      'version': '1.0.2107.3001',
+      'vendor': 'LG Electronics Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'LG Reader Mode',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1055,
+      'name': 'LG Security Center',
+      'version': '1.0.2010.2301',
+      'vendor': 'LG Electronics Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'LG Security Center',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1056,
+      'name': 'LG Time Manager',
+      'version': '1.0.2009.1501',
+      'vendor': 'LG Electronics Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'LG Time Manager',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1094,
+      'name': 'OnScreen Control',
+      'version': '7.33.0',
+      'vendor': 'LG Electronics Inc',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'OnScreen Control',
+      'normalized_vendor': 'LG Electronics'
+    },
+    {
+      'id': 1095,
+      'name': 'Microsoft .NET Framework 4.6.2 SDK',
+      'version': '4.6.01590',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft .NET Framework SDK',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1096,
+      'name': 'Microsoft .NET Framework 4.6.2 Targeting Pack (ENU)',
+      'version': '4.6.01590',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft .NET Framework Targeting Pack (ENU)',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1097,
+      'name': 'Microsoft .NET Framework 4.6.2 Targeting Pack',
+      'version': '4.6.01590',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft .NET Framework Targeting Pack',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1018,
+      'name': 'Microsoft Edge WebView2 런타임',
+      'version': '100.0.1185.50',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Edge WebView2 런타임',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1764,
+      'name': 'Microsoft Edge',
+      'version': '100.0.1185.50',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Edge',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 953,
+      'name': 'Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161',
+      'version': '9.0.30729.6161',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 954,
+      'name': 'Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729',
+      'version': '9.0.30729',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 955,
+      'name': 'Microsoft Visual C++ 2010 x86 Redistributable - 10.0.30319',
+      'version': '10.0.30319',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1058,
+      'name': 'Microsoft Visual C++ 2012 Redistributable (x64) - 11.0.61030',
+      'version': '11.0.61030.0',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 956,
+      'name': 'Microsoft Visual C++ 2012 Redistributable (x86) - 11.0.61030',
+      'version': '11.0.61030.0',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 902,
+      'name': 'Microsoft Visual C++ 2013 Redistributable (x86) - 12.0.21005',
+      'version': '12.0.21005.1',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1098,
+      'name': 'Microsoft Visual C++ 2015-2022 Redistributable (x64) - 14.30.30704',
+      'version': '14.30.30704.0',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ 2015-2022 Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1099,
+      'name': 'Microsoft Visual C++ 2015-2022 Redistributable (x86) - 14.30.30704',
+      'version': '14.30.30704.0',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ 2015-2022 Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1100,
+      'name': 'Teams Machine-Wide Installer',
+      'version': '1.4.0.32771',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Teams Machine-Wide Installer',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1101,
+      'name': 'Python Launcher',
+      'version': '3.10.7744.0',
+      'vendor': 'Python Software Foundation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Python Launcher',
+      'normalized_vendor': 'Python Software Foundation'
+    },
+    {
+      'id': 964,
+      'name': 'TouchEn nxKey with E2E for 32bit',
+      'version': '1.0.0.73',
+      'vendor': 'RaonSecure Co., Ltd.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'TouchEn nxKey with E2E for',
+      'normalized_vendor': 'RaonSecure'
+    },
+    {
+      'id': 1025,
+      'name': 'Samsung Scan to PC Lite',
+      'version': '1.02.14.00 (2014-11-25)',
+      'vendor': 'Samsung Electronics Co., Ltd.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Samsung Scan to PC Lite',
+      'normalized_vendor': 'Samsung Electronics'
+    },
+    {
+      'id': 1102,
+      'name': 'PuTTY release 0.76',
+      'version': '0.76.0.0',
+      'vendor': 'Simon Tatham',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'PuTTY release',
+      'normalized_vendor': 'Simon Tatham'
+    },
+    {
+      'id': 907,
+      'name': 'Tanium Client 7.4.7.1179',
+      'version': '7.4.7.1179',
+      'vendor': 'Tanium Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Tanium Client',
+      'normalized_vendor': 'Tanium'
+    },
+    {
+      'id': 975,
+      'name': 'Delfino G3 (x86) 버전 3.6.8.4',
+      'version': '3.6.8.4',
+      'vendor': 'Wizvera',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Delfino G3 버전',
+      'normalized_vendor': 'Wizvera'
+    },
+    {
+      'id': 976,
+      'name': 'WIZVERA Process Manager 1,0,5,4',
+      'version': '1,0,5,4',
+      'vendor': 'WIZVERA',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'WIZVERA Process Manager 1,0,5,4',
+      'normalized_vendor': 'WIZVERA'
+    },
+    {
+      'id': 1103,
+      'name': 'Wondershare Helper Compact 2.6.0',
+      'version': '2.6.0',
+      'vendor': 'Wondershare',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Wondershare Helper Compact',
+      'normalized_vendor': 'Wondershare'
+    },
+    {
+      'id': 977,
+      'name': '악성 웹 사이트 탐지 서비스(APS Engine) 1.8.0',
+      'version': '1.8.0',
+      'vendor': 'YettieSoft Co., Ltd.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': '악성 웹 사이트 탐지 서비스(APS Engine)',
+      'normalized_vendor': 'YettieSoft'
+    },
+    {
+      'id': 1104,
+      'name': 'AhnLab Safe Transaction',
+      'version': '1.5.0.1576',
+      'vendor': 'AhnLab, Inc.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'AhnLab Safe Transaction',
+      'normalized_vendor': 'AhnLab'
+    },
+    {
+      'id': 1105,
+      'name': 'Bandizip',
+      'version': '7.23',
+      'vendor': 'Bandisoft.com',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Bandizip',
+      'normalized_vendor': 'Bandisoft.com'
+    },
+    {
+      'id': 1106,
+      'name': 'DBeaver 22.0.2',
+      'version': '22.0.2',
+      'vendor': 'DBeaver Corp',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'DBeaver',
+      'normalized_vendor': 'DBeaver'
+    },
+    {
+      'id': 1107,
+      'name': 'Intel(R) Serial IO',
+      'version': '30.100.2104.1',
+      'vendor': 'Intel Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Intel(R) Serial IO',
+      'normalized_vendor': 'Intel'
+    },
+    {
+      'id': 984,
+      'name': 'Microsoft OneDrive',
+      'version': '22.065.0412.0004',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft OneDrive',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 985,
+      'name': 'Microsoft Update Health Tools',
+      'version': '3.67.0.0',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Update Health Tools',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1108,
+      'name': 'Microsoft Visual C++ 2010 x64 Redistributable - 10.0.30319',
+      'version': '10.0.30319',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Visual C++ Redistributable',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1765,
+      'name': '비즈니스용 Microsoft 365 앱 - ko-kr',
+      'version': '16.0.15028.20228',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': '비즈니스용 Microsoft 365 앱 - ko-kr',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1109,
+      'name': 'PostgreSQL 14',
+      'version': '14',
+      'vendor': 'PostgreSQL Global Development Group',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'PostgreSQL 14',
+      'normalized_vendor': 'PostgreSQL Global Development Group'
+    },
+    {
+      'id': 1077,
+      'name': 'Virtoo by LG Drivers',
+      'version': '2.2.9779',
+      'vendor': 'Screenovate Technologies Ltd.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Virtoo by LG Drivers',
+      'normalized_vendor': 'Screenovate Technologies'
+    },
+    {
+      'id': 1110,
+      'name': 'Git',
+      'version': '2.35.1.2',
+      'vendor': 'The Git Development Community',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Git',
+      'normalized_vendor': 'The Git Development Community'
+    },
+    {
+      'id': 1000,
+      'name': 'Veraport(보안모듈 관리 프로그램) G3 - 3,8,5,1 - x64',
+      'version': '3,8,5,1',
+      'vendor': 'Wizvera',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Veraport(보안모듈 관리 프로그램) G3 - 3,8,5,1',
+      'normalized_vendor': 'Wizvera'
+    },
+    {
+      'id': 1001,
+      'name': 'Cisco Webex Meetings',
+      'version': '',
+      'vendor': 'Cisco Webex LLC',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Cisco Webex Meetings',
+      'normalized_vendor': 'Cisco Webex'
+    },
+    {
+      'id': 1002,
+      'name': 'iniLINE CrossEX Service',
+      'version': '1.0.2.8',
+      'vendor': 'iniLINE Co., Ltd.',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'iniLINE CrossEX Service',
+      'normalized_vendor': 'iniLINE'
+    },
+    {
+      'id': 1036,
+      'name': 'Microsoft Teams',
+      'version': '1.5.00.9163',
+      'vendor': 'Microsoft Corporation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Microsoft Teams',
+      'normalized_vendor': 'Microsoft'
+    },
+    {
+      'id': 1111,
+      'name': 'Postman x86_64 9.16.0',
+      'version': '9.16.0',
+      'vendor': 'Postman',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Postman x86_64',
+      'normalized_vendor': 'Postman'
+    },
+    {
+      'id': 1112,
+      'name': 'Python 3.10.3 (64-bit)',
+      'version': '3.10.3150.0',
+      'vendor': 'Python Software Foundation',
+      'source': 'Uninstall',
+      'access': 'Local',
+      'normalized_name': 'Python',
+      'normalized_vendor': 'Python Software Foundation'
+    }
+  ],
+  'ci_physical_disk': [
+    {
+      'id': 5,
+      'name': 'Drive #0',
+      'device_id': 'DESKTOP-VEK69MS\\\\.\\PHYSICALDRIVE0',
+      'serial_number': '0025_3889_11B5_BBE8.',
+      'manufacturer': 'SAMSUNG',
+      'model': 'SAMSUNG MZVLB512HBJQ-00000',
+      'storage_type': 'Disk',
+      'device_interface': 'SCSI',
+      'size': 511101108224
+    }
+  ],
+  'ci_logical_disk': [
+    {
+      'id': 2213,
+      'name': 'C:\\',
+      'mount_point': 'C:\\',
+      'label': '',
+      'size': 511101108224,
+      'free_space': 426275504128,
+      'media_type': 'Fixed',
+      'file_system': 'NTFS'
+    },
+    {
+      'id': 22,
+      'name': '\\\\?\\Volume{38051a61-297f-4fd6-92be-97e13c827c35}\\',
+      'mount_point': '',
+      'label': '',
+      'size': 560988160,
+      'free_space': 88080384,
+      'media_type': 'Fixed',
+      'file_system': 'NTFS'
+    },
+    {
+      'id': 23,
+      'name': '\\\\?\\Volume{080ca218-651c-4d9d-aa07-702b83a45b90}\\',
+      'mount_point': '',
+      'label': '',
+      'size': 100663296,
+      'free_space': 72351744,
+      'media_type': 'Fixed',
+      'file_system': 'FAT32'
+    }
+  ],
+  'ci_network_adapter': [
+    {
+      'id': 31,
+      'name': 'Wi-Fi',
+      'ipv4_address': '192.168.0.10',
+      'subnet_mask': '255.255.240.0',
+      'gateway': '192.168.0.1',
+      'mac_address': '60:A5:E2:BA:AC:C5',
+      'dhcp_enabled': 1,
+      'manufacturer': 'Intel Corporation',
+      'model': 'Intel(R) Wi-Fi 6 AX201 160MHz',
+      'ipv6_address': 'fe80::80fb:a22c:b0ff:8f79',
+      'speed': '173.3 Mbps'
+    },
+    {
+      'id': 32,
+      'name': 'Bluetooth 네트워크 연결',
+      'ipv4_address': '',
+      'subnet_mask': '',
+      'gateway': '',
+      'mac_address': '60:A5:E2:BA:AC:C9',
+      'dhcp_enabled': 1,
+      'manufacturer': 'Microsoft',
+      'model': 'Bluetooth Device (Personal Area Network)',
+      'ipv6_address': '',
+      'speed': '3 Mbps'
+    }
+  ],
+  'ci_windows_installer_application': [
+    {
+      'id': 39,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Office 16 Click-to-Run Extensibility Component',
+      'version': '16.0.15028.20050',
+      'product_code': '{90160000-008C-0000-1000-0000000FF1CE}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 40,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Office 16 Click-to-Run Localization Component',
+      'version': '16.0.15028.20094',
+      'product_code': '{90160000-008C-0412-1000-0000000FF1CE}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 199,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Office 16 Click-to-Run Licensing Component',
+      'version': '16.0.15028.20228',
+      'product_code': '{90160000-007E-0000-1000-0000000FF1CE}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 113,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC90_CRT_x86',
+      'version': '1.00.0000',
+      'product_code': '{08D2E121-7F6A-43EB-97FD-629B44903403}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 114,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_CRT_x86_x64',
+      'version': '8.0.50727.4053',
+      'product_code': '{4569AD91-47F4-4D9E-8FC9-717EC32D7AE1}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 115,
+      'vendor': 'Adobe Systems Inc.',
+      'name': 'Adobe AIR',
+      'version': '1.5.3.9120',
+      'product_code': '{A2BCA9F1-566C-4805-97D1-7FDC93386723}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 116,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_MFC_x86',
+      'version': '8.0.50727.4053',
+      'product_code': '{D1A19B02-817E-4296-A45B-07853FD74D57}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 8,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005',
+      'version': '12.0.21005',
+      'product_code': '{13A4EE12-23EA-3371-91EE-EFB36DDFFF3E}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 9,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.21005',
+      'version': '12.0.21005',
+      'product_code': '{F8CFEB22-A2E7-3971-9EDA-4B11EDEFC185}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 117,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_MFCLOC_x86',
+      'version': '8.0.50727.4053',
+      'product_code': '{D92BBB52-82FF-42ED-8A3C-4E062F944AB7}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 48,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Update Health Tools',
+      'version': '3.67.0.0',
+      'product_code': '{7B1FCD52-8F6B-4F12-A143-361EA39F5E7C}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 49,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729',
+      'version': '9.0.30729',
+      'product_code': '{887868A2-D6DE-3255-AA92-AA0B5A59B874}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 118,
+      'vendor': 'Python Software Foundation',
+      'name': 'Python Launcher',
+      'version': '3.10.7744.0',
+      'product_code': '{90E2CFF3-9887-4445-8E43-FF6F323776A6}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 119,
+      'vendor': 'Intel Corporation',
+      'name': 'Intel(R) Serial IO',
+      'version': '30.100.2104.1',
+      'product_code': '{9B007174-D269-4F39-870E-8E1621B3D673}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 120,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft .NET Framework 4.6.2 SDK',
+      'version': '4.6.01590',
+      'product_code': '{5F01B3C4-9BEC-465D-9C68-BB97D381FFAD}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 121,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC90_MFC_x86_x64',
+      'version': '1.00.0000',
+      'product_code': '{A472B9E4-0AFF-4F7B-B25D-F64F8E928AAB}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 122,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2022 X86 Minimum Runtime - 14.30.30704',
+      'version': '14.30.30704',
+      'product_code': '{F6080405-9FA8-4CAA-9982-14E95D1A3DAC}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 123,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_MFC_x86_x64',
+      'version': '8.0.50727.4053',
+      'product_code': '{C8C1BAD5-54E6-4146-AD07-3A8AD36569C3}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 124,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2022 X86 Additional Runtime - 14.30.30704',
+      'version': '14.30.30704',
+      'product_code': '{BF08E976-B92E-4336-B56F-2171179476C4}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 57,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.6161',
+      'version': '9.0.30729.6161',
+      'product_code': '{9BE518E6-ECC6-35A9-88E4-87755C07200F}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 101,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2012 x64 Additional Runtime - 11.0.61030',
+      'version': '11.0.61030',
+      'product_code': '{37B8F9C7-03FB-3253-8781-2517C99D7C00}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 125,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_MFCLOC_x86_x64',
+      'version': '80.50727.4053',
+      'product_code': '{1E9FC118-651D-4934-97BE-E53CAE5C7D45}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 126,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.30.30704',
+      'version': '14.30.30704',
+      'product_code': '{662A0088-6FCD-45DD-9EA7-68674058AED5}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 127,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2022 X64 Additional Runtime - 14.30.30704',
+      'version': '14.30.30704',
+      'product_code': '{6DB765A8-05AF-49A1-A71D-6F645EE3CE41}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 128,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_CRT_x86',
+      'version': '8.0.50727.4053',
+      'product_code': '{92D58719-BBC1-4CC3-A08B-56C9E884CC2C}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 63,
+      'vendor': '',
+      'name': '',
+      'version': '',
+      'product_code': '{9AC08E99-230B-47e8-9721-4577B7F124EA}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 129,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft .NET Framework 4.6.2 Targeting Pack',
+      'version': '4.6.01590',
+      'product_code': '{A18D4C2A-07A8-40E4-9797-DD324E6EA4FC}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 106,
+      'vendor': 'Screenovate Technologies Ltd.',
+      'name': 'Virtoo by LG Drivers',
+      'version': '2.2.9779',
+      'product_code': '{B495266A-062C-4217-A001-4811B7B9B6D2}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 130,
+      'vendor': 'Adobe Systems Incorporated',
+      'name': 'PDF Settings CS5',
+      'version': '10.0',
+      'product_code': '{A78FE97A-C0C8-49CE-89D0-EDD524A17392}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 131,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Teams Machine-Wide Installer',
+      'version': '1.4.0.32771',
+      'product_code': '{731F6BAA-A986-45A4-8936-7C3AAAAA760B}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 132,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC90_MFC_x86',
+      'version': '1.00.0000',
+      'product_code': '{635FED5B-2C6D-49BE-87E6-7A6FCD22BC5A}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 133,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC80_ATL_x86_x64',
+      'version': '8.0.50727.4053',
+      'product_code': '{925D058B-564A-443A-B4B2-7E90C6432E55}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 67,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2012 x86 Additional Runtime - 11.0.61030',
+      'version': '11.0.61030',
+      'product_code': '{B175520C-86A2-35A7-8619-86DC379688B9}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 134,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2010 x64 Redistributable - 10.0.30319',
+      'version': '10.0.30319',
+      'product_code': '{DA5E371C-6333-3D8A-93A4-6FD5B20BCC6E}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 110,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2012 x64 Minimum Runtime - 11.0.61030',
+      'version': '11.0.61030',
+      'product_code': '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 135,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC90_ATL_x86_x64',
+      'version': '1.00.0000',
+      'product_code': '{8557397C-A42D-486F-97B3-A2CBC2372593}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 72,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2010 x86 Redistributable - 10.0.30319',
+      'version': '10.0.30319',
+      'product_code': '{196BB40D-1578-3D01-B289-BEFC77A11A1E}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 136,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC90_CRT_x86_x64',
+      'version': '1.00.0000',
+      'product_code': '{92A3CA0D-55CD-4C5D-BA95-5C2600C20F26}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 137,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft .NET Framework 4.6.2 Targeting Pack (ENU)',
+      'version': '4.6.01590',
+      'product_code': '{C80951BD-6904-474F-BBC5-03A6C777F37C}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 73,
+      'vendor': 'Microsoft Corporation',
+      'name': 'Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.61030',
+      'version': '11.0.61030',
+      'product_code': '{BD95A8CD-1D9F-35AD-981A-3E7925026EBB}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 138,
+      'vendor': 'Simon Tatham',
+      'name': 'PuTTY release 0.76',
+      'version': '0.76.0.0',
+      'product_code': '{8CFE5E4E-970A-4380-A782-AF6E609574F1}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 139,
+      'vendor': 'Adobe',
+      'name': 'Microsoft_VC90_ATL_x86',
+      'version': '1.00.0000',
+      'product_code': '{033E378E-6AD3-4AD5-BDEB-CBD69B31046C}',
+      'source': 'MSI',
+      'access': 'Local'
+    },
+    {
+      'id': 140,
+      'vendor': 'Intel Corporation',
+      'name': 'Intel(R) Chipset Device Software',
+      'version': '10.1.18698.8258',
+      'product_code': '{8E7A81EF-0B97-4CD2-94E5-CD9E5A2767F4}',
+      'source': 'MSI',
+      'access': 'Local'
+    }
+  ],
+  'ci_sql_server': None,
+  'ci_siu_installed_product': [
+    {
+      'id': 330,
+      'product_id': '1512661233132139217',
+      'vendor': 'Bandisoft.com',
+      'name': 'Bandizip',
+      'version': '7.23'
+    },
+    {
+      'id': 331,
+      'product_id': '13240514990224772909',
+      'vendor': 'DBeaver',
+      'name': 'DBeaver',
+      'version': '22.0.2'
+    },
+    {
+      'id': 332,
+      'product_id': '7974186536652198905',
+      'vendor': 'The Git Development Community',
+      'name': 'Git',
+      'version': '2.35.1.2'
+    },
+    {
+      'id': 630,
+      'product_id': '13526457730556387305',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft 365 - ko-kr',
+      'version': '16.0.15028.20228'
+    },
+    {
+      'id': 72,
+      'product_id': '15592388575006382133',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft OneDrive',
+      'version': '22.065.0412.0004'
+    },
+    {
+      'id': 333,
+      'product_id': '2673591422837761906',
+      'vendor': 'PostgreSQL Global Development Group',
+      'name': 'PostgreSQL 14',
+      'version': '14'
+    },
+    {
+      'id': 334,
+      'product_id': '6204384290246352275',
+      'vendor': 'AhnLab',
+      'name': 'AhnLab Safe Transaction',
+      'version': '1.5.0.1576'
+    },
+    {
+      'id': 80,
+      'product_id': '9177201953191084480',
+      'vendor': 'Wizvera',
+      'name': 'Veraport( ) G3 - 3,8,5,1',
+      'version': '3,8,5,1'
+    },
+    {
+      'id': 83,
+      'product_id': '2756111611889874441',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Update Health Tools',
+      'version': '3.67.0.0'
+    },
+    {
+      'id': 335,
+      'product_id': '12093474267604998794',
+      'vendor': 'Intel',
+      'name': 'Intel(R) Serial IO',
+      'version': '30.100.2104.1'
+    },
+    {
+      'id': 270,
+      'product_id': '3611277247243024558',
+      'vendor': 'Screenovate Technologies',
+      'name': 'Virtoo by LG Drivers',
+      'version': '2.2.9779'
+    },
+    {
+      'id': 112,
+      'product_id': '5216560722747793960',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ Redistributable',
+      'version': '10.0.30319'
+    },
+    {
+      'id': 336,
+      'product_id': '4285977521595323900',
+      'vendor': 'Adobe Systems',
+      'name': 'Adobe AIR',
+      'version': '1.5.3.9120'
+    },
+    {
+      'id': 228,
+      'product_id': '8194475943077224012',
+      'vendor': 'HANCOM WITH',
+      'name': 'AnySign4PC',
+      'version': '1.1.2.7'
+    },
+    {
+      'id': 337,
+      'product_id': '17339098082944173096',
+      'vendor': 'BTWorks',
+      'name': '',
+      'version': '1.04'
+    },
+    {
+      'id': 96,
+      'product_id': '530547239908238112',
+      'vendor': 'Google',
+      'name': 'Chrome',
+      'version': '100.0.4896.127'
+    },
+    {
+      'id': 98,
+      'product_id': '1524618081512399721',
+      'vendor': 'interezen',
+      'name': 'IPinside LWS Agent',
+      'version': '3.0.0.9'
+    },
+    {
+      'id': 99,
+      'product_id': '17232468665645656006',
+      'vendor': 'Kakao',
+      'name': '',
+      'version': '3.3.9.3088'
+    },
+    {
+      'id': 230,
+      'product_id': '16942277658322129226',
+      'vendor': 'Dreamsecurity',
+      'name': 'MagicLine4NX',
+      'version': '1.0.0.20'
+    },
+    {
+      'id': 626,
+      'product_id': '9975191759186380221',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Edge',
+      'version': '100.0.1185.50'
+    },
+    {
+      'id': 102,
+      'product_id': '15908625282463858237',
+      'vendor': '',
+      'name': 'Microsoft Edge Update',
+      'version': '1.3.157.61'
+    },
+    {
+      'id': 231,
+      'product_id': '1424957198883527060',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Edge WebView2',
+      'version': '100.0.1185.50'
+    },
+    {
+      'id': 338,
+      'product_id': '11815118200586279901',
+      'vendor': 'INCA Internet',
+      'name': 'nProtect Online Security V1.0(PFS)',
+      'version': '2022.3.7.1'
+    },
+    {
+      'id': 339,
+      'product_id': '5550524355142946607',
+      'vendor': 'JetBrains',
+      'name': 'PyCharm Community Edition',
+      'version': '213.7172.26'
+    },
+    {
+      'id': 233,
+      'product_id': '9896468891242613824',
+      'vendor': 'Samsung Electronics',
+      'name': 'Samsung Scan to PC Lite',
+      'version': '1.02.14.00 (2014-11-25)'
+    },
+    {
+      'id': 28,
+      'product_id': '11235607082663039800',
+      'vendor': 'Tanium',
+      'name': 'Tanium Client',
+      'version': '7.4.7.1179'
+    },
+    {
+      'id': 109,
+      'product_id': '5018770060647616955',
+      'vendor': 'RaonSecure',
+      'name': 'TouchEn nxKey with E2E for',
+      'version': '1.0.0.73'
+    },
+    {
+      'id': 340,
+      'product_id': '10853229252083442085',
+      'vendor': 'Adobe Systems',
+      'name': 'Adobe Photoshop CS5',
+      'version': '12.0'
+    },
+    {
+      'id': 113,
+      'product_id': '5324437249516308031',
+      'vendor': 'Wizvera',
+      'name': 'Delfino G3',
+      'version': '3.6.8.4'
+    },
+    {
+      'id': 280,
+      'product_id': '4011297561515296979',
+      'vendor': 'LG Electronics',
+      'name': 'LG Time Manager',
+      'version': '1.0.2009.1501'
+    },
+    {
+      'id': 281,
+      'product_id': '12328101827838241208',
+      'vendor': 'LG Electronics',
+      'name': 'LG Device Manager',
+      'version': '1.0.2107.3001'
+    },
+    {
+      'id': 114,
+      'product_id': '15554394772203436399',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ Redistributable',
+      'version': '11.0.61030.0'
+    },
+    {
+      'id': 341,
+      'product_id': '6750035266745535685',
+      'vendor': 'DigitalZone',
+      'name': 'REPORTX',
+      'version': ''
+    },
+    {
+      'id': 342,
+      'product_id': '12912998417233813788',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ 2015-2022 Redistributable',
+      'version': '14.30.30704.0'
+    },
+    {
+      'id': 343,
+      'product_id': '10777044909617842330',
+      'vendor': 'Wondershare',
+      'name': 'Wondershare Helper Compact',
+      'version': '2.6.0'
+    },
+    {
+      'id': 344,
+      'product_id': '6991319859593738387',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .NET Framework SDK',
+      'version': '4.6.01590'
+    },
+    {
+      'id': 345,
+      'product_id': '13828585855208131483',
+      'vendor': 'Intel',
+      'name': 'Intel(R) Dynamic Tuning',
+      'version': '8.7.10402.18389'
+    },
+    {
+      'id': 346,
+      'product_id': '16708733166672388921',
+      'vendor': 'LG Electronics',
+      'name': 'LG Reader Mode',
+      'version': '1.0.2107.3001'
+    },
+    {
+      'id': 347,
+      'product_id': '9665523729459600845',
+      'vendor': 'LG Electronics',
+      'name': 'LG Control Center',
+      'version': '1.0.2107.3001'
+    },
+    {
+      'id': 348,
+      'product_id': '8114586555906430321',
+      'vendor': 'LG Electronics',
+      'name': 'LG DnA Center Plus',
+      'version': '1.0.2111.1901'
+    },
+    {
+      'id': 349,
+      'product_id': '10485965924259994649',
+      'vendor': 'Microsoft',
+      'name': 'Teams Machine-Wide Installer',
+      'version': '1.4.0.32771'
+    },
+    {
+      'id': 350,
+      'product_id': '1066940101032166587',
+      'vendor': 'Intel(R)',
+      'name': 'Intel(R) Chipset Device Software',
+      'version': '10.1.18698.8258'
+    },
+    {
+      'id': 124,
+      'product_id': '4640643997503903483',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ Redistributable',
+      'version': '9.0.30729'
+    },
+    {
+      'id': 125,
+      'product_id': '8358170850647066249',
+      'vendor': 'WIZVERA',
+      'name': 'WIZVERA Process Manager 1,0,5,4',
+      'version': '1,0,5,4'
+    },
+    {
+      'id': 78,
+      'product_id': '5972050056541506002',
+      'vendor': 'Simon Tatham',
+      'name': 'PuTTY release',
+      'version': '0.76.0.0'
+    },
+    {
+      'id': 351,
+      'product_id': '9120059252731963033',
+      'vendor': 'Python Software Foundation',
+      'name': 'Python Launcher',
+      'version': '3.10.7744.0'
+    },
+    {
+      'id': 126,
+      'product_id': '14514909477723735403',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ Redistributable',
+      'version': '9.0.30729.6161'
+    },
+    {
+      'id': 352,
+      'product_id': '3140824639540065907',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .NET Framework Targeting Pack',
+      'version': '4.6.01590'
+    },
+    {
+      'id': 296,
+      'product_id': '15808289491696561263',
+      'vendor': 'LG Electronics',
+      'name': 'LG Security Center',
+      'version': '1.0.2010.2301'
+    },
+    {
+      'id': 353,
+      'product_id': '10391500964958366044',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .NET Framework Targeting Pack (ENU)',
+      'version': '4.6.01590'
+    },
+    {
+      'id': 40,
+      'product_id': '6069851200676909477',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ Redistributable',
+      'version': '12.0.21005.1'
+    },
+    {
+      'id': 354,
+      'product_id': '16875566176144888622',
+      'vendor': 'LG Electronics',
+      'name': 'OnScreen Control',
+      'version': '7.33.0'
+    },
+    {
+      'id': 133,
+      'product_id': '14284330874011744553',
+      'vendor': 'YettieSoft',
+      'name': '(APS Engine)',
+      'version': '1.8.0'
+    },
+    {
+      'id': 134,
+      'product_id': '14591723726478034729',
+      'vendor': 'Cisco Webex',
+      'name': 'Cisco Webex Meetings',
+      'version': ''
+    },
+    {
+      'id': 135,
+      'product_id': '6927051961829538910',
+      'vendor': 'iniLINE',
+      'name': 'iniLINE CrossEX Service',
+      'version': '1.0.2.8'
+    },
+    {
+      'id': 355,
+      'product_id': '368705550209556820',
+      'vendor': 'Postman',
+      'name': 'Postman x86_64',
+      'version': '9.16.0'
+    },
+    {
+      'id': 249,
+      'product_id': '15882002103875672286',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Teams',
+      'version': '1.5.00.9163'
+    },
+    {
+      'id': 356,
+      'product_id': '2557529080591181172',
+      'vendor': 'Python Software Foundation',
+      'name': 'Python',
+      'version': '3.10.3150.0'
+    },
+    {
+      'id': 140,
+      'product_id': '6740606177004690994',
+      'vendor': 'Microsoft',
+      'name': 'Internet Explorer',
+      'version': '11.789.19041.0'
+    },
+    {
+      'id': 357,
+      'product_id': '11243671158109162757',
+      'vendor': 'Disney',
+      'name': 'Disney+',
+      'version': '1.27.1.0'
+    },
+    {
+      'id': 306,
+      'product_id': '6326064809721691551',
+      'vendor': 'DTS',
+      'name': 'DTS:X Ultra',
+      'version': '1.11.3.0'
+    },
+    {
+      'id': 141,
+      'product_id': '5993904962130876151',
+      'vendor': 'Microsoft',
+      'name': 'Cortana',
+      'version': '4.2203.4603.0'
+    },
+    {
+      'id': 142,
+      'product_id': '7855867858016047',
+      'vendor': '조직에서 할당',
+      'name': '회사 또는 학교 계정',
+      'version': '1000.19041.1023.0'
+    },
+    {
+      'id': 143,
+      'product_id': '1856412780141953526',
+      'vendor': 'Microsoft',
+      'name': '메일 및 계정',
+      'version': '10.0.19041.1023'
+    },
+    {
+      'id': 145,
+      'product_id': '9398159837745494955',
+      'vendor': 'Microsoft',
+      'name': 'AsyncTextService',
+      'version': '10.0.19041.1023'
+    },
+    {
+      'id': 146,
+      'product_id': '15395182992991344851',
+      'vendor': 'Microsoft',
+      'name': '아이 컨트롤',
+      'version': '10.0.19041.1023'
+    },
+    {
+      'id': 147,
+      'product_id': '7746659789665941588',
+      'vendor': 'Microsoft',
+      'name': '한국어 로컬 경험 팩',
+      'version': '19041.41.131.0'
+    },
+    {
+      'id': 148,
+      'product_id': '14823001333379651196',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Edge',
+      'version': '44.19041.1266.0'
+    },
+    {
+      'id': 149,
+      'product_id': '10667655182446682770',
+      'vendor': 'Microsoft',
+      'name': 'Office',
+      'version': '18.2110.13110.0'
+    },
+    {
+      'id': 150,
+      'product_id': '6037814867999159586',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Solitaire Collection',
+      'version': '4.12.3171.0'
+    },
+    {
+      'id': 152,
+      'product_id': '10521622706635555166',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .Net Native Framework Package',
+      'version': '1.7.27413.0'
+    },
+    {
+      'id': 308,
+      'product_id': '12811730750952711006',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .Net Native Framework Package',
+      'version': '2.1.27427.0'
+    },
+    {
+      'id': 153,
+      'product_id': '3965078476290030886',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .Net Native Framework Package',
+      'version': '2.2.29512.0'
+    },
+    {
+      'id': 154,
+      'product_id': '13722613686982227042',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .Net Native Runtime Package',
+      'version': '1.7.27422.0'
+    },
+    {
+      'id': 309,
+      'product_id': '10040004646381473454',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .Net Native Runtime Package',
+      'version': '2.1.26424.0'
+    },
+    {
+      'id': 155,
+      'product_id': '15418929578327339341',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft .Net Native Runtime Package',
+      'version': '2.2.28604.0'
+    },
+    {
+      'id': 156,
+      'product_id': '9682163229585421051',
+      'vendor': 'Microsoft',
+      'name': 'OneNote for Windows 10',
+      'version': '16001.14326.20838.0'
+    },
+    {
+      'id': 159,
+      'product_id': '15598364717255201190',
+      'vendor': 'Skype',
+      'name': 'Skype',
+      'version': '15.83.408.0'
+    },
+    {
+      'id': 160,
+      'product_id': '5506024829953455868',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft.UI.Xaml.2.0',
+      'version': '2.1810.18004.0'
+    },
+    {
+      'id': 161,
+      'product_id': '10354946984901937256',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft.UI.Xaml.2.1',
+      'version': '2.11906.6001.0'
+    },
+    {
+      'id': 162,
+      'product_id': '4757085967150282788',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft.UI.Xaml.2.3',
+      'version': '2.32002.13001.0'
+    },
+    {
+      'id': 163,
+      'product_id': '13825734647726038448',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft.UI.Xaml.2.4',
+      'version': '2.42007.9001.0'
+    },
+    {
+      'id': 165,
+      'product_id': '9609618545046648929',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft.UI.Xaml.2.7',
+      'version': '7.2203.17001.0'
+    },
+    {
+      'id': 166,
+      'product_id': '14878205422671393150',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ Runtime Package',
+      'version': '12.0.21005.1'
+    },
+    {
+      'id': 167,
+      'product_id': '9306377604927208267',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ UWP Desktop Runtime Package',
+      'version': '14.0.30704.0'
+    },
+    {
+      'id': 168,
+      'product_id': '4185218721597177491',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Visual C++ UWP Runtime Package',
+      'version': '14.0.30704.0'
+    },
+    {
+      'id': 169,
+      'product_id': '16344941590824080345',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Pay',
+      'version': '2.4.18324.0'
+    },
+    {
+      'id': 170,
+      'product_id': '7347656940174314503',
+      'vendor': 'ms-resource:PublisherDisplayName',
+      'name': '데스크톱 앱 웹 뷰어',
+      'version': '10.0.19041.1023'
+    },
+    {
+      'id': 171,
+      'product_id': '15744943753124026350',
+      'vendor': 'Microsoft',
+      'name': 'Windows Defender SmartScreen',
+      'version': '1000.19041.1023.0'
+    },
+    {
+      'id': 172,
+      'product_id': '7343904468779118961',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft 가족 기능',
+      'version': '1000.19041.1023.0'
+    },
+    {
+      'id': 173,
+      'product_id': '13760146919096388695',
+      'vendor': 'Microsoft',
+      'name': 'Windows Search',
+      'version': '1.14.4.19041'
+    },
+    {
+      'id': 175,
+      'product_id': '12635382197822175543',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Store',
+      'version': '22203.1401.26.0'
+    },
+    {
+      'id': 176,
+      'product_id': '10106287411045158528',
+      'vendor': 'Microsoft',
+      'name': 'Xbox TCUI',
+      'version': '1.24.10001.0'
+    },
+    {
+      'id': 177,
+      'product_id': '11884502608433862985',
+      'vendor': 'Microsoft',
+      'name': 'Xbox Game Bar Plugin',
+      'version': '1.54.4001.0'
+    },
+    {
+      'id': 178,
+      'product_id': '10027246427700902401',
+      'vendor': 'Microsoft',
+      'name': 'Xbox Game Bar',
+      'version': '5.722.3302.0'
+    },
+    {
+      'id': 179,
+      'product_id': '6952522387933944983',
+      'vendor': 'Microsoft',
+      'name': 'Windows Feature Experience Pack',
+      'version': '120.2212.4170.0'
+    },
+    {
+      'id': 358,
+      'product_id': '9639215967890203350',
+      'vendor': 'Realtek Semiconductor',
+      'name': 'Realtek Audio Control',
+      'version': '1.35.266.0'
+    },
+    {
+      'id': 184,
+      'product_id': '4250786095481424394',
+      'vendor': 'Samsung Electronics',
+      'name': 'Samsung Printer Experience',
+      'version': '1.3.15.0'
+    },
+    {
+      'id': 193,
+      'product_id': '8155922705333563053',
+      'vendor': 'Spotify',
+      'name': 'Spotify Music',
+      'version': '1.183.956.0'
+    },
+    {
+      'id': 359,
+      'product_id': '11689491184266258299',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft® Windows® Operating System',
+      'version': '10.0.19041.1620'
+    },
+    {
+      'id': 360,
+      'product_id': '16805171042102052610',
+      'vendor': 'Intel',
+      'name': 'IGCC Service',
+      'version': '1.0.2906.0'
+    },
+    {
+      'id': 199,
+      'product_id': '12420242615376282232',
+      'vendor': 'Interezen',
+      'name': 'I3GMainSvc',
+      'version': '3.0.0.2'
+    },
+    {
+      'id': 361,
+      'product_id': '14519798731074179586',
+      'vendor': 'Intel',
+      'name': 'Intel(R) Dynamic Application Loader Host Interface',
+      'version': '1.41.2021.0121'
+    },
+    {
+      'id': 362,
+      'product_id': '5788612740871626367',
+      'vendor': 'Intel',
+      'name': 'Intel HD Graphics Drivers for Windows(R)',
+      'version': '27.20.100.9565'
+    },
+    {
+      'id': 363,
+      'product_id': '5619062498759760059',
+      'vendor': 'Intel',
+      'name': 'Intel(R) Common User Interface',
+      'version': '6.15.100.9565'
+    },
+    {
+      'id': 364,
+      'product_id': '16827463761562286484',
+      'vendor': 'MarkAny',
+      'name': 'Image SAFER',
+      'version': '5, 0, 0, 1'
+    },
+    {
+      'id': 365,
+      'product_id': '957432541079272438',
+      'vendor': 'Intel',
+      'name': 'IntelAudioService',
+      'version': '1.0.2049.0'
+    },
+    {
+      'id': 366,
+      'product_id': '3811200037342941187',
+      'vendor': 'Intel',
+      'name': 'Thunderbolt(TM) Shortcut Service',
+      'version': '1ecf1f19e2905a6e655ff0cf7552476a88b54fa9'
+    },
+    {
+      'id': 325,
+      'product_id': '5034441956778487036',
+      'vendor': '',
+      'name': 'LGUWPService',
+      'version': '1.0.0.0'
+    },
+    {
+      'id': 367,
+      'product_id': '11644959629677470052',
+      'vendor': 'LG Electronics',
+      'name': 'PlatFormMgrService',
+      'version': '1.1.2110.2801'
+    },
+    {
+      'id': 260,
+      'product_id': '14260310123150920046',
+      'vendor': 'Microsoft',
+      'name': 'Windows® Search',
+      'version': '7.0.19041.1645'
+    },
+    {
+      'id': 323,
+      'product_id': '12941874112763442812',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Office',
+      'version': '16.0.15028.20152'
+    },
+    {
+      'id': 328,
+      'product_id': '11881812688492625982',
+      'vendor': '',
+      'name': 'Common Desktop Agent',
+      'version': '1.62.0.0'
+    },
+    {
+      'id': 196,
+      'product_id': '14695981039346656037',
+      'vendor': '',
+      'name': '',
+      'version': ''
+    },
+    {
+      'id': 368,
+      'product_id': '6911106643510027143',
+      'vendor': 'Adobe Systems',
+      'name': 'Adobe CS5 Service Manager',
+      'version': '5.0.0'
+    },
+    {
+      'id': 57,
+      'product_id': '3460693211346275764',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft ® Windows Script Host',
+      'version': '5.812.10240.16384'
+    },
+    {
+      'id': 625,
+      'product_id': '10853184713477485472',
+      'vendor': 'Microsoft',
+      'name': 'Windows Installer - Unicode',
+      'version': '5.0.19041.1645'
+    },
+    {
+      'id': 473,
+      'product_id': '9796693769691868063',
+      'vendor': 'Insecure.Org',
+      'name': 'Nmap',
+      'version': ''
+    },
+    {
+      'id': 628,
+      'product_id': '15145875445978887935',
+      'vendor': 'Microsoft',
+      'name': 'Microsoft Your Phone',
+      'version': '1.22032.179.0'
+    }
+  ],
+  'ci_siu_product_usage': None
+}
