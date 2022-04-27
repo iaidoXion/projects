@@ -17,12 +17,13 @@ def Info(sessionKey) :
     }
     response = requests.request("GET", urls, headers=headers, verify=False)
     resCode = response.status_code
-    if resCode == 200:
-        serverInfo = response.text
-    else :
-        serverInfo = resCode
-    serverInfoList = {'serverInfoList': serverInfo}
-    return serverInfoList
+    serverInfo = response.text
+
+    dataList = serverInfo
+    returnList = {'resCode': resCode, 'dataList': dataList}
+
+    return returnList
+
 
 def Host(sessionKey) :
     sessionKey = sessionKey
@@ -34,9 +35,7 @@ def Host(sessionKey) :
     }
     response = requests.request("GET", urls, headers=headers, verify=False)
     resCode = response.status_code
-    if resCode == 200:
-        serverHost = response.text
-    else :
-        serverHost = resCode
-    serverHostList = {'serverHostList': serverHost}
-    return serverHostList
+    serverHost = response.text
+    dataList = serverHost
+    returnList = {'resCode': resCode, 'dataList': dataList}
+    return returnList

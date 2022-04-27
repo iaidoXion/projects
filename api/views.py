@@ -4,67 +4,84 @@ from rest_framework.views import APIView
 from api.serializers import MenulistSerializer
 from django.shortcuts import render
 from config import settings
-from api.Call.Common.API import Auth, Tokens
-from api.Call.Common.User import SessionLogin, UserGet, SessionLogout
-from api.Call.Asset import AssetGet
+from api.Call.Auth import SessionKey
+from api.Call.Common.API import Tokens
+from api.Call.Common.User import UserInfoGet, SessionLogin, SessionLogout
+from api.Call.Asset import Info as AssetInfoAPI, Attributes
 from api.Call.System import Status
-from api.Call.Server import Info, Host
+from api.Call.Server import Info as SInfo, Host
 from api.Call.Export import Export
 from web.dataParsing.API import External
 from web.dataParsing.API.AssetParser import AssetParsing
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-sessionKey = Auth()
+
 
 
 def LoginT(request):
     username = request.POST.get('username', False)
     password = request.POST.get('password', False)
-    sessionLoginList = SessionLogin(username, password)
+    SessionLogin(username, password)
     return render(request, 'common/loginT.html')
 
 
 def SessionLogout(request):
+    sessionKey = SessionKey()
     SessionLogout(sessionKey)
     logoutPage = settings.LOGOUT_REDIRECT_URL
     return render(request, 'common/logout.html')
 
 
 def UserGet(request):
-    userInfoList = UserGet(sessionKey)
-    return render(request, 'common/userInfo.html', userInfoList)
+    sessionKey = SessionKey()
+    returnList = UserInfoGet(sessionKey)
+    return render(request, 'common/userInfo.html', returnList)
 
 
-def Asset(request):
-    assetList = AssetGet(sessionKey)
-    AssetParsing(assetList)
-    return render(request, 'API/asset/asset.html', assetList)
+def AssetInfo(request):
+    #returnList = {'resCode':200, 'dataList': 'aslfjalskfh'}
+    sessionKey = SessionKey()
+    returnList = AssetInfoAPI(sessionKey)
+    #print(sessionKey)
+    ##AssetParsing(assetList)
+    return render(request, 'API/asset/info.html', returnList)
+
+def AssetAttributes(request) :
+    sessionKey = SessionKey()
+    returnList = Attributes(sessionKey)
+    #print(assetAttributesList)
+    return render(request, 'API/asset/attributes.html', returnList)
 
 
 def SystemStatus(request):
-    systemStatusList = Status(sessionKey)
-    return render(request, 'API/system/status.html', systemStatusList)
+    sessionKey = SessionKey()
+    returnList = Status(sessionKey)
+    return render(request, 'API/system/status.html', returnList)
 
 
 def ServerInfo(request):
-    serverInfoList = Info(sessionKey)
-    return render(request, 'API/server/info.html', serverInfoList)
+    sessionKey = SessionKey()
+    returnList = SInfo(sessionKey)
+    return render(request, 'API/server/info.html', returnList)
 
 
 def ServerHost(request):
-    serverHostList = Host(sessionKey)
-    return render(request, 'API/server/host.html', serverHostList)
+    sessionKey = SessionKey()
+    returnList = Host(sessionKey)
+    return render(request, 'API/server/host.html', returnList)
 
 
 def Export(request):
-    ExportList = Export(sessionKey)
+    sessionKey = SessionKey()
+    returnList = Export(sessionKey)
     return render(request, 'API/export.html')
 
 
 def ApiTokens(request):
-    tokensList = Tokens(sessionKey)
-    return render(request, 'common/apiTokens.html', tokensList)
+    sessionKey = SessionKey()
+    returnList = Tokens(sessionKey)
+    return render(request, 'common/apiTokens.html', returnList)
 
 
 def ExternalApi(request):

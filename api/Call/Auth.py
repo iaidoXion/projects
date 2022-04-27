@@ -13,9 +13,11 @@ def SessionKey():
     }
     response = requests.request("GET", urls, headers=headers, verify=False)
     resCode = response.status_code
-    if resCode == 200:
-        sessionKey = response.text
-    else :
-        sessionKey = resCode
+    sessionKey = response.text
 
-    return sessionKey
+
+    #dataList = sessionKey
+    returnList = sessionKey
+
+    return returnList
+

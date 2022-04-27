@@ -9,20 +9,6 @@ Authorization = APISETTING['API']['Authorization']
 ContentType = APISETTING['API']['ContentType']
 
 
-def Auth():
-    path = "/auth"
-    urls = apiUrl + path
-    headers = {
-        'Authorization': Authorization
-    }
-    response = requests.request("GET", urls, headers=headers, verify=False)
-    resCode = response.status_code
-    if resCode == 200:
-        sessionKey = response.text
-    else:
-        sessionKey = resCode
-
-    return sessionKey
 
 
 def Tokens(sessionKey):
