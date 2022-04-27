@@ -8,50 +8,73 @@
     <div class="container-color container-mid">
         <div class="container-section-color container-left my-float-left">
             <div class="container-child-color container-left-top my-border">
-                <p class="content-title">
-                    <img src="{% static 'img/dashboard/barchart.png' %}"/>
-                    <a>Asset Count By Item</a>
-                </p>
+                <div class="content-title">
+                    <a class="my-float-left"><img src="{% static 'img/dashboard/barchart.png' %}"/></a>
+                    <div class="conText">Asset Count By Item</div>
+                </div>
                 <div id="barChart"></div>
             </div>
             <div class="container-child-color container-left-bot my-border">
-                <p class="content-title">
-                    <img src="{% static 'img/dashboard/linechart.png' %}"/>
-                    <a>Asset By Day Item Count</a>
-                </p>
+                <div class="content-title">
+					<a class="my-float-left"><img src="{% static 'img/dashboard/linechart.png' %}"/></a>
+                    <div class="conText">Asset By Day Item Count</div>
+                </div>
                 <div id="lineChart"></div>
             </div>
 			<div class="container-child-color container-left-top my-border my-margin-top">
-                <p class="content-title">
-					<img src="{% static 'img/dashboard/pie.png' %}"/>
-					<a>OS Count By Item(Top3)</a>
-				</p>
+                <div class="content-title">
+					<a class="my-float-left"><img src="{% static 'img/dashboard/pie.png' %}"/></a>
+					<div class="conText">OS Count By Item(Top3)</div>
+				</div>
 				<div id="pieChart"></div>
             </div>
         </div>
         <div class="container-child-color container-center my-float-left my-border">
 			<div class="mapLeft">
-				<div class="mapChartMenu">
+				<div class="mapChartMenuWorld">
 					<div class="mapChartMenuWrap">
-						<button type="button" class="btn btn-secondary">World</button>
-						<button type="button" class="btn btn-secondary">Korea</button>
-						<a class="expansionWrap mouse-over-cursor" id="popBt">
+						<button type="button" class="btn btn-secondary btnWorld">World</button>
+						<button type="button" class="btn btn-secondary btnKorea">Korea</button>
+						<a class="expansionWrap mouse-over-cursor" id="popBtWorld">
 							<img class="expansion" src="{% static 'img/dashboard/expansion.png' %}" />
 							<img class="expansionDark" src="{% static 'img/dashboard/expansionDark.png' %}" />
 						</a>
 						<div class="shadow"></div>
-						<div id="pop" style="display: none;">
-							<a id="close" class="popClose mouse-over-cursor">
+						<div id="popWorld" style="display: none;">
+							<a id="closeWorld" class="popClose mouse-over-cursor">
 								<img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px">
 								<img class="imgCloseDark" src="{% static 'img/common/closeDark.png' %}" width="10px" height="10px">
 							</a>
-							<div class="popMap">
+							<div class="popMap">세계맵팝업
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="container-child-color container-center-top my-float-left">
+				<div class="container-child-color my-float-left world-map">
 					<div id="worldMap"></div>
+				</div>
+				<div class="mapChartMenuKorea">
+					<div class="mapChartMenuWrap">
+						<button type="button" class="btn btn-secondary btnWorld">World</button>
+						<button type="button" class="btn btn-secondary btnKorea">Korea</button>
+						<a class="expansionWrap mouse-over-cursor" id="popBtKorea">
+							<img class="expansion" src="{% static 'img/dashboard/expansion.png' %}" />
+							<img class="expansionDark" src="{% static 'img/dashboard/expansionDark.png' %}" />
+						</a>
+						<div class="shadow"></div>
+						<div id="popKorea" style="display: none;">
+							<a id="closeKorea" class="popClose mouse-over-cursor">
+								<img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px">
+								<img class="imgCloseDark" src="{% static 'img/common/closeDark.png' %}" width="10px" height="10px">
+							</a>
+							<div class="popMap">국내맵팝업
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-child-color my-float-left korea-map">
+					국내맵
+					<div id="koreaMap"></div>
 				</div>
 			</div>
 			<div class="mapRight">
@@ -72,14 +95,102 @@
 		<div class="carousel-inner">
 				<div class="item active">
 					<div class="conBotWrap">
-						<div class="my-float-left container-bot-content container-bot-content3 my-border">Slides 1</div>
-						<div class="my-float-left container-bot-content my-border">Slides 2</div>
-						<div class="my-float-left container-bot-content my-border">Slides 3</div>
-						<div class="my-float-left container-bot-content my-border">Slides 4</div>
-						<div class="my-float-left container-bot-content my-border">Slides 5</div>
-						<div class="my-float-left container-bot-content my-border">Slides 6</div>
-						<div class="my-float-left container-bot-content my-border">Slides 7</div>
-						<div class="my-float-left container-bot-content2 my-border">Slides 8</div>
+						<div class="my-float-left container-bot-content container-bot-content3 my-border">
+							<div class="conBotTop">
+								Asset Total Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">330</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowTop.png' %}">
+								</div>
+								<p class="botConNum my-float-left">5</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content my-border">
+							<div class="conBotTop">
+								Windows OS Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">200</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowTop.png' %}">
+								</div>
+								<p class="botConNum my-float-left">9</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content my-border">
+							<div class="conBotTop">
+								Linux OS Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">150</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowBot.png' %}">
+								</div>
+								<p class="botConNum my-float-left">3</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content my-border">
+							<div class="conBotTop">
+								Mac OS Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">400</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowBot.png' %}">
+								</div>
+								<p class="botConNum my-float-left">3</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content my-border">
+							<div class="conBotTop">
+								Established Port
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">40</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowBot.png' %}">
+								</div>
+								<p class="botConNum my-float-left">1</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content my-border">
+							<div class="conBotTop">
+								Listen Port Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">402</p>
+								<div class="my-float-left conBotImg">
+									-
+								</div>
+								<p class="botConNum0 my-float-left">0</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content my-border">
+							<div class="conBotTop">
+								--- Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">40</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowBot.png' %}">
+								</div>
+								<p class="botConNum my-float-left">1</p>
+							</div>
+						</div>
+						<div class="my-float-left container-bot-content2 my-border">
+							<div class="conBotTop">
+								--- Count
+							</div>
+							<div class="conBotBot">
+								<p class="botConTotalNum">40</p>
+								<div class="my-float-left conBotImg">
+									<img src="{% static 'img/common/arrowBot.png' %}">
+								</div>
+								<p class="botConNum my-float-left">1</p>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="item">

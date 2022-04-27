@@ -2,6 +2,10 @@ body {
     background-color: #f8f9fc;
 }
 
+a {
+    text-decoration: none;
+}
+
 .comment {
     border-top:dotted 1px #ddd;
     font-size:0.7em;
@@ -44,6 +48,11 @@ body {
 .my-margin-bot-half{
     margin-bottom: 10px;
 }
+
+.my-margin-top-16{
+    margin-top: 16px;
+}
+
 .btn-border-none {
     border:0;
 }
@@ -51,4 +60,3 @@ body {
 .mouse-over-cursor {
     cursor: pointer;
 }
-

@@ -16,9 +16,14 @@
 
 .content-title {
     width: 100%;
-    min-height: 25px;
+    height: 35px;
     padding:10px;
     font-size:12px;
+}
+
+.conText{
+    margin-left: 20px;
+    margin-top: 3px;
 }
 
 .mapChartTitle {
@@ -29,11 +34,17 @@
     float: left;
 }
 
-.mapChartMenu{
-    display: inline-block;
+.mapChartMenuWorld{
     width: 100%;
     min-height: 25px;
     padding:10px;
+}
+
+.mapChartMenuKorea{
+    width: 100%;
+    min-height: 25px;
+    padding:10px;
+    display: none;
 }
 
 .mapChartMenuWrap{
@@ -65,6 +76,10 @@
     display: block;
 }
 
+.korea-map{
+    display: none;
+}
+
 .container-top{
     width: 100%;
     min-height: 200px;
@@ -94,7 +109,7 @@
 
 .container-center {
     width: 72%;
-    min-height: 680px;
+    height: 680px;
 
 }
 
@@ -160,8 +175,6 @@
     height: 82px;
     margin-right: 2%;
     background-color: #ffffff;
-    margin-top: 28px;
-    line-height: 82px;
 }
 
 .container-bot-content2 {
@@ -169,7 +182,6 @@
     height: 82px;
     background-color: #ffffff;
     margin-top: 28px;
-    line-height: 82px;
 }
 
 .container-bot-content3 {
@@ -235,7 +247,19 @@
     margin: 0 auto;
 }
 
-#pop{
+#popWorld{
+    width: 98%;
+    height: 900px;
+    background: #fff;
+    position: absolute;
+    top: 20px;
+    left: 1%;
+    text-align: center;
+    border: 1px solid #e3e6f0;
+    z-index: 9999;
+}
+
+#popKorea{
     width: 98%;
     height: 900px;
     background: #fff;
@@ -275,4 +299,38 @@
     display: none;
 }
 
+.botConTotalNum{
+    font-size: 19px;
+    font-weight: 700;
+    color: #7f7f7f;
+    float: left;
+}
 
+.botConNum{
+    font-size: 14px;
+    color: #ff9000;
+    margin-top: 3px;
+}
+
+.botConNum0{
+    font-size: 14px;
+    color: #000;
+    margin-top: 3px;
+}
+
+.conBotTop{
+    margin-bottom: 10px;
+    margin-top: 16px;
+}
+
+.conBotBot{
+    width: 100%;
+    height: 20px;
+    margin-left: 38%;
+}
+
+.conBotImg{
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+}

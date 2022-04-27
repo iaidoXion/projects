@@ -27,6 +27,7 @@ function piechart() {
         .style('width', width)
         .style('height', height)
         .style("margin-left", '34%')
+        .style("margin-top", '3%')
         .attr('text-anchor', 'middle') // text-anchor 텍스트의 정렬을 설정 ( start | middle | end | inherit )
         .style('font-size', '11px');
 
