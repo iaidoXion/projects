@@ -7,7 +7,7 @@ apiUrl = APISETTING['API']['apiUrl']
 Authorization = APISETTING['API']['Authorization']
 ContentType = APISETTING['API']['ContentType']
 
-def Get(sessionKey):
+def UserGet(sessionKey):
     path = "/api/v2/users"
     urls = apiUrl + path
     headers = {
@@ -49,7 +49,7 @@ def SessionLogin(username, password) :
     return sessionLogin
 
 
-def Logout(sessionKey) :
+def SessionLogout(sessionKey) :
     print(sessionKey)
     # if sessionKey is not None:
         #path = "/api/v2/session/logout"
