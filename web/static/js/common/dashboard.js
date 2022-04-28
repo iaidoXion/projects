@@ -36,4 +36,27 @@ $(function() {
         $('.mapChartMenuKorea, .korea-map').hide();
         $('.mapChartMenuWorld, .world-map').show();
     });
+});
+
+//슬라이드 배너
+
+/*$(function(){
+    $('.conBotPrev').click(function(){
+        $('#mySlide').css('left', '-100px')
+
+    });
+});*/
+
+//슬라이드 배너
+$(function(){
+  $(".conBotPrev").click(function(){
+          $("#mySlide").animate(
+          {left:"-9.7%",}, 500
+          );
+  });
+  $(".conBotNext").click(function(){
+          $("#mySlide").animate(
+          {left:"9.7%",}, 500
+          );
+  });
 })
