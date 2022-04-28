@@ -132,7 +132,7 @@
 }
 
 .userInfoTopLeft{
-    width: 30%;
+    width: 38%;
     height: 70px;
     margin-top: 14px;
     margin-left: 10%;
@@ -141,10 +141,11 @@
 
 .userInfoTopRight{
     font-size: 11px;
-    width: 60%;
+    width: 50%;
     height: 48px;
     float: left;
-    margin-top: 25px;
+    margin-top: 24px;
+    line-height: 24px;
 }
 
 .userInfoTopRight p:nth-child(1){

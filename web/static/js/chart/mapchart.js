@@ -23,7 +23,7 @@ function worldMapChart() {
             .append('path')
             .attr('class', 'country')
             .attr('d', path)
-            .style("fill", "gray");
+            .style("fill", "#858796");
     });
 }
 
