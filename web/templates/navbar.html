@@ -3,9 +3,9 @@
 <nav class="navWrap navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <a class="navbar-brand navCop" href="/">Xion</a>
     <div class="collapse navbar-collapse flex-grow-0 navMenuWrap">
-        {% if menuList %}
+        {% if menuList.menuList %}
             <ul class="navbar-nav">
-                {% for menu in menuList %}
+                {% for menu in menuList.menuList %}
                     {% if menu.menuUse == '1' %}
                         <li class="nav-item ">
                             <!--img class="navImg" src="{% static menu.menuImg %}"/-->
