@@ -34,17 +34,38 @@ def Info(sessionKey) :
         assetsDataKeyList.append([i])
     print(assetsDataKeyList)"""
 
-
-    """for i in range(0, assetsCount):
+    dataListAppend = []
+    for i in range(0, assetsCount):
         id = assetsDataJson[i]['id']
         computer_name = assetsDataJson[i]['computer_name']
+        computer_id = assetsDataJson[i]['computer_id']
         os_platform = assetsDataJson[i]['os_platform']
         operating_system = assetsDataJson[i]['operating_system']
-        chassis_type = assetsDataJson[i]['chassis_type']
+        disk_total_space = assetsDataJson[i]['disk_total_space']
+        created_at = assetsDataJson[i]['created_at']
+        updated_at = assetsDataJson[i]['updated_at']
+        last_seen_at = assetsDataJson[i]['last_seen_at']
         ram = assetsDataJson[i]['ram']
         city = assetsDataJson[i]['city']
         chassis_type = assetsDataJson[i]['chassis_type']
-        if os_platform == 'Windows' :
+
+        data = {
+            'id' : id,
+            'computer_name' : computer_name,
+            'computer_id': computer_id,
+            'os_platform': os_platform,
+            'operating_system': operating_system,
+            'disk_total_space': disk_total_space,
+            'created_at': created_at,
+            'updated_at': updated_at,
+            'last_seen_at': last_seen_at,
+            'asset_item' : chassis_type
+        }
+
+        dataListAppend.append(data)
+
+
+        """if os_platform == 'Windows' :
             osPlatformWindowsCount = len(os_platform)
             print(osPlatformWindowsCount)
         
@@ -52,12 +73,13 @@ def Info(sessionKey) :
             assets = assetsDataJson[i]
         else :
             print()
-
+    
             ram = assets[i]['ram']
             city = assets[i]['city']
             print(id+':'+computer_name+':'+os_platform+':'+chassis_type+':'+operating_system+':'+ram)
         """
-    dataList = assetJson
+
+    dataList = dataListAppend
     returnList = {'resCode': resCode, 'dataList': dataList}
 
     return returnList

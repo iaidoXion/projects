@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from web.forms import UserForm
 from web.commonFun import MenuList
+from api.views import DashboardChartData
 import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 menuSettingList = MenuList()
@@ -28,7 +29,10 @@ def signup(request):
 
 @login_required(login_url='common:login')
 def dashboard(request):
-    return render(request, 'tanium/dashboard.html', menuSettingList)
+    barChartData = DashboardChartData()
+    returnData = {'barChartData': barChartData, 'menuList': menuSettingList}
+    #print(returnData)
+    return render(request, 'tanium/dashboard.html', returnData)
 
 @login_required(login_url='common:login')
 def assetWeb(request):
