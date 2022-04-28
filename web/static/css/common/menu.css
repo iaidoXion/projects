@@ -190,16 +190,3 @@
     padding: 10px;
 }
 
-.userInfoClose:hover .imgCloseDark{
-
-    display: block;
-}
-
-.userInfoClose:hover .imgCloseGray{
-    display: none;
-}
-
-.imgCloseDark{
-    display: none;
-    margin-top: 4px;
-}
