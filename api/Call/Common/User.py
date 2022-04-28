@@ -7,7 +7,7 @@ apiUrl = APISETTING['API']['apiUrl']
 Authorization = APISETTING['API']['Authorization']
 ContentType = APISETTING['API']['ContentType']
 
-def UserGet(sessionKey):
+def UserInfoGet(sessionKey):
     path = "/api/v2/users"
     urls = apiUrl + path
     headers = {
@@ -18,12 +18,28 @@ def UserGet(sessionKey):
     }
     response = requests.request("GET", urls, headers=headers, verify=False)
     resCode = response.status_code
-    if resCode == 200:
-        userInfo = response.text
-    else :
-        userInfo = resCode
-    userInfoList = {'userInfoList': userInfo}
-    return userInfoList
+    userInfoText = response.text
+    userInfoJson = json.loads(userInfoText)
+    userInfoCount = len(userInfoJson['data'])
+    userInfoJson = userInfoJson['data']
+    """
+    userInfoKey = userInfoJson[0].keys()
+    userInfoList = []
+    for i in userInfoKey:
+        userInfoList.append(i)
+    print(userInfoJson[0]['effective_content_set_privileges'][0].keys())
+    """
+    for i in range(0, userInfoCount):
+        id = userInfoJson[i]['id']
+
+        name = userInfoJson[i]['name']
+        effective_content_set_privileges = userInfoJson[i]['effective_content_set_privileges']
+
+    dataList = userInfoJson[0]
+    returnList = {'resCode': resCode, 'dataList': dataList}
+
+    return returnList
+
 
 
 def SessionLogin(username, password) :
