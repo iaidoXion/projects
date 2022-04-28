@@ -12,7 +12,7 @@ from api.Call.System import Status
 from api.Call.Server import Info as SInfo, Host
 from api.Call.Export import Export
 from web.dataParsing.API import External
-from web.dataParsing.API.AssetParser import AssetParsing
+from web.dataParsing.API.AssetParser import InfoParsing as AIP
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -40,12 +40,12 @@ def UserGet(request):
 
 
 def AssetInfo(request):
-    #returnList = {'resCode':200, 'dataList': 'aslfjalskfh'}
     sessionKey = SessionKey()
-    returnList = AssetInfoAPI(sessionKey)
-    #print(sessionKey)
-    ##AssetParsing(assetList)
+    AIDL = AssetInfoAPI(sessionKey)
+    parserData = AIDL['dataList']
+    returnList = AIP(parserData)
     return render(request, 'API/asset/info.html', returnList)
+
 
 def AssetAttributes(request) :
     sessionKey = SessionKey()
@@ -104,3 +104,11 @@ class MenuListAPI(APIView):
         print(queryset)
         serializer = MenulistSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
+def DashboardChartData():
+    sessionKey = SessionKey()
+    AIDL = AssetInfoAPI(sessionKey)
+    parserData = AIDL['dataList']
+    returnList = AIP(parserData)
+    return returnList
