@@ -8,9 +8,9 @@ function worldMapChart() {
         .attr('height', height);
 
     const projection = d3.geoMercator()
-        .scale(100)
+        .scale(145)
         .translate([width / 2.5, height /2.5])
-        .center([-50,-50]);
+        .center([-50,55]);
 
     const path = d3.geoPath(projection);
     const g = svg.append('g');
@@ -22,7 +22,8 @@ function worldMapChart() {
             .enter()
             .append('path')
             .attr('class', 'country')
-            .attr('d', path);
+            .attr('d', path)
+            .style("fill", "gray");
     });
 }
 
