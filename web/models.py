@@ -10,3 +10,9 @@ class MenuSetting(models.Model):
     menuUse = models.CharField(max_length=10)
     menuNote = models.TextField()
     menuCreateDate = models.DateTimeField()
+
+class Statistics(models.Model) :
+    createDate = models.DateTimeField()
+    classification = models.CharField(max_length=50)
+    item = models.CharField(max_length=200)
+    count = models.CharField(max_length=200)

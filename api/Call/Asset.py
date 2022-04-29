@@ -45,6 +45,7 @@ def Info(sessionKey) :
         created_at = assetsDataJson[i]['created_at']
         updated_at = assetsDataJson[i]['updated_at']
         last_seen_at = assetsDataJson[i]['last_seen_at']
+        ci_installed_application = assetsDataJson[i]['ci_installed_application']
         ram = assetsDataJson[i]['ram']
         city = assetsDataJson[i]['city']
         chassis_type = assetsDataJson[i]['chassis_type']
@@ -59,7 +60,8 @@ def Info(sessionKey) :
             'created_at': created_at,
             'updated_at': updated_at,
             'last_seen_at': last_seen_at,
-            'asset_item' : chassis_type
+            'asset_item' : chassis_type,
+            'ci_installed_application' : ci_installed_application
         }
 
         dataListAppend.append(data)
@@ -80,6 +82,7 @@ def Info(sessionKey) :
         """
 
     dataList = dataListAppend
+    #print(dataList)
     returnList = {'resCode': resCode, 'dataList': dataList}
 
     return returnList
