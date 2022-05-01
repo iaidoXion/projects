@@ -19,11 +19,6 @@ a {
 .my-float-right{
     float: right;
 }
-.footer-frame {
-    width: 100%;
-    min-height: 52px;
-    margin: 0 auto;
-}
 
 .my-border {
     border: 1px solid #e3e6f0;
