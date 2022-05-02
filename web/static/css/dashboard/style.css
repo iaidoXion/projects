@@ -3,7 +3,6 @@
     background-color: #f8f9fc;
     min-height: 837px;
     margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .container-color {
@@ -182,7 +181,7 @@
     height: 82px;
     background-color: #ffffff;
     margin-top: 28px;
-    margin-left: 4%;
+    margin-left: 2%;
 }
 
 .col-center {
@@ -192,8 +191,7 @@
 
 .carousel .item {
     text-align: center;
-	overflow: hidden;
-    height: 160px;
+    height: 137px;
 }
 .carousel .item .img-box {
 	background: #fff;
@@ -220,13 +218,20 @@
 }
 
 .conBotPrev{
-    margin-top: 55px;
-    min-height: 81px;
+    min-height: 136px;
+    float: left;
+    width: 4%;
+    background: #fff;
+    padding-top: 55px;
 }
-.conBotNext{
-    margin-top: 55px;
-    min-height: 81px;
 
+.conBotNext{
+    min-height: 136px;
+    position: absolute;
+    width: 4%;
+    padding-top: 55px;
+    margin-left: 44%;
+    background: #fff;
 }
 
 .container-bot-content {
@@ -239,11 +244,12 @@
 
 .conBotWrap {
     width: 98%;
-    height: 138px;
-    margin: 0 auto;
+    height: 137px;
+    margin-left: 3.2%;
     position: absolute;
-    margin-left: 1.1%;
     z-index: -999;
+    float: left;
+    overflow: hidden;
 }
 
 #popWorld{
@@ -326,3 +332,4 @@
     margin-left: 2px;
     margin-right: 2px;
 }
+
