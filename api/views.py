@@ -13,7 +13,7 @@ from api.Call.Server import Info as SInfo, Host
 from api.Call.Export import Export
 from api.dataParsing import External
 from api.dataParsing.Dashboard import InfoParsing as AIP, Banner
-from api.dataParsing.Statistics import Day
+from api.dataParsing.Statistics import AssetInfoDay
 import urllib3
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -44,10 +44,7 @@ def AssetInfo(request):
     sessionKey = SessionKey()
     AIDL = AssetInfoAPI(sessionKey)
     parserData = AIDL['dataList']
-    Day(parserData)
-
-    #print(SY)
-    #print(ST)
+    AssetInfoDay(parserData)
     returnList = AIP(parserData)
     return render(request, 'API/asset/info.html', returnList)
 

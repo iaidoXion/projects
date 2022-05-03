@@ -1,7 +1,7 @@
 import pandas as pd
 from datetime import datetime
 
-def Day(parserData) :
+def AssetInfoDay(parserData) :
     PDLC = len(parserData)
     DFL = []
     SDFL = []
@@ -19,7 +19,10 @@ def Day(parserData) :
         if AIPer.startswith('imac'):
             AI = 'Desktop'
         DFL.append([CI, AI, OI, DI, LI])
-        assetDataList.append({'computer_id':CI, 'asset_item' : AI, 'os_platform' : OI, 'disk_total_space' : DI, 'last_seen_at' : LI})
+        today= datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+        assetDataList.append({'today':today, 'computer_id':CI, 'asset_item' : AI, 'os_platform' : OI, 'disk_total_space' : DI, 'last_seen_at' : LI})
+    return assetDataList
+    """
         ################## Application ##################
         CIA = parserData[i]['ci_installed_application']
         if CIA is not None:
@@ -28,9 +31,15 @@ def Day(parserData) :
                 SI=CIA[j]['normalized_name']
                 SDFL.append([CI, SID, SI])
 
+    
     AOCNM = ["id", "asset", "os", "drive", "login"]
     DF = pd.DataFrame(DFL, columns=AOCNM)
-
+    dayAssetList = []
+    for DAC in range(len(DF.id)) :
+        dayAssetData ={'computer_id' : DF.id[DAC]}
+        dayAssetList.append(dayAssetData)
+    print(dayAssetList)
+    
     ################## Asset, OS, login group by count ##################
     ################## asset ##################
     AG = DF.groupby(["asset"])
@@ -84,5 +93,6 @@ def Day(parserData) :
 
     #returnList = {'asset':{'all' : AT, 'Statistics' : AS}, 'osStatistics' : OS, 'sw':{'all' : ST,'Statistics' : SS}, 'loginStatistics' : LS}
     returnList = {'asset':{'all' : AT, 'Statistics' : AS}, 'osStatistics' : OS, 'loginStatistics' : LS, 'assetDataList' : assetDataList}
-    print(returnList)
+    #print(returnList)
     return returnList
+    """
