@@ -3,7 +3,80 @@ function center(){
 };
 
 function barChart() {
-    const width = 465;
+
+var jsonData = [
+            {name: 'Server', value: 100},
+            {name: 'Desktop', value: 290},
+            {name: 'Notebook', value: 320},
+            {name: 'Monitor', value: 250},
+            {name: 'Printer', value: 230},
+            {name: 'Mobile', value: 150}
+        ];
+
+        var svgWidth = 400;
+        var svgHeight = 130;
+
+        var heightPad = 20;
+        var widthPad = 22;
+
+        var svg = d3.select("#barChart")
+            .append("svg")
+            .attr("width", svgWidth + (widthPad * 2))
+            .attr("height", svgHeight + (heightPad * 2))
+            .append("g")
+            .attr("transform", "translate(" + widthPad + "," + heightPad + ")");
+
+        //Set up scales
+        var xScale = d3.scale.ordinal()
+            .domain(jsonData.map(function(d) { return d.name; }))
+            .rangeRoundBands([0, svgWidth], .4);
+
+        var yScale = d3.scale.linear()
+            .domain([0, 400])
+            .range([svgHeight,-10]);
+
+       // Create bars
+        svg.selectAll("rect")
+            .data(jsonData)
+            .enter().append("rect")
+            .attr("x", function (d) { return xScale(d.name) + widthPad; })
+            .attr("y", function (d) { return yScale(d.value); })
+            .attr("height", function (d) { return svgHeight - yScale(d.value); })
+            .attr("width", xScale.rangeBand())
+            .attr("fill", "#e08a0b");
+
+        // Y axis
+        var yAxis = d3.svg.axis()
+            .scale(yScale)
+            .orient("left");
+
+        svg.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(" + widthPad + ",0)")
+            .call(yAxis)
+
+        // X axis
+        var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient("bottom");
+
+        svg.append("g")
+            .attr("class", "axis")
+            .attr("transform", "translate(" + widthPad + "," + svgHeight + ")")
+            .call(xAxis)
+            .append("text")
+            .attr("x", svgWidth / 2 - widthPad)
+            .attr("y", 50)
+            .text("")
+
+
+
+
+
+
+
+
+   /* const width = 465;
     const height = 170;
     const margin = {top: 20, left: 40, bottom: 20, right: 5};
 
@@ -146,8 +219,8 @@ function barChart2() {
         .attr("transform", "rotate(-40)")
         .attr("text-anchor", "end")
         .attr("fill", "orange");
-    });
-}
+    });*/
+};
 
 
 

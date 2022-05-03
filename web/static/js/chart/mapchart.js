@@ -27,7 +27,7 @@ function worldMapChart() {
     });
 }
 
-function koreaMapChart() {
+/*function koreaMapChart() {
 
     const width = 930;
     const height = 618;
@@ -54,6 +54,6 @@ function koreaMapChart() {
             .attr('d', path)
             .style("fill", "#858796");
     });
-}
+}*/
 
-worldMapChart(); koreaMapChart();
+worldMapChart(); /*koreaMapChart();*/

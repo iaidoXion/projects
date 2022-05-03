@@ -333,3 +333,67 @@
     margin-right: 2px;
 }
 
+#barChart{
+    font-size: 12px;
+}
+
+#barChart .axis path,
+.axis line{
+    fill: none;
+    stroke: #919191;
+    shape-rendering: crispEdges;
+}
+
+#barChart .axis text{
+    fill: #919191;
+}
+
+
+#lineChart {
+  font: 10px sans-serif;
+}
+
+#lineChart .grid .tick {
+	stroke: lightgrey;
+	opacity: 0.7;
+	shape-rendering: crispEdges;
+}
+
+#lineChart .grid path {
+	stroke-width: 0;
+}
+
+#lineChart .axis path {
+	fill: none;
+	stroke: #bbb;
+	shape-rendering: crispEdges;
+}
+
+#lineChart .axis text {
+	fill: #555;
+}
+
+#lineChart .axis line {
+	stroke: #e7e7e7;
+	shape-rendering: crispEdges;
+}
+
+#lineChart .axis .axis-label {
+	font-size: 14px;
+}
+
+#lineChart .line {
+	fill: none;
+	stroke-width: 1px;
+}
+
+#lineChart .dot {
+	/* consider the stroke-with the mouse detect radius? */
+	stroke: transparent;
+	stroke-width: 10px;
+	cursor: pointer;
+}
+
+#lineChart .dot:hover {
+	stroke: rgba(68, 127, 255, 0.3);
+}
