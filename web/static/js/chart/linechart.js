@@ -1,114 +1,177 @@
-/*d3.csv("/web/static/data/ttt.csv", lineChart);
-function lineChart(data) {
-console.log(data)
-data.
-// 여백을 넣어 스케일을 만든다.
-    xScale = d3.scaleLinear().domain([1,10.5]).range([20,480]);
-    yScale = d3.scaleLinear().domain([0,35]).range([480,20]);
-
-// 날짜를 표현하도록 X-축의 눈금을 설정한다.
-    xAxis = d3.axisBottom()
-                .scale(xScale)
-                .tickSize(480)
-                .tickValues([1,2,3,4,5,6,7,8,9,10]);
-
-    d3.select("svg").append("g").attr("id", "xAxisG").call(xAxis);
-
-    yAxis = d3.axisBottom()
-                .scale(yScale)
-                .ticks(10)
-                .tickSize(480);
-
-    d3.select("svg").append("g").attr("id", "yAxisG").call(yAxis);
-
-// 다음에 나오는 세 줄의 코드는 같은 데이터셋을 사용하지만, y위치가 각기 트윗, 리트윗, 관심글 담기 횟수를 나타낸다.
-    d3.select("svg").selectAll("circle.tweets")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("class", "tweets")
-        .attr("r", 5)
-        .attr("cx", function(d) {return xScale(d.day)})
-        .attr("cy", function(d) {return yScale(d.tweets)})
-        .style("fill", "black");
-
-    d3.select("svg").selectAll("circle.retweets")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("class", "retweets")
-        .attr("r", 5)
-        .attr("cx", function(d) {return xScale(d.day)})
-        .attr("cy", function(d) {return yScale(d.retweets)})
-        .style("fill", "lightgray");
-
-    d3.select("svg").selectAll("circle.favorites")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("class", "favorites")
-        .attr("r", 5)
-        .attr("cx", function(d) {return xScale(d.day)})
-        .attr("cy", function(d) {return yScale(d.favorites)})
-        .style("fill", "gray");
-
-// 선 생성기 하나만 정의하고, 각각의 선을 그릴 때 y() 접근자 메서드만 변경하면 더 효율적으로 구현할 수 있지만,
-// 이와 같이 따로 정의하면 각 선을 그리는 코드를 알아보기 쉽다.
-    var tweetLine = d3.line()
-        .x(function(d){
-            return xScale(d.day)
-        })
-        .y(function(d){
-            return yScale(d.tweets)
-        });
-
-// 세 개의 행에서 y() 접근자만 다른 것을 알 수 있다.
-    var retweetLine = d3.line()
-        .x(function(d){
-            return xScale(d.day)
-        })
-        .y(function(d){
-            return yScale(d.retweets)
-        });
-
-    var favLine = d3.line()
-        .x(function(d){
-            return xScale(d.day);
-        })
-        .y(function(d){
-            return yScale(d.favorites);
-        });
-
-// 새로운 <path> 요소는 각기 자신에 대응되는 생성기를 호출한다.
-    d3.select("svg")
-        .append("path")
-        .attr("d", tweetLine(data))
-        .attr("fill", "none")
-        .attr("stroke", "darkred")
-        .attr("stroke-width", 2);
-
-    d3.select("svg")
-        .append("path")
-        .attr("d", retweetLine(data))
-        .attr("fill", "none")
-        .attr("stroke", "gray")
-        .attr("stroke-width", 3);
-
-    d3.select("svg")
-        .append("path")
-        .attr("d", favLine(data))
-        .attr("fill", "none")
-        .attr("stroke", "black")
-        .attr("stroke-width", 2);
-
-
-
-}
-lineChart();*/
-
-
 function lineChart() {
-    const width = 465;
+
+//************************************************************
+// Data notice the structure
+//************************************************************
+var data = 	[
+	[{'x':1,'y':0},{'x':2,'y':500},{'x':3,'y':100},{'x':4,'y':0},{'x':5,'y':600}],
+	[{'x':1,'y':100},{'x':2,'y':600},{'x':3,'y':110},{'x':4,'y':100},{'x':5,'y':700}],
+	[{'x':1,'y':200},{'x':2,'y':700},{'x':3,'y':120},{'x':4,'y':200},{'x':5,'y':800}],
+	[{'x':1,'y':300},{'x':2,'y':800},{'x':3,'y':130},{'x':4,'y':300},{'x':5,'y':900}],
+	[{'x':1,'y':400},{'x':2,'y':900},{'x':3,'y':140},{'x':4,'y':400},{'x':5,'y':1000}]
+]
+
+var colors = [
+	'steelblue',
+	'green',
+	'red',
+	'purple'
+]
+
+
+//************************************************************
+// Create Margins and Axis and hook our zoom function
+//************************************************************
+var margin = {top: 20, right: 50, bottom: 30, left: 50},
+    width = 390,
+    height = 120;
+var x = d3.scale.linear()
+    .domain([0, 5])
+    .range([height, 0]);
+
+
+var y = d3.scale.linear()
+    .domain([0, 1000])
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+	.tickSize(-height)
+	.tickPadding(10)
+	.tickSubdivide(true)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+	.tickPadding(10)
+	.tickSize(-width)
+	.tickSubdivide(true)
+    .orient("left");
+
+var zoom = d3.behavior.zoom()
+    .x(x)
+    .y(y)
+    .scaleExtent([1, 10])
+    .on("zoom", zoomed);
+
+
+
+
+
+//************************************************************
+// Generate our SVG object
+//************************************************************
+var svg = d3.select("#lineChart").append("svg")
+	.call(zoom)
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+	.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis);
+
+svg.append("g")
+	.attr("class", "y axis")
+	.append("text")
+	.attr("class", "axis-label")
+	.attr("transform", "rotate(-90)")
+	.attr("y", (-margin.left) + 10)
+	.attr("x", -height/2)
+	.text('');
+
+svg.append("clipPath")
+	.attr("id", "clip")
+	.append("rect")
+	.attr("width", width)
+	.attr("height", height);
+
+
+
+
+
+//************************************************************
+// Create D3 line object and draw data on our SVG object
+//************************************************************
+var line = d3.svg.line()
+    .interpolate("linear")
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); });
+
+svg.selectAll('.line')
+	.data(data)
+	.enter()
+	.append("path")
+    .attr("class", "line")
+	.attr("clip-path", "url(#clip)")
+	.attr('stroke', function(d,i){
+		return colors[i%colors.length];
+	})
+    .attr("d", line);
+
+
+
+
+//************************************************************
+// Draw points on SVG object based on the data given
+//************************************************************
+var points = svg.selectAll('.dots')
+	.data(data)
+	.enter()
+	.append("g")
+    .attr("class", "dots")
+	.attr("clip-path", "url(#clip)");
+
+points.selectAll('.dot')
+	.data(function(d, index){
+		var a = [];
+		d.forEach(function(point,i){
+			a.push({'index': index, 'point': point});
+		});
+		return a;
+	})
+	.enter()
+	.append('circle')
+	.attr('class','dot')
+	.attr("r", 2.5)
+	.attr('fill', function(d,i){
+		return colors[d.index%colors.length];
+	})
+	.attr("transform", function(d) {
+		return "translate(" + x(d.point.x) + "," + y(d.point.y) + ")"; }
+	);
+
+
+
+
+
+
+//************************************************************
+// Zoom specific updates
+//************************************************************
+function zoomed() {
+	svg.select(".x.axis").call(xAxis);
+	svg.select(".y.axis").call(yAxis);
+	svg.selectAll('path.line').attr('d', line);
+
+	points.selectAll('circle').attr("transform", function(d) {
+		return "translate(" + x(d.point.x) + "," + y(d.point.y) + ")"; }
+	);
+}
+
+
+
+
+
+
+
+    /*const width = 465;
     const height = 170;
     const margin = {top: 10, right: 10, bottom: 20, left: 40};
     const data = [
@@ -167,6 +230,6 @@ function lineChart() {
       .attr("d", line);
     svg.append('g').call(xAxis);
     svg.append('g').call(yAxis);
-    svg.node();
+    svg.node();*/
 }
 lineChart();

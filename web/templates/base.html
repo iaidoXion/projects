@@ -9,8 +9,6 @@
     <meta name="description" content="">
     <meta name="author" content="iaido">
     <title>Xion Solution</title>
-    <!-- favicon -->
-    <link rel="shortcut icon" href="#">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/bootstrap/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/bootstrap/bootstrap.min.css' %}">
@@ -40,9 +38,16 @@
     <script src="{% static 'js/common/sbAdmin2.min.js' %}"></script>
     <!-- d3 js -->
     <!--<script type="text/javascript" src="{% static 'js/common/d3/d3.v4.min.js"></script>-->
-    <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.min.js' %}"></script>
+
+    <!--korea chart (d3 낮은버전)-->
+    <script type="text/javascript" src="{% static 'js/common/d3/d3.v3.min.js' %}"></script>
+    <script src="https://d3js.org/queue.v1.min.js"></script>
+
+<!--    <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.min.js' %}"></script>-->
     <script type="text/javascript" src="{% static 'js/common/topojson.v1.min.js' %}"></script>
+
+
 
 </head>
 <body>
@@ -67,6 +72,7 @@
     <script src="{% static 'js/chart/barchart.js' %}"></script>
     <script src="{% static 'js/chart/piechart.js' %}"></script>
     <script src="{% static 'js/chart/linechart.js' %}"></script>
+    <script src="{% static 'js/chart/koreaMapChart.js' %}"></script>
     <!-- Dashboard Chart End -->
     <!-- navbar alert -->
     <script src="{% static 'js/common/nav.js' %}"></script>
