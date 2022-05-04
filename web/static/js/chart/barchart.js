@@ -71,11 +71,6 @@ var jsonData = [
 
 
 
-
-
-
-
-
    /* const width = 465;
     const height = 170;
     const margin = {top: 20, left: 40, bottom: 20, right: 5};

@@ -334,7 +334,7 @@
 }
 
 #barChart{
-    font-size: 12px;
+    font-size: 11px;
 }
 
 #barChart .axis path,
@@ -348,13 +348,17 @@
     fill: #919191;
 }
 
+#barChart rect:hover {
+    cursor: pointer;
+	fill: rgba(223, 116, 84, 41);
+}
 
 #lineChart {
   font: 10px sans-serif;
 }
 
 #lineChart .grid .tick {
-	stroke: lightgrey;
+	stroke: lightgray;
 	opacity: 0.7;
 	shape-rendering: crispEdges;
 }
@@ -384,7 +388,7 @@
 
 #lineChart .line {
 	fill: none;
-	stroke-width: 1px;
+	stroke-width: 2px;
 }
 
 #lineChart .dot {
@@ -395,5 +399,163 @@
 }
 
 #lineChart .dot:hover {
-	stroke: rgba(68, 127, 255, 0.3);
+	stroke: rgba(255, 134, 114, 1);
+}
+
+
+
+#koreaMap path {
+    stroke-linecap:round; stroke-linejoin:round;
+}
+#koreaMap .reloadButton {
+    border: solid 1px #000; width: auto; color: #000; background-color: #fff;
+    padding: 5px 7px; font-weight: bold; border-radius: 6px;
+    position: absolute; top: 20px; left: 20px;
+}
+#koreaMap .reloadButton:hover {
+    border: solid 1px #f00; color: #fff; background-color: #000066; cursor: pointer;
+}
+#koreaMap svg#legendsForKoreaMap {
+    width: 130px; height: 60px; border: 0; margin: 0; padding: 0;
+    position: absolute; top: 20px; left: 450px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+}
+#koreaMap svg#legendsForKoreaMap text {
+    fill: #000000; stroke: #000000; font-family: "Nanum Gothic";
+    font-size: 10px; text-anchor: left; font-weight: bold; stroke-width: 0;
+}
+#koreaMap svg {
+    width: 920px;
+    height: 580px;
+    margin: 0px auto 5px;
+}
+#koreaMap #river #hanriver { fill: #00ffff; opacity: 0.3;
+}
+#koreaMap .municipality { fill: lightgray; stroke: gray; stroke-width: 1px; fill-opacity: 1; stroke-opacity: 0.5;
+}
+#koreaMap .municipality-label {
+ fill: #000000; font-size: 12px; font-weight: 500; text-anchor: middle; pointer-events: none;
+}
+#koreaMap .placeCircle { fill: #fff; stroke: gray; opacity: 0.8; stroke-width: 1px;
+}
+#koreaMap .placeName {
+display: none; fill: #000000;
+font-family: "Nanum Gothic"; font-size: 10px; text-anchor: middle; font-weight: bold;
+stroke-width: 0.2px; stroke: #fff;
+}
+#koreaMap path { fill: lightgray; stroke: #gray; stroke-width: 0.5px;
+}
+/* #koreaMap path:hover { fill: #ffcc00; } */
+#koreaMap text { font-family: "Nanum Gothic"; font-size: 10px; pointer-events: none;
+}
+#koreaMap #elecrail path { fill: none; stroke: #ff9900; stroke-width: 0.5px; opacity: 0.95;
+}
+#koreaMap #road path { fill: none; stroke: #df7454; stroke-width: 1px; opacity: 1;
+}
+#koreaMap #maps #path-99 { fill: #fff;
+}
+
+#koreaMap path {
+    stroke-linecap:round; stroke-linejoin:round;
+}
+#koreaMap .reloadButton {
+    border: solid 1px #000; width: auto; color: #000; background-color: #fff;
+    padding: 5px 7px; font-weight: bold; border-radius: 6px;
+    position: absolute; top: 20px; left: 20px;
+}
+#koreaMap .reloadButton:hover {
+    border: solid 1px #f00; color: #fff; background-color: #000066; cursor: pointer;
+}
+#koreaMap svg#legendsForKoreaMap {
+    width: 130px; height: 60px; border: 0; margin: 0; padding: 0;
+    position: absolute; top: 20px; left: 450px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+}
+#koreaMap svg#legendsForKoreaMap text {
+    fill: #000000; stroke: #000000; font-family: "Nanum Gothic";
+    font-size: 10px; text-anchor: left; font-weight: bold; stroke-width: 0;
+}
+#koreaMap svg {
+    width: 920px;
+    height: 580px;
+    margin: 0px auto 5px;
+}
+#koreaMap #river #hanriver { fill: #00ffff; opacity: 0.3;
+}
+#koreaMap .municipality { fill: lightgray; stroke: gray; stroke-width: 1px; fill-opacity: 1; stroke-opacity: 0.5;
+}
+#koreaMap .municipality-label {
+ fill: #000000; font-size: 12px; font-weight: 500; text-anchor: middle; pointer-events: none;
+}
+#koreaMap .placeCircle { fill: #fff; stroke: gray; opacity: 0.8; stroke-width: 1px;
+}
+#koreaMap .placeName {
+display: none; fill: #000000;
+font-family: "Nanum Gothic"; font-size: 10px; text-anchor: middle; font-weight: bold;
+stroke-width: 0.2px; stroke: #fff;
+}
+#koreaMap path { fill: lightgray; stroke: #gray; stroke-width: 0.5px;
+}
+/* #koreaMap path:hover { fill: #ffcc00; } */
+#koreaMap text { font-family: "Nanum Gothic"; font-size: 10px; pointer-events: none;
+}
+#koreaMap #elecrail path { fill: none; stroke: #ff9900; stroke-width: 0.5px; opacity: 0.95;
+}
+#koreaMap #road path { fill: none; stroke: #df7454; stroke-width: 1px; opacity: 1;
+}
+#koreaMap #maps #path-99 { fill: #fff;
+}
+
+
+
+
+#koreaPopMap path {
+    stroke-linecap:round; stroke-linejoin:round;
+}
+#koreaPopMap .reloadButton {
+    border: solid 1px #000; width: auto; color: #000; background-color: #fff;
+    padding: 5px 7px; font-weight: bold; border-radius: 6px;
+    position: absolute; top: 20px; left: 20px;
+}
+#koreaPopMap .reloadButton:hover {
+    border: solid 1px #f00; color: #fff; background-color: #000066; cursor: pointer;
+}
+#koreaPopMap svg#legendsForKoreaMap {
+    width: 130px; height: 60px; border: 0; margin: 0; padding: 0;
+    position: absolute; top: 20px; left: 450px; border-radius: 10px;
+    background: rgba(255, 255, 255, 0.6);
+}
+#koreaPopMap svg#legendsForKoreaMap text {
+    fill: #000000; stroke: #000000; font-family: "Nanum Gothic";
+    font-size: 10px; text-anchor: left; font-weight: bold; stroke-width: 0;
+}
+#koreaPopMap svg {
+    width: 100%;
+    height: 820px;
+    margin: 0px auto 5px;
+}
+#koreaPopMap #river #hanriver { fill: #00ffff; opacity: 0.3;
+}
+#koreaPopMap .municipality { fill: lightgray; stroke: gray; stroke-width: 1px; fill-opacity: 1; stroke-opacity: 0.5;
+}
+#koreaPopMap .municipality-label {
+ fill: #000000; font-size: 12px; font-weight: 500; text-anchor: middle; pointer-events: none;
+}
+#koreaPopMap .placeCircle { fill: #fff; stroke: gray; opacity: 0.8; stroke-width: 1px;
+}
+#koreaPopMap .placeName {
+display: none; fill: #000000;
+font-family: "Nanum Gothic"; font-size: 10px; text-anchor: middle; font-weight: bold;
+stroke-width: 0.2px; stroke: #fff;
+}
+#koreaPopMap path { fill: lightgray; stroke: #gray; stroke-width: 0.5px;
+}
+/* #koreaPopMap path:hover { fill: #ffcc00; } */
+#koreaPopMap text { font-family: "Nanum Gothic"; font-size: 10px; pointer-events: none;
+}
+#koreaPopMap #elecrail path { fill: none; stroke: #ff9900; stroke-width: 0.5px; opacity: 0.95;
+}
+#koreaPopMap #road path { fill: none; stroke: #df7454; stroke-width: 1px; opacity: 1;
+}
+#koreaPopMap #maps #path-99 { fill: #fff;
 }
