@@ -3,21 +3,21 @@ function piechart() {
     const height = 138;
     const data = [
       {name: 'Mac', value: 44654, color: '#f4c17c'},
-      {name: 'Windows', value: 54654, color: '#fae8a4'},
+      {name: 'Windows', value: 54654, color: '#e08a0b'},
       {name: 'Linux', value: 50654, color: '#df7454'}
     ];
     //'#efa86b', '#c1484f', '#d35d50', '#f4c17c', '#fae8a4', '#df7454', '#e88d5d', '#f8d690'
-    const arc = d3.arc() // .arc() 새로운 기본값의 아치(호) 생성
+    const arc = d3.svg.arc() // .arc() 새로운 기본값의 아치(호) 생성
         .innerRadius(30) // .innerRadius() 안쪽 반지름 값, 0이면 완전한 원이되고 값이 있으면 도넛 형태가 됩니다.
         .outerRadius(Math.min(width, height) / 2); // .outerRadius() 바깥쪽 반지름값
 
     // 라벨이 위치할 반지름 값을 설정합니다.
     const arcLabel = (() => {
       const radius = Math.min(width, height) / 3;
-      return d3.arc().innerRadius(radius).outerRadius(radius);
+      return d3.svg.arc().innerRadius(radius).outerRadius(radius);
     })();
 
-    const pie = d3.pie()  // 새로운 기본값의 파이 모양의 생성
+    const pie = d3.layout.pie()  // 새로운 기본값의 파이 모양의 생성
         .sort((a, b) => b.value - a.value) // data의 value 큰값 > 작은값 순으로 정렬 ex. 반대 순서는 a.value - b.value
         .value(d => d.value);
 
