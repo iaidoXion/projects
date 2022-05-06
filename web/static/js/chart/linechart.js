@@ -1,8 +1,268 @@
 function lineChart() {
 
-//************************************************************
+var data = [{
+    name: "A",
+    values: [{
+        date: "2021-10-01",
+        price: "0"
+      },
+      {
+        date: "2021-10-02",
+        price: "400"
+      },
+      {
+        date: "2021-10-03",
+        price: "1000"
+      },
+      {
+        date: "2021-10-04",
+        price: "700"
+      },
+      {
+        date: "2021-10-05",
+        price: "550"
+      }
+    ]
+  },
+  {
+    name: "B",
+    values: [{
+        date: "2021-10-01",
+        price: "400"
+      },
+      {
+        date: "2021-10-02",
+        price: "1000"
+      },
+      {
+        date: "2021-10-03",
+        price: "300"
+      },
+      {
+        date: "2021-10-04",
+        price: "1000"
+      },
+      {
+        date: "2021-10-05",
+        price: "900"
+      }
+    ]
+  },
+  {
+    name: "C",
+    values: [{
+        date: "2021-10-01",
+        price: "300"
+      },
+      {
+        date: "2021-10-02",
+        price: "200"
+      },
+      {
+        date: "2021-10-03",
+        price: "100"
+      },
+      {
+        date: "2021-10-04",
+        price: "200"
+      },
+      {
+        date: "2021-10-05",
+        price: "1000"
+      }
+    ]
+  },
+  {
+    name: "D",
+    values: [{
+        date: "2021-10-01",
+        price: "800"
+      },
+      {
+        date: "2021-10-02",
+        price: "500"
+      },
+      {
+        date: "2021-10-03",
+        price: "400"
+      },
+      {
+        date: "2021-10-04",
+        price: "700"
+      },
+      {
+        date: "2021-10-05",
+        price: "600"
+      }
+    ]
+  }
+
+];
+const margin = 30;
+const width = 450 - margin;
+const height = 147;
+var duration = 100;
+var lineOpacity = "0.4";
+var lineOpacityHover = "0.9";
+var otherLinesOpacityHover = "0.1";
+var lineStroke = "2px";
+var lineStrokeHover = "2.5px";
+var circleOpacity = '0.85';
+var circleOpacityOnLineHover = "0.25"
+var circleRadius = 3;
+var circleRadiusHover = 6;
+/* Format Data */
+var parseDate = d3.time.format("%Y-%m-%d");
+data.forEach(function(d) {
+  d.values.forEach(function(d) {
+    d.date = parseDate.parse(d.date);
+    d.price = +d.price;
+  });
+});
+/* Scale */
+var xScale = d3.time.scale()
+  .domain(d3.extent(data[0].values, d => d.date))
+  .range([0, width - margin]);
+var yScale = d3.scale.linear()
+  .domain([0, d3.max(data[0].values, d => d.price)])
+  .range([height - margin, 0]);
+// var color = d3.scale.ordinal(d3.schemeCategory10);
+var color = d3.scale.category10();
+/* Add SVG */
+const svg = d3.select("#lineChart")
+  .style("margin-left", '3%')
+  .append('svg')
+  .attr("width", (width + margin) + "px")
+  .attr("height", (height + margin) + "px")
+  .append('g')
+  .attr("transform", `translate(${margin}, ${margin})`);
+/* Add line into SVG */
+var line = d3.svg.line()
+  .x(d => xScale(d.date))
+  .y(d => yScale(d.price));
+let lines = svg.append('g')
+  .attr('class', 'lines');
+lines.selectAll('.line-group')
+  .data(data).enter()
+  .append('g')
+  .attr('class', 'line-group')
+  .on("mouseover", function(d, i) {
+    svg.append("text")
+      .attr("class", "title-text")
+      .style("fill", color(i))
+      .text(d.name)
+      .attr("text-anchor", "middle")
+      .attr("x", (width - margin) / 2)
+      .attr("y", 5);
+  })
+  .on("mouseout", function(d) {
+    svg.select(".title-text").remove();
+  })
+  .append('path')
+  .attr('class', 'line')
+  .attr('d', d => line(d.values))
+  .style('stroke', (d, i) => color(i))
+  .style('opacity', lineOpacity)
+  .on("mouseover", function(d) {
+    d3.selectAll('.line')
+      .style('opacity', otherLinesOpacityHover);
+    d3.selectAll('.circle')
+      .style('opacity', circleOpacityOnLineHover);
+    d3.select(this)
+      .style('opacity', lineOpacityHover)
+      .style("stroke-width", lineStrokeHover)
+      .style("cursor", "pointer");
+  })
+  .on("mouseout", function(d) {
+    d3.selectAll(".line")
+      .style('opacity', lineOpacity);
+    d3.selectAll('.circle')
+      .style('opacity', circleOpacity);
+    d3.select(this)
+      .style("stroke-width", lineStroke)
+      .style("cursor", "none");
+  });
+/* Add circles in the line */
+lines.selectAll("circle-group")
+  .data(data).enter()
+  .append("g")
+  .style("fill", (d, i) => color(i))
+  .selectAll("circle")
+  .data(d => d.values).enter()
+  .append("g")
+  .attr("class", "circle")
+  .on("mouseover", function(d) {
+    d3.select(this)
+      .style("cursor", "pointer")
+      .append("text")
+      .attr("class", "text")
+      .text(`${d.price}`)
+      .attr("x", d => xScale(d.date) + 5)
+      .attr("y", d => yScale(d.price) - 10);
+  })
+  .on("mouseout", function(d) {
+    d3.select(this)
+      .style("cursor", "none")
+      .transition()
+      .duration(duration)
+      .selectAll(".text").remove();
+  })
+  .append("circle")
+  .attr("cx", d => xScale(d.date))
+  .attr("cy", d => yScale(d.price))
+  .attr("r", circleRadius)
+  .style('opacity', circleOpacity)
+  .on("mouseover", function(d) {
+    d3.select(this)
+      .transition()
+      .duration(duration)
+      .attr("r", circleRadiusHover);
+  })
+  .on("mouseout", function(d) {
+    d3.select(this)
+      .transition()
+      .duration(duration)
+      .attr("r", circleRadius);
+  });
+var xAxis = d3.svg.axis().scale(xScale)
+  .orient("bottom").tickFormat(d3.time.format("%Y-%m-%d")).tickSize(1);
+var yAxis = d3.svg.axis().scale(yScale)
+  .orient("left").tickSize(1);
+svg.append("g")
+  .attr("class", "x axis")
+  .attr("transform", `translate(0, ${height-margin})`)
+  .call(xAxis.ticks(d3.time.day));
+svg.append("g")
+  .attr("class", "y axis")
+  .call(yAxis)
+  .append('text')
+  .attr("y", 15)
+  .attr("transform", "rotate(-90)")
+  .attr("fill", "#000")
+  .attr('text-anchor', 'middle')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+/*/
+/************************************************************
 // Data notice the structure
-//************************************************************
+/*/
+/************************************************************
 var data = 	[
 	[{'x':1,'y':0},{'x':2,'y':500},{'x':3,'y':100},{'x':4,'y':0},{'x':5,'y':600}],
 	[{'x':1,'y':100},{'x':2,'y':600},{'x':3,'y':200},{'x':4,'y':100},{'x':5,'y':700}],
@@ -19,9 +279,11 @@ var colors = [
 ]
 
 
-//************************************************************
+/*/
+/************************************************************
 // Create Margins and Axis and hook our zoom function
-//************************************************************
+/*/
+/************************************************************
 var margin = {top: 20, right: 50, bottom: 30, left: 50},
     width = 390,
     height = 120;
@@ -58,9 +320,11 @@ var zoom = d3.behavior.zoom()
 
 
 
-//************************************************************
+/*/
+/************************************************************
 // SVG 객체 생성
-//************************************************************
+/*/
+/************************************************************
 var svg = d3.select("#lineChart").append("svg")
 	.call(zoom)
     .attr("width", width + margin.left + margin.right)
@@ -96,9 +360,11 @@ svg.append("clipPath")
 
 
 
-//************************************************************
+/*/
+/************************************************************
 // Create D3 line object and draw data on our SVG object
-//************************************************************
+/*/
+/************************************************************
 var line = d3.svg.line()
     .interpolate("linear")
     .x(function(d) { return x(d.x); })
@@ -118,9 +384,11 @@ svg.selectAll('.line')
 
 
 
-//************************************************************
+/*/
+/************************************************************
 // 주어진 데이터를 기반으로 SVG 객체에 점 그리기
-//************************************************************
+/*/
+/************************************************************
 var points = svg.selectAll('.dots')
 	.data(data)
 	.enter()
@@ -152,9 +420,11 @@ points.selectAll('.dot')
 
 
 
-//************************************************************
+/*/
+/************************************************************
 // Zoom specific updates
-//************************************************************
+/*/
+/************************************************************
 function zoomed() {
 	svg.select(".x.axis").call(xAxis);
 	svg.select(".y.axis").call(yAxis);
@@ -165,6 +435,7 @@ function zoomed() {
 	);
 }
 
+*/
 
 
 
