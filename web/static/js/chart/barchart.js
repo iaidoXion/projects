@@ -46,24 +46,18 @@ var jsonData = [
             .attr("fill", "#e08a0b")
             .on("mouseover", function(d, i) {
                 d3.select(this)
-                .attr("class", "title-text")
                 .style("cursor", "pointer")
-                .append("text")
-                .text(d.value)
-                .attr("text-anchor", "middle");
+                .transition()
 
-                svg.append("text")
-                .attr("class", "title-text")
+                svg.selectAll("rect")
+                .attr("class", "bar-tooltip")
                 .style("fill", "gray")
-                .text(d.name)
+                .text(d.value)
                 .attr("text-anchor", "middle");
             })
             .on("mouseout", function(d) {
-                d3.select(this)
-                .style("cursor", "none")
-                .transition()
-                .selectAll(".text").remove();
-            });
+                svg.select(".bar-tooltip").remove();
+            })
 
         // Y axis
         var yAxis = d3.svg.axis()

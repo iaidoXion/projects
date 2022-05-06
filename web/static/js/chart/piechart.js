@@ -42,15 +42,25 @@ function piechart() {
       .data(arcs)
       .enter().append('path')
       // 이전과 동일하게 가상 path 요소를 만들고 그래프 데이터와 매핑하여 엘리먼트를 추가합니다.
-        .attr('fill', d => d.data.color)
-        // 다른 그래프와 다르게 .data 라는 객체가 추가되어 있는데, 위에 arcs 변수를 선언할때
-        // .pie(data)가 {data, value, index, startAngle, endAngle, padAngle} 의 값을 가지고 있습니다.
-        .attr('stroke', 'white')
-        .attr('d', arc)
-        .append('title')
-        .text(d => `${d.data.name}: ${d.data.value}`);
-        // 각각 페스의 자식으로 title의 엘리먼트에 텍스트로 출력합니다.
-        // 실제로 뷰에 출력되지는 않지만 시멘틱하게 각각의 요소의 설명 문자열을 제공합니다.
+      .attr('fill', d => d.data.color)
+      // 다른 그래프와 다르게 .data 라는 객체가 추가되어 있는데, 위에 arcs 변수를 선언할때
+      // .pie(data)가 {data, value, index, startAngle, endAngle, padAngle} 의 값을 가지고 있습니다.
+      .attr('stroke', 'white')
+      .attr('d', arc)
+      .append('title')
+      .text(d => `${d.data.name}: ${d.data.value}`);
+      // 각각 페스의 자식으로 title의 엘리먼트에 텍스트로 출력합니다.
+      // 실제로 뷰에 출력되지는 않지만 시멘틱하게 각각의 요소의 설명 문자열을 제공합니다.
+
+    svg.selectAll("path")
+      .on("mouseover", function(d, i){
+        d3.select(this)
+            .style("cursor", "pointer")
+
+      })
+      .on("mouseout", function(d) {
+        svg.select(".pie-text").remove();
+      });
 
     const text = g.selectAll('text')
       .data(arcs)
