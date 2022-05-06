@@ -43,7 +43,27 @@ var jsonData = [
             .attr("y", function (d) { return yScale(d.value); })
             .attr("height", function (d) { return svgHeight - yScale(d.value); })
             .attr("width", xScale.rangeBand())
-            .attr("fill", "#e08a0b");
+            .attr("fill", "#e08a0b")
+            .on("mouseover", function(d, i) {
+                d3.select(this)
+                .attr("class", "title-text")
+                .style("cursor", "pointer")
+                .append("text")
+                .text(d.value)
+                .attr("text-anchor", "middle");
+
+                svg.append("text")
+                .attr("class", "title-text")
+                .style("fill", "gray")
+                .text(d.name)
+                .attr("text-anchor", "middle");
+            })
+            .on("mouseout", function(d) {
+                d3.select(this)
+                .style("cursor", "none")
+                .transition()
+                .selectAll(".text").remove();
+            });
 
         // Y axis
         var yAxis = d3.svg.axis()

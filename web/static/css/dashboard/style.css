@@ -118,6 +118,7 @@
 }
 
 .mapRightWrap{
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -130,6 +131,24 @@
     border: 1px solid #e3e6f0;
     background: #f7f7f7;
 }
+
+.mapGps{
+    float: left;
+    margin-left: 5%;
+}
+.mapGps img{
+    margin-top: 21px;
+    width: 35px;
+    height: 35px;
+}
+
+.mapCont{
+    float: left;
+    font-size: 13px;
+    padding: 22px;
+    margin-left: 10px;
+}
+
 
 .container-left {
     width: 25%;
@@ -348,65 +367,29 @@
     fill: #919191;
 }
 
-#barChart rect:hover {
-    cursor: pointer;
-	fill: rgba(223, 116, 84, 41);
-}
-
 #lineChart {
-  font: 10px sans-serif;
+    font-size: 11px;
 }
 
-#lineChart .grid .tick {
-	stroke: lightgray;
-	opacity: 0.7;
-	shape-rendering: crispEdges;
-}
-
-#lineChart .grid path {
-	stroke-width: 0;
-}
-
-#lineChart .axis path {
+#lineChart path {
 	fill: none;
-	stroke: #bbb;
+	stroke: #919191;
 	shape-rendering: crispEdges;
 }
 
-#lineChart .axis text {
-	fill: #555;
-}
-
-#lineChart .axis line {
-	stroke: #e7e7e7;
-	shape-rendering: crispEdges;
-}
-
-#lineChart .axis .axis-label {
-	font-size: 14px;
-}
-
-#lineChart .line {
-	fill: none;
+#lineChart .line-group{
+	shape-rendering: geometricPrecision;
 	stroke-width: 2px;
 }
 
-#lineChart .dot {
-	/* consider the stroke-with the mouse detect radius? */
-	stroke: transparent;
-	stroke-width: 10px;
-	cursor: pointer;
+#lineChart .axis text {
+	fill: #919191;
 }
-
-#lineChart .dot:hover {
-	stroke: rgba(255, 134, 114, 1);
-}
-
-
 
 #koreaMap path {
     stroke-linecap:round; stroke-linejoin:round;
 }
+
 #koreaMap .reloadButton {
     border: solid 1px #000; width: auto; color: #000; background-color: #fff;
     padding: 5px 7px; font-weight: bold; border-radius: 6px;

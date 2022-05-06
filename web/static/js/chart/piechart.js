@@ -47,7 +47,7 @@ function piechart() {
         // .pie(data)가 {data, value, index, startAngle, endAngle, padAngle} 의 값을 가지고 있습니다.
         .attr('stroke', 'white')
         .attr('d', arc)
-      .append('title')
+        .append('title')
         .text(d => `${d.data.name}: ${d.data.value}`);
         // 각각 페스의 자식으로 title의 엘리먼트에 텍스트로 출력합니다.
         // 실제로 뷰에 출력되지는 않지만 시멘틱하게 각각의 요소의 설명 문자열을 제공합니다.
