@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'js/common/jquery/ajax.jquery.min.js' %}"></script>
 <div class="container-frame container-color">
     <div class="container-color container-mid">
         <div class="container-section-color container-left my-float-left">
@@ -255,4 +253,15 @@
 		</div>
 	</div>
 </div>
+    <!-- Dashboard Chart Start -->
+<!--    <script src="{% static 'js/chart/gaugeChart.js' %}"></script>-->
+    <script src="{% static 'js/chart/mapchart.js' %}"></script>
+    <script src="{% static 'js/chart/barchart.js' %}"></script>
+    <script src="{% static 'js/chart/piechart.js' %}"></script>
+    <script src="{% static 'js/chart/linechart.js' %}"></script>
+    <!-- Dashboard Chart End -->
+    <!-- navbar alert -->
+    <script src="{% static 'js/common/nav.js' %}"></script>
+    <!-- dashboard jquery -->
+    <script src="{% static 'js/common/dashboard.js' %}"></script>
 {% endblock %}

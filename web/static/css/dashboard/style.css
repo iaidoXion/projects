@@ -367,6 +367,10 @@
     fill: #919191;
 }
 
+#barChart .bar-tooltip{
+    left: 100px;
+}
+
 #lineChart {
     font-size: 11px;
 }
