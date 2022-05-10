@@ -1,12 +1,11 @@
 function piechart(pieChartData) {
     const width = 200;
     const height = 170;
-
+    const color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
     //'#efa86b', '#c1484f', '#d35d50', '#f4c17c', '#fae8a4', '#df7454', '#e88d5d', '#f8d690'
     const arc = d3.svg.arc() // .arc() 새로운 기본값의 아치(호) 생성
         .innerRadius(30) // .innerRadius() 안쪽 반지름 값, 0이면 완전한 원이되고 값이 있으면 도넛 형태가 됩니다.
         .outerRadius(Math.min(width, height) / 2.3); // .outerRadius() 바깥쪽 반지름값
-
     // 라벨이 위치할 반지름 값을 설정합니다.
     const arcLabel = (() => {
       const radius = Math.min(width, height) / 3.3;
@@ -35,7 +34,7 @@ function piechart(pieChartData) {
       .data(arcs)
       .enter().append('path')
       // 이전과 동일하게 가상 path 요소를 만들고 그래프 데이터와 매핑하여 엘리먼트를 추가합니다.
-      .attr('fill', d => d.data.color)
+      .attr('fill', function(d,i) { return color[i]; })
       // 다른 그래프와 다르게 .data 라는 객체가 추가되어 있는데, 위에 arcs 변수를 선언할때
       // .pie(data)가 {data, value, index, startAngle, endAngle, padAngle} 의 값을 가지고 있습니다.
       .attr('stroke', 'white')

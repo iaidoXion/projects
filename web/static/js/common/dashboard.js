@@ -38,6 +38,15 @@ $(function() {
     });
 });
 
+
+$("#demo2").als({
+	visible_items: 8,
+	scrolling_items: 1,
+	orientation: "horizontal",
+	circular: "yes",
+	autoscroll: "no"
+});
+/*
 //슬라이드 배너
 $(function(){
     $(".conBotPrev").click(function(){
@@ -52,5 +61,6 @@ $(function(){
     });
 });
 
+*/
 
 

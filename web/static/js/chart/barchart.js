@@ -4,8 +4,6 @@ function center(){
 
 function barChart(barChartData) {
 
-
-        var hoverColor = '#eec42d';
         var tooltip = d3
                     .select('#barChart')
                     .append('div')
@@ -41,7 +39,7 @@ function barChart(barChartData) {
             .rangeRoundBands([0, svgWidth], .4);
 
         var yScale = d3.scale.linear()
-            .domain([0, 400])
+            .domain([0, d3.max(barChartData, function (d) { return d.value; })])
             .range([svgHeight,-10]);
 
        // Create bars

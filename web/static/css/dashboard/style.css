@@ -177,101 +177,6 @@
     margin-bottom: 21px;
 }
 
-.container-bot-wrapper{
-    width: 100%;
-    margin: 0 auto;
-}
-
-.container-bot-content {
-    width: 9.7%;
-    height: 82px;
-    margin-right: 2%;
-    background-color: #ffffff;
-}
-
-.container-bot-content2 {
-    width: 9.7%;
-    height: 82px;
-    background-color: #ffffff;
-    margin-top: 28px;
-}
-
-.container-bot-content3 {
-    width: 9.7%;
-    height: 82px;
-    background-color: #ffffff;
-    margin-top: 28px;
-    margin-left: 2%;
-}
-
-.col-center {
-	margin: 0 auto;
-	float: none !important;
-}
-
-.carousel .item {
-    text-align: center;
-    height: 137px;
-}
-.carousel .item .img-box {
-	background: #fff;
-	padding: 9px;
-	box-shadow: 0 6px 20px -6px rgba(0,0,0,0.4);
-}
-.carousel .item img {
-    margin: 0 auto;
-}
-.carousel .carousel-control {
-	width: 68px;
-	background: none;
-}
-.carousel .carousel-control i {
-    font-size: 20px;
-    top: 50%;
-    display: inline-block;
-    margin-top: -15px;
-    z-index: 5;
-    left: 0;
-    right: 0;
-	color: rgba(0, 0, 0, 0.8);
-    text-shadow: 0 3px 3px #e6e6e6, 0 0 0 #000;
-}
-
-.conBotPrev{
-    min-height: 136px;
-    float: left;
-    width: 4%;
-    background: #fff;
-    padding-top: 55px;
-}
-
-.conBotNext{
-    min-height: 136px;
-    position: absolute;
-    width: 4%;
-    padding-top: 55px;
-    margin-left: 44%;
-    background: #fff;
-}
-
-.container-bot-content {
-    width: 9.7%;
-    height: 82px;
-    margin-right: 2%;
-    background-color: #fff;
-    margin-top: 28px;
-}
-
-.conBotWrap {
-    width: 98%;
-    height: 137px;
-    margin-left: 3.2%;
-    position: absolute;
-    z-index: -999;
-    float: left;
-    overflow: hidden;
-}
-
 #popWorld{
     width: 98%;
     height: 900px;
@@ -351,6 +256,7 @@
     margin-top: 2px;
     margin-left: 2px;
     margin-right: 2px;
+    padding-top: 8px;
 }
 
 #barChart{
@@ -365,11 +271,7 @@
 }
 
 #barChart .axis text{
-    fill: #919191;
-}
-
-#barChart .bar-tooltip{
-    left: 100px;
+    fill: #717384;
 }
 
 #lineChart {
@@ -379,16 +281,18 @@
 #lineChart path {
 	fill: none;
 	stroke: #919191;
-	shape-rendering: crispEdges;
+}
+
+#lineChart .domain {
+    shape-rendering: crispEdges;
 }
 
 #lineChart .line-group{
-	shape-rendering: geometricPrecision;
 	stroke-width: 3px;
 }
 
 #lineChart .axis text {
-	fill: #919191;
+	fill: #717384;
 }
 
 #lineLegend svg {
@@ -406,6 +310,7 @@
 
 #pieChart text{
     pointer-events: none;
+    fill: #717384;
 }
 
 #koreaMap path {
@@ -565,4 +470,73 @@ stroke-width: 0.2px; stroke: #fff;
 #koreaPopMap #maps #path-99 { fill: #fff;
 }
 
+/*************************************
+ * generic styling for ALS elements
+ ************************************/
+.als-container {
+	position: relative;
+	width: 100%;
+	margin: 0px auto;
+	z-index: 0;
+}
 
+.als-viewport {
+	position: relative;
+	overflow: hidden;
+	margin: 0px auto;
+}
+
+.als-wrapper {
+	position: relative;
+	list-style: none;
+}
+
+.als-item {
+	position: relative;
+	display: block;
+	text-align: center;
+	cursor: pointer;
+	float: left;
+}
+
+.als-prev, .als-next {
+	position: absolute;
+	cursor: pointer;
+	clear: both;
+	z-index: 10;
+}
+
+
+/*************************************
+ * specific styling for #demo2
+ ************************************/
+
+#demo2 {
+	margin: 28px auto;
+}
+
+#demo2 .als-item {
+	margin: 0px 20px;
+	padding: 4px 0px;
+	min-height: 82px;
+	min-width: 174px;
+	text-align: center;
+}
+
+#demo2 .als-item img {
+	display: block;
+	margin: 0 auto;
+	vertical-align: middle;
+}
+
+#demo2 .als-prev, #demo2 .als-next {
+	top: 28px;
+}
+
+#demo2 .als-prev {
+	left: 2%
+}
+
+#demo2 .als-next {
+	right: 2%;
+}

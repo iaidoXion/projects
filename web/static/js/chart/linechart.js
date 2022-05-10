@@ -5,8 +5,8 @@ const margin = 30;
 const width = 450 - margin;
 const height = 147;
 var duration = 100;
-var lineOpacity = "0.6";
-var lineOpacityHover = "0.9";
+var lineOpacity = "1";
+var lineOpacityHover = "1";
 var otherLinesOpacityHover = "0.1";
 var lineStroke = "3px";
 var lineStrokeHover = "4px";
@@ -29,8 +29,7 @@ var xScale = d3.time.scale()
 var yScale = d3.scale.linear()
   .domain([0, d3.max(lineChartData[0].values, d => d.price)])
   .range([height - margin, 0]);
-// var color = d3.scale.ordinal(d3.schemeCategory10);
-var color = d3.scale.category10();
+var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
 /* Add SVG */
 const svg = d3.select("#lineChart")
   .style("margin-left", '3%')
@@ -52,7 +51,7 @@ lines.selectAll('.line-group')
   .on("mouseover", function(d, i) {
     svg.append("text")
       .attr("class", "title-text")
-      .style("fill", color(i))
+      .style("fill", function(d,i) { return color[i]; })
       .style("font-weight", "bold")
       .text(d.name)
       .attr("text-anchor", "middle")
@@ -65,7 +64,7 @@ lines.selectAll('.line-group')
   .append('path')
   .attr('class', 'line')
   .attr('d', d => line(d.values))
-  .style('stroke', (d, i) => color(i))
+  .style('stroke', function(d,i) { return color[i]; })
   .style('opacity', lineOpacity)
   .on("mouseover", function(d) {
     d3.selectAll('.line')
@@ -105,7 +104,7 @@ lines.selectAll('.line-group')
    .attr('class', 'legendItem')
    .attr('width', legendItemSize)
    .attr('height', legendItemSize)
-   .style('fill', (d, i) => color(i))
+   .style('fill', function(d,i) { return color[i]; })
    .attr('transform',
                 (d, i) => {
                     var x = xOffset;
@@ -129,7 +128,7 @@ lines.selectAll('.line-group')
 lines.selectAll("circle-group")
   .data(lineChartData).enter()
   .append("g")
-  .style("fill", (d, i) => color(i))
+  .style("fill", function(d,i) { return color[i]; })
   .selectAll("circle")
   .data(d => d.values).enter()
   .append("g")
