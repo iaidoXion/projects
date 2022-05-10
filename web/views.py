@@ -50,7 +50,10 @@ def security(request):
 
 @login_required(login_url='common:login')
 def report(request):
-    return render(request, 'tanium/report.html', menuSettingList)
+    DCDL = DashboardChartData()
+    barChartData= DCDL["barChartData"]
+    returnData = {'menuList': menuSettingList}
+    return render(request, 'tanium/report.html', returnData)
 
 @login_required(login_url='common:login')
 def setting(request):

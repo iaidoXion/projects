@@ -3,6 +3,13 @@
     "apiUrl" : "https://192.168.5.100",
     "Authorization" : "Basic QWRtaW5pc3RyYXRvcjp4aW9uMTIzIQ==",
     "ContentType" : "application/json"
+  },
+  "DB" : {
+    "DBHost" : "localhost",
+    "DBName" : "postgres",
+    "DBUser" : "aidoi",
+    "DBPwd" : "iaido8906#",
+    "AssetTNM" : "daily_assets",
+    "StatisticsTNM" : "daily_statistics"
   }
-
 }
