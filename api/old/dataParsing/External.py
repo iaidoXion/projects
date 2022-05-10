@@ -1,4 +1,4 @@
-from api.Call import External
+from api.old.Call import External
 
 
 def DataParsing():
