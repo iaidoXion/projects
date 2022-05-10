@@ -51,9 +51,10 @@ function worldMapChart() {
                     var w = 1500;
                     var h = 800;
                     // make a dummy data set
+                    var marker = [{a:500,b:700},{a:222,b:444},{a:333,b:555},{a:280,b:670}];
                     var dataset = [],
                     i = 0;
-                    for(i=0; i<7; i++){
+                    for(i=0; i<4; i++){
                         var locale = {
                             "xcoord": getRandomInt (w/8, w/2),
                             "ycoord": getRandomInt (h/8, h/2),
@@ -77,7 +78,6 @@ function worldMapChart() {
                         circleGroup.selectAll("circle")
                         .data(dataset)
                         .enter().append("circle")
-                        .style("stroke", "gray")
                         .style("fill", "#e08a0b")
                         .attr("r", function(d){
                             return d.value*.3;//scale the circles
@@ -116,8 +116,8 @@ function worldMapChart() {
                                     speedLineGroup.append("circle")
                                         .attr({
                                             "class": "ring",
-                                            "fill":"#df7454",
-                                            "stroke":"#f4c17c",
+                                            "fill":"#e08a0b",
+                                            "stroke":"#f5a631",
                                             "stroke-width": 1.5,
                                             "cx": circleData.xcoord,
                                             "cy": circleData.ycoord,
