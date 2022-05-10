@@ -17,7 +17,8 @@
 					<a class="my-float-left"><img src="{% static 'img/dashboard/linechart.png' %}"/></a>
                     <div class="conText">Asset By Day Item Count</div>
                 </div>
-                <div id="lineChart"></div>
+				<div id="lineLegend"></div>
+				<div id="lineChart"></div>
             </div>
 			<div class="container-child-color container-left-top my-border my-margin-top">
                 <div class="content-title">
@@ -255,10 +256,127 @@
 </div>
     <!-- Dashboard Chart Start -->
 <!--    <script src="{% static 'js/chart/gaugeChart.js' %}"></script>-->
-    <script src="{% static 'js/chart/mapchart.js' %}"></script>
     <script src="{% static 'js/chart/barchart.js' %}"></script>
-    <script src="{% static 'js/chart/piechart.js' %}"></script>
     <script src="{% static 'js/chart/linechart.js' %}"></script>
+    <script src="{% static 'js/chart/piechart.js' %}"></script>
+    <script src="{% static 'js/chart/mapchart.js' %}"></script>
+	<script type="text/javascript">
+		var barChartData = [
+            {name: 'Server', value: 100},
+            {name: 'Desktop', value: 290},
+            {name: 'Notebook', value: 320},
+            {name: 'Monitor', value: 250},
+            {name: 'Printer', value: 230},
+            {name: 'Mobile', value: 150}
+        ];
+		var lineChartData = [{
+			name: "A",
+			values: [{
+				date: "2021-10-01",
+				price: "0"
+			  },
+			  {
+				date: "2021-10-02",
+				price: "400"
+			  },
+			  {
+				date: "2021-10-03",
+				price: "1000"
+			  },
+			  {
+				date: "2021-10-04",
+				price: "700"
+			  },
+			  {
+				date: "2021-10-05",
+				price: "550"
+			  }
+			]
+		  },
+		  {
+			name: "B",
+			values: [{
+				date: "2021-10-01",
+				price: "400"
+			  },
+			  {
+				date: "2021-10-02",
+				price: "1000"
+			  },
+			  {
+				date: "2021-10-03",
+				price: "300"
+			  },
+			  {
+				date: "2021-10-04",
+				price: "1000"
+			  },
+			  {
+				date: "2021-10-05",
+				price: "900"
+			  }
+			]
+		  },
+		  {
+			name: "C",
+			values: [{
+				date: "2021-10-01",
+				price: "300"
+			  },
+			  {
+				date: "2021-10-02",
+				price: "200"
+			  },
+			  {
+				date: "2021-10-03",
+				price: "100"
+			  },
+			  {
+				date: "2021-10-04",
+				price: "200"
+			  },
+			  {
+				date: "2021-10-05",
+				price: "1000"
+			  }
+			]
+		  },
+		  {
+			name: "D",
+			values: [{
+				date: "2021-10-01",
+				price: "800"
+			  },
+			  {
+				date: "2021-10-02",
+				price: "500"
+			  },
+			  {
+				date: "2021-10-03",
+				price: "400"
+			  },
+			  {
+				date: "2021-10-04",
+				price: "700"
+			  },
+			  {
+				date: "2021-10-05",
+				price: "600"
+			  }
+			]
+		  }
+
+		];
+		var pieChartData = [
+		  {name: 'Mac', value: 44654, color: '#f4c17c'},
+		  {name: 'Windows', value: 54654, color: '#e08a0b'},
+		  {name: 'Linux', value: 50654, color: '#df7454'}
+		];
+			barChart(barChartData);
+			center();
+			lineChart(lineChartData);
+			piechart(pieChartData);
+	</script>
     <!-- Dashboard Chart End -->
     <!-- navbar alert -->
     <script src="{% static 'js/common/nav.js' %}"></script>
