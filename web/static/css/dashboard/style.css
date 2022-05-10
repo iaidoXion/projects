@@ -64,6 +64,7 @@
     width: 20px;
     height: 20px;
 }
+
 .korea-map{
     display: none;
 }
@@ -353,7 +354,7 @@
 }
 
 #barChart{
-    font-size: 11px;
+    font-size: 11px;;
 }
 
 #barChart .axis path,
@@ -383,11 +384,28 @@
 
 #lineChart .line-group{
 	shape-rendering: geometricPrecision;
-	stroke-width: 2px;
+	stroke-width: 3px;
 }
 
 #lineChart .axis text {
 	fill: #919191;
+}
+
+#lineLegend svg {
+    position: absolute;
+    width: 25px;
+    height: 50px;
+    font-size: 11px;
+    margin-left: 445px;
+    top: 314px;
+}
+
+#lineLegend text {
+    fill: #858796;
+}
+
+#pieChart text{
+    pointer-events: none;
 }
 
 #koreaMap path {
@@ -546,3 +564,5 @@ stroke-width: 0.2px; stroke: #fff;
 }
 #koreaPopMap #maps #path-99 { fill: #fff;
 }
+
+

@@ -32,7 +32,7 @@ function worldMapChart() {
       .enter()
       .append("path")
       .attr("d", path)
-      .style("fill", "#858796");
+      .style("fill", "#d5d6dd");
   });
 
   // zoom and pan functionality
@@ -46,7 +46,103 @@ function worldMapChart() {
 
   svg.call(zoom)*/
 
+  var buildCircle = {
+           init: function(){
+                    var w = 1500;
+                    var h = 800;
+                    // make a dummy data set
+                    var dataset = [],
+                    i = 0;
+                    for(i=0; i<7; i++){
+                        var locale = {
+                            "xcoord": getRandomInt (w/8, w/2),
+                            "ycoord": getRandomInt (h/8, h/2),
+                            "value": 30,//getRandomInt (10, 100),
+                            "alarmLevel": getRandomInt (0, 200)
+                        }
+                        dataset.push(locale);
+                    }
+                    //__ make dummy data
+                    function getRandomInt (min, max) {
+                        return Math.floor(Math.random() * (max - min + 1)) + min;
+                    }
+                    svg.append("svg")
+                        .attr("width", w)
+                        .attr("height", h)
+                        .append("g")
+                        .attr("transform", "translate(140, 160)")
+                    //_place holder for markers
+                    var circleGroup = svg.append("g")
+                        .attr("class", "circles");
+                        circleGroup.selectAll("circle")
+                        .data(dataset)
+                        .enter().append("circle")
+                        .style("stroke", "gray")
+                        .style("fill", "#e08a0b")
+                        .attr("r", function(d){
+                            return d.value*.3;//scale the circles
+                        })
+                        .attr("cx", function(d){
+                            return d.xcoord;
+                        })
+                        .attr("cy", function(d){
+                            return d.ycoord;
+                        });
+                     //_place holder for rings
+                     var speedLineGroup = svg.append("g")
+                         .attr("class", "speedlines");
+                    function getDurationPerDot(circleData){
+                        var totalTime = 3000;//3 seconds max
+                        var time = totalTime-(circleData.alarmLevel*30)
+                        return time;
+                    }
+                    function getOuterRadiusPerDot(circleData){
+                        var radius = circleData.alarmLevel*.5;
+                        return radius;
+                    }
+                    $.each(dataset, function( index, value ) {
+                        $('.throbdata').append("<li>dot:"+index+" , alarm val :"+value.alarmLevel+" , orb size :"+value.value+", Duration: "+getDurationPerDot(value)+"</li>");
+                    });
+                    //invoke rings
+                    makeRings()
+                    //window.setInterval(makeRings, 1000);
+                    function makeRings() {
+                        var datapoints = circleGroup.selectAll("circle");
+                        var radius = 1;
+                            function myTransition(circleData){
+                                var transition = d3.select(this).transition();
+                                    var duration = getDurationPerDot(circleData);
+                                    var outerRadius = getOuterRadiusPerDot(circleData);
+                                    speedLineGroup.append("circle")
+                                        .attr({
+                                            "class": "ring",
+                                            "fill":"#df7454",
+                                            "stroke":"#f4c17c",
+                                            "stroke-width": 1.5,
+                                            "cx": circleData.xcoord,
+                                            "cy": circleData.ycoord,
+                                            "r":radius,
+                                            "opacity": 0.7,
+                                            "fill-opacity":0.7
+                                        })
+                                        .transition()
+                                        .duration(6000)
+                                        .attr("r", radius + outerRadius )
+                                        .attr("opacity", 0)
+                                        .remove();
+                                var t= setInterval(function(){
+                                    clearInterval(t);
+                                    myTransition(circleData)
+                                },700);
+                                //transition.each('end', myTransition);
+                            }
+                      datapoints.each(myTransition);
+                    }
+        }
+     }
+     buildCircle.init();
 }
+
 
 function worldPopMap(){
 
