@@ -1,4 +1,5 @@
 import pandas as pd
+from datetime import datetime
 import json
 """
 with open("setting.json", encoding="UTF-8") as f:
@@ -37,7 +38,7 @@ def AssetOrgDaily(parserData):
     DF = pd.DataFrame(DL, columns=DFCNM)
     return DF
 
-def StatisticsYesterday(SYDL) :
+def StatisticsYesterday(ESYDL) :
     yesterdayDataList = []
     ATNM = []
     ATC = []
@@ -47,41 +48,56 @@ def StatisticsYesterday(SYDL) :
     OSC = []
     LLNM = []
     LLNC = []
-    for i in range(len(SYDL)):
-        if SYDL[i][0] == 'asset' :
-            if SYDL[i][1] == 'all' :
+
+    for i in range(len(ESYDL)):
+        if ESYDL[i][0] == 'asset' :
+            if ESYDL[i][1] == 'all' :
                 ATNM.append("Asset Total Count")
-                ATC.append(int(SYDL[i][2]))
+                ATC.append(int(ESYDL[i][2]))
             else :
-                AINM.append(SYDL[i][1])
-                AIC.append(int(SYDL[i][2]))
-        elif SYDL[i][0] == 'os' :
-            OSNM.append(SYDL[i][1])
-            OSC.append(int(SYDL[i][2]))
-        elif SYDL[i][0] == 'login' :
-            LLNM.append(SYDL[i][1])
-            LLNC.append(int(SYDL[i][2]))
-        #yesterdayDataList.append({"name": SYDL[i][1], "count" : SYDL[i][2]})
+                AINM.append(ESYDL[i][1])
+                AIC.append(int(ESYDL[i][2]))
+        elif ESYDL[i][0] == 'os' :
+            OSNM.append(ESYDL[i][1])
+            OSC.append(int(ESYDL[i][2]))
+        elif ESYDL[i][0] == 'login' :
+            LLNM.append(ESYDL[i][1])
+            LLNC.append(int(ESYDL[i][2]))
+            #yesterdayDataList.append({"name": SYDL[i][1], "count" : SYDL[i][2]})
     RD = {
         "AA": {"name": ATNM, "value": ATC},
         "AIS": {"name": AINM, "value": AIC},
         "OS": {"name": OSNM, "value": OSC},
         "LS": {"name": LLNM, "value": LLNC},
     }
+
     return RD
 
-def StatisticsToday(ASDCL) :
-    BarChartDataList = []
-    PieChartDataList = []
-    for AISC in range(len(ASDCL['AIS']['name'])):
-        BarChartDataList.append({"name": ASDCL['AIS']['name'][AISC], "value": ASDCL['AIS']['value'][AISC]})
-    for OSC in range(len(ASDCL['OS']['name'])):
-        PieChartDataList.append({"name": ASDCL['OS']['name'][OSC], "value": ASDCL['OS']['value'][OSC], "color": ASDCL['OS']['color'][OSC]})
-    returnData = {"barChartData": BarChartDataList, "pieChartData": PieChartDataList}
-    # print(returnData)
-    return returnData
+def StatisticsFiveDay(ESFDL, ASDCL) :
+    today = datetime.today().strftime("%Y-%m-%d")
+    ADL =[]
+    for i in range(len(ESFDL)):
+        if not ESFDL[i][1] == 'all':
+            name = ESFDL[i][1]
+            price = int(ESFDL[i][2])
+            date = ESFDL[i][3].strftime("%Y-%m-%d")
+            ADL.append([name, price, date])
 
-def StatisticsDaily(ASDCL,SYDL) :
+    for j in range(len(ASDCL['AIS']['name'])) :
+        name = ASDCL['AIS']['name'][j]
+        price = int(ASDCL['AIS']['value'][j])
+        date = today
+        ADL.append([name, price, date])
+    #print(ADL)
+    ACNM = ['name', 'value', 'date']
+    ADF = pd.DataFrame(ADL, columns=ACNM)
+    #ADFL = ADF.groupby('name')['date']['value'].apply(list)
+    #print(ADFL)
+
+    return ADF
+
+
+def StatisticsBanner(ASDCL,SYDL) :
     TAA = ASDCL['AA']
     YAA = SYDL['AA']
     TLS = ASDCL['LS']
@@ -95,7 +111,7 @@ def StatisticsDaily(ASDCL,SYDL) :
         TAIDL.append([TAIS['name'][i],TAIS['value'][i]])
     TAIDFCNM = ['name', 'value']
     TAIDF = pd.DataFrame(TAIDL, columns=TAIDFCNM)
-
+    #print(TAIDL)
     YAIDL = []
     for j in range(len(YAIS['name'])):
         YAIDL.append([YAIS['name'][j], YAIS['value'][j]])
@@ -116,6 +132,18 @@ def StatisticsDaily(ASDCL,SYDL) :
     RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF}
 
     return RD
+
+def StatisticsData(ASDCL,BRDL):
+
+    BarChartDataList = []
+    PieChartDataList = []
+    for AISC in range(len(ASDCL['AIS']['name'])):
+        BarChartDataList.append({"name": ASDCL['AIS']['name'][AISC], "value": ASDCL['AIS']['value'][AISC]})
+    for OSC in range(len(ASDCL['OS']['name'])):
+        PieChartDataList.append({"name": ASDCL['OS']['name'][OSC], "value": ASDCL['OS']['value'][OSC], "color": ASDCL['OS']['color'][OSC]})
+    returnData = {"barChartData": BarChartDataList, "pieChartData": PieChartDataList, "bannerData" : BRDL}
+    return returnData
+
 
     """
     BannerDataList = []

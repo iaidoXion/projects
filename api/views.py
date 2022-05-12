@@ -1,8 +1,8 @@
 from api.Call.Auth import SessionKey
 from api.Call.Extract import Asset as AssetAPI
-from module.Collection.Transform import AssetOrgDaily as TAOD, StatisticsToday as STD, StatisticsYesterday as SYD, StatisticsDaily as SD
-from module.Analysis.Statistics import DailyCount as ASDC, bannerRoc as BR
-from module.Collection.Extract import StatisticsYesterday as ESY
+from module.Collection.Transform import AssetOrgDaily as AODT, StatisticsYesterday as SYT, StatisticsFiveDay as SFDT, StatisticsBanner as SBT,  StatisticsData as SDT
+from module.Analysis.Statistics import DailyCount as ASDC, StatisticsFiveDay as SFDS, bannerRoc as BR
+from module.Collection.Extract import StatisticsYesterday as ESY, StatisticsFiveDay as ESF
 
 import urllib3
 
@@ -11,17 +11,18 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 def DashboardData() :
     SK = SessionKey()
     baseAssetData = AssetAPI(SK)
-    AssetData = TAOD(baseAssetData['dataList'])
+    AssetData = AODT(baseAssetData['dataList'])
     ASDCL = ASDC(AssetData)
-    RD = STD(ASDCL)
-
     ESYDL = ESY()
-    SYDL = SYD(ESYDL)
-    SDL = SD(ASDCL, SYDL)
-    BR(SDL)
-    #TSYL = TSY(SYDL)
+    SYDL = SYT(ESYDL)
+    SDL = SBT(ASDCL, SYDL)
+    BRDL= BR(SDL)
+    ESFDL = ESF()
+    SFDTDL = SFDT(ESFDL,ASDCL)
+    SFDS(SFDTDL)
+    #print(BRDL)
+    RD = SDT(ASDCL,BRDL)
 
-    #RD = TSD(ASDCL, TSYL)
     return RD
 
 

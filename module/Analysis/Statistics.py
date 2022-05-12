@@ -27,6 +27,10 @@ def DailyCount(TSDL):
     }
     return RD
 
+def StatisticsFiveDay(SFDTDL):
+    for date, value in SFDTDL.groupby('name'):
+        print(date)
+        print(value)
 
 def bannerRoc(SDL) :
     bannerDataList = []
@@ -35,7 +39,6 @@ def bannerRoc(SDL) :
     AAROC = TAA['value'][0] - YAA['value'][0]
     AASDL = {"name" : TAA['name'][0], "count" :  TAA['value'][0], "roc" : AAROC }
     bannerDataList.append(AASDL)
-    #print(AASDL)
 
     TLS = SDL['TLS']
     YLS = SDL['YLS']
@@ -52,27 +55,29 @@ def bannerRoc(SDL) :
     YAISNM = YAISSorting.name
     YAISV = YAISSorting.value
 
-    if len(TAISNM) == len(YAISNM) :
-        for i in range(len(TAISNM)) :
-            if TAISNM[i] == YAISNM[i] :
-                bannerDataList.append({"name" : TAISNM[i]+" Count", "count" :  TAISV[i], "roc" : TAISV[i]-YAISV[i] })
-            else :
-                bannerDataList.append({"name": TAISNM[i] + " Count", "count": TAISV[i], "roc": 0})
-
-    print(bannerDataList)
-        #if c == len(TAISNM) :
-        #    print(c)
-
-        #if TAISNM == YAISNM :
-
-    #elif len(TAISNM) > len(YAISNM) :
-
-    #else :
-
-
+    #if len(TAISNM) == len(YAISNM) :
+    for i in range(len(TAISNM)) :
+        if TAISNM[i] == YAISNM[i] :
+            bannerDataList.append({"name" : TAISNM[i]+" Count", "count" :  TAISV[i], "roc" : TAISV[i]-YAISV[i]})
+        else :
+            bannerDataList.append({"name": TAISNM[i] + " Count", "count": TAISV[i], "roc": 0})
 
     TOS = SDL['TOS']
+    TOSSorting = TOS.sort_values(by="name", ascending=True)
+    TOSNM = TOSSorting.name
+    TOSV = TOSSorting.value
     YOS = SDL['YOS']
+    YOSSorting = YOS.sort_values(by="name", ascending=True)
+    YOSNM = YOSSorting.name
+    YOSV = YOSSorting.value
+    for j in range(len(TOSNM)) :
+        if TOSNM[i] == YOSNM[i] :
+            bannerDataList.append({"name" : TOSNM[j]+" Count", "count" :  TOSV[j], "roc" : TOSV[j]-YOSV[j]})
+        else :
+            bannerDataList.append({"name" : TOSNM[j]+" Count", "count" :  TOSV[j], "roc" : 0})
+    returnData = bannerDataList
+    return returnData
+
 
 
 

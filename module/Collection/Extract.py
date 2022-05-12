@@ -13,6 +13,7 @@ StatisticsTNM = SETTING['DB']['StatisticsTNM']
 BS = SETTING['FILE']
 today = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 yesterday = (datetime.today() - timedelta(1)).strftime("%Y-%m-%d")
+fiveDay = (datetime.today() - timedelta(5)).strftime("%Y-%m-%d")
 
 def StatisticsYesterday() :
     try:
@@ -36,7 +37,6 @@ def StatisticsYesterday() :
             StatisticsSelectCur.execute(StatisticsSelectQ)
             StatisticsSelectRS=StatisticsSelectCur.fetchall()
             for StatisticsSelectR in StatisticsSelectRS :
-                #print(StatisticsSelectR)
                 StatisticsSelectL.append(StatisticsSelectR)
         elif DataLoadingType == 'FILE':
             """AS = BS['asset']
@@ -55,3 +55,47 @@ def StatisticsYesterday() :
             print('Statistics Daily Table connection(Select) Failure')
         elif DataLoadingType == 'FILE':
             print('Statistics Daily File(Read) Failure')
+
+def StatisticsFiveDay() :
+    try:
+        StatisticsSelectL = []
+        if DataLoadingType == 'DB':
+            StatisticsSelectConn = psycopg2.connect('host={0} dbname={1} user={2} password={3}'.format(DBHost, DBName, DBUser, DBPwd))
+            StatisticsSelectCur = StatisticsSelectConn.cursor()
+            StatisticsSelectQ = """ 
+                select 
+                    classification,
+                    item, 
+                    item_count, 
+                    statistics_collection_date
+                from 
+                    """ + StatisticsTNM + """ 
+                where 
+                    to_char(statistics_collection_date, 'YYYY-MM-DD') > '""" + fiveDay + """' 
+                and
+                    classification = 'asset'
+                """
+
+            StatisticsSelectCur.execute(StatisticsSelectQ)
+            StatisticsSelectRS = StatisticsSelectCur.fetchall()
+            for StatisticsSelectR in StatisticsSelectRS:
+                StatisticsSelectL.append(StatisticsSelectR)
+        elif DataLoadingType == 'FILE':
+            """AS = BS['asset']
+            Storage = AS['Storage']
+            FNM = AS['FileName'] + yesterday
+            FT = AS['FileType']
+            FileFullName = FNM + FT
+            with open(Storage + FileFullName, encoding="UTF-8") as ADF:
+                ADL = json.loads(ADF.read())
+            AssetSelectL=ADL
+            """
+            print(DataLoadingType)
+        #print(StatisticsSelectL)
+        return StatisticsSelectL
+    except:
+        if DataLoadingType == 'DB':
+            print('Statistics Daily Table connection(Five Day Select) Failure')
+        elif DataLoadingType == 'FILE':
+            print('Statistics Daily File(Five Day Read) Failure')
+
