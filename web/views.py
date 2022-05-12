@@ -29,7 +29,8 @@ def signup(request):
 
 @login_required(login_url='common:login')
 def dashboard(request):
-    returnData = { 'menuList': menuSettingList}
+    chartData = DashboardDataList()
+    returnData = { 'menuList': menuSettingList, 'chartData' : chartData}
     return render(request, 'tanium/dashboard.html', returnData)
 
 @login_required(login_url='common:login')
@@ -46,10 +47,7 @@ def security(request):
 
 @login_required(login_url='common:login')
 def report(request):
-    chartData = DashboardDataList()
-
-    returnData = {'menuList': menuSettingList, 'chartData' : chartData}
-    return render(request, 'tanium/report.html', returnData)
+    return render(request, 'tanium/report.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def setting(request):

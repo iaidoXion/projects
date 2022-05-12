@@ -144,103 +144,26 @@
 			<span class="als-prev"><img src="{% static 'img/dashboard/arrowPrev.png' %}" /></span>
 			<div class="als-viewport">
 				<ul class="als-wrapper">
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							Asset Total Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">330</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowTop.png' %}">
-							</div>
-							<p class="botConNum my-float-left">5</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							Windows OS Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">200</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowTop.png' %}">
-							</div>
-							<p class="botConNum my-float-left">9</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							Linux OS Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">150</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowBot.png' %}">
-							</div>
-							<p class="botConNum my-float-left">3</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							Mac OS Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">400</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowBot.png' %}">
-							</div>
-							<p class="botConNum my-float-left">3</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							Established Port
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">40</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowBot.png' %}">
-							</div>
-							<p class="botConNum my-float-left">1</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							Listen Port Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">402</p>
-							<div class="my-float-left my-margin-left-2 my-margin-right-2 my-margin-top-2">
-								-
-							</div>
-							<p class="botConNum0 my-float-left">0</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							-&#45;&#45; Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">40</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowBot.png' %}">
-							</div>
-							<p class="botConNum my-float-left">1</p>
-						</div>
-					</li>
-					<li class="als-item my-border">
-						<div class="conBotTop">
-							-&#45;&#45; Count
-						</div>
-						<div class="conBotBot">
-							<p class="botConTotalNum">40</p>
-							<div class="my-float-left conBotImg">
-								<img src="{% static 'img/common/arrowBot.png' %}">
-							</div>
-							<p class="botConNum my-float-left">1</p>
-						</div>
-					</li>
-					<li class="als-item my-border"></li>
+					{% if chartData.bannerDataList %}
+						{% for bannerData in chartData.bannerDataList %}
+							<li class="als-item my-border">
+								<div class="conBotTop"> {{bannerData.name}} </div>
+								<div class="conBotBot">
+									<p class="botConTotalNum">{{bannerData.count}}</p>
+									<div class="my-float-left conBotImg">
+										{% if bannerData.roc == 0 %}
+											<div class="my-float-left my-margin-left-2 my-margin-right-2 my-margin-top-2"> - </div>
+										{% elif bannerData.roc > 0 %}
+											<img src="{% static 'img/common/arrowTop.png' %}">
+										{% else %}
+											<img src="{% static 'img/common/arrowBot.png' %}">
+										{% endif %}
+									</div>
+									<p class="botConNum my-float-left">{{bannerData.roc}}</p>
+								</div>
+							</li>
+						{% endfor %}
+					{% endif %}
 				</ul>
 			</div>
 			<span class="als-next"><img src="{% static 'img/dashboard/arrowNext.png' %}" /></span>
@@ -254,16 +177,15 @@
     <script src="{% static 'js/chart/piechart.js' %}"></script>
     <script src="{% static 'js/chart/mapchart.js' %}"></script>
 	<script type="text/javascript">
+		{% if chartData.barChartDataList %}
 		var barChartData = [
-            {name: 'Server', value: 100},
-            {name: 'Desktop', value: 290},
-            {name: 'Notebook', value: 320},
-            {name: 'Monitor', value: 250},
-            {name: 'Printer', value: 230},
-            {name: 'Mobile', value: 150}
-        ];
+			{% for barChartData in chartData.barChartDataList %}
+				{name: '{{barChartData.name}}', value: {{barChartData.value}}},
+			{% endfor %}
+			];
+		{% endif %}
 		var lineChartData = [{
-			name: "A",
+			name: "Desktop",
 			values: [{
 				date: "2021-10-01",
 				price: "0"
@@ -287,7 +209,7 @@
 			]
 		  },
 		  {
-			name: "B",
+			name: "Notebook",
 			values: [{
 				date: "2021-10-01",
 				price: "400"
@@ -311,7 +233,7 @@
 			]
 		  },
 		  {
-			name: "C",
+			name: "Rack Mount Chassis",
 			values: [{
 				date: "2021-10-01",
 				price: "300"
@@ -334,37 +256,16 @@
 			  }
 			]
 		  },
-		  {
-			name: "D",
-			values: [{
-				date: "2021-10-01",
-				price: "800"
-			  },
-			  {
-				date: "2021-10-02",
-				price: "500"
-			  },
-			  {
-				date: "2021-10-03",
-				price: "400"
-			  },
-			  {
-				date: "2021-10-04",
-				price: "700"
-			  },
-			  {
-				date: "2021-10-05",
-				price: "600"
-			  }
-			]
-		  }
+
 
 		];
+		{% if chartData.pieChartDataList %}
 		var pieChartData = [
-		  {name: 'Mac', value: 44654},
-		  {name: 'Windows', value: 54654},
-		  {name: 'Linux', value: 50654}
-		];
+			{% for pieChartData in chartData.pieChartDataList %}
+				{name: '{{pieChartData.name}}', value: {{pieChartData.value}}, color: '{{pieChartData.color}}'},
+			{% endfor %}
+			];
+		{% endif %}
 			barChart(barChartData);
 			center();
 			lineChart(lineChartData);
