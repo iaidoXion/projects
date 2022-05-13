@@ -133,15 +133,25 @@ def StatisticsBanner(ASDCL,SYDL) :
 
     return RD
 
-def StatisticsData(ASDCL,BRDL):
+def StatisticsData(ASDCL, BRDL, SFDSDL):
 
     BarChartDataList = []
+    LineChartDataList = []
     PieChartDataList = []
+    LineChartKeyList = []
     for AISC in range(len(ASDCL['AIS']['name'])):
         BarChartDataList.append({"name": ASDCL['AIS']['name'][AISC], "value": ASDCL['AIS']['value'][AISC]})
     for OSC in range(len(ASDCL['OS']['name'])):
         PieChartDataList.append({"name": ASDCL['OS']['name'][OSC], "value": ASDCL['OS']['value'][OSC], "color": ASDCL['OS']['color'][OSC]})
-    returnData = {"barChartData": BarChartDataList, "pieChartData": PieChartDataList, "bannerData" : BRDL}
+    LineChartData = {}
+    for SFDSC in range(len(SFDSDL[1])) :
+        #LineChartKeyList.append(SFDSDL[0][SFDSC])
+        LineChartData[SFDSDL[0][SFDSC].replace(" " , "")] = []
+        for i in SFDSDL[1][SFDSC].index :
+           LineChartData[SFDSDL[0][SFDSC].replace(" " , "")].append({"name":SFDSDL[1][SFDSC].name[i], "date":SFDSDL[1][SFDSC].date[i], "value": SFDSDL[1][SFDSC].value[i]})
+    LineChartDataList.append(LineChartData)
+
+    returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL}
     return returnData
 
 
