@@ -1,4 +1,4 @@
-function lineChart(lineChartData) {
+function lineChart() {
 
 
 const margin = 30;
@@ -16,18 +16,33 @@ var circleRadius = 3;
 var circleRadiusHover = 6;
 /* Format Data */
 var parseDate = d3.time.format("%Y-%m-%d");
-lineChartData.forEach(function(d) {
+/*lineChartData.forEach(function(d) {
   d.values.forEach(function(d) {
     d.date = parseDate.parse(d.date);
     d.price = +d.price;
   });
-});
+});*/
+
+
+d3.json("/web/static/data/linechart.json",function(error,data) {dataViz(data.values)});
+function dataViz(incomingData){
+    var nestedTweets = d3.nest()
+        .key(function (el) {return el.price})
+        .entries(incomingData);
+    nestedTweets.forEach(function (el){
+        el.numTweets = el.values.length;
+    })
+
+    var minTweets =[]
+}
+
+
 /* Scale */
 var xScale = d3.time.scale()
   .domain(d3.extent(lineChartData[0].values, d => d.date))
   .range([0, width - margin]);
 var yScale = d3.scale.linear()
-  .domain([0, d3.max(lineChartData[0].values, d => d.price)])
+  .domain([d3.min(lineChartData[0].values, d => d.price), d3.max(lineChartData[0].values, d => d.price)])
   .range([height - margin, 0]);
 var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
 /* Add SVG */
@@ -51,11 +66,11 @@ lines.selectAll('.line-group')
   .on("mouseover", function(d, i) {
     svg.append("text")
       .attr("class", "title-text")
-      .style("fill", function(d,i) { return color[i]; })
+      .style("fill", "#858796")
       .style("font-weight", "bold")
-      .text(d.name)
+      .text(d.values[0].name)
       .attr("text-anchor", "middle")
-      .attr("x", (width - 10))
+      .attr("x", (width - 60))
       .attr("y", 5);
   })
   .on("mouseout", function(d) {
@@ -119,7 +134,7 @@ lines.selectAll('.line-group')
    .append('text')
    .attr('x', xOffset + legendItemSize + 5)
    .attr('y', (d, i) => yOffset + (legendItemSize + legendSpacing) * i + 10)
-   .text(d => d.name);
+   .text(d => d.values[0].name);
 
 
 
@@ -186,3 +201,4 @@ svg.append("g")
 
 
 }
+lineChart();
