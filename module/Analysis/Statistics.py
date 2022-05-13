@@ -28,9 +28,21 @@ def DailyCount(TSDL):
     return RD
 
 def StatisticsFiveDay(SFDTDL):
-    for date, value in SFDTDL.groupby('name'):
-        print(date)
-        print(value)
+
+    DGL = []
+    DSL = []
+    DNM = []
+    SFDTDLG = SFDTDL.groupby('name')
+    for SFDTD in SFDTDLG:
+        DGL.append(SFDTD[1])
+        DNM.append(SFDTD[0])
+    dataGroupListLen = len(DGL)
+    for i in range(dataGroupListLen) :
+        DSL.append(DGL[i].sort_values(by="date", ascending=True))
+    #print(DNM)
+    RD = [DNM,DSL]
+    #print(RD)
+    return RD
 
 def bannerRoc(SDL) :
     bannerDataList = []

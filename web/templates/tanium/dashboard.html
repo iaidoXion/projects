@@ -77,8 +77,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
-							<div>Asset ID : 5455454563</div>
+
 						</div>
 					</li>
 					<li>
@@ -184,74 +183,92 @@
 			{% endfor %}
 			];
 		{% endif %}
-		var lineChartData = [{
-			name: "Desktop",
-			values: [{
-				date: "2021-10-01",
-				price: "0"
-			  },
-			  {
-				date: "2021-10-02",
-				price: "400"
-			  },
-			  {
-				date: "2021-10-03",
-				price: "1000"
-			  },
-			  {
-				date: "2021-10-04",
-				price: "700"
-			  },
-			  {
-				date: "2021-10-05",
-				price: "550"
-			  }
-			]
-		  },
+
+		{% if chartData.lineChartDataList %}
+		var lineChartData2 = [
+			{% for lineChartData in chartData.lineChartDataList %}
+				{values: [
+					{% for Desktop in lineChartData.Desktop %}
+						{name: "{{Desktop.name}}", date: "{{Desktop.date}}", price: "{{Desktop.value}}"},
+					{% endfor%}
+				]},
+				{values: [
+					{% for Notebook in lineChartData.Notebook %}
+						{name: "{{Notebook.name}}", date: "{{Notebook.date}}", price: "{{Notebook.value}}"},
+					{% endfor%}
+				]},
+				{values: [
+					{% for RackMountChassis in lineChartData.RackMountChassis %}
+						{name: "{{RackMountChassis.name}}", date: "{{RackMountChassis.date}}", price: "{{RackMountChassis.value}}"},
+					{% endfor%}
+
+			]},
+			{% endfor%}
+		];
+		{% endif %}
+		var lineChartData = [
+
+		{values: [
+			{name: "Desktop", date: "2022-10-01", price: "0" },
+			{ name: "Desktop", date: "2022-10-02", price: "400"},
+			{ name: "Desktop", date: "2022-10-03", price: "1000" },
+			{ name: "Desktop", date: "2022-10-04", price: "700" },
+			{ name: "Desktop", date: "2022-10-05", price: "550" }
+		]},
 		  {
-			name: "Notebook",
+
 			values: [{
-				date: "2021-10-01",
+				name: "Notebook",
+				date: "2022-10-01",
 				price: "400"
 			  },
 			  {
-				date: "2021-10-02",
+			  name: "Notebook",
+				date: "2022-10-02",
 				price: "1000"
 			  },
 			  {
-				date: "2021-10-03",
+			  name: "Notebook",
+				date: "2022-10-03",
 				price: "300"
 			  },
 			  {
-				date: "2021-10-04",
+			  name: "Notebook",
+				date: "2022-10-04",
 				price: "1000"
 			  },
 			  {
-				date: "2021-10-05",
+			  name: "Notebook",
+				date: "2022-10-05",
 				price: "900"
 			  }
 			]
 		  },
 		  {
-			name: "Rack Mount Chassis",
+
 			values: [{
-				date: "2021-10-01",
+				name: "Rack Mount Chassis",
+				date: "2022-10-01",
 				price: "300"
 			  },
 			  {
-				date: "2021-10-02",
+			  	name: "Rack Mount Chassis",
+				date: "2022-10-02",
 				price: "200"
 			  },
 			  {
-				date: "2021-10-03",
+			  	name: "Rack Mount Chassis",
+				date: "2022-10-03",
 				price: "100"
 			  },
 			  {
-				date: "2021-10-04",
+			  	name: "Rack Mount Chassis",
+				date: "2022-10-04",
 				price: "200"
 			  },
 			  {
-				date: "2021-10-05",
+			  	name: "Rack Mount Chassis",
+				date: "2022-10-05",
 				price: "1000"
 			  }
 			]
@@ -259,6 +276,7 @@
 
 
 		];
+
 		{% if chartData.pieChartDataList %}
 		var pieChartData = [
 			{% for pieChartData in chartData.pieChartDataList %}
