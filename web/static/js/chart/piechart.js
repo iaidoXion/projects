@@ -23,7 +23,7 @@ function piechart(pieChartData) {
         .style('height', height)
         .style("margin-left", '29%')
         .attr('text-anchor', 'middle') // text-anchor 텍스트의 정렬을 설정 ( start | middle | end | inherit )
-        .style('font-size', '11px');
+        .style('font-size', '13px');
 
     const g = svg.append('g')
       .attr('transform', `translate(${width/2}, ${height/2})`);

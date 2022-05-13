@@ -4,15 +4,8 @@
     margin: 0 auto;
 }
 
-.footerWrap div{
+.foot{
+    margin-top: 20px;
+    text-align: center;
     font-size: 11px;
-    margin-left: 1%;
-}
-
-.footTop{
-    margin-top: 0.5%;
-}
-
-.footBot{
-    margin-top: 0.5%;
 }

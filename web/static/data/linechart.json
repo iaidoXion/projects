@@ -1,0 +1,83 @@
+{
+  "values": [
+    {
+      "name": "Desktop",
+      "date": "2022-10-01",
+      "price": "2"
+    },
+    {
+      "name": "Desktop",
+      "date": "2022-10-02",
+      "price": "1"
+    },
+    {
+      "name": "Desktop",
+      "date": "2022-10-03",
+      "price": "1"
+    },
+    {
+      "name": "Desktop",
+      "date": "2022-10-04",
+      "price": "1"
+    },
+    {
+      "name": "Desktop",
+      "date": "2022-10-05",
+      "price": "1"
+    }
+  ],
+  "values": [
+    {
+      "name": "Notebook",
+      "date": "2022-10-01",
+      "price": "12"
+    },
+    {
+      "name": "Notebook",
+      "date": "2022-10-02",
+      "price": "12"
+    },
+    {
+      "name": "Notebook",
+      "date": "2022-10-03",
+      "price": "12"
+    },
+    {
+      "name": "Notebook",
+      "date": "2022-10-04",
+      "price": "12"
+    },
+    {
+      "name": "Notebook",
+      "date": "2022-10-05",
+      "price": "12"
+    }
+  ],
+  "values": [
+    {
+      "name": "Rack Mount Chassis",
+      "date": "2022-10-01",
+      "price": "8"
+    },
+    {
+      "name": "Rack Mount Chassis",
+      "date": "2022-10-02",
+      "price": "8"
+    },
+    {
+      "name": "Rack Mount Chassis",
+      "date": "2022-10-03",
+      "price": "8"
+    },
+    {
+      "name": "Rack Mount Chassis",
+      "date": "2022-10-04",
+      "price": "8"
+    },
+    {
+      "name": "Rack Mount Chassis",
+      "date": "2022-10-05",
+      "price": "8"
+    }
+  ]
+}
