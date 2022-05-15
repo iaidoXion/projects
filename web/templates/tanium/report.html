@@ -33,6 +33,9 @@
 					<div class="mapChartMenuWrap">
 						<button type="button" class="btn btn-secondary btnWorld">World</button>
 						<button type="button" class="btn btn-secondary btnKorea">Korea</button>
+						<button type="button" class="btn btn-secondary btnSi">시</button>
+						<button type="button" class="btn btn-secondary btnGu">구</button>
+						<button type="button" class="btn btn-secondary btnDong">동</button>
 						<a class="expansionWrap mouse-over-cursor" id="popBtWorld">
 							<img class="expansion" src="{% static 'img/dashboard/expansion.png' %}" />
 						</a>
@@ -53,6 +56,9 @@
 					<div class="mapChartMenuWrap">
 						<button type="button" class="btn btn-secondary btnWorld">World</button>
 						<button type="button" class="btn btn-secondary btnKorea">Korea</button>
+						<button type="button" class="btn btn-secondary btnSi">시</button>
+						<button type="button" class="btn btn-secondary btnGu">구</button>
+						<button type="button" class="btn btn-secondary btnDong">동</button>
 						<a class="expansionWrap mouse-over-cursor" id="popBtKorea">
 							<img class="expansion" src="{% static 'img/dashboard/expansion.png' %}" />
 						</a>
@@ -68,6 +74,15 @@
 				</div>
 				<div class="container-child-color my-float-left korea-map">
 					<div id="koreaMap"></div>
+				</div>
+				<div class="container-child-color my-float-left si-map">
+					<div id="siMap">시</div>
+				</div>
+				<div class="container-child-color my-float-left gu-map">
+					<div id="guMap">구</div>
+				</div>
+				<div class="container-child-color my-float-left dong-map">
+					<div id="dongMap">동</div>
 				</div>
 			</div>
 			<div class="mapRight">
@@ -264,78 +279,71 @@
             {name: 'Mobile', value: 150}
 			];
 
-		var lineChartData = [{
-			name: "Desktop",
-			values: [{
-				date: "2021-10-01",
-				price: "0"
-			  },
-			  {
-				date: "2021-10-02",
-				price: "400"
-			  },
-			  {
-				date: "2021-10-03",
-				price: "1000"
-			  },
-			  {
-				date: "2021-10-04",
-				price: "700"
-			  },
-			  {
-				date: "2021-10-05",
-				price: "550"
-			  }
-			]
-		  },
-		  {
-			name: "Notebook",
-			values: [{
-				date: "2021-10-01",
-				price: "400"
-			  },
-			  {
-				date: "2021-10-02",
-				price: "1000"
-			  },
-			  {
-				date: "2021-10-03",
-				price: "300"
-			  },
-			  {
-				date: "2021-10-04",
-				price: "1000"
-			  },
-			  {
-				date: "2021-10-05",
-				price: "900"
-			  }
-			]
-		  },
-		  {
-			name: "Rack Mount Chassis",
-			values: [{
-				date: "2021-10-01",
-				price: "300"
-			  },
-			  {
-				date: "2021-10-02",
-				price: "200"
-			  },
-			  {
-				date: "2021-10-03",
-				price: "100"
-			  },
-			  {
-				date: "2021-10-04",
-				price: "200"
-			  },
-			  {
-				date: "2021-10-05",
-				price: "1000"
-			  }
-			]
-		  },
+		var lineChartData = [{values: [
+   {name: "Desktop", date: "2022-10-01", price: "2" },
+   { name: "Desktop", date: "2022-10-02", price: "1"},
+   { name: "Desktop", date: "2022-10-03", price: "1" },
+   { name: "Desktop", date: "2022-10-04", price: "1" },
+   { name: "Desktop", date: "2022-10-05", price: "1" }
+]},
+  {
+
+   values: [{
+      name: "Notebook",
+      date: "2022-10-01",
+      price: "12"
+     },
+     {
+     name: "Notebook",
+      date: "2022-10-02",
+      price: "12"
+     },
+     {
+     name: "Notebook",
+      date: "2022-10-03",
+      price: "12"
+     },
+     {
+     name: "Notebook",
+      date: "2022-10-04",
+      price: "12"
+     },
+     {
+     name: "Notebook",
+      date: "2022-10-05",
+      price: "12"
+     }
+   ]
+  },
+  {
+
+   values: [{
+      name: "Rack Mount Chassis",
+      date: "2022-10-01",
+      price: "8"
+     },
+     {
+      name: "Rack Mount Chassis",
+      date: "2022-10-02",
+      price: "8"
+     },
+     {
+      name: "Rack Mount Chassis",
+      date: "2022-10-03",
+      price: "8"
+     },
+     {
+      name: "Rack Mount Chassis",
+      date: "2022-10-04",
+      price: "8"
+     },
+     {
+      name: "Rack Mount Chassis",
+      date: "2022-10-05",
+      price: "8"
+     }
+   ]
+  },
 
 
 		];
@@ -344,10 +352,28 @@
 		  {name: 'Windows', value: 54654},
 		  {name: 'Linux', value: 50654}
 		];
+
+		var wordMapData = [
+			{x:36.503328,y:127.261827},
+			{x:36.480048,y:127.289070},
+			{x:33.488985,y:126.498377},
+			{x:35.238289,y:128.692389},
+			{x:35.892508,y:128.600602}
+		];
+		var koreaMapData = [
+			{x:36.503328,y:127.261827},
+			{x:36.480048,y:127.289070},
+			{x:33.488985,y:126.498377},
+			{x:35.238289,y:128.692389},
+			{x:35.892508,y:128.600602}
+		];
+
 			barChart(barChartData);
 			center();
 			lineChart(lineChartData);
 			piechart(pieChartData);
+			worldMapChart(wordMapData);
+			koreaMapChart(koreaMapData);
 	</script>
     <!-- Dashboard Chart End -->
     <!-- navbar alert -->

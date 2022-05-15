@@ -34,10 +34,11 @@
 }
 
 .mapChartMenuWorld{
-    width: 20%;
+    width: 30%;
     min-height: 25px;
-    padding:10px;
+    padding: 10px;
     float: right;
+    padding-top: 20px;
 }
 
 .mapChartMenuKorea{
@@ -45,6 +46,7 @@
     min-height: 25px;
     padding:10px;
     display: none;
+    padding-top: 20px;
 }
 
 .mapChartMenuWrap{
@@ -68,6 +70,16 @@
 .korea-map{
     display: none;
 }
+.si-map{
+    display: none;
+}
+.gu-map{
+    display: none;
+}
+.dong-map{
+    display: none;
+}
+
 
 #koreaMap{
     margin-left: 7%;
