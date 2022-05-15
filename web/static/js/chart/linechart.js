@@ -1,4 +1,4 @@
-function lineChart() {
+function lineChart(lineChartData) {
 
 
 const margin = 30;
@@ -16,34 +16,23 @@ var circleRadius = 3;
 var circleRadiusHover = 6;
 /* Format Data */
 var parseDate = d3.time.format("%Y-%m-%d");
-/*lineChartData.forEach(function(d) {
+lineChartData.forEach(function(d) {
   d.values.forEach(function(d) {
     d.date = parseDate.parse(d.date);
     d.price = +d.price;
   });
-});*/
 
-
-d3.json("/web/static/data/linechart.json",function(error,data) {dataViz(data.values)});
-function dataViz(incomingData){
-    var nestedTweets = d3.nest()
-        .key(function (el) {return el.price})
-        .entries(incomingData);
-    nestedTweets.forEach(function (el){
-        el.numTweets = el.values.length;
-    })
-
-    var minTweets =[]
-}
-
+});
 
 /* Scale */
 var xScale = d3.time.scale()
   .domain(d3.extent(lineChartData[0].values, d => d.date))
   .range([0, width - margin]);
 var yScale = d3.scale.linear()
-  .domain([d3.min(lineChartData[0].values, d => d.price), d3.max(lineChartData[0].values, d => d.price)])
+  .domain([0, 30])
   .range([height - margin, 0]);
+
+
 var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
 /* Add SVG */
 const svg = d3.select("#lineChart")
@@ -57,6 +46,7 @@ const svg = d3.select("#lineChart")
 var line = d3.svg.line()
   .x(d => xScale(d.date))
   .y(d => yScale(d.price));
+
 let lines = svg.append('g')
   .attr('class', 'lines');
 lines.selectAll('.line-group')
@@ -201,4 +191,3 @@ svg.append("g")
 
 
 }
-lineChart();

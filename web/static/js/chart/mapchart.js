@@ -484,8 +484,5 @@ var placeid = "";
      }
     }
 };
-koreaMapChart();
 koreaPopMap();
-
-worldMapChart();
 worldPopMap();
