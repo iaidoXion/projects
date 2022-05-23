@@ -558,3 +558,36 @@ stroke-width: 0.2px; stroke: #fff;
   font: 10px sans-serif;
   text-anchor: start;
 }*/
+
+#siMap svg circle {
+          fill: orange;
+          opacity: .5;
+          stroke: white;
+        }
+#siMap svg circle:hover {
+          fill: red;
+          stroke: #333;
+        }
+#siMap svg text {
+          pointer-events: none;
+        }
+#siMap svg .municipality {
+          fill: #efefef;
+          stroke: #fff;
+        }
+#siMap svg .municipality-label {
+          fill: #bbb;
+          font-size: 12px;
+          font-weight: 300;
+          text-anchor: middle;
+        }
+#siMap svg #map text {
+          color: #333;
+          font-size: 10px;
+          text-anchor: middle;
+        }
+#siMap svg #places text {
+          color: #777;
+          font: 10px sans-serif;
+          text-anchor: start;
+        }
