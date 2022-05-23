@@ -92,15 +92,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-
-						</div>
-					</li>
-					<li>
-						<div class="mapGps">
-							<img src="{% static 'img/dashboard/gps.png' %}" />
-						</div>
-						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
+							<div class="my-margin-bot-4">로그인 이력이 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -109,7 +101,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
+							<div class="my-margin-bot-4">드라이브 사용량 변화가 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -118,7 +110,16 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
+							<div class="my-margin-bot-4">Established된 포트가 없는 자산</div>
+							<div>Asset ID : 5455454563</div>
+						</div>
+					</li>
+					<li>
+						<div class="mapGps">
+							<img src="{% static 'img/dashboard/gps.png' %}" />
+						</div>
+						<div class="mapCont">
+							<div class="my-margin-bot-4">Listen상태의 포트수 변화가 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -184,143 +185,77 @@
 		</div>
 	</div>
 </div>
-    <!-- Dashboard Chart Start -->
+<!-- Dashboard Chart Start -->
 <!--    <script src="{% static 'js/chart/gaugeChart.js' %}"></script>-->
-    <script src="{% static 'js/chart/barchart.js' %}"></script>
-    <script src="{% static 'js/chart/linechart.js' %}"></script>
-    <script src="{% static 'js/chart/piechart.js' %}"></script>
-    <script src="{% static 'js/chart/mapchart.js' %}"></script>
-	<script type="text/javascript">
-		{% if chartData.barChartDataList %}
-		var barChartData = [
-			{% for barChartData in chartData.barChartDataList %}
-				{name: '{{barChartData.name}}', value: {{barChartData.value}}},
-			{% endfor %}
-			];
-		{% endif %}
+<script src="{% static 'js/chart/barchart.js' %}"></script>
+<script src="{% static 'js/chart/linechart.js' %}"></script>
+<script src="{% static 'js/chart/piechart.js' %}"></script>
+<script src="{% static 'js/chart/mapchart.js' %}"></script>
+<script type="text/javascript">
+	{% if chartData.barChartDataList %}
+	var barChartData = [
+		{% for barChartData in chartData.barChartDataList %}
+			{name: '{{barChartData.name}}', value: {{barChartData.value}}},
+		{% endfor %}
+		];
+	{% endif %}
 
-		{% if chartData.lineChartDataList %}
-		var lineChartData2 = [
-			{% for lineChartData in chartData.lineChartDataList %}
-				{values: [
-					{% for Desktop in lineChartData.Desktop %}
-						{name: "{{Desktop.name}}", date: "{{Desktop.date}}", price: "{{Desktop.value}}"},
-					{% endfor%}
-				]},
-				{values: [
-					{% for Notebook in lineChartData.Notebook %}
-						{name: "{{Notebook.name}}", date: "{{Notebook.date}}", price: "{{Notebook.value}}"},
-					{% endfor%}
-				]},
-				{values: [
-					{% for RackMountChassis in lineChartData.RackMountChassis %}
-						{name: "{{RackMountChassis.name}}", date: "{{RackMountChassis.date}}", price: "{{RackMountChassis.value}}"},
-					{% endfor%}
-
+	{% if chartData.lineChartDataList %}
+	var lineChartData = [
+		{% for lineChartData in chartData.lineChartDataList %}
+			{values: [
+				{% for Desktop in lineChartData.Desktop %}
+					{name: "{{Desktop.name}}", date: "{{Desktop.date}}", price: "{{Desktop.value}}"},
+				{% endfor%}
 			]},
-			{% endfor%}
+			{values: [
+				{% for Notebook in lineChartData.Notebook %}
+					{name: "{{Notebook.name}}", date: "{{Notebook.date}}", price: "{{Notebook.value}}"},
+				{% endfor%}
+			]},
+			{values: [
+				{% for RackMountChassis in lineChartData.RackMountChassis %}
+					{name: "{{RackMountChassis.name}}", date: "{{RackMountChassis.date}}", price: "{{RackMountChassis.value}}"},
+				{% endfor%}
+			]},
+		{% endfor%}
+	];
+	{% endif %}
+
+	{% if chartData.pieChartDataList %}
+	var pieChartData = [
+		{% for pieChartData in chartData.pieChartDataList %}
+			{name: '{{pieChartData.name}}', value: {{pieChartData.value}}, color: '{{pieChartData.color}}'},
+		{% endfor %}
 		];
-		{% endif %}
-				var lineChartData = [{values: [
-   {name: "Desktop", date: "2022-10-01", price: "2" },
-   { name: "Desktop", date: "2022-10-02", price: "1"},
-   { name: "Desktop", date: "2022-10-03", price: "1" },
-   { name: "Desktop", date: "2022-10-04", price: "1" },
-   { name: "Desktop", date: "2022-10-05", price: "1" }
-]},
-  {
+	{% endif %}
 
-   values: [{
-      name: "Notebook",
-      date: "2022-10-01",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-02",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-03",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-04",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-05",
-      price: "12"
-     }
-   ]
-  },
-  {
+	var worldMapData = [
+		{x:36.503328,y:127.261827},
+		{x:36.480048,y:127.289070},
+		{x:33.488985,y:126.498377},
+		{x:35.238289,y:128.692389},
+		{x:35.892508,y:128.600602}
+	];
+	var koreaMapData = [
+		{x:36.503328,y:127.261827},
+		{x:36.480048,y:127.289070},
+		{x:33.488985,y:126.498377},
+		{x:35.238289,y:128.692389},
+		{x:35.892508,y:128.600602}
+	];
 
-   values: [{
-      name: "Rack Mount Chassis",
-      date: "2022-10-01",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-02",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-03",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-04",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-05",
-      price: "8"
-     }
-   ]
-  },
-]
+	barChart(barChartData);
+	center();
+	lineChart(lineChartData);
+	piechart(pieChartData);
+	worldMapChart(worldMapData);
+	koreaMapChart(koreaMapData);
 
-		{% if chartData.pieChartDataList %}
-		var pieChartData = [
-			{% for pieChartData in chartData.pieChartDataList %}
-				{name: '{{pieChartData.name}}', value: {{pieChartData.value}}, color: '{{pieChartData.color}}'},
-			{% endfor %}
-			];
-		{% endif %}
-
-		var worldMapData = [
-		   {x:36.503328,y:127.261827},
-		   {x:36.480048,y:127.289070},
-		   {x:33.488985,y:126.498377},
-		   {x:35.238289,y:128.692389},
-		   {x:35.892508,y:128.600602}
-		];
-		var koreaMapData = [
-		   {x:36.503328,y:127.261827},
-		   {x:36.480048,y:127.289070},
-		   {x:33.488985,y:126.498377},
-		   {x:35.238289,y:128.692389},
-		   {x:35.892508,y:128.600602}
-		];
-
-			   barChart(barChartData);
-			   center();
-			   lineChart(lineChartData);
-			   piechart(pieChartData);
-			   worldMapChart(worldMapData);
-			   koreaMapChart(koreaMapData);
-	</script>
-    <!-- Dashboard Chart End -->
-    <!-- navbar alert -->
-    <script src="{% static 'js/common/nav.js' %}"></script>
-    <!-- dashboard jquery -->
-    <script src="{% static 'js/common/dashboard.js' %}"></script>
+</script>
+<!-- Dashboard Chart End -->
+<!-- navbar alert -->
+<script src="{% static 'js/common/nav.js' %}"></script>
+<!-- dashboard jquery -->
+<script src="{% static 'js/common/dashboard.js' %}"></script>
 {% endblock %}
