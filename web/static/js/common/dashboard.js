@@ -43,6 +43,7 @@ $(function() {
     $('.btnGu').click(function() {
         $('.korea-map, .world-map, .si-map, .dong-map').hide();
         $('.gu-map').show();
+        bundangMap();
     });
     $('.btnDong').click(function() {
         $('.korea-map, .world-map, .si-map, .gu-map').hide();
@@ -50,15 +51,6 @@ $(function() {
     });
 
 });
-
-
-
-
-
-
-
-
-
 
 //슬라이드배너
 $("#demo2").als({
@@ -68,6 +60,7 @@ $("#demo2").als({
 	circular: "yes",
 	autoscroll: "no"
 });
+
 
 
 

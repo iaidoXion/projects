@@ -635,11 +635,12 @@ function koreaMapChart(data) {
 };
 
 
+*/
 function seoulMap(){
     var width = 800, height = 600;
-    var svg = d3.select("#siMap").append("svg").attr("width", width).attr("height", height);
+    var svg = d3.select("#siMap").append("svg").attr("width", width).attr("height", height).style("margin-left", '15%');
     var map = svg.append("g").attr("id", "map"),places = svg.append("g").attr("id", "places");
-    var projection = d3.geo.mercator().center([126.9895, 37.5651]).scale(100000).translate([width/2, height/2]);
+    var projection = d3.geo.mercator().center([126.9895, 37.5451]).scale(90000).translate([width/2, height/2]);
     var path = d3.geo.path().projection(projection);
 
     d3.json("/web/static/data/mapTopo/seoul.json", function(error, data) {
@@ -667,4 +668,160 @@ function seoulMap(){
         .attr("y", function(d) { return projection([d.lon, d.lat])[1] + 8; })
         .text(function(d) { return d.name });
     });
-}*/
+}
+
+function bundangMap(){
+    var mapContainer = document.getElementById('guMap'), // 지도를 표시할 div
+		    mapOption = {
+		        center: new kakao.maps.LatLng(37.39806012268096, 127.1094211519), // 지도의 중심좌표
+		        level: 4, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    };
+
+		// 지도를 생성한다
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+
+    // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다
+    var positions = [
+        {
+            content: '<div>엔씨소프트 R&D센터</div>',
+            latlng: new kakao.maps.LatLng(37.399448, 127.1088779)
+        },
+        {
+            content: '<div>알파돔시티 판교알파리움1단지아파트</div>',
+            latlng: new kakao.maps.LatLng(37.395519, 127.108397)
+        }
+    ];
+
+    var markerImageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';
+
+    for (var i = 0; i < positions.length; i ++) {
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng // 마커의 위치
+        });
+
+        // 마커에 표시할 인포윈도우를 생성합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: positions[i].content // 인포윈도우에 표시할 내용
+        });
+
+        // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+        // 이벤트 리스너로는 클로저를 만들어 등록합니다
+        // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+        kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+        kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+    }
+
+    // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
+    function makeOverListener(map, marker, infowindow) {
+        return function() {
+            infowindow.open(map, marker);
+        };
+    }
+
+    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+    function makeOutListener(infowindow) {
+        return function() {
+            infowindow.close();
+        };
+    }
+
+}
+
+
+function pangyoMap(){
+// get the data
+d3.csv("/web/static/data/force.csv", function(error, links) {
+
+var nodes = {};
+
+// Compute the distinct nodes from the links.
+links.forEach(function(link) {
+    link.source = nodes[link.source] ||
+        (nodes[link.source] = {name: link.source});
+    link.target = nodes[link.target] ||
+        (nodes[link.target] = {name: link.target});
+    link.value = +link.value;
+});
+
+var width = 800,
+    height = 600;
+
+var force = d3.layout.force()
+    .nodes(d3.values(nodes))
+    .links(links)
+    .size([width, height])
+    .linkDistance(120)
+    .charge(-500)
+    .on("tick", tick)
+    .start();
+
+var svg = d3.select("#dongMap").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+// build the arrow.
+svg.append("svg:defs").selectAll("marker")
+    .data(["end"])
+  .enter().append("svg:marker")
+    .attr("id", String)
+    .attr("viewBox", "0 -5 10 10")
+    .attr("refX", 15)
+    .attr("refY", -1.5)
+    .attr("markerWidth", 6)
+    .attr("markerHeight", 6)
+    .attr("orient", "auto")
+  .append("svg:path")
+    .attr("d", "M0,-5L10,0L0,5");
+
+// add the links and the arrows
+var path = svg.append("svg:g").selectAll("path")
+    .data(force.links())
+  .enter().append("svg:path")
+    .attr("class", "link")
+    .attr("marker-end", "url(#end)");
+
+// define the nodes
+var node = svg.selectAll(".node")
+    .data(force.nodes())
+  .enter().append("g")
+    .attr("class", "node")
+    .call(force.drag);
+
+// add the nodes
+node.append("image")
+    .attr("xlink:href", "/web/static/img/dashboard/userorange.png")
+    .attr("width", 60)
+    .attr("height", 55);
+
+// add the text
+node.append("text")
+    .attr("x", 12)
+    .attr("dy", ".35em")
+    .text(function(d) { return d.name; });
+
+// add the curvy lines
+function tick() {
+    path.attr("d", function(d) {
+        var dx = d.target.x - d.source.x,
+            dy = d.target.y - d.source.y,
+            dr = Math.sqrt(dx * dx + dy * dy);
+        return "M" +
+            d.source.x + "," +
+            d.source.y + "A" +
+            dr + "," + dr + " 0 0,1 " +
+            d.target.x + "," +
+            d.target.y;
+    });
+
+    node
+        .attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")"; });
+}
+
+});
+}
