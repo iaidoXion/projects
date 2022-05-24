@@ -76,13 +76,13 @@
 					<div id="koreaMap"></div>
 				</div>
 				<div class="container-child-color my-float-left si-map">
-					<div id="siMap">시</div>
+					<div id="siMap"></div>
 				</div>
 				<div class="container-child-color my-float-left gu-map">
-					<div id="guMap">구</div>
+					<div id="guMap" class="my-grayscale"></div>
 				</div>
 				<div class="container-child-color my-float-left dong-map">
-					<div id="dongMap">동</div>
+					<div id="dongMap"></div>
 				</div>
 			</div>
 			<div class="mapRight">
@@ -92,7 +92,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">로그인 이력이 없는 자산</div>
+							<div class="my-margin-bot-4 mapContTop">로그인 이력이 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -101,7 +101,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">드라이브 사용량 변화가 없는 자산</div>
+							<div class="my-margin-bot-4 mapContTop">드라이브 사용량 변화가 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -110,7 +110,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Established된 포트가 없는 자산</div>
+							<div class="my-margin-bot-4 mapContTop">Established된 포트가 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -119,7 +119,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Listen상태의 포트수 변화가 없는 자산</div>
+							<div class="my-margin-bot-4 mapContTop">Listen상태의 포트수 변화가 없는 자산</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -128,7 +128,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
+							<div class="my-margin-bot-4 mapContTop">Alarm Title</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -137,7 +137,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
+							<div class="my-margin-bot-4 mapContTop">Alarm Title</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -146,7 +146,7 @@
 							<img src="{% static 'img/dashboard/gps.png' %}" />
 						</div>
 						<div class="mapCont">
-							<div class="my-margin-bot-4">Alarm Title</div>
+							<div class="my-margin-bot-4 mapContTop">Alarm Title</div>
 							<div>Asset ID : 5455454563</div>
 						</div>
 					</li>
@@ -162,12 +162,12 @@
 					{% if chartData.bannerDataList %}
 						{% for bannerData in chartData.bannerDataList %}
 							<li class="als-item my-border">
-								<div class="conBotTop"> {{bannerData.name}} </div>
+								<div class="conBotTop">{{bannerData.name}}</div>
 								<div class="conBotBot">
 									<p class="botConTotalNum">{{bannerData.count}}</p>
 									<div class="my-float-left conBotImg">
 										{% if bannerData.roc == 0 %}
-											<div class="my-float-left my-margin-left-2 my-margin-right-2 my-margin-top-2"> - </div>
+											<a class="conBotIcon"> - </a>
 										{% elif bannerData.roc > 0 %}
 											<img src="{% static 'img/common/arrowTop.png' %}">
 										{% else %}
@@ -251,6 +251,9 @@
 	piechart(pieChartData);
 	worldMapChart(worldMapData);
 	koreaMapChart(koreaMapData);
+	seoulMap();
+	bundangMap();
+	pangyoMap();
 
 </script>
 <!-- Dashboard Chart End -->

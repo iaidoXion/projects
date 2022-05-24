@@ -71,3 +71,10 @@ a {
 .my-margin-top-2{
     margin-top: 2px;
 }
+
+.my-grayscale {
+	filter: grayscale( 100% );
+}
+
+
+

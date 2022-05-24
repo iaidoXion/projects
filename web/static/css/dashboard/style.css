@@ -159,8 +159,15 @@
 .mapCont{
     float: left;
     font-size: 13px;
-    padding: 21px;
+    padding: 20px;
     margin-left: 10px;
+    width: 78%;
+}
+.mapContTop{
+    font-size: 0.7em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 
@@ -257,6 +264,11 @@
     margin-bottom: 10px;
     margin-top: 16px;
     text-align: center;
+    font-size: 0.8em;
+    min-height: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .conBotBot{
@@ -266,10 +278,18 @@
 }
 
 .conBotImg{
-    margin-top: 2px;
     margin-left: 2px;
     margin-right: 2px;
     padding-top: 8px;
+}
+
+.conBotImg a{
+    text-decoration-line: none;
+}
+
+.conBotIcon{
+    display: block;
+    line-height: 6px;
 }
 
 #barChart{
@@ -453,6 +473,35 @@ stroke-width: 0.2px; stroke: #fff;
 }
 #koreaPopMap #maps #path-99 { fill: #fff;
 }
+
+#guMap{
+    width: 900px;
+    height: 550px;
+    margin-left: 8.5%;
+}
+
+#dongMap{
+    margin-left: 25%;
+}
+
+#dongMap path.link {
+    fill: none;
+    stroke: #e08a0b;
+    stroke-width: 1.5px;
+}
+
+#dongMap circle {
+    fill: #ccc;
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+#dongMap text {
+    fill: #000;
+    font: 10px sans-serif;
+    pointer-events: none;
+}
+
 
 /*************************************
  * generic styling for ALS elements
