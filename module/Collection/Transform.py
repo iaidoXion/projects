@@ -48,6 +48,8 @@ def StatisticsYesterday(ESYDL) :
     OSC = []
     LLNM = []
     LLNC = []
+    DSNM = []
+    DSNC = []
 
     for i in range(len(ESYDL)):
         if ESYDL[i][0] == 'asset' :
@@ -63,13 +65,18 @@ def StatisticsYesterday(ESYDL) :
         elif ESYDL[i][0] == 'login' :
             LLNM.append(ESYDL[i][1])
             LLNC.append(int(ESYDL[i][2]))
+        elif ESYDL[i][0] == 'drive' :
+            DSNM.append(ESYDL[i][1])
+            DSNC.append(int(ESYDL[i][2]))
             #yesterdayDataList.append({"name": SYDL[i][1], "count" : SYDL[i][2]})
     RD = {
         "AA": {"name": ATNM, "value": ATC},
         "AIS": {"name": AINM, "value": AIC},
         "OS": {"name": OSNM, "value": OSC},
-        "LS": {"name": LLNM, "value": LLNC},
+        "LS": {"name": DSNM, "value": LLNC},
+        "DS": {"name": LLNM, "value": DSNC},
     }
+    #print(RD)
 
     return RD
 
@@ -106,12 +113,19 @@ def StatisticsBanner(ASDCL,SYDL) :
     YAIS = SYDL['AIS']
     TOS = ASDCL['OS']
     YOS = SYDL['OS']
+    TDS = ASDCL['DS']
+    YDS = SYDL['DS']
+    #print(TAA)
+    #print(TDS)
+    #print(YAA)
+    #print(YDS)
+    #print(SYDL)
     TAIDL = []
     for i in range(len(TAIS['name'])) :
         TAIDL.append([TAIS['name'][i],TAIS['value'][i]])
     TAIDFCNM = ['name', 'value']
     TAIDF = pd.DataFrame(TAIDL, columns=TAIDFCNM)
-    #print(TAIDL)
+
     YAIDL = []
     for j in range(len(YAIS['name'])):
         YAIDL.append([YAIS['name'][j], YAIS['value'][j]])
@@ -129,6 +143,17 @@ def StatisticsBanner(ASDCL,SYDL) :
         YOSDL.append([YOS['name'][l], YOS['value'][l]])
     YOSDFCNM = ['name', 'value']
     YOSDF = pd.DataFrame(YOSDL, columns=YOSDFCNM)
+
+    #TDSDL = []
+    #for m in range(len(TDS['name'])) :
+        #print(TDS['name'][m])
+        #print(TDS['value'][m])
+
+    # YDSDL = []
+    #for o in range(len(YDS['name'])) :
+        #    print(YDS['name'][o])
+        #print(YDS['value'][o])
+
     RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF}
 
     return RD
