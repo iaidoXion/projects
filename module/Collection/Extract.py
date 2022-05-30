@@ -12,8 +12,34 @@ AssetTNM = SETTING['DB']['AssetTNM']
 StatisticsTNM = SETTING['DB']['StatisticsTNM']
 BS = SETTING['FILE']
 today = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
+day = datetime.today().strftime("%Y-%m-%d")
 yesterday = (datetime.today() - timedelta(1)).strftime("%Y-%m-%d")
+twoago = (datetime.today() - timedelta(2)).strftime("%Y-%m-%d")
 fiveDay = (datetime.today() - timedelta(5)).strftime("%Y-%m-%d")
+
+def AssetYesterday() :
+    AssetSelectL = []
+    if DataLoadingType == 'DB':
+        AssetSelectConn = psycopg2.connect('host={0} dbname={1} user={2} password={3}'.format(DBHost, DBName, DBUser, DBPwd))
+        AssetSelectCur = AssetSelectConn.cursor()
+        AssetSelectQ = """
+            select 
+                computer_id as computer_id,
+                disk_total_space,
+                asset_collection_date
+            from
+                """+AssetTNM+"""
+            where 
+                to_char(asset_collection_date, 'YYYY-MM-DD HH24:MI:SS') > '"""+yesterday+""" 23:58:59'
+            and 
+                to_char(asset_collection_date, 'YYYY-MM-DD HH24:MI:SS') <= '"""+day+""" 23:58:59'
+        """
+        AssetSelectCur.execute(AssetSelectQ)
+        AssetSelectRS = AssetSelectCur.fetchall()
+        for AssetSelectR in AssetSelectRS:
+            AssetSelectL.append(AssetSelectR)
+        #print(AssetSelectL)
+        return AssetSelectL
 
 def StatisticsYesterday() :
     try:
@@ -48,7 +74,7 @@ def StatisticsYesterday() :
                 ADL = json.loads(ADF.read())
             AssetSelectL=ADL
             """
-            print(DataLoadingType)
+            #print(DataLoadingType)
         return StatisticsSelectL
     except :
         if DataLoadingType == 'DB':

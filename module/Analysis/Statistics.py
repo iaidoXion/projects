@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
 
-def DailyCount(TSDL):
+def DailyCount(TDL, EAYL):
     ATNM = "Asset Total Count"
-    ATC = len(TSDL)
+    ATC = len(TDL)
     today = datetime.today().strftime("%Y-%m-%d")
     weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
-    DF = TSDL
+    DF = TDL
     LLNM = "N"
     LLNC = len(DF[(DF['lastLogin'] < weekAgo)])
     AIG = DF.groupby(['assetItem'])
@@ -18,12 +18,32 @@ def DailyCount(TSDL):
     OSNM = OSGBRS.os
     OSC = OSGBRS.counts
 
+    YDIL = []
+    YDSL = []
+    for j in range(len(EAYL)) :
+        YDIL.append(EAYL[j][0])
+        YDSL.append(EAYL[j][1])
+
+    TDIDL = []
+    TDSL = []
+    for i in range(len(TDL.id)) :
+        TDIDL.append(TDL.id[i])
+        TDSL.append(TDL.driveSize[i])
+
+    print(YDIL)
+    print(TDIDL)
+    print(YDSL)
+    print(TDSL)
+
+
+
 
     RD = {
         "AA": {"name": [ATNM], "value": [ATC]},
         "AIS" : {"name": AINM.tolist(), "value": AIC.tolist()},
         "OS" : {"name": OSNM.tolist(), "value": OSC.tolist(),"color":["#e08a0b","#f4c17c", "#df7454"]},
         "LS" : {"name": [LLNM], "value": [LLNC]},
+        "DS": {"name": TDIDL, "value": TDSL}
     }
     return RD
 
@@ -39,9 +59,7 @@ def StatisticsFiveDay(SFDTDL):
     dataGroupListLen = len(DGL)
     for i in range(dataGroupListLen) :
         DSL.append(DGL[i].sort_values(by="date", ascending=True))
-    #print(DNM)
     RD = [DNM,DSL]
-    #print(RD)
     return RD
 
 def bannerRoc(SDL) :
