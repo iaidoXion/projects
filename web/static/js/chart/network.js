@@ -1,3 +1,90 @@
+function networkChart(){
+var width = 800,
+    height = 600
+
+var svg = d3.select("#dongMap").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var force = d3.layout.force()
+    .gravity(0.1)
+    .distance(100)
+    .charge(-700)
+    .size([width, height]);
+var color = function (group) {
+    if (group == 1) {
+        return "#aaa"
+    } else if (group == 2) {
+        return "#fbc280"
+    } else {
+        return "#405275"
+    }
+}
+d3.json("/web/static/data/friends.json", function (error, json) {
+    if (error) throw error;
+
+    force
+        .nodes(json.nodes)
+        .links(json.links)
+        .start();
+
+    var link = svg.selectAll(".link")
+        .data(json.links)
+        .enter().append("line")
+        .attr("class", "link");
+
+    var node = svg.selectAll(".node")
+        .data(json.nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+    node.append("image")
+        .attr("xlink:href", "/web/static/img/dashboard/userorange.png")
+        .attr("width", 20)
+        .attr("height", 20);
+
+/*              .attr('r', 13)
+        .attr('fill', function (d) {
+            return color(d.group);
+        });*/
+
+    node.append("text")
+        .attr("dx", -18)
+        .attr("dy", 8)
+        .style("font-family", "overwatch")
+        .style("font-size", "18px")
+
+        .text(function (d) {
+            return d.name
+        });
+
+    force.on("tick", function () {
+        link.attr("x1", function (d) {
+                return d.source.x;
+            })
+            .attr("y1", function (d) {
+                return d.source.y;
+            })
+            .attr("x2", function (d) {
+                return d.target.x;
+            })
+            .attr("y2", function (d) {
+                return d.target.y;
+            });
+        node.attr("transform", function (d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+    });
+});
+
+}
+
+
+
+
+
+
+/*
 var NETWORK_DATA = {
   "nodes": [
 	  {
@@ -430,7 +517,9 @@ var NETWORK_DATA = {
 	]
 };
 
-/********network graph********/
+*/
+/********network graph********//*
+
 		var networkGraph = {
 			createGraph : function(){
 				var links = NETWORK_DATA.links.map(function(d){
@@ -479,7 +568,8 @@ var NETWORK_DATA = {
 								.join("line")
 									.attr("stroke-width", function(d){ return Math.sqrt(d.value*5)} );
 
-				/*
+				*/
+/*
 				var node = svg.append("g")
 							.selectAll("circle")
 								.data(nodes)
@@ -491,7 +581,8 @@ var NETWORK_DATA = {
 
 				node.append("text")
 				  .text(function(d){ return d.id })
-				  .style("font-size", "12px") */
+				  .style("font-size", "12px") *//*
+
 
 
 				var node = gHolder.append("g")
@@ -518,9 +609,11 @@ var NETWORK_DATA = {
 						.attr("x2", function(d){ return d.target.x; })
 						.attr("y2", function(d){ return d.target.y; });
 
-					/*node
+					*/
+/*node
 						.attr("cx", function(d){ return d.x; })
-						.attr("cy", function(d){ return d.y; });*/
+						.attr("cy", function(d){ return d.y; });*//*
+
 
 					//circle 노드에서 g 노드로 변경
 					node.attr("transform", function(d) { return "translate("+d.x+","+ d.y+")"; });
@@ -554,5 +647,7 @@ var NETWORK_DATA = {
 					.on("end", dragended);
 			}
 		}
-		/********network graph********/
-		networkGraph.createGraph();
+		*/
+/********network graph********//*
+
+		networkGraph.createGraph();*/

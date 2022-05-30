@@ -34,11 +34,11 @@
 }
 
 .mapChartMenuWorld{
-    width: 30%;
+    width: 29.6%;
     min-height: 25px;
-    padding: 10px;
     float: right;
-    padding-top: 20px;
+    padding: 3px;
+    padding-top: 23px;
 }
 
 .mapChartMenuKorea{
@@ -50,39 +50,45 @@
 }
 
 .mapChartMenuWrap{
-    float: right;
+    margin-left: 17%;
 }
 
-.expansionWrap{
-    position: relative;
-    display: block;
-    float: right;
-    margin-top: 4px;
-    margin-left: 4px;
+.mapChartMenuWrap button{
+    padding-right: 13px;
+    padding-left: 13px;
+    width: 19.55%;
 }
 
-.expansion{
-    margin-left: 2px;
-    width: 20px;
-    height: 20px;
+.world-map{
+    width: 100%;
 }
 
 .korea-map{
+    width: 100%;
     display: none;
 }
 .si-map{
+    width: 100%;
     display: none;
 }
 .gu-map{
+    width: 100%;
     display: none;
 }
 .dong-map{
     display: none;
 }
 
-
+#worldMap{
+    float: left;
+    margin-left: 0.05%;
+}
 #koreaMap{
-    margin-left: 7%;
+    margin-left: 5.9%;
+    float: left;
+}
+#siMap{
+    float: left;
 }
 
 .container-top{
@@ -119,15 +125,16 @@
 }
 
 .mapLeft{
-    width: 75%;
+    width: 100%;
     height: 680px;
     float: left;
 }
 
 .mapRight{
     width: 25%;
-    height: 680px;
-    float: left;
+    height: 618px;
+    float: right;
+    margin-right: 1.8%;
 }
 
 .mapRightWrap{
@@ -139,19 +146,20 @@
     margin: 0 auto;
     background: #fff;
     width: 80%;
-    height: 73px;
+    height: 98px;
     margin-top: 21px;
     border: 1px solid #e3e6f0;
     background: #f7f7f7;
+    color: #858796;
 }
 
 .mapGps{
     float: left;
     margin-left: 5%;
-    min-height: 72px;
+    min-height: 97px;
 }
 .mapGps img{
-    margin-top: 19px;
+    margin-top: 25px;
     width: 35px;
     height: 35px;
 }
@@ -162,6 +170,7 @@
     padding: 20px;
     margin-left: 10px;
     width: 78%;
+    height: 97px;
 }
 .mapContTop{
     font-size: 0.7em;
@@ -209,7 +218,7 @@
     z-index: 9999;
 }
 
-#popKorea{
+.pop-korea{
     width: 98%;
     height: 900px;
     background: #fff;
@@ -235,7 +244,7 @@
 .shadow{
     position: fixed;
     left: 0;top: 0;
-    background: rgba(0, 0, 0, 0.52);
+    background: rgba(0, 0, 0, 0.1);
     width: 100%;
     height: 100vh;
     display: none;
@@ -284,12 +293,13 @@
 }
 
 .conBotImg a{
-    text-decoration-line: none;
+    text-decoration: none;
 }
 
 .conBotIcon{
     display: block;
     line-height: 6px;
+    color: #7f7f7f;
 }
 
 #barChart{
@@ -305,6 +315,17 @@
 
 #barChart .axis text{
     fill: #717384;
+}
+
+#barChart legend {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    font-size: 11px;
+}
+
+#barChart .legend text {
+    fill: #858796;
 }
 
 #lineChart {
@@ -368,7 +389,7 @@ display: none; fill: #000000;
 font-family: "Nanum Gothic"; font-size: 10px; text-anchor: middle; font-weight: bold;
 stroke-width: 0.2px; stroke: #fff;
 }
-#koreaMap path { fill: lightgray; stroke: #gray; stroke-width: 0.5px;
+#koreaMap path { fill: #d5d6dd; stroke: #gray; stroke-width: 0.5px;
 }
 
 #koreaMap text { font-family: "Nanum Gothic"; font-size: 10px; pointer-events: none;
@@ -408,7 +429,7 @@ display: none; fill: #000000;
 font-family: "Nanum Gothic"; font-size: 10px; text-anchor: middle; font-weight: bold;
 stroke-width: 0.2px; stroke: #fff;
 }
-#koreaMap path { fill: lightgray; stroke: #gray; stroke-width: 0.5px;
+#koreaMap path { fill: #d5d6dd; stroke: #gray; stroke-width: 0.5px;
 }
 /* #koreaMap path:hover { fill: #ffcc00; } */
 #koreaMap text { font-family: "Nanum Gothic"; font-size: 10px; pointer-events: none;
@@ -476,30 +497,39 @@ stroke-width: 0.2px; stroke: #fff;
 
 #guMap{
     width: 900px;
-    height: 550px;
-    margin-left: 8.5%;
+    height: 571px;
+    margin-left: 5%;
+    float: left;
+    margin-top: 22px;
+}
+
+#guMap div{
+    filter: saturate(100%);
+}
+
+/*적용 안됨*/
+#guMap img{
+    filter: saturate(100%) !important;
 }
 
 #dongMap{
-    margin-left: 25%;
+    width:  100%;
+    height: 100%;
+    margin-left: 18%;
 }
 
-#dongMap path.link {
-    fill: none;
+#dongMap .link {
     stroke: #e08a0b;
-    stroke-width: 1.5px;
 }
 
-#dongMap circle {
-    fill: #ccc;
-    stroke: #fff;
-    stroke-width: 1.5px;
-}
-
-#dongMap text {
-    fill: #000;
-    font: 10px sans-serif;
+#dongMap .node text {
     pointer-events: none;
+    font: 10px sans-serif;
+}
+
+#dongMap @font-face {
+    font-family: 'overwatch';
+    src: url('fonts/koverwatch.woff2');
 }
 
 
@@ -574,44 +604,10 @@ stroke-width: 0.2px; stroke: #fff;
 	right: 1.7%;
 }
 
-/*
-#worldMap svg circle {
-  fill: orange;
-  opacity: .5;
-  stroke: white;
-}
-#worldMap svg circle:hover {
-  fill: red;
-  stroke: #333;
-}
-#worldMap svg text {
-  pointer-events: none;
-}
-#worldMap svg .municipality {
-  fill: #efefef;
-  stroke: #fff;
-}
-#worldMap svg .municipality-label {
-  fill: #bbb;
-  font-size: 12px;
-  font-weight: 300;
-  text-anchor: middle;
-}
-#worldMap svg #map text {
-  color: #333;
-  font-size: 10px;
-  text-anchor: middle;
-}
-#worldMap svg #places text {
-  color: #777;
-  font: 10px sans-serif;
-  text-anchor: start;
-}*/
-
 #siMap svg circle {
           fill: orange;
-          opacity: .5;
-          stroke: white;
+/*          opacity: .5;
+          stroke: white;*/
         }
 #siMap svg circle:hover {
           fill: red;
@@ -619,9 +615,10 @@ stroke-width: 0.2px; stroke: #fff;
         }
 #siMap svg text {
           pointer-events: none;
+          fill: #858796;
         }
 #siMap svg .municipality {
-          fill: #efefef;
+          fill: #d5d6dd;
           stroke: #fff;
         }
 #siMap svg .municipality-label {
