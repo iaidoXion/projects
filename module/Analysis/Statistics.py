@@ -1,50 +1,42 @@
 from datetime import datetime, timedelta
 
-def DailyCount(TDL, EAYL):
+def DailyCount(TDL):
     ATNM = "Asset Total Count"
     ATC = len(TDL)
+
     today = datetime.today().strftime("%Y-%m-%d")
     weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
+
     DF = TDL
     LLNM = "N"
     LLNC = len(DF[(DF['lastLogin'] < weekAgo)])
+
     AIG = DF.groupby(['assetItem'])
     AIGBR = AIG.size().reset_index(name='counts')
     AINM = AIGBR.assetItem
     AIC = AIGBR.counts
+
     OSG = DF.groupby(['os'])
     OSGBR = OSG.size().reset_index(name='counts')
     OSGBRS = OSGBR.sort_values(by="counts", ascending=False).head(3)
     OSNM = OSGBRS.os
     OSC = OSGBRS.counts
 
-    YDIL = []
-    YDSL = []
-    for j in range(len(EAYL)) :
-        YDIL.append(EAYL[j][0])
-        YDSL.append(EAYL[j][1])
-
-    TDIDL = []
-    TDSL = []
-    for i in range(len(TDL.id)) :
-        TDIDL.append(TDL.id[i])
-        TDSL.append(TDL.driveSize[i])
-
-    print(YDIL)
-    print(TDIDL)
-    print(YDSL)
-    print(TDSL)
-
-
-
+    DC = 0
+    for i in range(len(TDL.id)):
+        if TDL.driveSize[i] != TDL.ydriveSize[i] :
+            DC = DC + 1
+    DSNM = "N"
+    DSNC = DC
 
     RD = {
         "AA": {"name": [ATNM], "value": [ATC]},
         "AIS" : {"name": AINM.tolist(), "value": AIC.tolist()},
         "OS" : {"name": OSNM.tolist(), "value": OSC.tolist(),"color":["#e08a0b","#f4c17c", "#df7454"]},
         "LS" : {"name": [LLNM], "value": [LLNC]},
-        "DS": {"name": TDIDL, "value": TDSL}
+        "DS": {"name": [DSNM], "value": [DSNC]}
     }
+    #print(RD)
     return RD
 
 def StatisticsFiveDay(SFDTDL):
@@ -85,7 +77,6 @@ def bannerRoc(SDL) :
     YAISNM = YAISSorting.name
     YAISV = YAISSorting.value
 
-    #if len(TAISNM) == len(YAISNM) :
     for i in range(len(TAISNM)) :
         if TAISNM[i] == YAISNM[i] :
             bannerDataList.append({"name" : TAISNM[i]+" Count", "count" :  TAISV[i], "roc" : TAISV[i]-YAISV[i]})
@@ -105,7 +96,14 @@ def bannerRoc(SDL) :
             bannerDataList.append({"name" : TOSNM[j]+" Count", "count" :  TOSV[j], "roc" : TOSV[j]-YOSV[j]})
         else :
             bannerDataList.append({"name" : TOSNM[j]+" Count", "count" :  TOSV[j], "roc" : 0})
+
+    TDS = SDL['TDS']
+    YDS = SDL['YDS']
+    DSROC = TDS['value'][0] - YDS['value'][0]
+    DSSDL = {"name": "No change in drive usage Count", "count": TDS['value'][0], "roc": DSROC}
+    bannerDataList.append(DSSDL)
     returnData = bannerDataList
+
     return returnData
 
 

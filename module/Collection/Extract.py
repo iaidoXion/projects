@@ -24,7 +24,7 @@ def AssetYesterday() :
         AssetSelectCur = AssetSelectConn.cursor()
         AssetSelectQ = """
             select 
-                computer_id as computer_id,
+                computer_id,
                 disk_total_space,
                 asset_collection_date
             from
@@ -33,6 +33,8 @@ def AssetYesterday() :
                 to_char(asset_collection_date, 'YYYY-MM-DD HH24:MI:SS') > '"""+yesterday+""" 23:58:59'
             and 
                 to_char(asset_collection_date, 'YYYY-MM-DD HH24:MI:SS') <= '"""+day+""" 23:58:59'
+            order by computer_id desc
+            
         """
         AssetSelectCur.execute(AssetSelectQ)
         AssetSelectRS = AssetSelectCur.fetchall()
