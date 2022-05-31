@@ -1,5 +1,6 @@
 import pandas as pd
 from datetime import datetime
+from module.Collection.Extract import AssetYesterday as EAY
 import json
 """
 with open("setting.json", encoding="UTF-8") as f:
@@ -8,7 +9,7 @@ with open("setting.json", encoding="UTF-8") as f:
 DataLoadingType = SETTING['MODULE']['DataLoadingType']
 """
 
-def AssetOrgDaily(parserData):
+def AssetOrgDaily(parserData, EAYL):
     PDLC = len(parserData)
     DFL = []
     ADL = []
@@ -24,18 +25,46 @@ def AssetOrgDaily(parserData):
         if AIPer.startswith('imac'):
             AI = 'Desktop'
         DFL.append([CI, AI, OI, DI, LI])
-
         ADL.append({'computer_id': CI, 'asset_item': AI, 'os_platform': OI, 'disk_total_space': DI, 'last_seen_at': LI})
-    DL = []
+
+
+    TDL = []
     for AssetData in ADL:
         CID = AssetData['computer_id']
         AI = AssetData['asset_item']
         OI = AssetData['os_platform']
         DTS = AssetData['disk_total_space']
         LSA = AssetData['last_seen_at']
-        DL.append([CID, AI, OI, DTS, LSA])
-    DFCNM = ['id', 'assetItem', 'os', 'driveSize', 'lastLogin']
+        TDL.append([CID, AI, OI, DTS, LSA])
+    TDFCNM = ['id', 'assetItem', 'os', 'driveSize', 'lastLogin']
+    TDF = pd.DataFrame(TDL, columns=TDFCNM)
+    TDFS = TDF.sort_values(by="id", ascending=False).reset_index(drop=True)
+
+    YDL = []
+    for j in range(len(EAYL)) :
+        CID = EAYL[j][0]
+        DTS = EAYL[j][1]
+        YDL.append([CID,DTS])
+    YDFCNM = ['Yid', 'YdriveSize']
+    YDF = pd.DataFrame(YDL, columns=YDFCNM)
+
+    DL = []
+    for j in range(len(TDFS)) :
+        CID = TDFS.id[j]
+        AI = TDFS.assetItem[j]
+        OI = TDFS.os[j]
+        TDTS = TDFS.driveSize[j]
+        LSA = TDFS.lastLogin[j]
+        YCID = YDF.Yid[j]
+        YDTS = YDF.YdriveSize[j]
+        if CID == YCID :
+            DL.append([CID, AI, OI, TDTS, LSA, int(YDTS)])
+        else :
+            DL.append([CID, AI, OI, TDTS, LSA, TDTS])
+    DFCNM = ['id', 'assetItem', 'os', 'driveSize', 'lastLogin', 'ydriveSize']
     DF = pd.DataFrame(DL, columns=DFCNM)
+    #print(DF)
+
     return DF
 
 def StatisticsYesterday(ESYDL) :
@@ -73,8 +102,8 @@ def StatisticsYesterday(ESYDL) :
         "AA": {"name": ATNM, "value": ATC},
         "AIS": {"name": AINM, "value": AIC},
         "OS": {"name": OSNM, "value": OSC},
-        "LS": {"name": DSNM, "value": LLNC},
-        "DS": {"name": LLNM, "value": DSNC},
+        "LS": {"name": LLNM, "value": LLNC},
+        "DS": {"name": DSNM, "value": DSNC},
     }
     #print(RD)
 
@@ -95,11 +124,8 @@ def StatisticsFiveDay(ESFDL, ASDCL) :
         price = int(ASDCL['AIS']['value'][j])
         date = today
         ADL.append([name, price, date])
-    #print(ADL)
     ACNM = ['name', 'value', 'date']
     ADF = pd.DataFrame(ADL, columns=ACNM)
-    #ADFL = ADF.groupby('name')['date']['value'].apply(list)
-    #print(ADFL)
 
     return ADF
 
@@ -115,46 +141,32 @@ def StatisticsBanner(ASDCL,SYDL) :
     YOS = SYDL['OS']
     TDS = ASDCL['DS']
     YDS = SYDL['DS']
-    #print(TAA)
-    #print(TDS)
-    #print(YAA)
-    #print(YDS)
-    #print(SYDL)
+
+    DFCNM = ['name', 'value']
     TAIDL = []
     for i in range(len(TAIS['name'])) :
         TAIDL.append([TAIS['name'][i],TAIS['value'][i]])
-    TAIDFCNM = ['name', 'value']
-    TAIDF = pd.DataFrame(TAIDL, columns=TAIDFCNM)
+    TAIDF = pd.DataFrame(TAIDL, columns=DFCNM)
 
     YAIDL = []
     for j in range(len(YAIS['name'])):
         YAIDL.append([YAIS['name'][j], YAIS['value'][j]])
-    YAIDFCNM = ['name', 'value']
-    YAIDF = pd.DataFrame(YAIDL, columns=YAIDFCNM)
+    YAIDF = pd.DataFrame(YAIDL, columns=DFCNM)
 
     TOSDL = []
     for k in range(len(TOS['name'])):
         TOSDL.append([TOS['name'][k], TOS['value'][k]])
-    TOSDFCNM = ['name', 'value']
-    TOSDF = pd.DataFrame(TOSDL, columns=TOSDFCNM)
+    TOSDF = pd.DataFrame(TOSDL, columns=DFCNM)
 
     YOSDL = []
     for l in range(len(YOS['name'])):
         YOSDL.append([YOS['name'][l], YOS['value'][l]])
-    YOSDFCNM = ['name', 'value']
-    YOSDF = pd.DataFrame(YOSDL, columns=YOSDFCNM)
+    YOSDF = pd.DataFrame(YOSDL, columns=DFCNM)
 
-    #TDSDL = []
-    #for m in range(len(TDS['name'])) :
-        #print(TDS['name'][m])
-        #print(TDS['value'][m])
 
-    # YDSDL = []
-    #for o in range(len(YDS['name'])) :
-        #    print(YDS['name'][o])
-        #print(YDS['value'][o])
 
-    RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF}
+
+    RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF, "TDS" : TDS, "YDS" : YDS}
 
     return RD
 
