@@ -1,8 +1,102 @@
 function networkChart(){
-var width = 800,
+var width = 960,
+    height = 500;
+
+var color = d3.scale.category20();
+
+var radius = d3.scale.sqrt()
+    .range([0, 6]);
+
+var svg = d3.select("#guMap").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+
+
+
+var defs = svg.append("defs");
+
+defs.append('pattern')
+    .attr("id", "userOrange")
+    .attr("width", 1)
+    .attr("height", 1)
+    .append("svg:image")
+    .attr("xlink:href", "/web/static/img/dashboard/ncrd.png")
+    .attr("width", 50)
+    .attr("height", 50)
+    .attr("y", 0)
+    .attr("x", 0);
+
+
+
+var force = d3.layout.force()
+    .size([width, height])
+    .charge(-400)
+    .linkDistance(function(d) { return radius(d.source.size) + radius(d.target.size) + 20; });
+
+d3.json("/web/static/data/network.json", function(error, graph) {
+  if (error) throw error;
+
+  force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .on("tick", tick)
+      .start();
+
+  var link = svg.selectAll(".link")
+      .data(graph.links)
+    .enter().append("g")
+      .attr("class", "link");
+
+  link.append("line")
+      .style("stroke-width", function(d) { return (d.bond * 2 - 1) * 2 + "px"; });
+
+  link.filter(function(d) { return d.bond > 1; }).append("line")
+      .attr("class", "separator");
+
+  var node = svg.selectAll(".node")
+      .data(graph.nodes)
+    .enter().append("g")
+      .attr("class", "node")
+      .call(force.drag);
+
+  node.append("circle")
+      .attr("r", function(d) { return radius(d.size); })
+      /*.style("fill", function(d) { return color(d.atom); })*/
+      .attr("fill", "url(#userOrange");
+
+  node.append("text")
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      .text(function(d) { return d.atom; });
+
+  function tick() {
+    link.selectAll("line")
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+}
+/*var width = 800,
     height = 600
 
-var svg = d3.select("#dongMap").append("svg")
+var svg = d3.select("#guMap").append("svg")
     .attr("width", width)
     .attr("height", height);
 
@@ -43,10 +137,10 @@ d3.json("/web/static/data/friends.json", function (error, json) {
         .attr("width", 20)
         .attr("height", 20);
 
-/*              .attr('r', 13)
+*//*              .attr('r', 13)
         .attr('fill', function (d) {
             return color(d.group);
-        });*/
+        });*//*
 
     node.append("text")
         .attr("dx", -18)
@@ -77,7 +171,7 @@ d3.json("/web/static/data/friends.json", function (error, json) {
     });
 });
 
-}
+}*/
 
 
 

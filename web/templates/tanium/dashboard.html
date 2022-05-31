@@ -9,6 +9,7 @@
                     <a class="my-float-left"><img src="{% static 'img/dashboard/barchart.png' %}"/></a>
                     <div class="conText">Asset Count By Item</div>
                 </div>
+                <div id="barLegend"></div>
                 <div id="barChart"></div>
             </div>
             <div class="container-child-color container-left-bot my-border">
@@ -548,7 +549,7 @@
 <script src="{% static 'js/chart/network.js' %}"></script>
 <script type="text/javascript">
 	{% if chartData.barChartDataList %}
-	var barChartData = [
+	var barChartData2 = [
 		{% for barChartData in chartData.barChartDataList %}
 			{name: '{{barChartData.name}}', value: {{barChartData.value}}},
 		{% endfor %}
@@ -675,13 +676,12 @@
 		{x:35.892508,y:128.600602}
 	];
 
-	barChart(barChartData);
+	barChart(barChartData2);
 	lineChart(lineChartData);
 	piechart(pieChartData);
 	worldMapChart(worldMapData);
 	koreaMapChart(koreaMapData);
 	seoulMap();
-	bundangMap();
 	pangyoMap();
 	networkChart();
 
