@@ -3,7 +3,7 @@ function barChart(barChartData) {
 
 var margin = {top: 10, right: 160, bottom: 25, left: 30};
 
-var width = 600 - margin.left - margin.right,
+var width = 620 - margin.left - margin.right,
     height = 175 - margin.top - margin.bottom;
 
 var svg = d3.select("#barChart")
@@ -17,9 +17,9 @@ var svg = d3.select("#barChart")
 /* Data in strings like it would be if imported from a csv */
 
 var data = [
-  { year: "2006", redDelicious: "10", mcintosh: "15", oranges: "9" },
-  { year: "2007", redDelicious: "12", mcintosh: "18", oranges: "9" },
-  { year: "2016", redDelicious: "19", mcintosh: "17", oranges: "5" }
+  { year: "2019", redDelicious: "10", mcintosh: "15", oranges: "9" },
+  { year: "2020", redDelicious: "12", mcintosh: "18", oranges: "11" },
+  { year: "2021", redDelicious: "20", mcintosh: "12", oranges: "3" }
 ];
 
 var parse = d3.time.format("%Y").parse;
@@ -36,7 +36,7 @@ var dataset = d3.layout.stack()(["redDelicious", "mcintosh", "oranges"].map(func
 // Set x, y and colors
 var x = d3.scale.ordinal()
   .domain(dataset[0].map(function(d) { return d.x; }))
-  .rangeRoundBands([0, width-10], 0.02);
+  .rangeRoundBands([0, width-10], 0.25);
 
 var y = d3.scale.linear()
   .domain([0, d3.max(dataset, function(d) {  return d3.max(d, function(d) { return d.y0 + d.y; });  })])
@@ -92,9 +92,66 @@ var rect = groups.selectAll("rect")
     tooltip.select("text").text(d.y);
   });
 
+var tooltip = svg.append("g")
+  .attr("class", "tooltip")
+  .style("display", "none");
+
+tooltip.append("rect")
+  .attr("width", 30)
+  .attr("height", 20)
+  .attr("fill", "white")
+  .style("opacity", 0.5);
+
+tooltip.append("text")
+  .attr("x", 15)
+  .attr("dy", "1.2em")
+  .style("text-anchor", "middle")
+  .attr("font-size", "12px")
+  .attr("font-weight", "bold");
+
+/*legend*/
+  var legendItemSize = 9;
+  var legendSpacing = 3;
+  var xOffset = 0;
+  var yOffset = 0;
+  var legend = d3
+   .select('#barLegend')
+   .append('svg')
+   .selectAll('.legendItem')
+   .data(dataset)
+
+  //Create legend items
+  legend
+   .enter()
+   .append('rect')
+   .attr('class', 'legendItem')
+   .attr('width', legendItemSize)
+   .attr('height', legendItemSize)
+   .style("fill", function(d, i) {return colors.slice()[i];})
+   .attr('transform',
+                (d, i) => {
+                    var x = xOffset;
+                    var y = yOffset + (legendItemSize + legendSpacing) * i;
+                    return `translate(${x}, ${y})`;
+                });
+
+
+  //Create legend labels
+  legend
+   .enter()
+   .append('text')
+   .attr('x', xOffset + legendItemSize + 5)
+   .attr('y', (d, i) => yOffset + (legendItemSize + legendSpacing) * i + 10)
+   .text(function(d, i) {
+    switch (i) {
+      case 0: return "Red delicious";
+      case 1: return "McIntosh apples";
+      case 2: return "Navel oranges";
+    }
+  });
 
 // Draw legend
-var legend = svg.selectAll(".legend")
+/*var legend = svg.selectAll(".legend")
   .data(colors)
   .enter().append("g")
   .attr("class", "legend")
@@ -116,15 +173,23 @@ legend.append("text")
       case 0: return "Anjou pears";
       case 1: return "Naval oranges";
       case 2: return "McIntosh apples";
-      case 3: return "Red Delicious apples";
     }
-  });
+  });*/
 
 
 // Prep the tooltip bits, initial display is hidden
-var tooltip = svg.append("g")
-  .attr("class", "tooltip")
-  .style("display", "none");
+var tooltip = d3
+    .select('#barChart')
+    .append('div')
+    .attr('class', 'd3-tooltip')
+    .style('position', 'absolute')
+    .style('z-index', '999')
+    .style('visibility', 'hidden')
+    .style('padding', '10px')
+    .style('background', 'rgba(0,0,0,0.6)')
+    .style('border-radius', '4px')
+    .style('color', '#fff')
+    .text('a simple tooltip');
 
 tooltip.append("rect")
   .attr("width", 30)
@@ -138,17 +203,6 @@ tooltip.append("text")
   .style("text-anchor", "middle")
   .attr("font-size", "12px")
   .attr("font-weight", "bold");
-
-
-
-
-
-
-
-
-
-
-
 
 
         /*var tooltip = d3

@@ -53,7 +53,7 @@ kh99997,대구광역시청,35.871420,128.601720
 kh99998,부산광역시청,35.179756,129.074998
 kh99999,서울특별시청,37.566682,126.978418*/
 
-var data = [{x:36.503328,y:127.261827},{x:36.480048,y:127.289070},{x:33.488985,y:126.498377},{x:35.238289,y:128.692389},{x:35.892508,y:128.600602}];
+var data = [{x:37.5569016,y:126.9329799},{x:37.5344248,y:126.9750082},{x:37.5189582,y:126.9307458},{x:37.5720260,y:126.9743351},{x:37.5617693,y:126.9921966}];
 
 svg.selectAll("circle")
     .data(data)
@@ -106,115 +106,10 @@ setInterval(function(){
 
 
 function koreaMapChart() {
-    var buildCircle = {
-					init: function(){
-                        var w = 1500;
-                        var h = 800;
-                        // make a dummy data set
-                        var dataset = [],
-                        i = 0;
-                        for(i=0; i<7; i++){
-                            var locale = {
-                                "xcoord": getRandomInt (w/8, w/2),
-                                "ycoord": getRandomInt (h/8, h/2),
-                                "value": 30,//getRandomInt (10, 100),
-                                "alarmLevel": getRandomInt (0, 200)
-                            }
-                            dataset.push(locale);
-                        }
-                        //__ make dummy data
-
-                        function getRandomInt (min, max) {
-                            return Math.floor(Math.random() * (max - min + 1)) + min;
-                        }
-
-                        //__viz append
-                        mapSvg.append("svg")
-                            .attr("width", w)
-                            .attr("height", h)
-                                .append("g")
-                                .attr("transform", "translate(140, 160)")
-
-                        //_place holder for markers
-                        var circleGroup = mapSvg.append("g")
-                            .attr("class", "circles");
-                            circleGroup.selectAll("circle")
-                            .data(dataset)
-                            .enter().append("circle")
-                            .style("stroke", "#e08a0b")
-                            .style("fill", "#e08a0b")
-                            .attr("r", function(d){
-                                return d.value*.1;//scale the circles
-                            })
-                            .attr("cx", function(d){
-                                return d.xcoord;
-                            })
-                            .attr("cy", function(d){
-                                return d.ycoord;
-                            });
-                         //_place holder for rings
-                         var speedLineGroup = mapSvg.append("g")
-                             .attr("class", "speedlines");
-                        function getDurationPerDot(circleData){
-                            var totalTime = 3000;//3 seconds max
-                            var time = totalTime-(circleData.alarmLevel*10)
-                            return time;
-                        }
-
-                        function getOuterRadiusPerDot(circleData){
-                            var radius = circleData.alarmLevel*.5;
-                            return radius;
-                        }
-
-
-                        $.each(dataset, function( index, value ) {
-                            $('.throbdata').append("<li>dot:"+index+" , alarm val :"+value.alarmLevel+" , orb size :"+value.value+", Duration: "+getDurationPerDot(value)+"</li>");
-                        });
-
-                        //invoke rings
-                        makeRings()
-                        //window.setInterval(makeRings, 1000);
-                        function makeRings() {
-                            var datapoints = circleGroup.selectAll("circle");
-                            var radius = 1;
-                                function myTransition(circleData){
-                                    var transition = d3.select(this).transition();
-                                        var duration = getDurationPerDot(circleData);
-                                        var outerRadius = getOuterRadiusPerDot(circleData);
-                                        speedLineGroup.append("circle")
-                                            .attr({
-                                                "class": "ring",
-                                                "fill":"#df7454",
-                                                "stroke":"#f4c17c",
-                                                "stroke-width": 1.5,
-                                                "cx": circleData.xcoord,
-                                                "cy": circleData.ycoord,
-                                                "r":radius,
-                                                "opacity": 0.7,
-                                                "fill-opacity":0.7
-                                            })
-                                            .transition()
-                                            .duration(6000)
-                                            .attr("r", radius + outerRadius )
-                                            .attr("opacity", 0)
-                                            .remove();
-                                    var t= setInterval(function(){
-                                        clearInterval(t);
-                                        myTransition(circleData)
-                                    },700);
-                                    //transition.each('end', myTransition);
-                                }
-                          datapoints.each(myTransition);
-                        }
-				}
-			}
-			$(document).ready(function() {
-			buildCircle.init();
-            });
-
     var placeid = "";
     var koreaMapWidth = 0;
     var koreaMapHeight = 0;
+
     var initialScale = 4900,
         initialX = 0,
         initialY = 0,
@@ -241,7 +136,7 @@ function koreaMapChart() {
     placeMap    = mapSvg.append("g").attr("id", "places");
     // zoom and pan //
 
-        var koreaProjection = d3.geo.mercator()
+    var koreaProjection = d3.geo.mercator()
         .center([113, -3])
         .scale(1275)
         .translate([koreaMapWidth / 2, koreaMapHeight / 2])
@@ -258,6 +153,47 @@ function koreaMapChart() {
         .datum(graticule)
         .attr("class", "graticule")
         .attr("d", path);
+
+
+
+
+var data = [{x:37.5569016,y:126.9329799},{x:37.5344248,y:126.9750082},{x:37.5189582,y:126.9307458},{x:37.5720260,y:126.9743351},{x:37.5617693,y:126.9921966}];
+
+mapSvg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("class","dot")
+    .attr("transform",translateCircle)
+    .attr("r",4)
+    .style("fill", "#e08a0b");
+
+function translateCircle(datum, index)
+          {
+            return "translate(" +  placeProjection([datum.y, datum.x]) + ")";
+          };
+
+setInterval(function(){
+	      data.forEach(function(datum)
+          {
+			  mapSvg
+			  	.append("circle")
+			      .attr("class", "ring")
+			      .attr("transform", translateCircle(datum))
+			      .attr("r", 1)
+			      .style("fill", "#e06f0b")
+			      .style("opacity", "0.3")
+			      .style("fill-opacity", "0.3")
+			    .transition()
+			      .ease("linear")
+			      .duration(2000)
+			      .style("stroke-opacity", 1e-6)
+			      .style("stroke-width", 1)
+			      .style("stroke", "e06f0b")
+			      .attr("r", 30)
+			      .remove();
+          })
+      }, 800);
 
     function labelsTransform(d) {
     // 경기도가 서울특별시와 겹쳐서 위치 조정 및 세종특별자치시와 대전광역시 위치 조정
@@ -465,118 +401,49 @@ function koreaMapChart(data) {
 
 */
 function seoulMap(){
-
-var buildCircle = {
-					init: function(){
-                        var w = 1000;
-                        var h = 800;
-                        // make a dummy data set
-                        var dataset = [],
-                        i = 0;
-                        for(i=0; i<7; i++){
-                            var locale = {
-                                "xcoord": getRandomInt (w/8, w/2),
-                                "ycoord": getRandomInt (h/8, h/2),
-                                "value": 30,//getRandomInt (10, 100),
-                                "alarmLevel": getRandomInt (0, 200)
-                            }
-                            dataset.push(locale);
-                        }
-                        //__ make dummy data
-
-                        function getRandomInt (min, max) {
-                            return Math.floor(Math.random() * (max - min + 1)) + min;
-                        }
-
-                        //__viz append
-                        svg.append("svg")
-                            .attr("width", w)
-                            .attr("height", h)
-                                .append("g")
-                                .attr("transform", "translate(140, 160)")
-
-                        //_place holder for markers
-                        var circleGroup = svg.append("g")
-                            .attr("class", "circles");
-                            circleGroup.selectAll("circle")
-                            .data(dataset)
-                            .enter().append("circle")
-                            .style("stroke", "#e08a0b")
-                            .style("fill", "#e08a0b")
-                            .attr("r", function(d){
-                                return d.value*.1;//scale the circles
-                            })
-                            .attr("cx", function(d){
-                                return d.xcoord;
-                            })
-                            .attr("cy", function(d){
-                                return d.ycoord;
-                            });
-                         //_place holder for rings
-                         var speedLineGroup = svg.append("g")
-                             .attr("class", "speedlines");
-                        function getDurationPerDot(circleData){
-                            var totalTime = 3000;//3 seconds max
-                            var time = totalTime-(circleData.alarmLevel*10)
-                            return time;
-                        }
-
-                        function getOuterRadiusPerDot(circleData){
-                            var radius = circleData.alarmLevel*.5;
-                            return radius;
-                        }
-
-
-                        $.each(dataset, function( index, value ) {
-                            $('.throbdata').append("<li>dot:"+index+" , alarm val :"+value.alarmLevel+" , orb size :"+value.value+", Duration: "+getDurationPerDot(value)+"</li>");
-                        });
-
-                        //invoke rings
-                        makeRings()
-                        //window.setInterval(makeRings, 1000);
-                        function makeRings() {
-                            var datapoints = circleGroup.selectAll("circle");
-                            var radius = 1;
-                                function myTransition(circleData){
-                                    var transition = d3.select(this).transition();
-                                        var duration = getDurationPerDot(circleData);
-                                        var outerRadius = getOuterRadiusPerDot(circleData);
-                                        speedLineGroup.append("circle")
-                                            .attr({
-                                                "class": "ring",
-                                                "fill":"#df7454",
-                                                "stroke":"#f4c17c",
-                                                "stroke-width": 1.5,
-                                                "cx": circleData.xcoord,
-                                                "cy": circleData.ycoord,
-                                                "r":radius,
-                                                "opacity": 0.7,
-                                                "fill-opacity":0.7
-                                            })
-                                            .transition()
-                                            .duration(6000)
-                                            .attr("r", radius + outerRadius )
-                                            .attr("opacity", 0)
-                                            .remove();
-                                    var t= setInterval(function(){
-                                        clearInterval(t);
-                                        myTransition(circleData)
-                                    },700);
-                                    //transition.each('end', myTransition);
-                                }
-                          datapoints.each(myTransition);
-                        }
-				}
-			}
-			$(document).ready(function() {
-			buildCircle.init();
-            });
-
     var width = 1000, height = 600;
     var svg = d3.select("#siMap").append("svg").attr("width", width).attr("height", height).style("margin-left", '1%');
     var map = svg.append("g").attr("id", "map"),places = svg.append("g").attr("id", "places");
     var projection = d3.geo.mercator().center([126.9895, 37.5451]).scale(90000).translate([width/2, height/2]);
     var path = d3.geo.path().projection(projection);
+
+var data = [{x:37.5569016,y:126.9329799},{x:37.5344248,y:126.9750082},{x:37.5189582,y:126.9307458},{x:37.5720260,y:126.9743351},{x:37.5617693,y:126.9921966}];
+
+svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("class","dot")
+    .attr("transform",translateCircle)
+    .attr("r",8)
+    .style("fill", "#e08a0b");
+
+function translateCircle(datum, index)
+          {
+            return "translate(" +  projection([datum.y, datum.x]) + ")";
+          };
+
+setInterval(function(){
+	      data.forEach(function(datum)
+          {
+			  svg
+			  	.append("circle")
+			      .attr("class", "ring")
+			      .attr("transform", translateCircle(datum))
+			      .attr("r", 1)
+			      .style("fill", "#e06f0b")
+			      .style("opacity", "0.3")
+			      .style("fill-opacity", "0.3")
+			    .transition()
+			      .ease("linear")
+			      .duration(2000)
+			      .style("stroke-opacity", 1e-6)
+			      .style("stroke-width", 1)
+			      .style("stroke", "e06f0b")
+			      .attr("r", 30)
+			      .remove();
+          })
+      }, 800);
 
     d3.json("/web/static/data/mapTopo/seoul.json", function(error, data) {
         var features = topojson.feature(data, data.objects.seoul_municipalities_geo).features;
@@ -592,7 +459,7 @@ var buildCircle = {
         .text(function(d) { return d.properties.name; })
     });
 
-    d3.csv("/web/static/data/placeSi.csv", function(data) {
+/*    d3.csv("/web/static/data/placeSi.csv", function(data) {
         places.selectAll("circle").data(data).enter().append("circle")
         .attr("cx", function(d) { return projection([d.lon, d.lat])[0]; })
         .attr("cy", function(d) { return projection([d.lon, d.lat])[1]; })
@@ -602,13 +469,10 @@ var buildCircle = {
         .attr("x", function(d) { return projection([d.lon, d.lat])[0]; })
         .attr("y", function(d) { return projection([d.lon, d.lat])[1] + 8; })
         .text(function(d) { return d.name });
-    });
+    });*/
 
 
-
-
-
-        var buildCircle = {
+        /*var buildCircle = {
 					init: function(){
                         var w = 1500;
                         var h = 800;
@@ -713,17 +577,13 @@ var buildCircle = {
 			$(document).ready(function() {
 			buildCircle.init();
             });
-
-
-
-
-
-
+*/
 }
 
 function bundangMap(){
 
 
+/*
 var mapContainer = document.getElementById('guMap'), // 지도를 표시할 div
     mapOption = {
         center: new kakao.maps.LatLng(37.39806012268096, 127.1094211519), // 지도의 중심좌표
@@ -823,6 +683,7 @@ for (var i = 0; i < users.length; i ++) {
 
 
 
+*/
 
 
 }

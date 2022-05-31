@@ -317,14 +317,17 @@
     fill: #717384;
 }
 
-#barChart legend {
+#barLegend svg {
     position: absolute;
     width: 150px;
     height: 50px;
     font-size: 11px;
+    margin-left: 300px;
+    top: 85px;
+    left: 41px;
 }
 
-#barChart .legend text {
+#barLegend text {
     fill: #858796;
 }
 
@@ -503,14 +506,25 @@ stroke-width: 0.2px; stroke: #fff;
     margin-top: 22px;
 }
 
-#guMap div{
-    filter: saturate(100%);
+#guMap .link line {
+  stroke: #696969;
 }
 
-/*적용 안됨*/
-#guMap img{
-    filter: saturate(100%) !important;
+#guMap .link line.separator {
+  stroke: #fff;
+  stroke-width: 2px;
 }
+
+#guMap .node circle {
+  stroke: #000;
+  stroke-width: 1.5px;
+}
+
+#guMap .node text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
 
 #dongMap{
     width:  100%;
