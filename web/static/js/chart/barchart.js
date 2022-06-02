@@ -17,21 +17,20 @@ var svg = d3.select("#barChart")
 /* Data in strings like it would be if imported from a csv */
 
 var data = [
-  { year: "2019", redDelicious: "10", mcintosh: "15", oranges: "9" },
-  { year: "2020", redDelicious: "12", mcintosh: "18", oranges: "11" },
-  { year: "2021", redDelicious: "20", mcintosh: "12", oranges: "3" }
+  { year: "2019", Windows: "10", Linux: "15", Mac: "9" },
+  { year: "2020", Windows: "12", Linux: "18", Mac: "11" },
+  { year: "2021", Windows: "20", Linux: "12", Mac: "3" }
 ];
 
 var parse = d3.time.format("%Y").parse;
-
+// console.log(Object.keys(data[0]))
 
 // Transpose the data into layers
-var dataset = d3.layout.stack()(["redDelicious", "mcintosh", "oranges"].map(function(fruit) {
+var dataset = d3.layout.stack()(["Windows", "Linux", "Mac"].map(function(useOsCount) {
   return data.map(function(d) {
-    return {x: parse(d.year), y: +d[fruit]};
+    return {x: parse(d.year), y: +d[useOsCount]};
   });
 }));
-
 
 // Set x, y and colors
 var x = d3.scale.ordinal()
@@ -67,7 +66,6 @@ svg.append("g")
   .attr("transform", "translate(0," + height + ")")
   .call(xAxis);
 
-
 // Create groups for each series, rects for each segment
 var groups = svg.selectAll("g.cost")
   .data(dataset)
@@ -83,31 +81,20 @@ var rect = groups.selectAll("rect")
   .attr("y", function(d) { return y(d.y0 + d.y); })
   .attr("height", function(d) { return y(d.y0) - y(d.y0 + d.y); })
   .attr("width", x.rangeBand())
-  .on("mouseover", function() { tooltip.style("display", null); })
-  .on("mouseout", function() { tooltip.style("display", "none"); })
-  .on("mousemove", function(d) {
-    var xPosition = d3.mouse(this)[0] - 15;
-    var yPosition = d3.mouse(this)[1] - 25;
-    tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
-    tooltip.select("text").text(d.y);
-  });
-
-var tooltip = svg.append("g")
-  .attr("class", "tooltip")
-  .style("display", "none");
-
-tooltip.append("rect")
-  .attr("width", 30)
-  .attr("height", 20)
-  .attr("fill", "white")
-  .style("opacity", 0.5);
-
-tooltip.append("text")
-  .attr("x", 15)
-  .attr("dy", "1.2em")
-  .style("text-anchor", "middle")
-  .attr("font-size", "12px")
-  .attr("font-weight", "bold");
+  .on("mouseover", function(d, i) {
+               d3.select(this)
+                 .style("cursor", "pointer")
+                 tooltip
+                    .html(
+                      `<div>${d.y}</div>`
+                    )
+                    .style("margin-top", (d3.select(this).attr("y")-120 + "px"))
+                    .style("margin-left", (d3.select(this).attr("x")-10 + "px"))
+                    .style('visibility', 'visible');
+            })
+            .on("mouseout", function(d) {
+                tooltip.style('visibility', 'hidden');
+            });
 
 /*legend*/
   var legendItemSize = 9;
@@ -144,40 +131,15 @@ tooltip.append("text")
    .attr('y', (d, i) => yOffset + (legendItemSize + legendSpacing) * i + 10)
    .text(function(d, i) {
     switch (i) {
-      case 0: return "Red delicious";
-      case 1: return "McIntosh apples";
-      case 2: return "Navel oranges";
+      case 0: return "Windows";
+      case 1: return "Linux";
+      case 2: return "Mac";
     }
   });
 
-// Draw legend
-/*var legend = svg.selectAll(".legend")
-  .data(colors)
-  .enter().append("g")
-  .attr("class", "legend")
-  .attr("transform", function(d, i) { return "translate(-100," + i * 11 + ")"; });
-
-legend.append("rect")
-  .attr("x", width - 18)
-  .attr("width", 9)
-  .attr("height", 9)
-  .style("fill", function(d, i) {return colors.slice().reverse()[i];});
-
-legend.append("text")
-  .attr("x", width + -4)
-  .attr("y", 5)
-  .attr("dy", ".35em")
-  .style("text-anchor", "start")
-  .text(function(d, i) {
-    switch (i) {
-      case 0: return "Anjou pears";
-      case 1: return "Naval oranges";
-      case 2: return "McIntosh apples";
-    }
-  });*/
 
 
-// Prep the tooltip bits, initial display is hidden
+
 var tooltip = d3
     .select('#barChart')
     .append('div')
@@ -196,6 +158,37 @@ tooltip.append("rect")
   .attr("height", 20)
   .attr("fill", "white")
   .style("opacity", 0.5);
+tooltip.append("text")
+  .attr("x", 15)
+  .attr("dy", "1.2em")
+  .style("text-anchor", "middle")
+  .attr("font-size", "12px")
+  .attr("font-weight", "bold");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Prep the tooltip bits, initial display is hidden
+/*
+
+tooltip.append("rect")
+  .attr("width", 30)
+  .attr("height", 20)
+  .attr("fill", "white")
+  .style("opacity", 0.5);
 
 tooltip.append("text")
   .attr("x", 15)
@@ -203,6 +196,7 @@ tooltip.append("text")
   .style("text-anchor", "middle")
   .attr("font-size", "12px")
   .attr("font-weight", "bold");
+*/
 
 
         /*var tooltip = d3
