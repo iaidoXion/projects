@@ -4,7 +4,6 @@ def DailyCount(TDL):
     ATNM = "Asset Total Count"
     ATC = len(TDL)
 
-    today = datetime.today().strftime("%Y-%m-%d")
     weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
 
     DF = TDL
@@ -36,11 +35,9 @@ def DailyCount(TDL):
         "LS" : {"name": [LLNM], "value": [LLNC]},
         "DS": {"name": [DSNM], "value": [DSNC]}
     }
-    #print(RD)
     return RD
 
-def StatisticsFiveDay(SFDTDL):
-
+def FiveDay(SFDTDL):
     DGL = []
     DSL = []
     DNM = []
@@ -54,7 +51,7 @@ def StatisticsFiveDay(SFDTDL):
     RD = [DNM,DSL]
     return RD
 
-def bannerRoc(SDL) :
+def BannerRoc(SDL) :
     bannerDataList = []
     TAA = SDL['TAA']
     YAA = SDL['YAA']
