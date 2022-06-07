@@ -53,7 +53,7 @@ kh99997,대구광역시청,35.871420,128.601720
 kh99998,부산광역시청,35.179756,129.074998
 kh99999,서울특별시청,37.566682,126.978418*/
 
-var data = [{x:37.5569016,y:126.9329799},{x:37.5344248,y:126.9750082},{x:37.5189582,y:126.9307458},{x:37.5720260,y:126.9743351},{x:37.5617693,y:126.9921966}];
+var data = [{x:37.39948593886602,y:127.10864108531601},{x:37.39557358509345,y:127.1082797008697},{x:37.39863925472823,y:127.10834057983851},{x:37.3994744444141,y:127.11131206038527},{x:37.397501793831225,y:127.11068799834034}];
 
 svg.selectAll("circle")
     .data(data)
@@ -154,10 +154,7 @@ function koreaMapChart() {
         .attr("class", "graticule")
         .attr("d", path);
 
-
-
-
-var data = [{x:37.5569016,y:126.9329799},{x:37.5344248,y:126.9750082},{x:37.5189582,y:126.9307458},{x:37.5720260,y:126.9743351},{x:37.5617693,y:126.9921966}];
+var data = [{x:37.39948593886602,y:127.10864108531601},{x:37.39557358509345,y:127.1082797008697},{x:37.39863925472823,y:127.10834057983851},{x:37.3994744444141,y:127.11131206038527},{x:37.397501793831225,y:127.11068799834034}];
 
 mapSvg.selectAll("circle")
     .data(data)
@@ -404,10 +401,10 @@ function seoulMap(){
     var width = 1000, height = 600;
     var svg = d3.select("#siMap").append("svg").attr("width", width).attr("height", height).style("margin-left", '1%');
     var map = svg.append("g").attr("id", "map"),places = svg.append("g").attr("id", "places");
-    var projection = d3.geo.mercator().center([126.9895, 37.5451]).scale(90000).translate([width/2, height/2]);
+    var projection = d3.geo.mercator().center([127.1094211519, 37.399]).scale(180000).translate([width/2, height/2]);
     var path = d3.geo.path().projection(projection);
 
-var data = [{x:37.5569016,y:126.9329799},{x:37.5344248,y:126.9750082},{x:37.5189582,y:126.9307458},{x:37.5720260,y:126.9743351},{x:37.5617693,y:126.9921966}];
+var data = [{x:37.39948593886602,y:127.10864108531601},{x:37.39557358509345,y:127.1082797008697},{x:37.39863925472823,y:127.10834057983851},{x:37.3994744444141,y:127.11131206038527},{x:37.397501793831225,y:127.11068799834034}];
 
 svg.selectAll("circle")
     .data(data)
@@ -415,7 +412,7 @@ svg.selectAll("circle")
     .append("circle")
     .attr("class","dot")
     .attr("transform",translateCircle)
-    .attr("r",8)
+    .attr("r",4)
     .style("fill", "#e08a0b");
 
 function translateCircle(datum, index)
@@ -445,18 +442,19 @@ setInterval(function(){
           })
       }, 800);
 
-    d3.json("/web/static/data/mapTopo/seoul.json", function(error, data) {
-        var features = topojson.feature(data, data.objects.seoul_municipalities_geo).features;
+    d3.json("/web/static/data/mapTopo/seongnam.json", function(error, data) {
+        var features = topojson.feature(data, data.objects.seongnam).features;
 
         map.selectAll('path').data(features).enter().append('path')
-        .attr('class', function(d) { console.log(); return 'municipality c' + d.properties.code })
+        .attr('class', function(d) { return 'municipality c' + d.properties.code })
         .attr('d', path);
 
         map.selectAll('text').data(features).enter().append("text")
         .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
         .attr("dy", ".35em")
         .attr("class", "municipality-label")
-        .text(function(d) { return d.properties.name; })
+        .text(function(d) { return d.properties.sggnm; })
+        .style("fill", "#717384")
     });
 
 /*    d3.csv("/web/static/data/placeSi.csv", function(data) {

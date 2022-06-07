@@ -20,18 +20,19 @@ lineChartData.forEach(function(d) {
   d.values.forEach(function(d) {
     d.date = parseDate.parse(d.date);
     d.price = +d.price;
-  });
 
+  });
 });
+
+var yMax = Math.max(...lineChartData.flatMap(({values}) => values).map(({price}) => price));
 
 /* Scale */
 var xScale = d3.time.scale()
   .domain(d3.extent(lineChartData[0].values, d => d.date))
   .range([0, width - margin]);
 var yScale = d3.scale.linear()
-  .domain([0, 30])
+  .domain([0, yMax])
   .range([height - margin, 0]);
-
 
 var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
 /* Add SVG */
@@ -144,6 +145,8 @@ lines.selectAll("circle-group")
       .append("text")
       .attr("class", "text")
       .text(`${d.price}`)
+      .style("fill", "#858796")
+      .style("font-weight", "bold")
       .attr("x", d => xScale(d.date) + 5)
       .attr("y", d => yScale(d.price) - 10);
   })

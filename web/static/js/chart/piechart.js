@@ -54,16 +54,16 @@ function piechart(pieChartData) {
       // 라벨을 취가하기 위한 text 엘리먼트를 만들고 위치를 지정합니다.
 
     text.append('tspan')
-      .attr('x', 0)
-      .attr('y', '-0.7em')
+      .attr('x', '-0.1em')
+      .attr('y', '-0.2em')
       .text(d => d.data.name);
 
 
-    text.filter(d => (d.endAngle - d.startAngle > 0.25)).append('tspan')
+/*    text.filter(d => (d.endAngle - d.startAngle > 0.25)).append('tspan')
       .attr('x', 0)
       .attr('y', '0.7em')
       .attr('fill-opacity', 0.7)
-      .text(d => d.data.value);
+      .text(d => d.data.value);*/
       // 해당 데이터의 수치값을 투명도를 주어 출력합니다. ex. 1000
 
     svg.selectAll("path, text")

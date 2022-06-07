@@ -1,6 +1,5 @@
 function barChart(barChartData) {
 
-
 var margin = {top: 10, right: 160, bottom: 25, left: 30};
 
 var width = 620 - margin.left - margin.right,
@@ -13,7 +12,6 @@ var svg = d3.select("#barChart")
   .append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
 /* Data in strings like it would be if imported from a csv */
 
 var data = [
@@ -25,10 +23,14 @@ var data = [
 var parse = d3.time.format("%Y").parse;
 // console.log(Object.keys(data[0]))
 
+/*for (const [key, value] of Object.entries(data[0])) {
+  console.log(`${key}`);
+}*/
+
 // Transpose the data into layers
 var dataset = d3.layout.stack()(["Windows", "Linux", "Mac"].map(function(useOsCount) {
   return data.map(function(d) {
-    return {x: parse(d.year), y: +d[useOsCount]};
+    return {x: parse(d.year), y: +d[useOsCount], z: useOsCount};
   });
 }));
 
@@ -86,15 +88,15 @@ var rect = groups.selectAll("rect")
                  .style("cursor", "pointer")
                  tooltip
                     .html(
-                      `<div>${d.y}</div>`
+                      `<div> ${d.z}: ${d.y}</div>`
                     )
                     .style("margin-top", (d3.select(this).attr("y")-120 + "px"))
                     .style("margin-left", (d3.select(this).attr("x")-10 + "px"))
                     .style('visibility', 'visible');
             })
-            .on("mouseout", function(d) {
-                tooltip.style('visibility', 'hidden');
-            });
+  .on("mouseout", function(d) {
+     tooltip.style('visibility', 'hidden');
+  });
 
 /*legend*/
   var legendItemSize = 9;
@@ -122,7 +124,6 @@ var rect = groups.selectAll("rect")
                     return `translate(${x}, ${y})`;
                 });
 
-
   //Create legend labels
   legend
    .enter()
@@ -136,9 +137,6 @@ var rect = groups.selectAll("rect")
       case 2: return "Mac";
     }
   });
-
-
-
 
 var tooltip = d3
     .select('#barChart')
