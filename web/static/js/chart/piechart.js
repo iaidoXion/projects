@@ -66,7 +66,7 @@ function piechart(pieChartData) {
       .text(d => d.data.value);*/
       // 해당 데이터의 수치값을 투명도를 주어 출력합니다. ex. 1000
 
-    svg.selectAll("path, text")
+    svg.selectAll("path")
       .on("mouseover", function(d, i){
         d3.select(this)
             .style("cursor", "pointer")

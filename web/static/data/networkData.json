@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    {"id": "Ncrd", "group": "ncrd", "x":239, "y":160, "fixed":true},
+    {"id": "NcrdHexagon", "group": "ncrd", "name": "LH"},
+    {"id": "Gribier2", "group": "ncrd", "name": "EP"},
+    {"id": "Gribier3", "group": "ncrd", "name": "AA"},
+    {"id": "Gribier4", "group": "ncrd", "name": "DU"},
+    {"id": "Gribier5", "group": "ncrd", "name": "NL"},
+    {"id": "Ncalpha", "group": "ncalpha", "x":100, "y":230, "fixed":true},
+    {"id": "NcalphaHexagon", "group": "ncalpha", "name": "NL"},
+    {"id": "Prouvaire2", "group": "ncalpha", "name": "LH"},
+    {"id": "Prouvaire3", "group": "ncalpha", "name": "EP"},
+    {"id": "Prouvaire4", "group": "ncalpha", "name": "AA"},
+    {"id": "Prouvaire5", "group": "ncalpha", "name": "DU"}
+  ],
+  "links": [
+    {"source": "NcrdHexagon", "target": "Ncrd", "distance": 200},
+    {"source": "Gribier2", "target": "Ncrd", "distance": 170},
+    {"source": "Gribier3", "target": "Ncrd", "distance": 180},
+    {"source": "Gribier4", "target": "Ncrd", "distance": 180},
+    {"source": "Gribier5", "target": "Ncrd", "distance": 190},
+    {"source": "NcalphaHexagon", "target": "Ncalpha", "distance": 170},
+    {"source": "Prouvaire2", "target": "Ncalpha", "distance": 170},
+    {"source": "Prouvaire3", "target": "Ncalpha", "distance": 180},
+    {"source": "Prouvaire4", "target": "Ncalpha", "distance": 180},
+    {"source": "Prouvaire5", "target": "Ncalpha", "distance": 190}
+  ]
+}

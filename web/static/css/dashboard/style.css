@@ -315,10 +315,6 @@
     shape-rendering: crispEdges;
 }
 
-#barChart .axis text{
-    fill: #717384;
-}
-
 #barLegend svg {
     position: absolute;
     width: 150px;
@@ -350,10 +346,6 @@
 	stroke-width: 3px;
 }
 
-#lineChart .axis text {
-	fill: #717384;
-}
-
 #lineLegend svg {
     position: absolute;
     width: 150px;
@@ -382,18 +374,10 @@
     margin: 0px auto 5px;
 }
 
-#koreaMap .municipality { fill: lightgray; stroke: gray; stroke-width: 1px; fill-opacity: 1; stroke-opacity: 0.5;
-}
 #koreaMap .municipality-label {
  fill: #000000; font-size: 12px; font-weight: 500; text-anchor: middle; pointer-events: none;
 }
-#koreaMap .placeCircle { fill: #fff; stroke: gray; opacity: 0.8; stroke-width: 1px;
-}
-#koreaMap .placeName {
-display: none; fill: #000000;
-font-family: "Nanum Gothic"; font-size: 10px; text-anchor: middle; font-weight: bold;
-stroke-width: 0.2px; stroke: #fff;
-}
+
 #koreaMap path { fill: #d5d6dd; stroke: #gray; stroke-width: 0.5px;
 }
 
@@ -401,29 +385,8 @@ stroke-width: 0.2px; stroke: #fff;
 fill: #717384;
 }
 
-#koreaMap path {
-    stroke-linecap:round; stroke-linejoin:round;
 }
 
-}
-#koreaMap svg#legendsForKoreaMap {
-    width: 130px; height: 60px; border: 0; margin: 0; padding: 0;
-    position: absolute; top: 20px; left: 450px; border-radius: 10px;
-    background: rgba(255, 255, 255, 0.6);
-}
-#koreaMap svg#legendsForKoreaMap text {
-    fill: #000000; stroke: #000000; font-family: "Nanum Gothic";
-    font-size: 10px; text-anchor: left; font-weight: bold; stroke-width: 0;
-}
-#koreaMap svg {
-    width: 920px;
-    height: 580px;
-    margin: 0px auto 5px;
-}
-#koreaMap #river #hanriver { fill: #00ffff; opacity: 0.3;
-}
-#koreaMap .municipality { fill: lightgray; stroke: gray; stroke-width: 1px; fill-opacity: 1; stroke-opacity: 0.5;
-}
 #koreaMap .municipality-label {
  fill: #000000; font-size: 12px; font-weight: 500; text-anchor: middle; pointer-events: none;
 }
@@ -653,3 +616,8 @@ stroke-width: 0.2px; stroke: #fff;
           font: 10px sans-serif;
           text-anchor: start;
         }
+
+#guMap text {
+    font-family: sans-serif;
+    font-size: 20px;
+}
