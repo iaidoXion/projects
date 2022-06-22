@@ -1,0 +1,10 @@
+{
+  "nodes": [
+    {"id": "Ncrd", "group": "ncrd", "x":555, "y":251},
+    {"id": "Ncalpha", "group": "ncalpha", "x":455, "y":351}
+  ],
+  "links": [
+    {"source": "Ncrd", "target": "Ncalpha", "distance": 300},
+    {"source": "Ncalpha", "target": "Ncrd", "distance": 300}
+  ]
+}
