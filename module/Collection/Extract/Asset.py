@@ -25,6 +25,8 @@ def Yesterday() :
             select 
                 computer_id,
                 disk_total_space,
+                listen_port_count,
+                established_port_count,
                 asset_collection_date
             from
                 """+AssetTNM+"""
