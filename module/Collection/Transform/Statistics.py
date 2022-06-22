@@ -21,6 +21,10 @@ def Yesterday(ESYDL) :
     LLNC = []
     DSNM = []
     DSNC = []
+    LPCSNM = []
+    LPCSC = []
+    EPCSNM = []
+    EPCSC = []
 
     for i in range(len(ESYDL)):
         if ESYDL[i][0] == 'asset' :
@@ -33,12 +37,18 @@ def Yesterday(ESYDL) :
         elif ESYDL[i][0] == 'os' :
             OSNM.append(ESYDL[i][1])
             OSC.append(int(ESYDL[i][2]))
-        elif ESYDL[i][0] == 'login' :
+        elif ESYDL[i][0] == 'login_history' :
             LLNM.append(ESYDL[i][1])
             LLNC.append(int(ESYDL[i][2]))
-        elif ESYDL[i][0] == 'drive' :
+        elif ESYDL[i][0] == 'drive_size' :
             DSNM.append(ESYDL[i][1])
             DSNC.append(int(ESYDL[i][2]))
+        elif ESYDL[i][0] == 'listen_port_count':
+            LPCSNM.append(ESYDL[i][1])
+            LPCSC.append(int(ESYDL[i][2]))
+        elif ESYDL[i][0] == 'established_port':
+            EPCSNM.append(ESYDL[i][1])
+            EPCSC.append(int(ESYDL[i][2]))
             #yesterdayDataList.append({"name": SYDL[i][1], "count" : SYDL[i][2]})
     RD = {
         "AA": {"name": ATNM, "value": ATC},
@@ -46,9 +56,9 @@ def Yesterday(ESYDL) :
         "OS": {"name": OSNM, "value": OSC},
         "LS": {"name": LLNM, "value": LLNC},
         "DS": {"name": DSNM, "value": DSNC},
+        "LPS": {"name": LPCSNM, "value": LPCSC},
+        "EPS": {"name": LPCSNM, "value": LPCSC},
     }
-    #print(RD)
-
     return RD
 
 def FiveDay(ESFDL, ASDCL) :
@@ -83,6 +93,10 @@ def Banner(ASDCL,SYDL) :
     YOS = SYDL['OS']
     TDS = ASDCL['DS']
     YDS = SYDL['DS']
+    TLP = ASDCL['LP']
+    YLP = SYDL['LPS']
+    TEP = ASDCL['EP']
+    YEP = SYDL['EPS']
 
     DFCNM = ['name', 'value']
     TAIDL = []
@@ -107,8 +121,7 @@ def Banner(ASDCL,SYDL) :
 
 
 
-
-    RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF, "TDS" : TDS, "YDS" : YDS}
+    RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF, "TDS" : TDS, "YDS" : YDS, "TLP" : TLP, "YLP" : YLP, "TEP" : TEP, "YEP" : YEP}
 
     return RD
 
