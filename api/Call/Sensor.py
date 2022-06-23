@@ -12,7 +12,6 @@ ContentType = SETTING['API']['ContentType']
 
 def Data(SK) :
     path = "/api/v2/result_data/saved_question/797"
-    #path = "/api/v2/saved_questions"
     urls = apiUrl + path
     headers = {
         'session': SK,

@@ -18,13 +18,14 @@ def OrgDaily(parserData, EAYL, sensorData):
         OI = parserData[i]['os_platform']
         DI = parserData[i]['disk_total_space']
         LI = parserData[i]['last_seen_at'].split('T')[0]
+        IP = parserData[i]['ip_address']
         AIPer = AI.lower()
         if AIPer.startswith('macbook'):
             AI = 'Notebook'
         if AIPer.startswith('imac'):
             AI = 'Desktop'
-        DFL.append([CI, AI, OI, DI, LI])
-        ADL.append({'computer_id': CI, 'asset_item': AI, 'os_platform': OI, 'disk_total_space': DI, 'last_seen_at': LI})
+        DFL.append([CI, AI, OI, DI, LI, IP])
+        ADL.append({'computer_id': CI, 'asset_item': AI, 'os_platform': OI, 'disk_total_space': DI, 'last_seen_at': LI, 'ip_address':IP})
     TDL = []
     for AssetData in ADL:
         CID = AssetData['computer_id']
@@ -32,8 +33,9 @@ def OrgDaily(parserData, EAYL, sensorData):
         OI = AssetData['os_platform']
         DTS = AssetData['disk_total_space']
         LSA = AssetData['last_seen_at']
-        TDL.append([CID, AI, OI, DTS, LSA])
-    TDFCNM = ['id', 'assetItem', 'os', 'driveSize', 'lastLogin']
+        IP = AssetData['ip_address']
+        TDL.append([CID, AI, OI, DTS, LSA, IP])
+    TDFCNM = ['id', 'assetItem', 'os', 'driveSize', 'lastLogin', 'ip_address']
     TDF = pd.DataFrame(TDL, columns=TDFCNM)
     TDFS = TDF.sort_values(by="id", ascending=False).reset_index(drop=True)
 

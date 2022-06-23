@@ -10,7 +10,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'web.apps.WebConfig',
-    'xion.apps.XionConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

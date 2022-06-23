@@ -6,6 +6,7 @@ def DailyCount(TDL):
     ATC = len(TDL)
 
     weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
+    today = datetime.today().strftime("%Y-%m-%d")
 
     DF = TDL
     LLNM = "No Login History"
@@ -25,20 +26,46 @@ def DailyCount(TDL):
     DC = 0
     LPC = 0
     EPC = 0
+
+
+    LLSNM = "No Login History"
+    DSNM = "Drive Size No Change"
+    LPSNM = "Listen Port Count No Change"
+    EPSNM = "Established Port Count No Change"
+    alarmDataList = []
+    LHAlarmList = []
+    DSAlarmList = []
+    LPCAlarmList = []
+    EPCAlarmList = []
     for i in range(len(TDL.id)):
+        if TDL.lastLogin[i] < today :
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = LLSNM
+            LHAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
         if TDL.driveSize[i] != TDL.YdriveSize[i] :
             DC = DC + 1
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = DSNM
+            DSAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
         if TDL.listenPortCount[i] != TDL.YListenPortCount[i] :
             LPC = LPC+1
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = LPSNM
+            LPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
         if TDL.establishedPort[i] != TDL.YEstablishedPort[i] :
             EPC = EPC+1
-    DSNM = "Drive Size No Change"
-    DSNC = DC
-    LPSNM = "Listen Port Count No Change"
-    LPSC = LPC
-    EPSNM = "Established Port Count No Change"
-    EPSC = EPC
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = EPSNM
+            EPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
 
+    DSNC = DC
+    LPSC = LPC
+    EPSC = EPC
+    #print(alarmDataList)
 
     RD = {
         "AA": {"name": [ATNM], "value": [ATC]},
@@ -47,7 +74,8 @@ def DailyCount(TDL):
         "LS" : {"name": [LLNM], "value": [LLNC]},
         "DS": {"name": [DSNM], "value": [DSNC]},
         "LP" : {"name":[LPSNM], "value": [LPSC]},
-        "EP" : {"name" : [EPSNM], "value": [EPSC]}
+        "EP" : {"name" : [EPSNM], "value": [EPSC]},
+        "ADL" : {"LHAL" : LHAlarmList, "DSAL" : DSAlarmList, "LPCAL" : LPCAlarmList, "EPCAL" : EPCAlarmList}
     }
 
     return RD
@@ -71,7 +99,7 @@ def BannerRoc(SDL) :
     TAA = SDL['TAA']
     YAA = SDL['YAA']
     AAROC = TAA['value'][0] - YAA['value'][0]
-    AASDL = {"name" : TAA['name'][0], "Count" :  TAA['value'][0], "roc" : AAROC }
+    AASDL = {"name" : TAA['name'][0], "count" :  TAA['value'][0], "roc" : AAROC }
     bannerDataList.append(AASDL)
 
     TLS = SDL['TLS']

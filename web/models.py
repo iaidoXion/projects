@@ -11,8 +11,4 @@ class MenuSetting(models.Model):
     menuNote = models.TextField()
     menuCreateDate = models.DateTimeField()
 
-class Statistics(models.Model) :
-    createDate = models.DateTimeField()
-    classification = models.CharField(max_length=50)
-    item = models.CharField(max_length=200)
-    count = models.CharField(max_length=200)
+
