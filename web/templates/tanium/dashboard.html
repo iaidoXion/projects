@@ -373,8 +373,7 @@
                             <div class="shadow"></div>
                             <div id="popAreaBt5" class="pop-korea" style="display: none;">
                                 <a id="closeAreaBt5" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
+                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
                                     <div>area 이상징후 5</div>
@@ -387,59 +386,73 @@
                     <div id="guMap"></div>
                     <div class="mapRight">
                         <ul class="mapRightWrap">
+                           {% if chartData.alarmDataList %}
+                           {% for firstData in chartData.alarmDataList.LHAL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt1">
                                 <li>
                                     <div class="mapGps">
                                         <img src="{% static 'img/dashboard/gps.png' %}"/>
                                     </div>
                                     <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">zone: 로그인 이력이 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
+                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                        <div>Asset ID : {{firstData.id}}</div>
+                                        <div>Asset IP : {{firstData.ip}}</div>
                                     </div>
                                 </li>
                             </a>
+                            {% endfor %}
                             <div class="shadow"></div>
                             <div id="popZoneBt1" class="pop-korea" style="display: none;">
                                 <a id="closeZoneBt1" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
+                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <div>zone 이상징후 1</div>
+                                    {% for dataList in chartData.alarmDataList.LHAL.dataList %}
+                                    <div>{{dataList}}</div>
+                                    {% endfor %}
                                 </div>
                             </div>
+
+                            {% for firstData in chartData.alarmDataList.DSAL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt2">
                                 <li>
                                     <div class="mapGps">
                                         <img src="{% static 'img/dashboard/gps.png' %}"/>
                                     </div>
                                     <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">드라이브 사용량 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
+                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                        <div>Asset ID : {{firstData.id}}</div>
+                                        <div>Asset IP : {{firstData.ip}}</div>
                                     </div>
                                 </li>
                             </a>
+                            {% endfor %}
                             <div class="shadow"></div>
                             <div id="popZoneBt2" class="pop-korea" style="display: none;">
                                 <a id="closeZoneBt2" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
+                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <div>zone 이상징후 2</div>
+                                    {% for dataList in chartData.alarmDataList.DSAL.dataList %}
+                                    <div>{{dataList}}</div>
+                                    {% endfor %}
                                 </div>
                             </div>
+
+                            {% for firstData in chartData.alarmDataList.LPCAL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt3">
                                 <li>
                                     <div class="mapGps">
                                         <img src="{% static 'img/dashboard/gps.png' %}"/>
                                     </div>
                                     <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Established된 포트가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
+                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                        <div>Asset ID : {{firstData.id}}</div>
+                                        <div>Asset IP : {{firstData.ip}}</div>
                                     </div>
                                 </li>
                             </a>
+                            {% endfor %}
                             <div class="shadow"></div>
                             <div id="popZoneBt3" class="pop-korea" style="display: none;">
                                 <a id="closeZoneBt3" class="popClose mouse-over-cursor">
@@ -447,20 +460,26 @@
                                          height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <div>zone 이상징후 3</div>
+                                    {% for dataList in chartData.alarmDataList.LPCAL.dataList %}
+                                    <div>{{dataList}}</div>
+                                    {% endfor %}
                                 </div>
                             </div>
+
+                            {% for firstData in chartData.alarmDataList.EPCAL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt4">
                                 <li>
                                     <div class="mapGps">
                                         <img src="{% static 'img/dashboard/gps.png' %}"/>
                                     </div>
                                     <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Listen상태의 포트수 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
+                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                        <div>Asset ID : {{firstData.id}}</div>
+                                        <div>Asset IP : {{firstData.ip}}</div>
                                     </div>
                                 </li>
                             </a>
+                            {% endfor %}
                             <div class="shadow"></div>
                             <div id="popZoneBt4" class="pop-korea" style="display: none;">
                                 <a id="closeZoneBt4" class="popClose mouse-over-cursor">
@@ -468,10 +487,18 @@
                                          height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <div>zone 이상징후 4</div>
+                                    {% for dataList in chartData.alarmDataList.EPCAL.dataList %}
+                                    <div>{{dataList}}</div>
+                                    {% endfor %}
                                 </div>
                             </div>
-                            <a class="expansionWrap mouse-over-cursor" id="zoneBt5">
+
+                            {% endif%}
+
+
+
+
+                            <!--a class="expansionWrap mouse-over-cursor" id="zoneBt5">
                             <li>
                                 <div class="mapGps">
                                     <img src="{% static 'img/dashboard/gps.png' %}"/>
@@ -491,7 +518,7 @@
                                 <div class="popMap">
                                     <div>zone 이상징후 5</div>
                                 </div>
-                            </div>
+                            </div-->
                         </ul>
                     </div>
                 </div>
@@ -583,74 +610,7 @@
            {% endfor%}
         ];
         {% endif %}
-	var lineChartData = [{values: [
-   {name: "Desktop", date: "2022-10-01", price: "2" },
-   { name: "Desktop", date: "2022-10-02", price: "1"},
-   { name: "Desktop", date: "2022-10-03", price: "1" },
-   { name: "Desktop", date: "2022-10-04", price: "1" },
-   { name: "Desktop", date: "2022-10-05", price: "1" }
-]},
-  {
 
-   values: [{
-      name: "Notebook",
-      date: "2022-10-01",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-02",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-03",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-04",
-      price: "12"
-     },
-     {
-     name: "Notebook",
-      date: "2022-10-05",
-      price: "12"
-     }
-   ]
-  },
-  {
-
-   values: [{
-      name: "Rack Mount Chassis",
-      date: "2022-10-01",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-02",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-03",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-04",
-      price: "8"
-     },
-     {
-      name: "Rack Mount Chassis",
-      date: "2022-10-05",
-      price: "8"
-     }
-   ]
-  },
-
-
-		];
 
 
 	{% if chartData.pieChartDataList %}

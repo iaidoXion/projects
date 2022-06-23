@@ -294,4 +294,5 @@ $RECYCLE.BIN/
 # Config setting
 config/settings.py
 
+logs
 # End of https://www.toptal.com/developers/gitignore/api/windows,pycharm,python

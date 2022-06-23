@@ -43,7 +43,7 @@ def Asset(sessionKey):
         ram = assetsDataJson[i]['ram']
         city = assetsDataJson[i]['city']
         chassis_type = assetsDataJson[i]['chassis_type']
-
+        ip_address = assetsDataJson[i]['ip_address']
         data = {
             'id': id,
             'computer_name': computer_name,
@@ -55,7 +55,8 @@ def Asset(sessionKey):
             'updated_at': updated_at,
             'last_seen_at': last_seen_at,
             'asset_item': chassis_type,
-            'ci_installed_application': ci_installed_application
+            'ci_installed_application': ci_installed_application,
+            'ip_address' : ip_address
         }
 
         dataListAppend.append(data)

@@ -5,7 +5,6 @@ from web import views
 urlpatterns = [
     path('web/', include('web.urls')),
     path('api/', include('api.urls')),
-    path('xion/', include('xion.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),
