@@ -576,7 +576,7 @@
 <script src="{% static 'js/chart/network.js' %}"></script>
 <script type="text/javascript">
 	{% if chartData.barChartDataList %}
-	var barChartData2 = [
+	var barChartData = [
 		{% for barChartData in chartData.barChartDataList %}
 			{name: '{{barChartData.name}}', value: {{barChartData.value}}},
 		{% endfor %}
@@ -636,7 +636,7 @@
 		{x:35.892508,y:128.600602}
 	];
 
-	barChart(barChartData2);
+	barChart(barChartData);
 	lineChart(lineChartData);
 	piechart(pieChartData);
 	worldMapChart(worldMapData);

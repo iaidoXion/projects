@@ -54,7 +54,7 @@ lines.selectAll('.line-group')
   .data(lineChartData).enter()
   .append('g')
   .attr('class', 'line-group')
-  .on("mouseover", function(d, i) {
+  /*.on("mouseover", function(d, i) {
     svg.append("text")
       .attr("class", "title-text")
       .style("fill", "#858796")
@@ -66,7 +66,7 @@ lines.selectAll('.line-group')
   })
   .on("mouseout", function(d) {
     svg.select(".title-text").remove();
-  })
+  })*/
   .append('path')
   .attr('class', 'line')
   .attr('d', d => line(d.values))
