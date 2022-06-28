@@ -1,12 +1,13 @@
 from datetime import datetime, timedelta
+weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
+today = datetime.today().strftime("%Y-%m-%d")
 
 def DailyCount(TDL):
 
     ATNM = "Asset Total Count"
     ATC = len(TDL)
 
-    weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
-    today = datetime.today().strftime("%Y-%m-%d")
+
 
     DF = TDL
     LLNM = "No Login History"
@@ -161,7 +162,40 @@ def BannerRoc(SDL) :
 
 
 
-
+def Association(TDL) :
+    LLSNM = "No Login History"
+    DSNM = "Drive Size No Change"
+    LPSNM = "Listen Port Count No Change"
+    EPSNM = "Established Port Count No Change"
+    LHAlarmList = []
+    DSAlarmList = []
+    LPCAlarmList = []
+    EPCAlarmList = []
+    for i in range(len(TDL.id)):
+        if TDL.lastLogin[i] < today:
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = LLSNM
+            LHAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+        if TDL.driveSize[i] != TDL.YdriveSize[i]:
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = DSNM
+            DSAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+        if TDL.listenPortCount[i] != TDL.YListenPortCount[i]:
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = LPSNM
+            LPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+        if TDL.establishedPort[i] != TDL.YEstablishedPort[i]:
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = EPSNM
+            EPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+    RD = {
+        "ADL": {"LHAL": LHAlarmList, "DSAL": DSAlarmList, "LPCAL": LPCAlarmList, "EPCAL": EPCAlarmList}
+    }
+    return RD
 
 
 

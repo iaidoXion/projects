@@ -5,6 +5,11 @@ from web.forms import UserForm
 from web.commonFun import MenuList
 from web.dashboardFun import DashboardDataList
 import urllib3
+import json
+with open("setting.json", encoding="UTF-8") as f:
+    SETTING = json.loads(f.read())
+ProjectName = SETTING['PROJECT']['Type']
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 menuSettingList = MenuList()
 
@@ -30,7 +35,7 @@ def signup(request):
 @login_required(login_url='common:login')
 def dashboard(request):
     chartData = DashboardDataList()
-    returnData = { 'menuList': menuSettingList, 'chartData' : chartData}
+    returnData = { 'menuList': menuSettingList, 'chartData' : chartData, 'projectName' : ProjectName}
     #print(chartData)
     return render(request, 'tanium/dashboard.html', returnData)
 
