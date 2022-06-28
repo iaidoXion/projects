@@ -16,7 +16,7 @@ def OrgDaily(parserData, EAYL, sensorData):
         CI = parserData[i]['computer_id']
         AI = parserData[i]['asset_item']
         OI = parserData[i]['os_platform']
-        DI = parserData[i]['disk_total_space']
+        DI = parserData[i]['drive_use_size']
         LI = parserData[i]['last_seen_at'].split('T')[0]
         IP = parserData[i]['ip_address']
         AIPer = AI.lower()
@@ -25,13 +25,13 @@ def OrgDaily(parserData, EAYL, sensorData):
         if AIPer.startswith('imac'):
             AI = 'Desktop'
         DFL.append([CI, AI, OI, DI, LI, IP])
-        ADL.append({'computer_id': CI, 'asset_item': AI, 'os_platform': OI, 'disk_total_space': DI, 'last_seen_at': LI, 'ip_address':IP})
+        ADL.append({'computer_id': CI, 'asset_item': AI, 'os_platform': OI, 'drive_use_size': DI, 'last_seen_at': LI, 'ip_address':IP})
     TDL = []
     for AssetData in ADL:
         CID = AssetData['computer_id']
         AI = AssetData['asset_item']
         OI = AssetData['os_platform']
-        DTS = AssetData['disk_total_space']
+        DTS = AssetData['drive_use_size']
         LSA = AssetData['last_seen_at']
         IP = AssetData['ip_address']
         TDL.append([CID, AI, OI, DTS, LSA, IP])

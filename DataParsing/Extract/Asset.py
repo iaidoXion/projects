@@ -24,16 +24,14 @@ def Yesterday() :
         AssetSelectQ = """
             select 
                 computer_id,
-                disk_total_space,
+                drive_use_size,
                 listen_port_count,
                 established_port_count,
                 asset_collection_date
             from
                 """+AssetTNM+"""
             where 
-                to_char(asset_collection_date, 'YYYY-MM-DD HH24:MI:SS') > '"""+yesterday+""" 23:58:59'
-            and 
-                to_char(asset_collection_date, 'YYYY-MM-DD HH24:MI:SS') <= '"""+day+""" 23:58:59'
+                to_char(asset_collection_date, 'YYYY-MM-DD') = '"""+yesterday+"""'
             order by computer_id desc
             
         """
