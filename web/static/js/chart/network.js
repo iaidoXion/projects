@@ -1,18 +1,17 @@
-function networkChart(){
+function networkChart(networkData){
 
 var width = 960, height = 600;
 
 var svg = d3v4.select("#guMap").append("svg").attr("width", width).attr("height", height);
 
-var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard/zone-background.png").attr("x", 0).attr("y", 0).attr("width", "960")s.attr("height", "600");
+var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard/zone-background.png").attr("x", 0).attr("y", 0).attr("width", "960").attr("height", "600");
 
 var simulation = d3v4.forceSimulation()
     .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
     .force("charge", d3v4.forceManyBody().strength(-170))
     .force("center", d3v4.forceCenter(width / 2, height / 2));
 
-d3v4.json("/web/static/data/networkData.json", function(error, graph) {
-  if (error) throw error;
+networkData.forEach(function(graph) {
 
   var link = svg.append("g").attr("class", "links").selectAll("line").data(graph.links).enter().append("line").attr("stroke-width", "1.7").style("stroke", "#e18a0a");
 
@@ -21,7 +20,22 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
 
 
   var fillCircle = function(g){
+        if(g == false){
+            return "/web/static/img/dashboard/hexagon-border.png";
+        }else if(g == true){
+            return "/web/static/img/dashboard/hexagon.png";}
+  };
+
+  var fillCenter = function(g){
         if(g == "groupCenter1"){
+            return "/web/static/img/dashboard/ncrd.png";
+        }else if(g == "groupCenter2"){
+            return "/web/static/img/dashboard/ncalpha.png";}
+  };
+
+
+
+/*        if(g == "groupCenter1"){
             return "/web/static/img/dashboard/ncrd.png";
         }else if(g == "groupCenter2"){
             return "/web/static/img/dashboard/ncalpha.png";
@@ -29,8 +43,7 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
             return "/web/static/img/dashboard/hexagon.png";
         }else {
             return "/web/static/img/dashboard/hexagon-border.png";
-        }
-    };
+        }*/
 
   var CircleSize = function(g){
         if(g.startsWith('groupCenter') == true){
@@ -41,8 +54,7 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
     };
 
   var textColor = function(g){
-
-        if(g == "NcrdHexagon" || g=="NcalphaHexagon"){
+        if(g == true){
             return "#ffffff";
         }else{
             return "#e18a0a";
@@ -54,7 +66,15 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
     .attr('height',function(d) { return CircleSize(d.id); })
     .attr('x', -31)
     .attr('y', -55)
-    .attr("xlink:href", function(d) { return fillCircle(d.id); })
+    .attr("xlink:href", function(d) { return fillCenter(d.id); })
+    .style("filter", "url(#drop-shadow)");
+
+  var centerCircles = node.append("image")
+    .attr('width',function(d) { return CircleSize(d.id); })
+    .attr('height',function(d) { return CircleSize(d.id); })
+    .attr('x', -31)
+    .attr('y', -55)
+    .attr("xlink:href", function(d) { return fillCircle(d.point); })
     .style("filter", "url(#drop-shadow)");
 
 // Create a drag handler and append it to the node object instead
@@ -67,7 +87,7 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
 
   var labels = node.append("text")
         .text(function(d) { return d.name;})
-        .style("fill", function(d) { return textColor(d.id); })
+        .style("fill", function(d) { return textColor(d.point); })
         .attr("text-anchor", "middle").attr('x', 0).attr('y', -18);
 
   node.append("title")
