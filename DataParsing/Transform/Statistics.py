@@ -139,18 +139,21 @@ def ChartData(ASDCL, BRDL, SFDSDL):
         for i in SFDSDL[1][SFDSC].index :
            LineChartData[SFDSDL[0][SFDSC].replace(" " , "")].append({"name":SFDSDL[1][SFDSC].name[i], "date":SFDSDL[1][SFDSC].date[i], "value": SFDSDL[1][SFDSC].value[i]})
     LineChartDataList.append(LineChartData)
-
+    #print(ASDCL['ADL']['DSAL'])
     LHAL = {'firstData':[ASDCL['ADL']['LHAL'][0]], 'dataList' : ASDCL['ADL']['LHAL']}
-    DSAL = {'firstData':[ASDCL['ADL']['DSAL'][0]], 'dataList' : ASDCL['ADL']['DSAL']}
+    if ASDCL['ADL']['DSAL'] :
+        DSAL = {'firstData':[ASDCL['ADL']['DSAL'][0]], 'dataList' : ASDCL['ADL']['DSAL']}
+    else :
+        DSAL = {'firstData': [], 'dataList': []}
     LPCAL = {'firstData':[ASDCL['ADL']['LPCAL'][0]], 'dataList' : ASDCL['ADL']['LPCAL']}
     EPCAL = {'firstData':[ASDCL['ADL']['EPCAL'][0]], 'dataList' : ASDCL['ADL']['EPCAL']}
-
+    #print(DSAL)
 
 
 
 
     returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL}}
-    #print(returnData)
+
     return returnData
 
 
