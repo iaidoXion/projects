@@ -150,15 +150,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mapChartMenuKorea">
-                    <div class="mapChartMenuWrap">
-                        <button type="button" class="btn btn-secondary btnWorld">World</button>
-                        <button type="button" class="btn btn-secondary btnKorea">Korea</button>
-                        <button type="button" class="btn btn-secondary btnSi">시</button>
-                        <button type="button" class="btn btn-secondary btnGu">구</button>
-                        <button type="button" class="btn btn-secondary btnDong">동</button>
-                    </div>
-                </div>
                 <div class="container-child-color my-float-left korea-map">
                     <div id="koreaMap"></div>
                     <div class="mapRight">
@@ -408,7 +399,7 @@
                                 </a>
                                 <div class="popMap">
                                     {% for dataList in chartData.alarmDataList.LHAL.dataList %}
-                                    <div>{{dataList}}</div>
+                                        <div>{{dataList}}</div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -434,7 +425,7 @@
                                 </a>
                                 <div class="popMap">
                                     {% for dataList in chartData.alarmDataList.DSAL.dataList %}
-                                    <div>{{dataList}}</div>
+                                        <div>{{dataList}}</div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -461,7 +452,7 @@
                                 </a>
                                 <div class="popMap">
                                     {% for dataList in chartData.alarmDataList.LPCAL.dataList %}
-                                    <div>{{dataList}}</div>
+                                        <div>{{dataList}}</div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -483,50 +474,46 @@
                             <div class="shadow"></div>
                             <div id="popZoneBt4" class="pop-korea" style="display: none;">
                                 <a id="closeZoneBt4" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
+                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
                                     {% for dataList in chartData.alarmDataList.EPCAL.dataList %}
-                                    <div>{{dataList}}</div>
+                                        <div>{{dataList}}</div>
                                     {% endfor %}
                                 </div>
                             </div>
-
-                            {% endif%}
-
-
-
-
-                            <!--a class="expansionWrap mouse-over-cursor" id="zoneBt5">
+                            {% for firstData in chartData.alarmDataList.RUSAL.firstData %}
+                            <a class="expansionWrap mouse-over-cursor" id="zoneBt5">
                             <li>
                                 <div class="mapGps">
                                     <img src="{% static 'img/dashboard/gps.png' %}"/>
                                 </div>
                                 <div class="mapCont">
-                                    <div class="my-margin-bot-4 mapContTop">Alarm Title</div>
-                                    <div>Asset ID : 5455454563</div>
+                                    <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                    <div>Asset ID : {{firstData.id}}</div>
+                                    <div>Asset IP : {{firstData.ip}}</div>
                                 </div>
                             </li>
                             </a>
+                            {% endfor %}
                             <div class="shadow"></div>
                             <div id="popZoneBt5" class="pop-korea" style="display: none;">
                                 <a id="closeZoneBt5" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
+                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <div>zone 이상징후 5</div>
+                                    {% for dataList in chartData.alarmDataList.RUSAL.dataList %}
+                                    <div>{{dataList}}</div>
+                                    {% endfor %}
                                 </div>
-                            </div-->
+                            </div>
+                            {% endif%}
                         </ul>
                     </div>
                 </div>
                 <div class="container-child-color my-float-left dong-map">
                     <div id="dongMap"></div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -552,9 +539,9 @@
                             </div>
                             <p class="botConNum my-float-left">
                                 {% if bannerData.roc < 0 %}
-                                {% widthratio bannerData.roc 1 -1 %}
+                                    {% widthratio bannerData.roc 1 -1 %}
                                 {% else %}
-                                {{bannerData.roc}}
+                                    {{bannerData.roc}}
                                 {% endif %}
                             </p>
                         </div>

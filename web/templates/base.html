@@ -10,12 +10,7 @@
     <meta name="author" content="iaido">
     <title>Xion Solution</title>
     <!-- Bootstrap CSS -->
-<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/common/bootstrap/bootstrap.css' %}">-->
-<!--    <link rel="stylesheet" type="text/css" href="{% static 'css/common/bootstrap/bootstrap.min.css' %}">-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/bootstrap/bootstrap-3.3.7.css' %}">
-    <!-- Custom fonts for this template-->
-   <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/common/font/fontawesomeFreeAllMin.min.css' %}">-->
-    <!-- Custom styles for this template-->
     <link href="{% static 'css/common/sbAdmin/sbAdmin2.min.css' %}" rel="stylesheet">
     <!-- xion CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/reset.css' %}">
@@ -24,38 +19,18 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/user/login.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/common/footer.css' %}">
-
-    <!--<script src="{% static 'js/common/jquery/jquery-3.6.0.min.js' %}"></script>-->
-    <!-- Core plugin JavaScript 3-->
-    <!--<script src="{% static 'js/common/jquery/jquery.easing.min.js' %}"></script>-->
-    <!-- Bootstrap JS -->
-<!--    <script src="{% static 'js/common/bootstrap/bootstrap.js' %}"></script>-->
-<!--    <script src="{% static 'js/common/bootstrap/bootstrap.min.js' %}"></script>-->
-    <!-- Bootstrap core JavaScript 2 -->
-<!--    <script src="{% static 'js/common/bootstrap/bootstrap.bundle.min.js' %}"></script>-->
-    <!-- Custom scripts for all pages 4-->
-<!--    <script src="{% static 'js/common/sbAdmin2.min.js' %}"></script>-->
-    <!-- d3 js -->
-    <!--<script type="text/javascript" src="{% static 'js/common/d3/d3.v4.min.js"></script>-->
-    <!--<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a614491325a5df76846df3d96e0e5c6c&libraries=services,clusterer,drawing"></script>-->
+    <!-- jQuery -->
     <script src="{% static 'js/common/jquery/ajax.jquery.min.js' %}"></script>
     <script src="{% static 'js/common/jquery/jquery.als-2.1.js' %}"></script>
     <!--korea chart (d3 낮은버전)-->
     <script type="text/javascript" src="{% static 'js/common/d3/d3.v3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/common/d3/d3v4.js' %}"></script>
     <script src="https://d3js.org/queue.v1.min.js"></script>
-    <!--sigma js -->
-
-<!--    <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/common/d3/d3-7.4.4.min.js' %}"></script>-->
     <script type="text/javascript" src="{% static 'js/common/topojson.v1.min.js' %}"></script>
-
-
-
 
 </head>
 <body>
-    {% if request.get_full_path == '/' or request.get_full_path == '/signup/' %}
+    {% if request.get_full_path == '/' or request.get_full_path == '/signup/' or  request.get_full_path == '/login/'%}
     {% else %}
         {% include "navbar.html" %}
     {% endif %}
@@ -64,7 +39,7 @@
     {% endblock %}
     <!-- 기본 템플릿 안에 삽입될 내용 End -->
     <!-- 푸터 -->
-    {% if request.get_full_path == '/' or request.get_full_path == '/signup/' %}
+    {% if request.get_full_path == '/' or request.get_full_path == '/signup/' or  request.get_full_path == '/login/'%}
     {% else %}
         {% include "footer.html" %}
     {% endif %}

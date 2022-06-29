@@ -7,8 +7,6 @@ def DailyCount(TDL):
     ATNM = "Asset Total Count"
     ATC = len(TDL)
 
-
-
     DF = TDL
     LLNM = "No Login History"
     LLNC = len(DF[(DF['lastLogin'] < weekAgo)])
@@ -27,17 +25,20 @@ def DailyCount(TDL):
     DC = 0
     LPC = 0
     EPC = 0
-
+    RUSC = 0
 
     LLSNM = "No Login History"
     DSNM = "Drive Size No Change"
     LPSNM = "Listen Port Count No Change"
     EPSNM = "Established Port Count No Change"
+    RUSNM = "RAM Size No Change"
+
     alarmDataList = []
     LHAlarmList = []
     DSAlarmList = []
     LPCAlarmList = []
     EPCAlarmList = []
+    RUSCAlarmList = []
     for i in range(len(TDL.id)):
         if TDL.lastLogin[i] < today :
             CID = TDL.id[i]
@@ -62,10 +63,17 @@ def DailyCount(TDL):
             IP = TDL.ip_address[i]
             alarmText = EPSNM
             EPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+        if TDL.ram_use_size[i] != TDL.YRamUseSize[i] :
+            RUSC = RUSC+1
+            CID = TDL.id[i]
+            IP = TDL.ip_address[i]
+            alarmText = RUSNM
+            RUSCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
 
     DSNC = DC
     LPSC = LPC
     EPSC = EPC
+    RUSSC = RUSC
     #print(alarmDataList)
 
     RD = {
@@ -76,9 +84,10 @@ def DailyCount(TDL):
         "DS": {"name": [DSNM], "value": [DSNC]},
         "LP" : {"name":[LPSNM], "value": [LPSC]},
         "EP" : {"name" : [EPSNM], "value": [EPSC]},
-        "ADL" : {"LHAL" : LHAlarmList, "DSAL" : DSAlarmList, "LPCAL" : LPCAlarmList, "EPCAL" : EPCAlarmList}
+        "RUS" : {"name" : [RUSNM], "value" : [RUSSC]},
+        "ADL" : {"LHAL" : LHAlarmList, "DSAL" : DSAlarmList, "LPCAL" : LPCAlarmList, "EPCAL" : EPCAlarmList, "RUSCAL" :RUSCAlarmList }
     }
-
+    #print(RD)
     return RD
 
 def FiveDay(SFDTDL):
@@ -153,11 +162,17 @@ def BannerRoc(SDL) :
     TEP = SDL['TEP']
     YEP = SDL['YEP']
     EPROC = TEP['value'][0] - YEP['value'][0]
-    EPSDL = {"name": TEP['name'][0], "count": YEP['value'][0], "roc": EPROC}
+    EPSDL = {"name": TEP['name'][0], "count": TEP['value'][0], "roc": EPROC}
     bannerDataList.append(EPSDL)
 
-    RD = bannerDataList
+    TRUS = SDL['TRUS']
+    YRUS = SDL['YRUS']
+    RUSROC = TRUS['value'][0] - YRUS['value'][0]
+    RUSDL = {"name": TRUS['name'][0], "count": TRUS['value'][0], "roc": RUSROC}
+    bannerDataList.append(RUSDL)
 
+    RD = bannerDataList
+    #print(RD)
     return RD
 
 

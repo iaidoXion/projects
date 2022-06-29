@@ -9,11 +9,11 @@ with open("setting.json", encoding="UTF-8") as f:
 apiUrl = SETTING['API']['apiUrl']
 Authorization = SETTING['API']['Authorization']
 ContentType = SETTING['API']['ContentType']
-
+AssetAPIPath = SETTING['API']['PATH']['Asset']
 
 def Asset(sessionKey):
     sessionKey = sessionKey
-    path = "/plugin/products/asset/v1/assets"
+    path = AssetAPIPath
     urls = apiUrl + path
     headers = {
         'session': sessionKey,

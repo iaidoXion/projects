@@ -27,6 +27,7 @@ def Yesterday() :
                 drive_use_size,
                 listen_port_count,
                 established_port_count,
+                ram_use_size,
                 asset_collection_date
             from
                 """+AssetTNM+"""

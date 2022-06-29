@@ -44,8 +44,9 @@ def OrgDaily(parserData, EAYL, sensorData):
         CID = SD[0]
         LPC = SD[10]
         EP = SD[11]
-        TSDL.append([CID, LPC, EP])
-    TSDLDNM = ['id', 'listenPortCount', 'establishedPort']
+        RUS = SD[12].split(' ')[0]
+        TSDL.append([CID, LPC, EP, RUS])
+    TSDLDNM = ['id', 'listenPortCount', 'establishedPort', 'ram_use_size']
     TSDF = pd.DataFrame(TSDL, columns=TSDLDNM)
     TSDFS = TSDF.sort_values(by="id", ascending=False).reset_index(drop=True)
 
@@ -56,8 +57,10 @@ def OrgDaily(parserData, EAYL, sensorData):
         DTS = EAYL[j][1]
         LPC = EAYL[j][2]
         EP = EAYL[j][3]
-        YDL.append([CID,DTS,LPC,EP])
-    YDFCNM = ['id', 'YdriveSize', 'YListenPortCount', 'YEstablishedPort']
+        RUS = EAYL[j][4]
+
+        YDL.append([CID,DTS,LPC,EP, RUS])
+    YDFCNM = ['id', 'YdriveSize', 'YListenPortCount', 'YEstablishedPort', 'YRamUseSize']
     YDF = pd.DataFrame(YDL, columns=YDFCNM).sort_values(by="id", ascending=True).reset_index(drop=True)
     DL = pd.merge(left=TDFJ, right=YDF, how="left", on="id").sort_values(by="id", ascending=True).reset_index(drop=True)
     return DL

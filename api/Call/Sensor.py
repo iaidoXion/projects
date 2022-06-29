@@ -9,9 +9,10 @@ with open("setting.json", encoding="UTF-8") as f:
 apiUrl = SETTING['API']['apiUrl']
 Authorization = SETTING['API']['Authorization']
 ContentType = SETTING['API']['ContentType']
-
+SensorAPIPath = SETTING['API']['PATH']['Sensor']
+SensorID = SETTING['API']['SensorID']
 def Data(SK) :
-    path = "/api/v2/result_data/saved_question/797"
+    path = SensorAPIPath+SensorID
     urls = apiUrl + path
     headers = {
         'session': SK,

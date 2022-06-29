@@ -1,19 +1,10 @@
 function networkChart(){
 
-var width = 960,
-    height = 600;
+var width = 960, height = 600;
 
-var svg = d3v4.select("#guMap").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+var svg = d3v4.select("#guMap").append("svg").attr("width", width).attr("height", height);
 
-var imgs = svg
-        .append("svg:image")
-        .attr("xlink:href", "/web/static/img/dashboard/zone-background.png")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", "960")
-            .attr("height", "600");
+var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard/zone-background.png").attr("x", 0).attr("y", 0).attr("width", "960")s.attr("height", "600");
 
 var simulation = d3v4.forceSimulation()
     .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
@@ -23,33 +14,18 @@ var simulation = d3v4.forceSimulation()
 d3v4.json("/web/static/data/networkData.json", function(error, graph) {
   if (error) throw error;
 
-  var link = svg.append("g")
-      .attr("class", "links")
-    .selectAll("line")
-    .data(graph.links)
-    .enter().append("line")
-      .attr("stroke-width", "1.7")
-      .style("stroke", "#e18a0a");
+  var link = svg.append("g").attr("class", "links").selectAll("line").data(graph.links).enter().append("line").attr("stroke-width", "1.7").style("stroke", "#e18a0a");
 
-  var node = svg.append("g")
-      .attr("class", "nodes")
-    .selectAll("g")
-    .data(graph.nodes)
-    .enter().append("g")
-      .on("mouseover", function(d) {
-        d3.select(this)
-            .style("cursor", "pointer")
-      })
+  var node = svg.append("g").attr("class", "nodes").selectAll("g").data(graph.nodes).enter().append("g")
+            .on("mouseover", function(d) { d3.select(this).style("cursor", "pointer")})
 
 
   var fillCircle = function(g){
-        if(g == "Ncrd"){
+        if(g == "groupCenter1"){
             return "/web/static/img/dashboard/ncrd.png";
-        }else if(g=="Ncalpha"){
+        }else if(g == "groupCenter2"){
             return "/web/static/img/dashboard/ncalpha.png";
-        }else if(g=="NcrdHexagon"){
-            return "/web/static/img/dashboard/hexagon.png";
-        }else if(g=="NcalphaHexagon"){
+        }else if(g == "NcrdHexagon" || g == "NcalphaHexagon"){
             return "/web/static/img/dashboard/hexagon.png";
         }else {
             return "/web/static/img/dashboard/hexagon-border.png";
@@ -57,9 +33,7 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
     };
 
   var CircleSize = function(g){
-        if(g == "Ncrd"){
-            return "80";
-        }else if(g=="Ncalpha"){
+        if(g.startsWith('groupCenter') == true){
             return "80";
         }else{
             return "60";
@@ -67,9 +41,8 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
     };
 
   var textColor = function(g){
-        if(g == "NcrdHexagon"){
-            return "#ffffff";
-        }else if(g == "NcalphaHexagon"){
+
+        if(g == "NcrdHexagon" || g=="NcalphaHexagon"){
             return "#ffffff";
         }else{
             return "#e18a0a";
@@ -93,36 +66,25 @@ d3v4.json("/web/static/data/networkData.json", function(error, graph) {
   drag_handler(node);*/
 
   var labels = node.append("text")
-      .text(function(d) {
-        return d.name;
-      })
-      .style("fill", function(d) { return textColor(d.id); })
-      .attr("text-anchor", "middle")
-      .attr('x', 0)
-      .attr('y', -18);
+        .text(function(d) { return d.name;})
+        .style("fill", function(d) { return textColor(d.id); })
+        .attr("text-anchor", "middle").attr('x', 0).attr('y', -18);
 
   node.append("title")
-      .text("Case : No change in Listen Port Amount \nCount : 23");
-/*      .text(function(d) { return d.name; });*/
+        .text(function(d) {
+            returnData = "Case : " + d.alarmCase + "\nCount :" + d.alarmCount
+            return returnData;
+         });
 
-  simulation
-      .nodes(graph.nodes)
-      .on("tick", ticked);
+  simulation.nodes(graph.nodes).on("tick", ticked);
 
-  simulation.force("link")
-      .links(graph.links);
+  simulation.force("link").links(graph.links);
 
   function ticked() {
-    link
-        .attr("x1", function(d) { return d.source.x; })
-        .attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; })
-        .attr("y2", function(d) { return d.target.y; });
+    link.attr("x1", function(d) { return d.source.x; }).attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; }).attr("y2", function(d) { return d.target.y; });
 
-    node
-        .attr("transform", function(d) {
-          return "translate(" + d.x + "," + d.y + ")";
-        })
+    node.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";})
   }
 });
 

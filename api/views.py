@@ -27,7 +27,7 @@ def DashboardData() :
     SFDSDL = SFDS(SFDTDL)
     RD = SDT(ASDCL, BRDL, SFDSDL)
     #RD = SDT(ASDCL)
-
+    #print(RD)
     return RD
 
 

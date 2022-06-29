@@ -25,6 +25,8 @@ def Yesterday(ESYDL) :
     LPCSC = []
     EPCSNM = []
     EPCSC = []
+    RUSSNM = []
+    RUSSC = []
 
     for i in range(len(ESYDL)):
         if ESYDL[i][0] == 'asset' :
@@ -46,10 +48,13 @@ def Yesterday(ESYDL) :
         elif ESYDL[i][0] == 'listen_port_count':
             LPCSNM.append(ESYDL[i][1])
             LPCSC.append(int(ESYDL[i][2]))
-        elif ESYDL[i][0] == 'established_port':
+        elif ESYDL[i][0] == 'established_port_count':
             EPCSNM.append(ESYDL[i][1])
             EPCSC.append(int(ESYDL[i][2]))
             #yesterdayDataList.append({"name": SYDL[i][1], "count" : SYDL[i][2]})
+        elif ESYDL[i][0] == 'ram_use_size':
+            RUSSNM.append(ESYDL[i][1])
+            RUSSC.append(int(ESYDL[i][2]))
     RD = {
         "AA": {"name": ATNM, "value": ATC},
         "AIS": {"name": AINM, "value": AIC},
@@ -57,8 +62,10 @@ def Yesterday(ESYDL) :
         "LS": {"name": LLNM, "value": LLNC},
         "DS": {"name": DSNM, "value": DSNC},
         "LPS": {"name": LPCSNM, "value": LPCSC},
-        "EPS": {"name": LPCSNM, "value": LPCSC},
+        "EPS": {"name": EPCSNM, "value": EPCSC},
+        "RUSS" : {"name": RUSSNM, "value": RUSSC},
     }
+    #print(RD)
     return RD
 
 def FiveDay(ESFDL, ASDCL) :
@@ -83,6 +90,7 @@ def FiveDay(ESFDL, ASDCL) :
 
 
 def Banner(ASDCL,SYDL) :
+    #print(SYDL.keys())
     TAA = ASDCL['AA']
     YAA = SYDL['AA']
     TLS = ASDCL['LS']
@@ -97,6 +105,8 @@ def Banner(ASDCL,SYDL) :
     YLP = SYDL['LPS']
     TEP = ASDCL['EP']
     YEP = SYDL['EPS']
+    TRUS = ASDCL['RUS']
+    YRUS = SYDL['RUSS']
 
     DFCNM = ['name', 'value']
     TAIDL = []
@@ -121,7 +131,7 @@ def Banner(ASDCL,SYDL) :
 
 
 
-    RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF, "TDS" : TDS, "YDS" : YDS, "TLP" : TLP, "YLP" : YLP, "TEP" : TEP, "YEP" : YEP}
+    RD = {"TAA" : TAA, "YAA" : YAA, "TLS" : TLS, "YLS" : YLS, "TAIS" : TAIDF, "YAIS" : YAIDF, "TOS" : TOSDF, "YOS": YOSDF, "TDS" : TDS, "YDS" : YDS, "TLP" : TLP, "YLP" : YLP, "TEP" : TEP, "YEP" : YEP, "TRUS" : TRUS, "YRUS" : YRUS}
 
     return RD
 
@@ -147,12 +157,11 @@ def ChartData(ASDCL, BRDL, SFDSDL):
         DSAL = {'firstData': [], 'dataList': []}
     LPCAL = {'firstData':[ASDCL['ADL']['LPCAL'][0]], 'dataList' : ASDCL['ADL']['LPCAL']}
     EPCAL = {'firstData':[ASDCL['ADL']['EPCAL'][0]], 'dataList' : ASDCL['ADL']['EPCAL']}
-    #print(DSAL)
+    RUSAL = {'firstData':[ASDCL['ADL']['RUSCAL'][0]], 'dataList' : ASDCL['ADL']['RUSCAL']}
+    #print(ASDCL['ADL'])
 
-
-
-
-    returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL}}
+    returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL, 'RUSAL' : RUSAL}}
+    #returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL}}
 
     return returnData
 
