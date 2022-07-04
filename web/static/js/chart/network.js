@@ -27,9 +27,9 @@ networkData.forEach(function(graph) {
 
 
   var fillCircle = function(g){
-        if(g == false){
+        if(g == "false"){
             return "/web/static/img/dashboard/hexagon-border.png";
-        }else if(g == true){
+        }else if(g == "true"){
             return "/web/static/img/dashboard/hexagon.png";}
   };
 
@@ -49,7 +49,7 @@ networkData.forEach(function(graph) {
     };
 
   var textColor = function(g){
-        if(g == true){
+        if(g == "true"){
             return "#ffffff";
         }else{
             return "#e18a0a";
