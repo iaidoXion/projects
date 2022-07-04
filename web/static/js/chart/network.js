@@ -7,8 +7,8 @@ var svg = d3v4.select("#guMap").append("svg").attr("width", width).attr("height"
 var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard/zone-background.png").attr("x", 0).attr("y", 0).attr("width", "960").attr("height", "600");
 
 var simulation = d3v4.forceSimulation()
-    .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
-    .force("charge", d3v4.forceManyBody().strength(-170))
+    .force("link", d3v4.forceLink().distance(150).id(function(d) { return d.id; }))
+    .force("charge", d3v4.forceManyBody().strength(-73))
     .force("center", d3v4.forceCenter(width / 2, height / 2));
 
 networkData.forEach(function(graph) {
@@ -17,6 +17,13 @@ networkData.forEach(function(graph) {
 
   var node = svg.append("g").attr("class", "nodes").selectAll("g").data(graph.nodes).enter().append("g")
             .on("mouseover", function(d) { d3.select(this).style("cursor", "pointer")})
+
+  var ipGroup = function(g){
+    if(g == "192.168.0"){
+        return "group0";
+    }else if(g == "192.168.1"){
+        return "group1";}
+  };
 
 
   var fillCircle = function(g){
@@ -32,18 +39,6 @@ networkData.forEach(function(graph) {
         }else if(g == "groupCenter2"){
             return "/web/static/img/dashboard/ncalpha.png";}
   };
-
-
-
-/*        if(g == "groupCenter1"){
-            return "/web/static/img/dashboard/ncrd.png";
-        }else if(g == "groupCenter2"){
-            return "/web/static/img/dashboard/ncalpha.png";
-        }else if(g == "NcrdHexagon" || g == "NcalphaHexagon"){
-            return "/web/static/img/dashboard/hexagon.png";
-        }else {
-            return "/web/static/img/dashboard/hexagon-border.png";
-        }*/
 
   var CircleSize = function(g){
         if(g.startsWith('groupCenter') == true){
