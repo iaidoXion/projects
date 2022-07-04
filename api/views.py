@@ -18,7 +18,6 @@ def DashboardData() :
     TDL = AODT(baseAssetData['dataList'], EAYL, sensorData['dataList'])     # API Asset(Now), DB Asset(yesterday) Data & API Sensor(Now) Data Transform
     ASDCL = ASDC(TDL)                                                       # Count Statistics
     AssociationS = Association(TDL)                                         # Association Statistics
-
     ESYDL = ESY()                                                           # DB Statistics(yesterday) Data Select
     SYDL = SYT(ESYDL)                                                       # DB Statistics(yesterday) Data Transform
     SDL = SBT(ASDCL, SYDL)                                                  # DB Statistics(yesterday) Data & API Sensor(Now) Data
