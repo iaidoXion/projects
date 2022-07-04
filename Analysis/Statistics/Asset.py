@@ -227,7 +227,6 @@ def Association(TDL) :
     RUSG = RUSDF.groupby('group').size().reset_index(name='alarmCount')
     AGLG = AGLDF.groupby('group').size().reset_index(name='groupCount')
 
-
     LLSNM = "No Login History"
     DSNM = "Drive Size No Change"
     LPSNM = "Listen Port Count No Change"
@@ -244,24 +243,44 @@ def Association(TDL) :
     RUSG['name'] = 'RUS'
     RUSG['alarmCase'] = RUSSNM
 
+    maxData = []
+    for n in range(len(LHG.group)) :
+        groupNameCount = int(LHG.group[n].split('.')[2]) + 1
+        maxData.append([LHG.group[n], LHG.alarmCount[n], 'group' + str(groupNameCount) + LHG.name[n], LHG.name[n], LHG.alarmCase[n]])
+    for o in range(len(DSG.group)):
+        groupNameCount = int(DSG.group[o].split('.')[2]) + 1
+        maxData.append([DSG.group[o], DSG.alarmCount[o], 'group' + str(groupNameCount) + DSG.name[o], DSG.name[o], DSG.alarmCase[o]])
+    for p in range(len(LPCG.group)) :
+        groupNameCount = int(LPCG.group[p].split('.')[2]) + 1
+        maxData.append([LPCG.group[p], LPCG.alarmCount[p], 'group' + str(groupNameCount) + LPCG.name[p], LPCG.name[p], LPCG.alarmCase[p]])
+    for q in range(len(EPCG.group)) :
+        groupNameCount = int(EPCG.group[q].split('.')[2]) + 1
+        maxData.append([EPCG.group[q], EPCG.alarmCount[q], 'group' + str(groupNameCount) + EPCG.name[q], EPCG.name[q], EPCG.alarmCase[q]])
+    for r in range(len(RUSG.group)) :
+        groupNameCount = int(RUSG.group[r].split('.')[2]) + 1
+        maxData.append([RUSG.group[r], RUSG.alarmCount[r], 'group' + str(groupNameCount) + RUSG.name[r], RUSG.name[r], RUSG.alarmCase[r]])
+
     nodeDataList = []
-    for h in range(len(AGLG.group)) :
-        nodeDataList.append({'group':AGLG.group[h], 'alarmCount':str(AGLG.groupCount[h]), 'id':'groupCenter' + str(h + 1), 'name':AGLG.group[h], 'alarmCase':AGLG.group[h]})
-    for i in range(len(LHG.group)) :
-        nodeDataList.append({'group':LHG.group[i], 'alarmCount':str(LHG.alarmCount[i]), 'id':'group'+str(i+1)+'LH', 'name':LHG.name[i], 'alarmCase':LHG.alarmCase[i]})
-    for j in range(len(DSG.group)) :
-        nodeDataList.append({'group':DSG.group[j], 'alarmCount':str(DSG.alarmCount[j]), 'id':'group'+str(j+1)+'DUS', 'name':DSG.name[i], 'alarmCase':DSG.alarmCase[i]})
-    for k in range(len(LPCG.group)) :
-        nodeDataList.append({'group':LPCG.group[k], 'alarmCount':str(LPCG.alarmCount[k]), 'id':'group'+str(k+1)+'LP', 'name':LPCG.name[i], 'alarmCase':LPCG.alarmCase[i]})
-    for l in range(len(EPCG.group)) :
-        nodeDataList.append({'group':EPCG.group[l], 'alarmCount':str(EPCG.alarmCount[l]), 'id':'group'+str(l+1)+'EP', 'name':EPCG.name[i], 'alarmCase':EPCG.alarmCase[i]})
-    for m in range(len(RUSG.group)) :
-        nodeDataList.append({'group':RUSG.group[m], 'alarmCount':str(RUSG.alarmCount[m]), 'id':'group'+str(m+1)+'RUS', 'name':RUSG.name[i], 'alarmCase':RUSG.alarmCase[i]})
+    linksDataList = []
+    for h in range(len(AGLG.group)):
+        groupNameCount = int(AGLG.group[h].split('.')[2]) + 1
+        nodeDataList.append( {'group': AGLG.group[h], 'alarmCount': str(AGLG.groupCount[h]), 'id': 'groupCenter' + str(groupNameCount), 'name': AGLG.group[h], 'alarmCase': AGLG.group[h]})
+    maxDataDF = pd.DataFrame(maxData, columns=['group', 'alarmCount', 'id', 'name', 'alarmCase'])
+    MDG = maxDataDF.loc[maxDataDF.groupby(['group'])['alarmCount'].idxmax()]
+    MDG['point'] = 'true'
+    dfmerge = pd.merge(left=maxDataDF, right=MDG, how="left", on=['id','group', 'alarmCount', 'name', 'alarmCase']).sort_values(by="id", ascending=True).reset_index()
 
-    
+    for s in range(len(dfmerge.id)) :
+        if type(dfmerge.point[s]) == float :
+            dfmerge.point[s] = 'false'
+        groupNameCount = int(dfmerge.group[s].split('.')[2]) + 1
+        nodeDataList.append({'group':dfmerge.group[s], 'alarmCount':str(dfmerge.alarmCount[s]), 'id':dfmerge.id[s], 'name':dfmerge.name[s], 'alarmCase':dfmerge.alarmCase[s], 'point':dfmerge.point[s]})
+        linksDataList.append({'source': dfmerge.id[s], 'target': 'groupCenter' + str(groupNameCount)})
 
-    RD = {'nodeDataList':nodeDataList}
-    print(RD)
+
+
+    RD = {'nodeDataList':nodeDataList, 'linksDataList':linksDataList}
+
     return RD
 
 
