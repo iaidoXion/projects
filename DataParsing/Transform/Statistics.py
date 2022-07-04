@@ -135,7 +135,10 @@ def Banner(ASDCL,SYDL) :
 
     return RD
 
-def ChartData(ASDCL, BRDL, SFDSDL):
+
+
+
+def ChartData(ASDCL, BRDL, SFDSDL, AssociationS):
     BarChartDataList = []
     LineChartDataList = []
     PieChartDataList = []
@@ -160,7 +163,7 @@ def ChartData(ASDCL, BRDL, SFDSDL):
     RUSAL = {'firstData':[ASDCL['ADL']['RUSCAL'][0]], 'dataList' : ASDCL['ADL']['RUSCAL']}
     #print(ASDCL['ADL'])
 
-    returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL, 'RUSAL' : RUSAL}}
+    returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL, 'RUSAL' : RUSAL}, 'AssociationDataList' : AssociationS}
     #returnData = {"barChartData": BarChartDataList, "lineChartData" : LineChartDataList,  "pieChartData": PieChartDataList,"bannerData" : BRDL, 'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL}}
 
     return returnData
