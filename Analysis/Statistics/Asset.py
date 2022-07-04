@@ -1,4 +1,7 @@
 from datetime import datetime, timedelta
+
+import pandas as pd
+
 weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
 today = datetime.today().strftime("%Y-%m-%d")
 
@@ -178,38 +181,87 @@ def BannerRoc(SDL) :
 
 
 def Association(TDL) :
-    LLSNM = "No Login History"
-    DSNM = "Drive Size No Change"
-    LPSNM = "Listen Port Count No Change"
-    EPSNM = "Established Port Count No Change"
     LHAlarmList = []
     DSAlarmList = []
     LPCAlarmList = []
     EPCAlarmList = []
+    RUSAlarmList = []
+    AGL = []
     for i in range(len(TDL.id)):
         if TDL.lastLogin[i] < today:
-            CID = TDL.id[i]
-            IP = TDL.ip_address[i]
-            alarmText = LLSNM
-            LHAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+            IPS = TDL.ip_address[i].split('.')
+            IP =IPS[0]+'.'+IPS[1]+'.'+IPS[2]
+            LHAlarmList.append([IP])
+            AGL.append([IP])
         if TDL.driveSize[i] != TDL.YdriveSize[i]:
-            CID = TDL.id[i]
-            IP = TDL.ip_address[i]
-            alarmText = DSNM
-            DSAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+            IPS = TDL.ip_address[i].split('.')
+            IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
+            DSAlarmList.append([IP])
+            AGL.append([IP])
         if TDL.listenPortCount[i] != TDL.YListenPortCount[i]:
-            CID = TDL.id[i]
-            IP = TDL.ip_address[i]
-            alarmText = LPSNM
-            LPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
+            IPS = TDL.ip_address[i].split('.')
+            IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
+            LPCAlarmList.append([IP])
+            AGL.append([IP])
         if TDL.establishedPort[i] != TDL.YEstablishedPort[i]:
-            CID = TDL.id[i]
-            IP = TDL.ip_address[i]
-            alarmText = EPSNM
-            EPCAlarmList.append({'id': CID, 'ip': IP, 'alarmText': alarmText})
-    RD = {
-        "ADL": {"LHAL": LHAlarmList, "DSAL": DSAlarmList, "LPCAL": LPCAlarmList, "EPCAL": EPCAlarmList}
-    }
+            IPS = TDL.ip_address[i].split('.')
+            IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
+            EPCAlarmList.append([IP])
+            AGL.append([IP])
+        if TDL.ram_use_size[i] != TDL.YRamUseSize[i]:
+            IPS = TDL.ip_address[i].split('.')
+            IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
+            RUSAlarmList.append([IP])
+            AGL.append([IP])
+    LHDF = pd.DataFrame(LHAlarmList, columns=['group'])
+    DSDF = pd.DataFrame(DSAlarmList, columns=['group'])
+    LPCDF = pd.DataFrame(LPCAlarmList, columns=['group'])
+    EPCDF = pd.DataFrame(EPCAlarmList, columns=['group'])
+    RUSDF = pd.DataFrame(RUSAlarmList, columns=['group'])
+    AGLDF = pd.DataFrame(AGL,columns=['group'])
+
+    LHG = LHDF.groupby('group').size().reset_index(name='alarmCount')
+    DSG = DSDF.groupby('group').size().reset_index(name='alarmCount')
+    LPCG = LPCDF.groupby('group').size().reset_index(name='alarmCount')
+    EPCG = EPCDF.groupby('group').size().reset_index(name='alarmCount')
+    RUSG = RUSDF.groupby('group').size().reset_index(name='alarmCount')
+    AGLG = AGLDF.groupby('group').size().reset_index(name='groupCount')
+
+
+    LLSNM = "No Login History"
+    DSNM = "Drive Size No Change"
+    LPSNM = "Listen Port Count No Change"
+    EPSNM = "Established Port Count No Change"
+    RUSSNM = "RAM Size No Change"
+    LHG['name'] = 'LH'
+    LHG['alarmCase'] = LLSNM
+    DSG['name'] = 'DUS'
+    DSG['alarmCase'] = DSNM
+    LPCG['name'] = 'LP'
+    LPCG['alarmCase'] = LPSNM
+    EPCG['name'] = 'EP'
+    EPCG['alarmCase'] = EPSNM
+    RUSG['name'] = 'RUS'
+    RUSG['alarmCase'] = RUSSNM
+
+    nodeDataList = []
+    for h in range(len(AGLG.group)) :
+        nodeDataList.append({'group':AGLG.group[h], 'alarmCount':str(AGLG.groupCount[h]), 'id':'groupCenter' + str(h + 1), 'name':AGLG.group[h], 'alarmCase':AGLG.group[h]})
+    for i in range(len(LHG.group)) :
+        nodeDataList.append({'group':LHG.group[i], 'alarmCount':str(LHG.alarmCount[i]), 'id':'group'+str(i+1)+'LH', 'name':LHG.name[i], 'alarmCase':LHG.alarmCase[i]})
+    for j in range(len(DSG.group)) :
+        nodeDataList.append({'group':DSG.group[j], 'alarmCount':str(DSG.alarmCount[j]), 'id':'group'+str(j+1)+'DUS', 'name':DSG.name[i], 'alarmCase':DSG.alarmCase[i]})
+    for k in range(len(LPCG.group)) :
+        nodeDataList.append({'group':LPCG.group[k], 'alarmCount':str(LPCG.alarmCount[k]), 'id':'group'+str(k+1)+'LP', 'name':LPCG.name[i], 'alarmCase':LPCG.alarmCase[i]})
+    for l in range(len(EPCG.group)) :
+        nodeDataList.append({'group':EPCG.group[l], 'alarmCount':str(EPCG.alarmCount[l]), 'id':'group'+str(l+1)+'EP', 'name':EPCG.name[i], 'alarmCase':EPCG.alarmCase[i]})
+    for m in range(len(RUSG.group)) :
+        nodeDataList.append({'group':RUSG.group[m], 'alarmCount':str(RUSG.alarmCount[m]), 'id':'group'+str(m+1)+'RUS', 'name':RUSG.name[i], 'alarmCase':RUSG.alarmCase[i]})
+
+    
+
+    RD = {'nodeDataList':nodeDataList}
+    print(RD)
     return RD
 
 

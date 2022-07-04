@@ -622,7 +622,29 @@
 		{x:35.238289,y:128.692389},
 		{x:35.892508,y:128.600602}
 	];
+var networkData1 = [{
+  "nodes": [
+    {% for nodeData in chartData.AssociationDataList.nodeDataList %}
+    {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
+    {% endfor %}
+  ],
 
+
+  "links": [
+    {"source": "group1LH", "target": "groupCenter1", "distance": 200},
+    {"source": "group1DUS", "target": "groupCenter1", "distance": 170},
+    {"source": "group1LP", "target": "groupCenter1", "distance": 180},
+    {"source": "group1EP", "target": "groupCenter1", "distance": 180},
+    {"source": "group1RUS", "target": "groupCenter1", "distance": 190},
+    {"source": "group2LH", "target": "groupCenter2", "distance": 170},
+    {"source": "group2DUS", "target": "groupCenter2", "distance": 170},
+    {"source": "group2LP", "target": "groupCenter2", "distance": 180},
+    {"source": "group2EP", "target": "groupCenter2", "distance": 180},
+    {"source": "group2RUS", "target": "groupCenter2", "distance": 190}
+  ]
+}];
+
+console.log(networkData1)
     var networkData = [{
   "nodes": [
     {"id": "groupCenter1", "group": "192.168.0", "x":239, "y":160, "fixed":true},

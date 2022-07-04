@@ -7,8 +7,9 @@ def DashboardDataList() :
     pieChartData = DCDL["pieChartData"]
     bannerData = DCDL["bannerData"]
     alarmData = DCDL['alarmDataList']
-    returnData = {'barChartDataList': barChartData,'lineChartDataList' : lineChartData, 'pieChartDataList': pieChartData, 'bannerDataList': bannerData, 'alarmDataList': alarmData}
-    #print(returnData)
+    AssociationData = DCDL['AssociationDataList']
+    returnData = {'barChartDataList': barChartData,'lineChartDataList' : lineChartData, 'pieChartDataList': pieChartData, 'bannerDataList': bannerData, 'alarmDataList': alarmData, 'AssociationDataList' : AssociationData}
+    #print(returnData['AssociationDataList'])
     return returnData
 
 
