@@ -30,352 +30,31 @@
         </div>
         <div class="container-child-color container-center my-float-left my-border">
             <div class="mapLeft">
-                <div class="mapChartMenuWorld">
+                <div class="container-child-color my-float-left world-map">
+                    <div id="worldMap"></div>
+                </div>
+                <div class="container-child-color my-float-left korea-map">
+                    <div id="koreaMap"></div>
+                </div>
+                <div class="container-child-color my-float-left si-map">
+                    <div id="siMap"></div>
+                </div>
+                <div class="container-child-color my-float-left gu-map">
+                    <div id="guMap"></div>
+                </div>
+                <div class="container-child-color my-float-left dong-map">
+                    <div id="dongMap"></div>
+                </div>
+            </div>
+            <div class="mapChartMenuWorld">
                     <div class="mapChartMenuWrap">
                         <button type="button" class="btn btn-secondary btnWorld">World</button>
                         <button type="button" class="btn btn-secondary btnKorea">Korea</button>
                         <button type="button" class="btn btn-secondary btnSi">Area</button>
                         <button type="button" class="btn btn-secondary btnGu">Zone</button>
                     </div>
-                </div>
-                <div class="container-child-color my-float-left world-map">
-                    <div id="worldMap"></div>
-                    <div class="mapRight">
-                        <ul class="mapRightWrap">
-                            <a class="expansionWrap mouse-over-cursor" id="worldBt1">
-                                <li class="expansion">
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">world: 로그인 이력이 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popWorldBt1" class="pop-korea" style="display: none;">
-                                <a id="closeWorldBt1" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>world 이상징후 1</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="worldBt2">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">드라이브 사용량 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popWorldBt2" class="pop-korea" style="display: none;">
-                                <a id="closeWorldBt2" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>world 이상징후 2</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="worldBt3">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Established된 포트가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popWorldBt3" class="pop-korea" style="display: none;">
-                                <a id="closeWorldBt3" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>world 이상징후 3</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="worldBt4">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Listen상태의 포트수 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popWorldBt4" class="pop-korea" style="display: none;">
-                                <a id="closeWorldBt4" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>world 이상징후 4</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="worldBt5">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Title</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popWorldBt5" class="pop-korea" style="display: none;">
-                                <a id="closeWorldBt5" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>world 이상징후 5</div>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-child-color my-float-left korea-map">
-                    <div id="koreaMap"></div>
-                    <div class="mapRight">
-                        <ul class="mapRightWrap">
-                            <a class="expansionWrap mouse-over-cursor" id="koreaBt1">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">korea: 로그인 이력이 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popKoreaBt1" class="pop-korea" style="display: none;">
-                                <a id="closeKoreaBt1" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>korea 이상징후 1</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="koreaBt2">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">드라이브 사용량 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popKoreaBt2" class="pop-korea" style="display: none;">
-                                <a id="closeKoreaBt2" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>korea 이상징후 2</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="koreaBt3">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Established된 포트가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popKoreaBt3" class="pop-korea" style="display: none;">
-                                <a id="closeKoreaBt3" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>korea 이상징후 3</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="koreaBt4">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Listen상태의 포트수 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popKoreaBt4" class="pop-korea" style="display: none;">
-                                <a id="closeKoreaBt4" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>korea 이상징후 4</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="koreaBt5">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Title</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popKoreaBt5" class="pop-korea" style="display: none;">
-                                <a id="closeKoreaBt5" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>korea 이상징후 5</div>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-child-color my-float-left si-map">
-                    <div id="siMap"></div>
-                    <div class="mapRight">
-                        <ul class="mapRightWrap">
-                            <a class="expansionWrap mouse-over-cursor" id="areaBt1">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">area: 로그인 이력이 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popAreaBt1" class="pop-korea" style="display: none;">
-                                <a id="closeAreaBt1" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>area 이상징후 1</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="areaBt2">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">드라이브 사용량 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popAreaBt2" class="pop-korea" style="display: none;">
-                                <a id="closeAreaBt2" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>area 이상징후 2</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="areaBt3">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Established된 포트가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popAreaBt3" class="pop-korea" style="display: none;">
-                                <a id="closeAreaBt3" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>area 이상징후 3</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="areaBt4">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Listen상태의 포트수 변화가 없는 자산</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popAreaBt4" class="pop-korea" style="display: none;">
-                                <a id="closeAreaBt4" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>area 이상징후 4</div>
-                                </div>
-                            </div>
-                            <a class="expansionWrap mouse-over-cursor" id="areaBt5">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Title</div>
-                                        <div>Asset ID : 5455454563</div>
-                                    </div>
-                                </li>
-                            </a>
-                            <div class="shadow"></div>
-                            <div id="popAreaBt5" class="pop-korea" style="display: none;">
-                                <a id="closeAreaBt5" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <div>area 이상징후 5</div>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-                <div class="container-child-color my-float-left gu-map">
-                    <div id="guMap"></div>
-                    <div class="mapRight">
+            </div>
+            <div class="mapRight">
                         <ul class="mapRightWrap">
                            {% if chartData.alarmDataList %}
                            {% for firstData in chartData.alarmDataList.LHAL.firstData %}
@@ -510,11 +189,6 @@
                             {% endif%}
                         </ul>
                     </div>
-                </div>
-                <div class="container-child-color my-float-left dong-map">
-                    <div id="dongMap"></div>
-                </div>
-            </div>
         </div>
     </div>
     <div class="container-color container-bot my-border">
