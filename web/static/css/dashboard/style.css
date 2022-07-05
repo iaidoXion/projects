@@ -34,7 +34,7 @@
 }
 
 .mapChartMenuWorld{
-    width: 29.6%;
+    width: 27%;
     min-height: 25px;
     float: right;
     padding: 3px;
@@ -50,7 +50,7 @@
 }
 
 .mapChartMenuWrap{
-    margin-left: 17%;
+    margin-left: 9%;
 }
 
 .mapChartMenuWrap button{
@@ -125,9 +125,10 @@
 }
 
 .mapLeft{
-    width: 100%;
+    width: 73%;
     height: 680px;
     float: left;
+    padding-top: 32px;
 }
 
 .mapRight{
