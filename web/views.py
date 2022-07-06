@@ -41,7 +41,7 @@ def dashboard(request):
 
 @login_required(login_url='common:login')
 def assetWeb(request):
-    return render(request, 'tanium/info.html', menuSettingList)
+    return render(request, 'tanium/asset.html', menuSettingList)
 
 @login_required(login_url='common:login')
 def software(request):
