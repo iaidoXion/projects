@@ -77,9 +77,24 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    {% for dataList in chartData.alarmDataList.LHAL.dataList %}
-                                        <div>{{dataList}}</div>
-                                    {% endfor %}
+                                    <table class="popTable">
+                                        <thead>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>IP</td>
+                                                <td>AlarmText</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for dataList in chartData.alarmDataList.LHAL.dataList %}
+                                            <tr>
+                                                <td>{{dataList.id}}</td>
+                                                <td>{{dataList.ip}}</td>
+                                                <td>{{dataList.alarmText}}</td>
+                                            </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
                                 </div>
                             </div>
 
@@ -103,9 +118,24 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    {% for dataList in chartData.alarmDataList.DSAL.dataList %}
-                                        <div>{{dataList}}</div>
-                                    {% endfor %}
+                                    <table class="popTable">
+                                        <thead>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>IP</td>
+                                                <td>AlarmText</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for dataList in chartData.alarmDataList.DSAL.dataList %}
+                                            <tr>
+                                                <td>{{dataList.id}}</td>
+                                                <td>{{dataList.ip}}</td>
+                                                <td>{{dataList.alarmText}}</td>
+                                            </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
                                 </div>
                             </div>
 
@@ -130,9 +160,24 @@
                                          height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    {% for dataList in chartData.alarmDataList.LPCAL.dataList %}
-                                        <div>{{dataList}}</div>
-                                    {% endfor %}
+                                    <table class="popTable">
+                                        <thead>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>IP</td>
+                                                <td>AlarmText</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for dataList in chartData.alarmDataList.LPCAL.dataList %}
+                                            <tr>
+                                                <td>{{dataList.id}}</td>
+                                                <td>{{dataList.ip}}</td>
+                                                <td>{{dataList.alarmText}}</td>
+                                            </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
                                 </div>
                             </div>
 
@@ -156,9 +201,24 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    {% for dataList in chartData.alarmDataList.EPCAL.dataList %}
-                                        <div>{{dataList}}</div>
-                                    {% endfor %}
+                                    <table class="popTable">
+                                        <thead>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>IP</td>
+                                                <td>AlarmText</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for dataList in chartData.alarmDataList.EPCAL.dataList %}
+                                            <tr>
+                                                <td>{{dataList.id}}</td>
+                                                <td>{{dataList.ip}}</td>
+                                                <td>{{dataList.alarmText}}</td>
+                                            </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
                                 </div>
                             </div>
                             {% for firstData in chartData.alarmDataList.RUSAL.firstData %}
@@ -181,9 +241,24 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    {% for dataList in chartData.alarmDataList.RUSAL.dataList %}
-                                    <div>{{dataList}}</div>
-                                    {% endfor %}
+                                    <table class="popTable">
+                                        <thead>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>IP</td>
+                                                <td>AlarmText</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for dataList in chartData.alarmDataList.RUSAL.dataList %}
+                                            <tr>
+                                                <td>{{dataList.id}}</td>
+                                                <td>{{dataList.ip}}</td>
+                                                <td>{{dataList.alarmText}}</td>
+                                            </tr>
+                                        </tbody>
+                                        {% endfor %}
+                                    </table>
                                 </div>
                             </div>
                             {% endif%}
@@ -365,4 +440,4 @@ var networkData = [{
 <script src="{% static 'js/common/nav.js' %}"></script>
 <!-- dashboard jquery -->
 <script src="{% static 'js/common/dashboard.js' %}"></script>
-{% endblock %}
+{% endblock %}llll
