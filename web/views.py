@@ -8,7 +8,7 @@ import urllib3
 import json
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
-ProjectName = SETTING['PROJECT']['Type']
+ProjectName = SETTING['PROJECT']['TYPE']
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 menuSettingList = MenuList()
