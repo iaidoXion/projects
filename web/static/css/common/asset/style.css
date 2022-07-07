@@ -1,0 +1,28 @@
+.container-frame {
+    width: 100%;
+    background-color: #f8f9fc;
+    min-height: 837px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.container-color {
+    background-color: #f8f9fc;
+}
+
+.container-child-color {
+    background-color: #ffffff;
+}
+
+.content-title {
+    width: 90%;
+    height: 20px;
+    padding:5px;
+    font-size:12px;
+    background: red;
+}
+
+.conText{
+    margin-left: 20px;
+    margin-top: 3px;
+}

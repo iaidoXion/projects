@@ -209,7 +209,7 @@
 }
 
 #popWorld{
-    width: 80%;
+    width: 100%;
     height: 400px;
     background: #fff;
     position: absolute;
@@ -221,7 +221,7 @@
 }
 
 .pop-korea{
-    width: 80%;
+    width: 1000px;
     height: 500px;
     background: #fff;
     position: absolute;
@@ -240,21 +240,44 @@
 }
 
 .popMap{
-    width: 100%;
-    height: 900px;
+    width: 950px;
+    height: 450px;
+    margin: auto;
 }
 
 .popTable{
-    width: 80%;
-    height: 100px;
-    margin: 20px auto;
-    text-align: center;
+    width: 950px;
 }
-.popTable thead tr td {
-    padding-bottom: 10px;
-    font-size: 20px;
+
+.popTable .width250 {
+    width: 250px;
+}
+
+.popTable .width320 {
+    width: 300px;
+}
+
+.popTable .width400 {
+    width: 400px;
+}
+
+.popTable thead tr th {
+    font-size: 13px;
     font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    background: #e18a0a;
+    border-bottom: 1px solid #d9d9d9;
+    color: #fff;
 }
+
+.popTable tbody tr td {
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
 .shadow{
     position: fixed;
     left: 0;top: 0;
