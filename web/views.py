@@ -41,7 +41,8 @@ def dashboard(request):
 
 @login_required(login_url='common:login')
 def assetWeb(request):
-    return render(request, 'tanium/asset.html', menuSettingList)
+    returnData = { 'menuList': menuSettingList }
+    return render(request, 'tanium/asset.html', returnData)
 
 @login_required(login_url='common:login')
 def software(request):
@@ -53,8 +54,10 @@ def security(request):
 
 @login_required(login_url='common:login')
 def report(request):
-    return render(request, 'tanium/report.html', menuSettingList)
+    returnData = { 'menuList': menuSettingList }
+    return render(request, 'tanium/report.html', returnData)
 
 @login_required(login_url='common:login')
 def setting(request):
-    return render(request, 'common/setting.html', menuSettingList)
+    returnData = {'menuList': menuSettingList}
+    return render(request, 'common/setting.html', returnData)
