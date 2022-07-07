@@ -1,6 +1,7 @@
 {
   "PROJECT" : {
-    "Type" : "System"
+    "CORE" : "Tanium",
+    "TYPE" : "System"
   },
    "API" : {
     "apiUrl" : "https://192.168.5.100",

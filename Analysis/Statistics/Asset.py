@@ -272,9 +272,12 @@ def Association(TDL) :
 
     for s in range(len(dfmerge.id)) :
         if type(dfmerge.point[s]) == float :
-            dfmerge.point[s] = 'false'
+            point = str(dfmerge.point[s])
+            point = 'false'
+        else :
+            point = dfmerge.point[s]
         groupNameCount = int(dfmerge.group[s].split('.')[2]) + 1
-        nodeDataList.append({'group':dfmerge.group[s], 'alarmCount':str(dfmerge.alarmCount[s]), 'id':dfmerge.id[s], 'name':dfmerge.name[s], 'alarmCase':dfmerge.alarmCase[s], 'point':dfmerge.point[s]})
+        nodeDataList.append({'group':dfmerge.group[s], 'alarmCount':str(dfmerge.alarmCount[s]), 'id':dfmerge.id[s], 'name':dfmerge.name[s], 'alarmCase':dfmerge.alarmCase[s], 'point':point})
         linksDataList.append({'source': dfmerge.id[s], 'target': 'groupCenter' + str(groupNameCount)})
 
 
