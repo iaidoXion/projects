@@ -9,6 +9,11 @@ import json
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
 ProjectName = SETTING['PROJECT']['TYPE']
+WorldUse = SETTING['PROJECT']['MAP']['World']
+KoreaUse = SETTING['PROJECT']['MAP']['Korea']
+AreaUse = SETTING['PROJECT']['MAP']['Area']
+ZoneUse = SETTING['PROJECT']['MAP']['Zone']
+
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 menuSettingList = MenuList()
@@ -35,7 +40,8 @@ def signup(request):
 @login_required(login_url='common:login')
 def dashboard(request):
     chartData = DashboardDataList()
-    returnData = { 'menuList': menuSettingList, 'chartData' : chartData, 'projectName' : ProjectName}
+    MapUse = {"WorldUse" : WorldUse, "KoreaUse" : KoreaUse, "AreaUse" : AreaUse, "ZoneUse" : ZoneUse  }
+    returnData = { 'menuList': menuSettingList, 'chartData' : chartData, 'MapUse' : MapUse}
     #print(chartData)
     return render(request, 'tanium/dashboard.html', returnData)
 

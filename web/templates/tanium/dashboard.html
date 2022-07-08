@@ -29,29 +29,43 @@
             </div>
         </div>
         <div class="container-child-color container-center my-float-left my-border">
-            <div class="mapLeft">
-                <div class="container-child-color my-float-left world-map">
+            <div class="mapLeft" style="overflow:hidden">
+                {% if MapUse.WorldUse == 'block' %}
+                <div class="container-child-color my-float-left world-map" style="display:{{MapUse.WorldUse}}">
                     <div id="worldMap"></div>
                 </div>
-                <div class="container-child-color my-float-left korea-map">
+                {%endif%}
+                {% if MapUse.KoreaUse == 'block' %}
+                <div class="container-child-color my-float-left korea-map" style="display:{{MapUse.KoreaUse}}">
                     <div id="koreaMap"></div>
                 </div>
-                <div class="container-child-color my-float-left si-map">
+                {%endif%}
+                {% if MapUse.AreaUse == 'block' %}
+                <div class="container-child-color my-float-left si-map" style="display:{{MapUse.AreaUse}}">
                     <div id="siMap"></div>
                 </div>
-                <div class="container-child-color my-float-left gu-map">
+                {%endif%}
+                {% if MapUse.ZoneUse == 'block' %}
+                <div class="container-child-color my-float-left gu-map" style="display:{{MapUse.ZoneUse}}">
                     <div id="guMap"></div>
                 </div>
-                <div class="container-child-color my-float-left dong-map">
-                    <div id="dongMap"></div>
-                </div>
+                {%endif%}
+
             </div>
             <div class="mapChartMenuWorld">
                     <div class="mapChartMenuWrap">
+                        {% if MapUse.WorldUse == 'block' %}
                         <button type="button" class="btn btn-secondary btnWorld">World</button>
+                        {%endif%}
+                        {% if MapUse.KoreaUse == 'block' %}
                         <button type="button" class="btn btn-secondary btnKorea">Korea</button>
+                        {%endif%}
+                        {% if MapUse.AreaUse == 'block' %}
                         <button type="button" class="btn btn-secondary btnSi">Area</button>
+                        {%endif%}
+                        {% if MapUse.ZoneUse == 'block' %}
                         <button type="button" class="btn btn-secondary btnGu">Zone</button>
+                        {%endif%}
                     </div>
             </div>
             <div class="mapRight">
