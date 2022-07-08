@@ -97,14 +97,14 @@
                                             <col class="width300">
                                             <col class="width400">
                                         </colgroup>
-                                        <thead>
+                                        <thead class="thead-color">
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">IP</th>
                                                 <th scope="col">AlarmText</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="tbody-init">
                                         {% for dataList in chartData.alarmDataList.LHAL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
@@ -114,6 +114,11 @@
                                         </tbody>
                                         {% endfor %}
                                     </table>
+                                    <ul id="ul-page" class="pagination" style="justify-content: center">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">next</a></li>
+                                    </ul>
                                 </div>
                             </div>
 
