@@ -108,7 +108,9 @@ def FiveDay(SFDTDL):
     return RD
 
 def BannerRoc(SDL) :
+    print(SDL)
     bannerDataList = []
+    """
     TAA = SDL['TAA']
     YAA = SDL['YAA']
     AAROC = TAA['value'][0] - YAA['value'][0]
@@ -172,7 +174,7 @@ def BannerRoc(SDL) :
     YRUS = SDL['YRUS']
     RUSROC = TRUS['value'][0] - YRUS['value'][0]
     RUSDL = {"name": TRUS['name'][0], "count": TRUS['value'][0], "roc": RUSROC}
-    bannerDataList.append(RUSDL)
+    bannerDataList.append(RUSDL)"""
 
     RD = bannerDataList
     #print(RD)
@@ -287,6 +289,50 @@ def Association(TDL) :
     return RD
 
 
+def ChartData(data, type, statistics) :
+    if statistics == 'group' :
+        if type == 'assetItem' :
+            GBI = 'assetItem'
+        elif type == 'osItem' :
+            GBI = 'os'
+        IG = data.groupby([GBI])
+        IGR = IG.size().reset_index(name='counts')
+        if type == 'assetItem':
+            INML = IGR.assetItem
+        elif type == 'osItem':
+            INML = IGR.os
+        INM = INML.tolist()
+        ICL = IGR.counts
+        DUSCY = ICL.tolist()
 
+    elif statistics == 'count' :
+
+        todayDL = data[0]
+        yesterdayDL = data[1]
+        DLMerge = pd.merge(left=todayDL, right=yesterdayDL, how="outer", on="id").sort_values(by="id", ascending=True).reset_index(drop=True)
+        DC = 0
+        DTC = len(DLMerge)
+        if type == 'driveUseSize' :
+            DUSCY = len(DLMerge['driveSize_x'].compare(DLMerge['driveSize_y']))
+            INM = ["Drive Size No Change"]
+        elif type == 'ramUseSize':
+            DUSCY = len(DLMerge['ramSize_x'].compare(DLMerge['ramSize_y']))
+            INM = ["Ram Size No Change"]
+        elif type == 'noLoginHistory':
+            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < weekAgo)])
+            INM = ["No Login History"]
+            print(DUSCY)
+
+            for i in range(len(DLMerge)) :
+                print(DLMerge['lastLogin_x'][i])
+                #print(DLMerge['lastLogin_y'][i])
+
+
+
+
+
+    RD = {"name": INM, "value": DUSCY}
+    #print(RD)
+    return RD
 
 
