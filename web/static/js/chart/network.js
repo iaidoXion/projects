@@ -73,12 +73,12 @@ networkData.forEach(function(graph) {
     .style("filter", "url(#drop-shadow)");
 
 // Create a drag handler and append it to the node object instead
-/*  var drag_handler = d3v4.drag()
+  var drag_handler = d3v4.drag()
       .on("start", dragstarted)
       .on("drag", dragged)
       .on("end", dragended);
 
-  drag_handler(node);*/
+  drag_handler(node);
 
   var labels = node.append("text")
         .text(function(d) { return d.name;})
@@ -103,7 +103,6 @@ networkData.forEach(function(graph) {
   }
 });
 
-/*
 function dragstarted(d) {
   if (!d3v4.event.active) simulation.alphaTarget(0.3).restart();
   d.fx = d.x;
@@ -120,7 +119,6 @@ function dragended(d) {
   d.fx = null;
   d.fy = null;
 }
-*/
 
 var dropShadowFilter = svg.append('svg:filter')
   .attr('id', 'drop-shadow')
