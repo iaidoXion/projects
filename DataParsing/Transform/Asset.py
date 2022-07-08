@@ -64,3 +64,61 @@ def OrgDaily(parserData, EAYL, sensorData):
     YDF = pd.DataFrame(YDL, columns=YDFCNM).sort_values(by="id", ascending=True).reset_index(drop=True)
     DL = pd.merge(left=TDFJ, right=YDF, how="left", on="id").sort_values(by="id", ascending=True).reset_index(drop=True)
     return DL
+
+
+def ChartData(data, day, type, api):
+    PDLC = len(data)
+    DFL = []
+    for i in range(PDLC):
+        if day == 'today' :
+            if api == 'asset' :
+                CI = data[i]['computer_id']
+                if type == 'assetItem' :
+                    item = data[i]['asset_item']
+                    itemPer = item.lower()
+                    if itemPer.startswith('macbook'):
+                        item = 'Notebook'
+                    if itemPer.startswith('imac'):
+                        item = 'Desktop'
+                    itemIndex = 'assetItem'
+                elif type == 'osItem' :
+                    item = data[i]['os_platform']
+                    itemIndex = 'os'
+                elif type == 'driveUseSize' :
+                    item = data[i]['drive_use_size']
+                    itemIndex = 'driveSize'
+                elif type == 'noLoginHistory':
+                    item = data[i]['last_seen_at'].split('T')[0]
+                    itemIndex = 'lastLogin'
+            elif api == 'sensor' :
+                CI = data[i][0]
+                if type == 'ramUseSize' :
+                    item = data[i][12].split(' ')[0]
+                    itemIndex = 'ramSize'
+        elif day == 'yesterday' :
+            CI = data[i][0]
+            if type == 'driveUseSize' :
+                item = data[i][1]
+                itemIndex = 'driveSize'
+            elif type == 'noLoginHistory':
+                item = str(data[i][5]).split(' ')[0]
+                itemIndex = 'lastLogin'
+            elif type == 'ramUseSize':
+                item = str(data[i][4])
+                itemIndex = 'ramSize'
+
+        DFL.append([CI, item])
+    DFC = ['id', itemIndex]
+    DF = pd.DataFrame(DFL, columns=DFC).sort_values(by="id", ascending=False).reset_index(drop=True)
+    #print(DF)
+    return DF
+
+
+
+
+
+
+
+
+
+

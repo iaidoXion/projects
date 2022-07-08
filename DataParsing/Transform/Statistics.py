@@ -258,6 +258,14 @@ def StatisticsDaily(ASDCL) :
 """
 
 
+def ChartDataNew(data,type) :
+    ChartDataList = []
+    if type == 'Bar' or type == 'Pie' :
+        for i in range(len(data['name'])):
+            ChartDataList.append({"name": data['name'][i], "value": data['value'][i]})
+    RD = ChartDataList
+    return RD
+
 
 
 
