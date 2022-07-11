@@ -97,14 +97,14 @@
                                             <col class="width300">
                                             <col class="width400">
                                         </colgroup>
-                                        <thead class="thead-color">
+                                        <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">IP</th>
                                                 <th scope="col">AlarmText</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="tbody-init">
+                                        <tbody>
                                         {% for dataList in chartData.alarmDataList.LHAL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
@@ -114,11 +114,6 @@
                                         </tbody>
                                         {% endfor %}
                                     </table>
-                                    <ul id="ul-page" class="pagination" style="justify-content: center">
-                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">next</a></li>
-                                    </ul>
                                 </div>
                             </div>
 
@@ -191,9 +186,9 @@
                                 <div class="popMap">
                                     <table class="popTable">
                                         <colgroup>
-                                            <col class="width260">
-                                            <col class="width320">
-                                            <col class="width420">
+                                            <col class="width250">
+                                            <col class="width300">
+                                            <col class="width400">
                                         </colgroup>
                                         <thead>
                                             <tr>
@@ -280,7 +275,7 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <table class="popTable">
+                                    <table id="popTable" class="popTable">
                                         <colgroup>
                                             <col class="width260">
                                             <col class="width320">
