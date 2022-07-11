@@ -1,15 +1,206 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-    <div class="container-frame container-color">
+    <div class="container-frame-asset container-color">
         <div class="container-color container-mir">
-
-                <div class="container-child-color my-border">
-                    <div class="content-title">
-                        <div class="conText">Asset Count By Item</div>
+            <div class="container-child-color my-border asset-top">
+                <div class="conText">Asset Management</div>
+            </div>
+            <div class="container-child-color my-border asset-bottom">
+                <div class="assetTxt">
+                    <div class="asset-search">
+                        <a href="#"><i class="xi-search"></i>Search</a>
+                    </div>
+                    <div class="asset-select">
+                        <span>Records:</span>
+                        <select name="records" class="asset-records">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20" selected="selected">20</option>
+                            <option value="30" selected="selected">30</option>
+                        </select>
                     </div>
                 </div>
-
+                <div class="assetList">
+                    <table id="assetTable" class="assetTable">
+                        <colgroup>
+                            <col class="">
+                            <col class="">
+                            <col class="">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Computer ID</th>
+                                <th scope="col">Computer Name</th>
+                                <th scope="col">OS (Version)</th>
+                                <th scope="col">Drive Usage</th>
+                                <th scope="col">RAM Usage</th>
+                                <th scope="col">IP Address</th>
+                                <th scope="col">Asset Type</th>
+                                <th scope="col">AD Join</th>
+                                <th scope="col">Computer Groups</th>
+                                <th scope="col">Role Name</th>
+                                <th scope="col">Last Login Date</th>
+                                <th scope="col">More</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>168177417</td>
+                                <td>Desktop-vek69ms</td>
+                                <td>Windows (10.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>16891510784</td>
+                                <td>192.168.0.3</td>
+                                <td>Notebook</td>
+                                <td>Y</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>272744077</td>
+                                <td>DESKTOP-S1TFSAD</td>
+                                <td>Windows (11.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.0.41</td>
+                                <td>Notebook</td>
+                                <td>Y</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1520637848</td>
+                                <td>Laptop-7n285vtk</td>
+                                <td>Windows (11.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.0.52</td>
+                                <td>Notebook</td>
+                                <td>N</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>1722503912</td>
+                                <td>aimaster</td>
+                                <td>CentOS (7.8.2003)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.1.49</td>
+                                <td>Notebook</td>
+                                <td>N</td>
+                                <td>All Computers</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>3492692685</td>
+                                <td>Desktop-39dovsm</td>
+                                <td>Windows (11.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.0.52</td>
+                                <td>Notebook</td>
+                                <td>N</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>2778213263</td>
+                                <td>li-macbookpro.local</td>
+                                <td>macOS (12.4)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.0.6</td>
+                                <td>Notebook</td>
+                                <td>Y</td>
+                                <td>All Computers</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>239410865</td>
+                                <td>desktop-s1tfsad</td>
+                                <td>Windows (10.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.0.11</td>
+                                <td>Notebook</td>
+                                <td>N</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>172281063</td>
+                                <td>Skchoi</td>
+                                <td>Windows (10.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.1.3</td>
+                                <td>Notebook</td>
+                                <td>N</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>2893962968</td>
+                                <td>Xionits</td>
+                                <td>Windows (10.0.19044)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.1.41</td>
+                                <td>Notebook</td>
+                                <td>Y</td>
+                                <td>All Computers</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>1193987305</td>
+                                <td>Xfactor</td>
+                                <td>CentOS (7.8.2003)</td>
+                                <td>511101108224</td>
+                                <td>511101108224</td>
+                                <td>192.168.0.49</td>
+                                <td>Notebook</td>
+                                <td>N</td>
+                                <td>All Computers, All Windows</td>
+                                <td>User</td>
+                                <td>2022-06-22</td>
+                                <td>more</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
+<!-- asset jquery -->
+<script src="{% static 'js/common/asset.js' %}"></script>
 {% endblock %}

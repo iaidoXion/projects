@@ -1,0 +1,33 @@
+.container-frame-asset {
+    width: 100%;
+    background-color: #f8f9fc;
+    min-height: 837px;
+    margin-top: 20px;
+    position: relative;
+}
+
+.asset-top {
+    width: 98%;
+    height: 35px;
+    padding:10px;
+    font-size:12px;
+    margin: 0 auto;
+}
+
+.asset-bottom {
+    width: 98%;
+    height: 770px;
+    margin: 20px auto 0;
+}
+
+.assetTxt {
+    display: flex;
+}
+
+.asset-search a {
+    display: block;
+    text-decoration: none;
+    margin-right: 1500px;
+}
+
+.asset
