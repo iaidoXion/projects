@@ -5,7 +5,7 @@
     "MAP" : {
       "World" : "block",
       "Korea" : "block",
-      "Area" : "none",
+      "Area" : "block",
       "Zone" : "block"
     }
   },

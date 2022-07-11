@@ -95,6 +95,15 @@ def ChartData(data, day, type, api):
                 if type == 'ramUseSize' :
                     item = data[i][12].split(' ')[0]
                     itemIndex = 'ramSize'
+                elif type == 'listenPortCount' :
+                    item = data[i][10]
+                    itemIndex = 'listenPortCount'
+                elif type == 'establishedPortCount' :
+                    item = data[i][11]
+                    itemIndex = 'establishedPortCount'
+
+
+
         elif day == 'yesterday' :
             CI = data[i][0]
             if type == 'driveUseSize' :
@@ -106,6 +115,12 @@ def ChartData(data, day, type, api):
             elif type == 'ramUseSize':
                 item = str(data[i][4])
                 itemIndex = 'ramSize'
+            elif type == 'listenPortCount':
+                item = str(data[i][2])
+                itemIndex = 'listenPortCount'
+            elif type == 'establishedPortCount':
+                item = str(data[i][3])
+                itemIndex = 'establishedPortCount'
 
         DFL.append([CI, item])
     DFC = ['id', itemIndex]
