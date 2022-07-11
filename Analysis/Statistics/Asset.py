@@ -108,7 +108,7 @@ def FiveDay(SFDTDL):
     return RD
 
 def BannerRoc(SDL) :
-    print(SDL)
+    #print(SDL)
     bannerDataList = []
     """
     TAA = SDL['TAA']
@@ -303,14 +303,12 @@ def ChartData(data, type, statistics) :
             INML = IGR.os
         INM = INML.tolist()
         ICL = IGR.counts
-        DUSCY = ICL.tolist()
+        IC = ICL.tolist()
 
     elif statistics == 'count' :
-
         todayDL = data[0]
         yesterdayDL = data[1]
         DLMerge = pd.merge(left=todayDL, right=yesterdayDL, how="outer", on="id").sort_values(by="id", ascending=True).reset_index(drop=True)
-        DC = 0
         DTC = len(DLMerge)
         if type == 'driveUseSize' :
             DUSCY = len(DLMerge['driveSize_x'].compare(DLMerge['driveSize_y']))
@@ -319,19 +317,18 @@ def ChartData(data, type, statistics) :
             DUSCY = len(DLMerge['ramSize_x'].compare(DLMerge['ramSize_y']))
             INM = ["Ram Size No Change"]
         elif type == 'noLoginHistory':
-            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < weekAgo)])
+            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] > weekAgo)])
             INM = ["No Login History"]
-            print(DUSCY)
+        elif type == 'listenPortCount':
+            DUSCY = len(DLMerge['listenPortCount_x'].compare(DLMerge['listenPortCount_y']))
+            INM = ["Listen Port Count No Change"]
+        elif type == 'establishedPortCount':
+            DUSCY = len(DLMerge['establishedPortCount_x'].compare(DLMerge['establishedPortCount_y']))
+            INM = ["Established Port Count No Change"]
 
-            for i in range(len(DLMerge)) :
-                print(DLMerge['lastLogin_x'][i])
-                #print(DLMerge['lastLogin_y'][i])
+        IC = [DTC-DUSCY]
 
-
-
-
-
-    RD = {"name": INM, "value": DUSCY}
+    RD = {"name": INM, "value": IC}
     #print(RD)
     return RD
 

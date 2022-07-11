@@ -257,6 +257,11 @@ def StatisticsDaily(ASDCL) :
 
 """
 
+def YesterdayNew(data) :
+    #print(data)
+    Ydata = data
+
+
 
 def ChartDataNew(data,type) :
     ChartDataList = []

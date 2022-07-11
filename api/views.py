@@ -5,7 +5,7 @@ from DataParsing.Extract.Asset import Yesterday as EAY
 from DataParsing.Extract.Zabbix import Yesterday as EZY
 from DataParsing.Extract.Statistics import Yesterday as ESY, FiveDay as ESF
 from DataParsing.Transform.Asset import OrgDaily as AODT, ChartData as TACD
-from DataParsing.Transform.Statistics import Yesterday as SYT, FiveDay as SFDT, Banner as SBT, ChartData as SDT, ChartDataNew as TSCD
+from DataParsing.Transform.Statistics import Yesterday as SYT, FiveDay as SFDT, Banner as SBT, ChartData as SDT, YesterdayNew as TSY, ChartDataNew as TSCD
 from Analysis.Statistics.Asset import DailyCount as ASDC, FiveDay as SFDS, BannerRoc as BR, Association, ChartData as SACD
 import urllib3
 import json
@@ -54,7 +54,7 @@ def DashboardDataNew() :
             # OS Item Statistics
             TOIDL = TACD(assetData['dataList'], "today", "osItem", 'asset')
             SOIDL = SACD(TOIDL, "osItem", "group")
-
+            #print(SAIDL)
             # Drive Use Size Statistics
             ## Today compare Count (now Asset API Data & yesterday Asset Table Data)
             TDUSDLT = TACD(assetData['dataList'], "today", "driveUseSize", 'asset')
@@ -76,13 +76,24 @@ def DashboardDataNew() :
             RUSCTDL = [TRUSDLT, TRUSDLY]
             SRUSDLT = SACD(RUSCTDL, "ramUseSize", "count")
 
-
             # Listen Port Count Statistics
+            ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
+            TLPCDLT = TACD(sensorData['dataList'], "today", "listenPortCount", 'sensor')
+            TLPCDLY = TACD(EAYL, "yesterday", "listenPortCount", '')
+            LPCCTDL = [TLPCDLT, TLPCDLY]
+            LPCDLT = SACD(LPCCTDL, "listenPortCount", "count")
 
             # Established Port Count Statistics
-
+            ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
+            TEPCDLT = TACD(sensorData['dataList'], "today", "establishedPortCount", 'sensor')
+            TEPCDLY = TACD(EAYL, "yesterday", "establishedPortCount", '')
+            EPCCTDL = [TEPCDLT, TEPCDLY]
+            EPCDLT = SACD(EPCCTDL, "establishedPortCount", "count")
+            #print(EPCDLT)
             # Yesterday Statistics Count (yesterday Statistics Table)
             ESDLY = ESY()  # yesterday Statistics Table Data Extract
+            TSDLY = TSY(ESDLY)
+            #print(ESDLY)
 
 
 
