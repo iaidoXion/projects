@@ -359,7 +359,7 @@
 	{% endif %}
 
 	{% if chartData.lineChartDataList %}
-        var lineChartData =  /*[
+        var lineChartData =  [
             {name: 'Desktop', date: '2022-07-01', price: 12},
             {name: 'Desktop', date: '2022-07-02', price: 12},
             {name: 'Desktop', date: '2022-07-03', price: 12},
@@ -375,9 +375,9 @@
             {name: 'Rack Mount Chassis', date: '2022-07-03', price: 12},
             {name: 'Rack Mount Chassis', date: '2022-07-04', price: 12},
             {name: 'Rack Mount Chassis', date: '2022-07-05', price: 12}
-];*/
+]
 
-        [
+        /*[
            {% for lineChartData in chartData.lineChartDataList %}
               {% if lineChartData.Desktop %}
                  {values: [
@@ -401,7 +401,7 @@
                  ]},
               {% endif %}
            {% endfor%}
-        ];
+        ];*/
 
         {% endif %}
 
