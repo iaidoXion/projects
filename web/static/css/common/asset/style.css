@@ -14,13 +14,18 @@
     margin: 0 auto;
 }
 
+.conTitle{
+    margin-left: 10px;
+    font-weight: bold;
+}
+
 .asset-bottom {
     width: 98%;
     height: 770px;
     margin: 20px auto 0;
 }
 
-.assetTxt {
+.assetText {
     display: flex;
 }
 
@@ -30,4 +35,3 @@
     margin-right: 1500px;
 }
 
-.asset
