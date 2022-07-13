@@ -8,8 +8,8 @@ var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard
 
 var simulation = d3v4.forceSimulation()
     .force("link", d3v4.forceLink().distance(150).id(function(d) { return d.id; }))
-    .force("charge", d3v4.forceManyBody().strength(-73))
-    .force("center", d3v4.forceCenter(width / 2, height / 2));
+    .force("charge", d3v4.forceManyBody().strength(-250))
+    .force("center", d3v4.forceCenter(width / 2, height / 3));
 
 networkData.forEach(function(graph) {
 
@@ -96,10 +96,25 @@ networkData.forEach(function(graph) {
   simulation.force("link").links(graph.links);
 
   function ticked() {
-    link.attr("x1", function(d) { return d.source.x; }).attr("y1", function(d) { return d.source.y; })
-        .attr("x2", function(d) { return d.target.x; }).attr("y2", function(d) { return d.target.y; });
+/*  node.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";})*/
+    node.attr("transform", (d) => {
+    return "translate(" + (d.x < 80 ? dx = 80 : d.x > 960 ? d.x = 960 : d.x) + "," + (d.y < 80 ? d.y = 80 : d.y > 600 ? d.y = 600 : d.y) + ")"
+  })
 
-    node.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";})
+  link.attr("x1", function(d) {
+      return d.source.x;
+    })
+    .attr("y1", function(d) {
+      return d.source.y;
+    })
+    .attr("x2", function(d) {
+      return d.target.x;
+    })
+    .attr("y2", function(d) {
+      return d.target.y;
+    })
+
+
   }
 });
 

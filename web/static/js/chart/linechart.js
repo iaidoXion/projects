@@ -1,9 +1,17 @@
 function lineChart(lineChartData) {
 const dataMap = lineChartData.map(d => d.name);
 let lineDataName = [...new Set(dataMap)];
+
+var sumstat = d3v4.nest()
+.key(function(d) { return d.name;})
+.entries(lineChartData);
+
+var lineGroup = JSON.stringify(sumstat);
+
 const margin = 30;
+const marginTop = 13;
 const width = 450 - margin;
-const height = 147;
+const height = 140;
 var duration = 100;
 var lineOpacity = "1";
 var lineOpacityHover = "1";
@@ -31,7 +39,7 @@ var xScale = d3.time.scale()
   .range([0, width - margin]);
 var yScale = d3.scale.linear()
   .domain([yMin, yMax])
-  .range([height - margin, 0]);
+  .range([height - marginTop, 0]);
 
 var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
 /* Add SVG */
@@ -39,20 +47,13 @@ const svg = d3.select("#lineChart")
   .style("margin-left", '3%')
   .append('svg')
   .attr("width", (width + margin) + "px")
-  .attr("height", (height + margin) + "px")
+  .attr("height", (height + marginTop) + "px")
   .append('g')
-  .attr("transform", `translate(${margin}, ${margin})`);
+  .attr("transform", `translate(${margin}, ${marginTop})`);
 /* Add line into SVG */
 var line = d3.svg.line()
   .x(d => xScale(d.date))
   .y(d => yScale(d.price));
-
-
-// group the data: I want to draw one line per group
-var sumstat = d3v4.nest() // nest function allows to group the calculation per level of a factor
-.key(function(d) { return d.name;})
-.entries(lineChartData);
-var lineGroup = JSON.stringify(sumstat);
 
 let lines = svg.append('g')
   .attr('class', 'lines');
@@ -60,9 +61,22 @@ lines.selectAll('.line-group')
   .data(sumstat).enter()
   .append('g')
   .attr('class', 'line-group')
+  .on("mouseover", function(d, i) {
+    svg.append("text")
+      .attr("class", "title-text")
+      .style("fill", "#858796")
+      .style("font-weight", "bold")
+      .text(d.key)
+      .attr("text-anchor", "middle")
+      .attr("x", (width - 225))
+      .attr("y", (height-(height+5)));
+  })
+  .on("mouseout", function(d) {
+    svg.select(".title-text").remove();
+  })
   .append('path')
   .attr('class', 'line')
-  .attr('d', d => line(lineChartData))
+  .attr('d', d => line(d.values))
   .style('stroke', function(d,i) { return color[i]; })
   .style('opacity', lineOpacity)
   .on("mouseover", function(d) {
@@ -85,7 +99,7 @@ lines.selectAll('.line-group')
       .style("cursor", "none");
   });
 /*legend*/
-  var legendItemSize = 9;
+ /* var legendItemSize = 9;
   var legendSpacing = 3;
   var xOffset = 0;
   var yOffset = 0;
@@ -116,23 +130,15 @@ lines.selectAll('.line-group')
    .append('text')
    .attr('x', xOffset + legendItemSize + 5)
    .attr('y', (d, i) => yOffset + (legendItemSize + legendSpacing) * i + 10)
-   .text(function(d) { return d });
-
-/*
-for(i = 0; i < 11; i++){
-    for(j = 0; j < i; j++){
-        output += "*";
-    }
-}
-*/
+   .text(function(d) { return d });*/
 
 /* Add circles in the line */
 lines.selectAll("circle-group")
-  .data(lineChartData).enter()
+  .data(sumstat).enter()
   .append("g")
   .style("fill", function(d,i) { return color[i]; })
   .selectAll("circle")
-  .data(d => d).enter()
+  .data(d => d.values).enter()
   .append("g")
   .attr("class", "circle")
   .on("mouseover", function(d) {
@@ -144,7 +150,7 @@ lines.selectAll("circle-group")
       .style("fill", "#858796")
       .style("font-weight", "bold")
       .attr("x", d => xScale(d.date) + 5)
-      .attr("y", d => yScale(d.price) - 10);
+      .attr("y", d => yScale(d.price) - 5);
   })
   .on("mouseout", function(d) {
     d3.select(this)
@@ -176,7 +182,7 @@ var yAxis = d3.svg.axis().scale(yScale)
   .orient("left").tickSize(1);
 svg.append("g")
   .attr("class", "x axis")
-  .attr("transform", `translate(0, ${height-margin})`)
+  .attr("transform", `translate(0, ${height-marginTop})`)
   .call(xAxis.ticks(d3.time.day));
 svg.append("g")
   .attr("class", "y axis")
