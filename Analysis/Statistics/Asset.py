@@ -321,15 +321,14 @@ def ChartData(data, type, statistics) :
             INM = ["No Login History"]
         elif type == 'listenPortCount':
             DUSCY = len(DLMerge['listenPortCount_x'].compare(DLMerge['listenPortCount_y']))
-            INM = ["Listen Port Count No Change"]
+            INM = ["Listen Port No Change"]
         elif type == 'establishedPortCount':
             DUSCY = len(DLMerge['establishedPortCount_x'].compare(DLMerge['establishedPortCount_y']))
-            INM = ["Established Port Count No Change"]
+            INM = ["Established Port No Change"]
 
         IC = [DTC-DUSCY]
 
     RD = {"name": INM, "value": IC}
-    #print(RD)
     return RD
 
 
