@@ -315,7 +315,7 @@
                     <li class="als-item my-border">
                         <div class="conBotTop">{{bannerData.name}}</div>
                         <div class="conBotBot">
-                            <p class="botConTotalNum">{{bannerData.count}}</p>
+                            <p class="botConTotalNum">{{bannerData.value}}</p>
                             <div class="my-float-left conBotImg">
                                 {% if bannerData.roc == 0 %}
                                 <a class="conBotIcon"> - </a>
@@ -360,64 +360,18 @@
 
 	{% if chartData.lineChartDataList %}
         var lineChartData =  [
-            {name: 'Desktop', date: '2022-07-01', price: 12},
-            {name: 'Desktop', date: '2022-07-02', price: 12},
-            {name: 'Desktop', date: '2022-07-03', price: 12},
-            {name: 'Desktop', date: '2022-07-04', price: 12},
-            {name: 'Desktop', date: '2022-07-05', price: 12},
-            {name: 'Notebook', date: '2022-07-01', price: 11},
-            {name: 'Notebook', date: '2022-07-02', price: 11},
-            {name: 'Notebook', date: '2022-07-03', price: 11},
-            {name: 'Notebook', date: '2022-07-04', price: 11},
-            {name: 'Notebook', date: '2022-07-05', price: 11},
-            {name: 'Rack Mount Chassis', date: '2022-07-01', price: 8},
-            {name: 'Rack Mount Chassis', date: '2022-07-02', price: 8},
-            {name: 'Rack Mount Chassis', date: '2022-07-03', price: 8},
-            {name: 'Rack Mount Chassis', date: '2022-07-04', price: 8},
-            {name: 'Rack Mount Chassis', date: '2022-07-05', price: 8},
-            {name: 'Virtual', date: '2022-07-01', price: 0},
-            {name: 'Virtual', date: '2022-07-02', price: 1},
-            {name: 'Virtual', date: '2022-07-03', price: 0},
-            {name: 'Virtual', date: '2022-07-04', price: 1},
-            {name: 'Virtual', date: '2022-07-05', price: 0}
-];
-
-        /*[
-           {% for lineChartData in chartData.lineChartDataList %}
-              {% if lineChartData.Desktop %}
-                 {values: [
-                    {% for Desktop in lineChartData.Desktop %}
-                       {name: "{{Desktop.name}}", date: "{{Desktop.date}}", price: "{{Desktop.value}}"},
-                    {% endfor%}
-                 ]},
-              {% endif %}
-              {% if lineChartData.Notebook %}
-                 {values: [
-                    {% for Notebook in lineChartData.Notebook %}
-                       {name: "{{Notebook.name}}", date: "{{Notebook.date}}", price: "{{Notebook.value}}"},
-                    {% endfor%}
-                 ]},
-              {% endif %}
-              {% if lineChartData.RackMountChassis %}
-                 {values: [
-                    {% for RackMountChassis in lineChartData.RackMountChassis %}
-                       {name: "{{RackMountChassis.name}}", date: "{{RackMountChassis.date}}", price: "{{RackMountChassis.value}}"},
-                    {% endfor%}
-                 ]},
-              {% endif %}
-           {% endfor%}
-        ];*/
-
-        {% endif %}
-
-
+            {% for lineChartData in chartData.lineChartDataList %}
+                {asset: '{{lineChartData.name}}', price: {{lineChartData.value}}, date : '{{lineChartData.date}}'},
+            {% endfor %}
+        ];
+    {% endif %}
 
 	{% if chartData.pieChartDataList %}
-	var pieChartData = [
-		{% for pieChartData in chartData.pieChartDataList %}
-			{name: '{{pieChartData.name}}', value: {{pieChartData.value}}, color: '{{pieChartData.color}}'},
-		{% endfor %}
-		];
+        var pieChartData = [
+            {% for pieChartData in chartData.pieChartDataList %}
+                {name: '{{pieChartData.name}}', value: {{pieChartData.value}}},
+            {% endfor %}
+        ];
 	{% endif %}
 
 	var worldMapData = [

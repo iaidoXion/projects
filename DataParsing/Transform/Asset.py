@@ -66,7 +66,7 @@ def OrgDaily(parserData, EAYL, sensorData):
     return DL
 
 
-def ChartData(data, day, type, api):
+def DataFrame(data, day, type, api):
     PDLC = len(data)
     DFL = []
     for i in range(PDLC):

@@ -63,7 +63,7 @@ def Yesterday():
             print('Statistics Daily File(Read) Failure')
 
 
-def FiveDay():
+def FiveDay(type):
     try:
         StatisticsSelectL = []
         if DataLoadingType == 'DB':
@@ -81,7 +81,7 @@ def FiveDay():
                 where 
                     to_char(statistics_collection_date, 'YYYY-MM-DD') > '""" + fiveDay + """' 
                 and
-                    classification = 'asset'
+                    classification = '"""+type+"""'
                 """
 
             StatisticsSelectCur.execute(StatisticsSelectQ)
