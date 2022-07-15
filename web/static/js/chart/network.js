@@ -8,7 +8,7 @@ var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard
 
 var simulation = d3v4.forceSimulation()
     .force("link", d3v4.forceLink().distance(150).id(function(d) { return d.id; }))
-    .force("charge", d3v4.forceManyBody().strength(-250))
+    .force("charge", d3v4.forceManyBody().strength(-280))
     .force("center", d3v4.forceCenter(width / 2, height / 3));
 
 networkData.forEach(function(graph) {
@@ -51,8 +51,10 @@ networkData.forEach(function(graph) {
   var textColor = function(g){
         if(g == "true"){
             return "#ffffff";
-        }else{
+        }else if(g == "false"){
             return "#e18a0a";
+        }else{
+            return "transparent";
         }
     };
 

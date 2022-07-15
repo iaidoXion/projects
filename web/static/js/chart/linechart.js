@@ -1,9 +1,9 @@
 function lineChart(lineChartData) {
-const dataMap = lineChartData.map(d => d.name);
+const dataMap = lineChartData.map(d => d.asset);
 let lineDataName = [...new Set(dataMap)];
 
 var sumstat = d3v4.nest()
-.key(function(d) { return d.name;})
+.key(function(d) { return d.asset;})
 .entries(lineChartData);
 
 var lineGroup = JSON.stringify(sumstat);
