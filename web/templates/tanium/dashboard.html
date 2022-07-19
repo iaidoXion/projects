@@ -375,18 +375,11 @@
 	{% endif %}
 
 	var worldMapData = [
-		{x:36.503328,y:127.261827},
-		{x:36.480048,y:127.289070},
-		{x:33.488985,y:126.498377},
-		{x:35.238289,y:128.692389},
-		{x:35.892508,y:128.600602}
-	];
-	var koreaMapData = [
-		{x:36.503328,y:127.261827},
-		{x:36.480048,y:127.289070},
-		{x:33.488985,y:126.498377},
-		{x:35.238289,y:128.692389},
-		{x:35.892508,y:128.600602}
+		{x:37.39948593886602,y:127.10864108531601},
+		{x:37.39557358509345,y:127.1082797008697},
+		{x:37.39863925472823,y:127.108340579838517},
+		{x:37.3994744444141,y:127.11131206038527},
+		{x:37.397501793831225,y:127.11068799834034}
 	];
 var networkData = [{
   "nodes": [
@@ -401,15 +394,52 @@ var networkData = [{
   ]
 }];
 
+var mapNetwork = [
+{
+  "nodes": [
+    {"id": "Ncrd", "group": "ncrd", "x":830, "y":254},
+    {"id": "Ncalpha", "group": "ncalpha", "x":730, "y":354}
+  ],
+  "links": [
+    {"source": "Ncrd", "target": "Ncalpha", "distance": 200},
+    {"source": "Ncalpha", "target": "Ncrd", "distance": 200}
+  ]
+}
+];
 
+var koreaNetwork = [
+{
+  "nodes": [
+    {"id": "Ncrd", "group": "ncrd", "x":455, "y":91},
+    {"id": "Ncalpha", "group": "ncalpha", "x":355, "y":191}
+  ],
+  "links": [
+    {"source": "Ncrd", "target": "Ncalpha", "distance": 250},
+    {"source": "Ncalpha", "target": "Ncrd", "distance": 250}
+  ]
+}
+];
+
+var seongnamNetwork = [
+{
+  "nodes": [
+    {"id": "Ncrd", "group": "ncrd", "x":555, "y":251},
+    {"id": "Ncalpha", "group": "ncalpha", "x":455, "y":351}
+  ],
+  "links": [
+    {"source": "Ncrd", "target": "Ncalpha", "distance": 300},
+    {"source": "Ncalpha", "target": "Ncrd", "distance": 300}
+  ]
+}
+];
 
 
 	barChart(barChartData);
 	lineChart(lineChartData);
 	piechart(pieChartData);
-	worldMapChart(worldMapData);
-	koreaMapChart(koreaMapData);
-	seongnamMap();
+	worldMapChart(worldMapData, mapNetwork);
+	koreaMapChart(worldMapData, koreaNetwork);
+	seongnamMap(worldMapData, seongnamNetwork);
 	networkChart(networkData);
 
 

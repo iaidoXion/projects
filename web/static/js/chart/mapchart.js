@@ -1,4 +1,4 @@
-function worldMapChart() {
+function worldMapChart(worldMapData, mapNetwork) {
   var width = 1000,
       height = 600;
 
@@ -32,10 +32,8 @@ svg.append("path")
     .attr("class", "graticule")
     .attr("d", path);
 
-var data = [{x:37.39948593886602,y:127.10864108531601},{x:37.39557358509345,y:127.1082797008697},{x:37.39863925472823,y:127.10834057983851},{x:37.3994744444141,y:127.11131206038527},{x:37.397501793831225,y:127.11068799834034}];
-
 svg.selectAll("circle")
-    .data(data)
+    .data(worldMapData)
     .enter()
     .append("circle")
     .attr("class","dot")
@@ -49,7 +47,7 @@ function translateCircle(datum, index)
           };
 
 setInterval(function(){
-	      data.forEach(function(datum)
+	      worldMapData.forEach(function(datum)
           {
 			  svg
 			  	.append("circle")
@@ -86,8 +84,7 @@ setInterval(function(){
     .force("charge", d3v4.forceManyBody().strength(-170));
    /* .force("center", d3v4.forceCenter(width / 2, height / 2));*/
 
-  d3v4.json("/web/static/data/mapNetwork.json", function(error, graph) {
-      if (error) throw error;
+  mapNetwork.forEach(function(graph) {
 
       var link = svg.append("g")
         .attr("class", "links")
@@ -123,7 +120,7 @@ setInterval(function(){
             .attr("transform", function(d) {
               return "translate(" + d.x + "," + d.y + ")";
             })
-      }
+      };
 
       //make arrow
       svg.append("svg:defs").append("svg:marker")
@@ -146,7 +143,7 @@ setInterval(function(){
         .style( "stroke-width", 1.5 );
 
        links
-        .attr( "d", (d) => "M" + d.source.x + "," + d.source.y + ", " + d.target.x + "," + d.target.y)
+        .attr( "d", (d) => "M" + d.source.x + "," + d.source.y + ", " + d.target.x + "," + d.target.y);
 
         var node = svg.append("g")
         .attr("class", "nodes")
@@ -156,7 +153,7 @@ setInterval(function(){
           .on("mouseover", function(d) {
             d3.select(this)
                 .style("cursor", "pointer")
-          })
+          });
         var circles = node.append("image")
         .attr('width',80)
         .attr('height',80)
@@ -191,10 +188,10 @@ setInterval(function(){
           .attr('in2', 'the-shadow');
 
     });
-}
+};
 
 
-function koreaMapChart() {
+function koreaMapChart(worldMapData, mapNetwork) {
     var placeid = "";
     var koreaMapWidth = 0;
     var koreaMapHeight = 0;
@@ -243,10 +240,8 @@ function koreaMapChart() {
         .attr("class", "graticule")
         .attr("d", path);
 
-var data = [{x:37.39948593886602,y:127.10864108531601},{x:37.39557358509345,y:127.1082797008697},{x:37.39863925472823,y:127.10834057983851},{x:37.3994744444141,y:127.11131206038527},{x:37.397501793831225,y:127.11068799834034}];
-
 mapSvg.selectAll("circle")
-    .data(data)
+    .data(worldMapData)
     .enter()
     .append("circle")
     .attr("class","dot")
@@ -260,7 +255,7 @@ function translateCircle(datum, index)
           };
 
 setInterval(function(){
-	      data.forEach(function(datum)
+	      worldMapData.forEach(function(datum)
           {
 			  mapSvg
 			  	.append("circle")
@@ -339,9 +334,7 @@ d3.json("/web/static/data/mapTopo/korea.json", function(json)
     .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
     .force("charge", d3v4.forceManyBody().strength(-170));
 
-d3v4.json("/web/static/data/koreaNetwork.json", function(error, graph) {
-      if (error) throw error;
-
+koreaNetwork.forEach(function(graph) {
       var link = mapSvg.append("g")
         .attr("class", "links")
         .selectAll("line")
@@ -447,17 +440,15 @@ d3v4.json("/web/static/data/koreaNetwork.json", function(error, graph) {
 
 };
 
-function seongnamMap(){
+function seongnamMap(worldMapData, seongnamNetwork){
     var width = 1000, height = 600;
     var svg = d3.select("#siMap").append("svg").attr("width", width).attr("height", height).style("margin-left", '1%');
     var map = svg.append("g").attr("id", "map"),places = svg.append("g").attr("id", "places");
     var projection = d3.geo.mercator().center([127.1094211519, 37.399]).scale(180000).translate([width/2, height/2]);
     var path = d3.geo.path().projection(projection);
 
-var data = [{x:37.39948593886602,y:127.10864108531601},{x:37.39557358509345,y:127.1082797008697},{x:37.39863925472823,y:127.10834057983851},{x:37.3994744444141,y:127.11131206038527},{x:37.397501793831225,y:127.11068799834034}];
-
 svg.selectAll("circle")
-    .data(data)
+    .data(worldMapData)
     .enter()
     .append("circle")
     .attr("class","dot")
@@ -471,7 +462,7 @@ function translateCircle(datum, index)
           };
 
 setInterval(function(){
-	      data.forEach(function(datum)
+	      worldMapData.forEach(function(datum)
           {
 			  svg
 			  	.append("circle")
@@ -512,9 +503,7 @@ setInterval(function(){
     .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
     .force("charge", d3v4.forceManyBody().strength(-170));
 
-      d3v4.json("/web/static/data/seongnamNetwork.json", function(error, graph) {
-      if (error) throw error;
-
+      seongnamNetwork.forEach(function(graph) {
       var link = svg.append("g")
         .attr("class", "links")
         .selectAll("line")
