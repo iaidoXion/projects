@@ -73,6 +73,7 @@ def DataFrame(data, day, type, api):
         if day == 'today' :
             if api == 'asset' :
                 CI = data[i]['computer_id']
+                IP = data[i]['ip_address']
                 if type == 'assetItem' :
                     item = data[i]['asset_item']
                     itemPer = item.lower()
@@ -90,10 +91,33 @@ def DataFrame(data, day, type, api):
                 elif type == 'noLoginHistory':
                     item = data[i]['last_seen_at'].split('T')[0]
                     itemIndex = 'lastLogin'
+                #elif type == 'ramUseSize' :
+                    #print(data[i]['ram'])
+                    #    item = data[i]['ram']
+                    #print(item)
+                    #print(int(item))
+                    #if item.isdigit():
+                    # item = int(item)
+                        #   print(item)
+                    #itemIndex = 'ramSize'
             elif api == 'sensor' :
                 CI = data[i][0]
-                if type == 'ramUseSize' :
+                IP = data[i][9]
+                if type == 'ramUseSizeT' :
+                    item = data[i][13].split(' ')[0]
+                    if item.isdigit() :
+                        item = int(item)
+                    else :
+                        item = 0
+                        #print(item)
+                    itemIndex = 'ramSize'
+                elif type == 'ramUseSizeU' :
                     item = data[i][12].split(' ')[0]
+                    if item.isdigit():
+                        item = int(item)
+                    else:
+                        item = 0
+                        #print(item)
                     itemIndex = 'ramSize'
                 elif type == 'listenPortCount' :
                     item = data[i][10]
@@ -101,20 +125,18 @@ def DataFrame(data, day, type, api):
                 elif type == 'establishedPortCount' :
                     item = data[i][11]
                     itemIndex = 'establishedPortCount'
-
-
-
         elif day == 'yesterday' :
             CI = data[i][0]
+            IP = ''
             if type == 'driveUseSize' :
                 item = data[i][1]
                 itemIndex = 'driveSize'
             elif type == 'noLoginHistory':
                 item = str(data[i][5]).split(' ')[0]
                 itemIndex = 'lastLogin'
-            elif type == 'ramUseSize':
-                item = str(data[i][4])
-                itemIndex = 'ramSize'
+            #elif type == 'ramUseSize':
+                #    item = str(data[i][4])
+                #itemIndex = 'ramSize'
             elif type == 'listenPortCount':
                 item = str(data[i][2])
                 itemIndex = 'listenPortCount'
@@ -122,8 +144,8 @@ def DataFrame(data, day, type, api):
                 item = str(data[i][3])
                 itemIndex = 'establishedPortCount'
 
-        DFL.append([CI, item])
-    DFC = ['id', itemIndex]
+        DFL.append([CI, item, IP])
+    DFC = ['id', itemIndex, 'ip']
     DF = pd.DataFrame(DFL, columns=DFC).sort_values(by="id", ascending=False).reset_index(drop=True)
     #print(DF)
     return DF
