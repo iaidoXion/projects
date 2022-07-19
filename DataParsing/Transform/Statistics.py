@@ -109,6 +109,7 @@ def ChartDataNew(data,type) :
     for i in range(len(data['name'])):
         if type == 'Bar' or type == 'Pie':
             ChartDataList.append({"name": data['name'][i], "value": data['value'][i]})
+            #print(ChartDataList)
         elif type == 'Banner' :
             ChartDataList.append({"name": data['name'][i], "value": data['value_y'][i], "roc" : data['ROC'][i]})
         elif type == 'Line' :
@@ -117,6 +118,7 @@ def ChartDataNew(data,type) :
         #    print({'firstData':{"name" : data['name'][i],"value": data['value'][i] }})
     RD = ChartDataList
     return RD
+    print(RD)
 
 
 
