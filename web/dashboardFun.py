@@ -9,7 +9,7 @@ def DashboardDataList() :
     bannerData = DCDL["bannerData"]
     DCDLO = DashboardData()
     alarmData = DCDLO['alarmDataList']
-
+    #print(alarmData)
     AssociationData = DCDLO['AssociationDataList']
     returnData = {'barChartDataList': barChartData,'lineChartDataList' : lineChartData, 'pieChartDataList': pieChartData, 'bannerDataList': bannerData, 'alarmDataList': alarmData, 'AssociationDataList' : AssociationData}
     return returnData

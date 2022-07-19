@@ -58,7 +58,8 @@ def Data(sessionKey):
             'last_seen_at': last_seen_at,
             'asset_item': chassis_type,
             'ci_installed_application': ci_installed_application,
-            'ip_address' : ip_address
+            'ip_address' : ip_address,
+            'ram' : ram
         }
 
         dataListAppend.append(data)

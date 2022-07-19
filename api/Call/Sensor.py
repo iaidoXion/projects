@@ -25,12 +25,7 @@ def Data(SK) :
     assetText = response.text
     assetJson = json.loads(assetText)
     assetsDataJson = assetJson['data']
-    columnsList = assetsDataJson['result_sets'][0]['columns']
     dataList = assetsDataJson['result_sets'][0]['rows']
-    columnsListAppend = []
-    for i in range(len(columnsList)) :
-        columnsName = assetsDataJson['result_sets'][0]['columns'][i]['name']
-        columnsListAppend.append(columnsName)
     dataListAppend = []
     for j in range(len(dataList)) :
         DL = []
@@ -39,7 +34,6 @@ def Data(SK) :
             DL.append(dataList[j]['data'][k][0]['text'])
         dataListAppend.append(DL)
 
-    returnList = {'resCode': resCode, 'dataList': dataListAppend, 'dataColumnList': columnsListAppend}
-
+    returnList = {'resCode': resCode, 'dataList': dataListAppend}
     return returnList
 

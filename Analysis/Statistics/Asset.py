@@ -1,9 +1,13 @@
 from datetime import datetime, timedelta
-
 import pandas as pd
+import json
 
 weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
 today = datetime.today().strftime("%Y-%m-%d")
+
+with open("setting.json", encoding="UTF-8") as f:
+    SETTING = json.loads(f.read())
+AlarmRamUsage = SETTING['PROJECT']['AlarmRamUsage']
 
 def DailyCount(TDL):
 
@@ -93,92 +97,8 @@ def DailyCount(TDL):
     #print(RD)
     return RD
 
-def FiveDay(SFDTDL):
-    DGL = []
-    DSL = []
-    DNM = []
-    SFDTDLG = SFDTDL.groupby('name')
-    for SFDTD in SFDTDLG:
-        DGL.append(SFDTD[1])
-        DNM.append(SFDTD[0])
-    dataGroupListLen = len(DGL)
-    for i in range(dataGroupListLen) :
-        DSL.append(DGL[i].sort_values(by="date", ascending=True))
-    RD = [DNM,DSL]
-    return RD
 
-def BannerRoc(SDL) :
-    #print(SDL)
-    bannerDataList = []
-    """
-    TAA = SDL['TAA']
-    YAA = SDL['YAA']
-    AAROC = TAA['value'][0] - YAA['value'][0]
-    AASDL = {"name" : TAA['name'][0], "count" :  TAA['value'][0], "roc" : AAROC }
-    bannerDataList.append(AASDL)
 
-    TLS = SDL['TLS']
-    YLS = SDL['YLS']
-    LSROC = TLS['value'][0] - YLS['value'][0]
-    LSSDL = {"name" : TLS['name'][0], "count" :  TLS['value'][0], "roc" : LSROC }
-    bannerDataList.append(LSSDL)
-
-    TAIS = SDL['TAIS']
-    TAISSorting = TAIS.sort_values(by="name", ascending=True)
-    TAISNM = TAISSorting.name
-    TAISV = TAISSorting.value
-    YAIS = SDL['YAIS']
-    YAISSorting = YAIS.sort_values(by="name", ascending=True)
-    YAISNM = YAISSorting.name
-    YAISV = YAISSorting.value
-
-    for i in range(len(TAISNM)) :
-        if TAISNM[i] == YAISNM[i] :
-            bannerDataList.append({"name" : TAISNM[i]+" Count", "count" :  TAISV[i], "roc" : TAISV[i]-YAISV[i]})
-        else :
-            bannerDataList.append({"name": TAISNM[i] + " Count", "count": TAISV[i], "roc": 0})
-
-    TOS = SDL['TOS']
-    TOSSorting = TOS.sort_values(by="name", ascending=True)
-    TOSNM = TOSSorting.name
-    TOSV = TOSSorting.value
-    YOS = SDL['YOS']
-    YOSSorting = YOS.sort_values(by="name", ascending=True)
-    YOSNM = YOSSorting.name
-    YOSV = YOSSorting.value
-    for j in range(len(TOSNM)) :
-        if TOSNM[i] == YOSNM[i] :
-            bannerDataList.append({"name" : TOSNM[j]+" Count", "count" :  TOSV[j], "roc" : TOSV[j]-YOSV[j]})
-        else :
-            bannerDataList.append({"name" : TOSNM[j]+" Count", "count" :  TOSV[j], "roc" : 0})
-
-    TDS = SDL['TDS']
-    YDS = SDL['YDS']
-    DSROC = TDS['value'][0] - YDS['value'][0]
-    DSSDL = {"name": TDS['name'][0], "count": TDS['value'][0], "roc": DSROC}
-    bannerDataList.append(DSSDL)
-
-    TLP = SDL['TLP']
-    YLP = SDL['YLP']
-    LPROC = TLP['value'][0] - YLP['value'][0]
-    LPSDL = {"name": TLP['name'][0], "count": TLP['value'][0], "roc": LPROC}
-    bannerDataList.append(LPSDL)
-
-    TEP = SDL['TEP']
-    YEP = SDL['YEP']
-    EPROC = TEP['value'][0] - YEP['value'][0]
-    EPSDL = {"name": TEP['name'][0], "count": TEP['value'][0], "roc": EPROC}
-    bannerDataList.append(EPSDL)
-
-    TRUS = SDL['TRUS']
-    YRUS = SDL['YRUS']
-    RUSROC = TRUS['value'][0] - YRUS['value'][0]
-    RUSDL = {"name": TRUS['name'][0], "count": TRUS['value'][0], "roc": RUSROC}
-    bannerDataList.append(RUSDL)"""
-
-    RD = bannerDataList
-    #print(RD)
-    return RD
 
 
 
@@ -314,10 +234,15 @@ def ChartData(data, type, statistics) :
             DUSCY = len(DLMerge['driveSize_x'].compare(DLMerge['driveSize_y']))
             INM = ["Drive Size No Change"]
         elif type == 'ramUseSize':
-            DUSCY = len(DLMerge['ramSize_x'].compare(DLMerge['ramSize_y']))
-            INM = ["Ram Size No Change"]
+            DUSCY = 0
+            for i in range(len(DLMerge['id'])):
+                if DLMerge['ramSize_x'][i] != 0 and DLMerge['ramSize_y'][i] != 0 :
+                    usage = DLMerge['ramSize_y'][i]/DLMerge['ramSize_x'][i]*100
+                    if usage < AlarmRamUsage :
+                        DUSCY = DUSCY+1
+            INM = ["RAM Usage Exceeded"]
         elif type == 'noLoginHistory':
-            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] > weekAgo)])
+            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < weekAgo)])
             INM = ["No Login History"]
         elif type == 'listenPortCount':
             DUSCY = len(DLMerge['listenPortCount_x'].compare(DLMerge['listenPortCount_y']))
