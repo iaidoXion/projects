@@ -127,7 +127,7 @@
 
 .mapLeft{
     width: 73%;
-    height: 660px;
+    height: 635px;
     float: left;
     padding-top: 52px;
 }
@@ -173,6 +173,7 @@
     margin-left: 10px;
     width: 78%;
     height: 97px;
+    line-height: 17px;
 }
 .mapContTop{
     font-size: 0.7em;
