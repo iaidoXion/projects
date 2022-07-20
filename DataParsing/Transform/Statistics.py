@@ -1,15 +1,20 @@
 import pandas as pd
+import json
 from datetime import datetime
 
-"""
+
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
 
-DataLoadingType = SETTING['MODULE']['DataLoadingType']
-"""
+alarmCaseFirst = SETTING['PROJECT']['Alarm']['Case']['First']
+alarmCaseSecond = SETTING['PROJECT']['Alarm']['Case']['Second']
+alarmCaseThird = SETTING['PROJECT']['Alarm']['Case']['Third']
+alarmCaseFourth = SETTING['PROJECT']['Alarm']['Case']['Fourth']
+alarmCaseFifth = SETTING['PROJECT']['Alarm']['Case']['Fifth']
 
 
-def ChartData(ASDCL,AssociationS):
+
+def chartData(ASDCL,AssociationS):
     LHAL = {'firstData':[ASDCL['ADL']['LHAL'][0]], 'dataList' : ASDCL['ADL']['LHAL']}
     if ASDCL['ADL']['DSAL'] :
         DSAL = {'firstData':[ASDCL['ADL']['DSAL'][0]], 'dataList' : ASDCL['ADL']['DSAL']}
@@ -21,7 +26,7 @@ def ChartData(ASDCL,AssociationS):
     RD = {'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL, 'RUSAL' : RUSAL}, 'AssociationDataList' : AssociationS}
     return RD
 
-def Banner(data, type) :
+def banner(data, type) :
     DFDL = []
     DFCNM=['name', 'value']
     for i in range(len(data)):
@@ -52,7 +57,7 @@ def Banner(data, type) :
     return RD
 
 
-def LineChart(data) :
+def lineChart(data) :
     NMDL = []
     VDL = []
     TDL = []
@@ -70,28 +75,36 @@ def LineChart(data) :
     return RD
 
 
-def AlaemList(data, type) :
-    ALDL = []
-    if type == 'DUS':
-        AT = 'Drive Size No Change'
-    elif type == 'RUS':
-        AT = 'Ram Size No Change'
-    elif type == 'LPC':
-        AT = 'Listen Port No Change'
-    elif type == 'EPC':
-        AT = 'Established Port No Change'
-    elif type == 'LH' :
-        AT = 'No Login History'
-        #print(data['name'])
-    if data['name'][0] :
-        FDL = [{'id' :data['name'][0], 'ip':data['value'][0], 'alarmText':AT}]
-        for i in range(len(data['name'])) :
-            ALDL.append({'id' : data['name'][i], 'ip': data['value'][i], 'alarmText':AT})
-    else :
-        FDL =[{'id' :'-', 'ip':'-', 'alarmText':AT}]
-        ALDL =[{'id' :'-', 'ip':'-', 'alarmText':AT}]
-    RD ={'firstData': FDL, 'dataList' : ALDL}
-    #print(RD)
+def alarm(data, type, case) :
+    if case == 'DUS':
+        AT = alarmCaseFirst
+    elif case == 'LH':
+        AT = alarmCaseSecond
+    elif case == 'RUE':
+        AT = alarmCaseThird
+    elif case == 'LPC':
+        AT = alarmCaseFourth
+    elif case == 'EPC':
+        AT = alarmCaseFifth
+    if type == 'list' :
+        ALDL = []
+        if data['name'][0] :
+            FDL = [{'id' :data['name'][0], 'ip':data['value'][0], 'alarmText':data['alarmText'][0]}]
+            for i in range(len(data['name'])) :
+                ALDL.append({'id' : data['name'][i], 'ip': data['value'][i], 'alarmText':data['alarmText'][i]})
+        else :
+            FDL =[{'id' :'-', 'ip':'-', 'alarmText':AT}]
+            ALDL =[{'id' :'-', 'ip':'-', 'alarmText':AT}]
+        RD = {'firstData': FDL, 'dataList' : ALDL}
+    elif type == 'network' :
+        DL = []
+        DC = ['group','alarmCount','id','name','alarmCase']
+        for i in range(len(data.group)) :
+            groupNameCount = int(data.group[i].split('.')[2]) + 1
+            DL.append([data.group[i], data.counts[i], 'group'+str(groupNameCount)+case, case, AT])
+        RD=[DC,DL]
+
+
     return RD
 
 
@@ -104,21 +117,26 @@ def AlaemList(data, type) :
 
 
 
-def ChartDataNew(data,type) :
+def chartDataNew(data, type) :
     ChartDataList = []
-    for i in range(len(data['name'])):
-        if type == 'Bar' or type == 'Pie':
-            ChartDataList.append({"name": data['name'][i], "value": data['value'][i]})
-            #print(ChartDataList)
-        elif type == 'Banner' :
-            ChartDataList.append({"name": data['name'][i], "value": data['value_y'][i], "roc" : data['ROC'][i]})
-        elif type == 'Line' :
-            ChartDataList.append({"name": data['name'][i], "value": data['value'][i], "date" : data['date'][i]})
-        #elif type == 'alarmList' :
-        #    print({'firstData':{"name" : data['name'][i],"value": data['value'][i] }})
+    if type == 'alarmList' :
+        DUSDL = data[0]
+        LHDL = data[1]
+        RUEDL = data[2]
+        LPCDL = data[3]
+        EPCDL = data[4]
+        ChartDataList.append({'DUSDL': DUSDL, 'LHDL': LHDL, 'RUEDL': RUEDL, 'LPCDL': LPCDL, 'EPCDL': EPCDL})
+    else :
+        for i in range(len(data['name'])):
+            if type == 'Bar' or type == 'Pie':
+                ChartDataList.append({"name": data['name'][i], "value": data['value'][i]})
+            elif type == 'Banner' :
+                ChartDataList.append({"name": data['name'][i], "value": data['value_y'][i], "roc" : data['ROC'][i]})
+            elif type == 'Line' :
+                ChartDataList.append({"name": data['name'][i], "value": data['value'][i], "date" : data['date'][i]})
     RD = ChartDataList
     return RD
-    print(RD)
+    #print(RD)
 
 
 

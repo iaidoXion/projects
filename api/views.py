@@ -5,9 +5,9 @@ from DataParsing.Extract.Asset import Yesterday as EAY
 from DataParsing.Extract.Zabbix import Yesterday as EZY
 from DataParsing.Extract.Statistics import Yesterday as ESY, FiveDay as ESF
 from DataParsing.Transform.Asset import OrgDaily as AODT, DataFrame as TACD
-from DataParsing.Transform.Statistics import ChartData as SDT, Banner as TSBA, AlaemList as TSAL, LineChart as TSLC, ChartDataNew as TSCD
+from DataParsing.Transform.Statistics import chartData as SDT, banner as TSBA, alarm as TSAL, lineChart as TSLC, chartDataNew as TSCD
 from Analysis.Statistics.Asset import DailyCount as ASDC, Association, ChartData as SACD
-from Analysis.Statistics.Statistics import Calculation as ASSC, AlarmList as ASSAL
+from Analysis.Statistics.Statistics import calculation as ASSC, alarmCaseDetection as ASSACD, network as ASSN
 import urllib3
 import json
 
@@ -16,6 +16,7 @@ with open("setting.json", encoding="UTF-8") as f:
 
 core = SETTING['PROJECT']['CORE']
 projectType = SETTING['PROJECT']['TYPE']
+
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -34,57 +35,61 @@ def DashboardData() :
     return RD
 
 def DashboardDataNew() :
+
     if core == 'Tanium' :
         SK = SessionKey()                                                       # API Sesstion KEY Call
+        #print(SK)
         assetData = AssetAPI(SK)                                                # API Asset(Now) Data Call
+
         EAYL = EAY()                                                            # DB Asset(yesterday) Data Select
         sensorData = SensorAPI(SK)                                              # API Sensor(Now) Data Call
+        assetAPI = assetData['dataList']
         if projectType == 'System' :
             # Asset Item Statistics
-            TAIDL = TACD(assetData['dataList'], "today", "assetItem", 'asset')
+            TAIDL = TACD(assetAPI, "today", "assetItem", 'asset')
             SAIDL = SACD(TAIDL, "assetItem", "group")
 
             # OS Item Statistics
-            TOIDL = TACD(assetData['dataList'], "today", "osItem", 'asset')
+            TOIDL = TACD(assetAPI, "today", "osItem", 'asset')
             SOIDL = SACD(TOIDL, "osItem", "group")
 
             # Drive Use Size Statistics
             ## Today compare Count (now Asset API Data & yesterday Asset Table Data)
-            TDUSDLT = TACD(assetData['dataList'], "today", "driveUseSize", 'asset')
-            TDUSDLY = TACD(EAYL, "yesterday", "driveUseSize", '')
+            TDUSDLT = TACD(assetAPI, "today", "DUS", 'asset')
+            TDUSDLY = TACD(EAYL, "yesterday", "DUS", '')
             DUSCTDL = [TDUSDLT, TDUSDLY]
-            SDUSDLT = SACD(DUSCTDL, "driveUseSize", "count")
+            SDUSDLT = SACD(DUSCTDL, "DUS", "count")
 
             # No Login History Statistics
             ## Today compare Count (now Asset API Data & yesterday Asset Table Data)
-            TNLHDLT = TACD(assetData['dataList'], "today", "noLoginHistory", 'asset')
-            TNLHDLY = TACD(EAYL, "yesterday", "noLoginHistory", '')
+            TNLHDLT = TACD(assetAPI, "today", "LH", 'asset')
+            TNLHDLY = TACD(EAYL, "yesterday", "LH", '')
             NLHCTDL = [TNLHDLT, TNLHDLY]
-            SNLHDLT = SACD(NLHCTDL, "noLoginHistory", "count")
+            SNLHDLT = SACD(NLHCTDL, "LH", "count")
 
             # RAM USE Size Statistics
             ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
-            TRUSDLT = TACD(sensorData['dataList'], "today", "ramUseSizeT", 'sensor')
+            TRUSDLT = TACD(sensorData['dataList'], "today", "RUET", 'sensor')
             #print(TRUSDLT)
-            TRUSDLU = TACD(sensorData['dataList'], "today", "ramUseSizeU", 'sensor')
+            TRUSDLU = TACD(sensorData['dataList'], "today", "RUEU", 'sensor')
             #print(TRUSDLU)
             #TRUSDLY = TACD(EAYL, "yesterday", "ramUseSize", '')
             RUSCTDL = [TRUSDLT, TRUSDLU]
-            SRUSDLT = SACD(RUSCTDL, "ramUseSize", "count")
+            SRUSDLT = SACD(RUSCTDL, "RUE", "count")
 
             # Listen Port Count Statistics
             ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
-            TLPCDLT = TACD(sensorData['dataList'], "today", "listenPortCount", 'sensor')
-            TLPCDLY = TACD(EAYL, "yesterday", "listenPortCount", '')
+            TLPCDLT = TACD(sensorData['dataList'], "today", "LPC", 'sensor')
+            TLPCDLY = TACD(EAYL, "yesterday", "LPC", '')
             LPCCTDL = [TLPCDLT, TLPCDLY]
-            LPCDLT = SACD(LPCCTDL, "listenPortCount", "count")
+            LPCDLT = SACD(LPCCTDL, "LPC", "count")
 
             # Established Port Count Statistics
             ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
-            TEPCDLT = TACD(sensorData['dataList'], "today", "establishedPortCount", 'sensor')
-            TEPCDLY = TACD(EAYL, "yesterday", "establishedPortCount", '')
+            TEPCDLT = TACD(sensorData['dataList'], "today", "EPC", 'sensor')
+            TEPCDLY = TACD(EAYL, "yesterday", "EPC", '')
             EPCCTDL = [TEPCDLT, TEPCDLY]
-            EPCDLT = SACD(EPCCTDL, "establishedPortCount", "count")
+            EPCDLT = SACD(EPCCTDL, "EPC", "count")
 
             # Banner ROC Calculation (yesterday Statistics Table Data & API Data Statistics)
             ## Yesterday Statistics Table Data Extract & Transform
@@ -106,17 +111,40 @@ def DashboardDataNew() :
             ESAIDL = TSLC(AIFD)
 
 
-            # Alarm List
-            DUSADL = ASSAL(DUSCTDL, 'DUS')
-            LHADL = ASSAL(NLHCTDL, 'LH')
-            RUSADL = ASSAL(RUSCTDL, 'RUS')
-            LPCADL = ASSAL(LPCCTDL, 'LPC')
-            EPCADL = ASSAL(EPCCTDL, 'EPC')
-            TSAL(DUSADL, 'DUS')
-            TSAL(LHADL, 'LH')
-            TSAL(RUSADL, 'RUS')
-            TSAL(LPCADL, 'LPC')
-            TSAL(EPCADL, 'EPC')
+            # Alarm
+            ## Alarm Statistics(Alarm case detection)
+            SDUSADL = ASSACD(DUSCTDL, 'DUS')
+            SLHADL = ASSACD(NLHCTDL,  'LH')
+            SRUSADL = ASSACD(RUSCTDL, 'RUE')
+            SLPCADL = ASSACD(LPCCTDL, 'LPC')
+            SEPCADL = ASSACD(EPCCTDL, 'EPC')
+
+            ## List
+            ### Transform by case
+            TDUSALDL = TSAL(SDUSADL, 'list', 'DUS')
+            TLHALDL = TSAL(SLHADL, 'list', 'LH')
+            TRUSALDL = TSAL(SRUSADL, 'list', 'RUE')
+            TLPCALDL = TSAL(SLPCADL, 'list', 'LPC')
+            TEPCALDL = TSAL(SEPCADL, 'list', 'EPC')
+            ALD = [TDUSALDL, TLHALDL, TRUSALDL, TLPCALDL, TEPCALDL]
+
+
+            ## Network
+            ### Data Grouping(Statistics) by case
+            SDUSND = ASSN(SDUSADL, 'group', 'DUS')
+            SLHND = ASSN(SLHADL, 'group', 'LH')
+            SRUSND = ASSN(SRUSADL, 'group', 'RUE')
+            SLPCND = ASSN(SLPCADL, 'group', 'LPC')
+            SEPCND = ASSN(SEPCADL, 'group', 'EPC')
+            #NDL = [SDUSNDL,SLHNDL,SRUSNDL,SLPCNDL,SEPCNDL]
+            TDUSND = TSAL(SDUSND, 'network', 'DUS')
+            TLHND = TSAL(SLHND, 'network', 'LH')
+            TRUSND = TSAL(SRUSND, 'network', 'RUE')
+            TLPCND = TSAL(SLPCND, 'network', 'LPC')
+            TEPCND = TSAL(SEPCND, 'network', 'EPC')
+
+            NDL = [TDUSND[0], TDUSND[1]+TLHND[1]+TRUSND[1]+TLPCND[1]+TEPCND[1]]
+            ASSN(NDL, 'max', 'all')
 
 
             # BAR Chart
@@ -126,10 +154,10 @@ def DashboardDataNew() :
             # Pie Chart
             PDL = TSCD(SOIDL, "Pie")
             # Banner
-            BNL = TSCD(SBNDL, "Banner")
+            BNDL = TSCD(SBNDL, "Banner")
             # Alarm List
-            #TSCD(DUSADL, "alarmList")
-
+            ALDL = TSCD(ALD, "alarmList")
+            #print(ALDL)
 
         elif projectType == 'Service':
             print()
@@ -140,9 +168,11 @@ def DashboardDataNew() :
         "barChartData": BDL,
         "lineChartData" : LDL,
         "pieChartData" : PDL,
-        "bannerData" : BNL
+        "bannerData" : BNDL,
+        "alarmListData" : ALDL[0]
     }
     #print(PDL)
+
     return RD
 
 

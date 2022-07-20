@@ -7,7 +7,12 @@ today = datetime.today().strftime("%Y-%m-%d")
 
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
-AlarmRamUsage = SETTING['PROJECT']['AlarmRamUsage']
+AlarmRamUsage = SETTING['PROJECT']['Alarm']['RamUsage']
+alarmCaseFirst = SETTING['PROJECT']['Alarm']['Case']['First']
+alarmCaseSecond = SETTING['PROJECT']['Alarm']['Case']['Second']
+alarmCaseThird = SETTING['PROJECT']['Alarm']['Case']['Third']
+alarmCaseFourth = SETTING['PROJECT']['Alarm']['Case']['Fourth']
+alarmCaseFifth = SETTING['PROJECT']['Alarm']['Case']['Fifth']
 
 def DailyCount(TDL):
 
@@ -34,11 +39,13 @@ def DailyCount(TDL):
     EPC = 0
     RUSC = 0
 
-    LLSNM = "No Login History"
-    DSNM = "Drive Size No Change"
-    LPSNM = "Listen Port Count No Change"
-    EPSNM = "Established Port Count No Change"
-    RUSNM = "RAM Size No Change"
+
+    DSNM = alarmCaseFirst
+    LLSNM = alarmCaseSecond
+    RUSNM = alarmCaseThird
+    LPSNM = alarmCaseFourth
+    EPSNM = alarmCaseFifth
+
 
     alarmDataList = []
     LHAlarmList = []
@@ -149,11 +156,12 @@ def Association(TDL) :
     RUSG = RUSDF.groupby('group').size().reset_index(name='alarmCount')
     AGLG = AGLDF.groupby('group').size().reset_index(name='groupCount')
 
-    LLSNM = "No Login History"
-    DSNM = "Drive Size No Change"
-    LPSNM = "Listen Port Count No Change"
-    EPSNM = "Established Port Count No Change"
-    RUSSNM = "RAM Size No Change"
+    DSNM = alarmCaseFirst
+    LLSNM = alarmCaseSecond
+    RUSSNM = alarmCaseThird
+    LPSNM = alarmCaseFourth
+    EPSNM = alarmCaseFifth
+
     LHG['name'] = 'LH'
     LHG['alarmCase'] = LLSNM
     DSG['name'] = 'DUS'
@@ -230,26 +238,26 @@ def ChartData(data, type, statistics) :
         yesterdayDL = data[1]
         DLMerge = pd.merge(left=todayDL, right=yesterdayDL, how="outer", on="id").sort_values(by="id", ascending=True).reset_index(drop=True)
         DTC = len(DLMerge)
-        if type == 'driveUseSize' :
+        if type == 'DUS' :
             DUSCY = len(DLMerge['driveSize_x'].compare(DLMerge['driveSize_y']))
-            INM = ["Drive Size No Change"]
-        elif type == 'ramUseSize':
+            INM = [alarmCaseFirst]
+        elif type == 'LH':
+            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < weekAgo)])
+            INM = [alarmCaseSecond]
+        elif type == 'RUE':
             DUSCY = 0
             for i in range(len(DLMerge['id'])):
                 if DLMerge['ramSize_x'][i] != 0 and DLMerge['ramSize_y'][i] != 0 :
                     usage = DLMerge['ramSize_y'][i]/DLMerge['ramSize_x'][i]*100
                     if usage < AlarmRamUsage :
                         DUSCY = DUSCY+1
-            INM = ["RAM Usage Exceeded"]
-        elif type == 'noLoginHistory':
-            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < weekAgo)])
-            INM = ["No Login History"]
-        elif type == 'listenPortCount':
+            INM = [alarmCaseThird]
+        elif type == 'LPC':
             DUSCY = len(DLMerge['listenPortCount_x'].compare(DLMerge['listenPortCount_y']))
-            INM = ["Listen Port No Change"]
-        elif type == 'establishedPortCount':
+            INM = [alarmCaseFourth]
+        elif type == 'EPC':
             DUSCY = len(DLMerge['establishedPortCount_x'].compare(DLMerge['establishedPortCount_y']))
-            INM = ["Established Port No Change"]
+            INM = [alarmCaseFifth]
 
         IC = [DTC-DUSCY]
 
