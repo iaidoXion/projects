@@ -1,13 +1,16 @@
 import pandas as pd
+import json
 from datetime import datetime
-
 """
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
 
-DataLoadingType = SETTING['MODULE']['DataLoadingType']
+alarmCaseFirst = SETTING['PROJECT']['Alarm']['Case']['First']
+alarmCaseSecond = SETTING['PROJECT']['Alarm']['Case']['Second']
+alarmCaseThird = SETTING['PROJECT']['Alarm']['Case']['Third']
+alarmCaseFourth = SETTING['PROJECT']['Alarm']['Case']['Fourth']
+alarmCaseFifth = SETTING['PROJECT']['Alarm']['Case']['Fifth']
 """
-
 def OrgDaily(parserData, EAYL, sensorData):
     PDLC = len(parserData)
     DFL = []
@@ -67,6 +70,7 @@ def OrgDaily(parserData, EAYL, sensorData):
 
 
 def DataFrame(data, day, type, api):
+    #print(data)
     PDLC = len(data)
     DFL = []
     for i in range(PDLC):
@@ -75,8 +79,9 @@ def DataFrame(data, day, type, api):
                 CI = data[i]['computer_id']
                 IP = data[i]['ip_address']
                 if type == 'assetItem' :
-                    item = data[i]['asset_item']
-                    itemPer = item.lower()
+                    if data[i]['asset_item'] != None :
+                        item = data[i]['asset_item']
+                        itemPer = item.lower()
                     if itemPer.startswith('macbook'):
                         item = 'Notebook'
                     if itemPer.startswith('imac'):
@@ -85,62 +90,51 @@ def DataFrame(data, day, type, api):
                 elif type == 'osItem' :
                     item = data[i]['os_platform']
                     itemIndex = 'os'
-                elif type == 'driveUseSize' :
+                elif type == 'DUS' :
                     item = data[i]['drive_use_size']
                     itemIndex = 'driveSize'
-                elif type == 'noLoginHistory':
+                elif type == 'LH':
                     item = data[i]['last_seen_at'].split('T')[0]
                     itemIndex = 'lastLogin'
-                #elif type == 'ramUseSize' :
-                    #print(data[i]['ram'])
-                    #    item = data[i]['ram']
-                    #print(item)
-                    #print(int(item))
-                    #if item.isdigit():
-                    # item = int(item)
-                        #   print(item)
-                    #itemIndex = 'ramSize'
             elif api == 'sensor' :
                 CI = data[i][0]
                 IP = data[i][9]
-                if type == 'ramUseSizeT' :
+                if type == 'RUET' :
                     item = data[i][13].split(' ')[0]
                     if item.isdigit() :
                         item = int(item)
                     else :
                         item = 0
-                        #print(item)
                     itemIndex = 'ramSize'
-                elif type == 'ramUseSizeU' :
+                elif type == 'RUEU' :
                     item = data[i][12].split(' ')[0]
                     if item.isdigit():
                         item = int(item)
                     else:
                         item = 0
-                        #print(item)
                     itemIndex = 'ramSize'
-                elif type == 'listenPortCount' :
+                elif type == 'LPC' :
                     item = data[i][10]
                     itemIndex = 'listenPortCount'
-                elif type == 'establishedPortCount' :
+                elif type == 'EPC' :
                     item = data[i][11]
                     itemIndex = 'establishedPortCount'
         elif day == 'yesterday' :
             CI = data[i][0]
             IP = ''
-            if type == 'driveUseSize' :
+            if type == 'DUS' :
                 item = data[i][1]
                 itemIndex = 'driveSize'
-            elif type == 'noLoginHistory':
+            elif type == 'LH':
                 item = str(data[i][5]).split(' ')[0]
                 itemIndex = 'lastLogin'
             #elif type == 'ramUseSize':
                 #    item = str(data[i][4])
                 #itemIndex = 'ramSize'
-            elif type == 'listenPortCount':
+            elif type == 'LPC':
                 item = str(data[i][2])
                 itemIndex = 'listenPortCount'
-            elif type == 'establishedPortCount':
+            elif type == 'EPC':
                 item = str(data[i][3])
                 itemIndex = 'establishedPortCount'
 

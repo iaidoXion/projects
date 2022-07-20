@@ -8,8 +8,17 @@
       "Area" : "block",
       "Zone" : "block"
     },
-    "AlarmStandardDate" : "2022-07-11",
-    "AlarmRamUsage" : 60
+    "Alarm" : {
+      "StandardDate" : "2022-07-11",
+      "RamUsage" : 60,
+      "Case" : {
+        "First" : "Drive Size No Change",
+        "Second" : "No Login History",
+        "Third" : "RAM Usage Exceeded",
+        "Fourth" : "Listen Port No Change",
+        "Fifth" : "Established Port No Change"
+      }
+    }
   },
    "API" : {
     "apiUrl" : "https://192.168.5.100",

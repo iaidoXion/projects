@@ -71,7 +71,7 @@
             <div class="mapRight">
                         <ul class="mapRightWrap">
                            {% if chartData.alarmDataList %}
-                           {% for firstData in chartData.alarmDataList.LHAL.firstData %}
+                           {% for firstData in chartData.alarmDataList.LHDL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt1">
                                 <li>
                                     <div class="mapGps">
@@ -105,7 +105,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for dataList in chartData.alarmDataList.LHAL.dataList %}
+                                        {% for dataList in chartData.alarmDataList.LHDL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
@@ -117,7 +117,7 @@
                                 </div>
                             </div>
 
-                            {% for firstData in chartData.alarmDataList.DSAL.firstData %}
+                            {% for firstData in chartData.alarmDataList.DUSDL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt2">
                                 <li>
                                     <div class="mapGps">
@@ -151,7 +151,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for dataList in chartData.alarmDataList.DSAL.dataList %}
+                                        {% for dataList in chartData.alarmDataList.DUSDL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
@@ -163,7 +163,7 @@
                                 </div>
                             </div>
 
-                            {% for firstData in chartData.alarmDataList.LPCAL.firstData %}
+                            {% for firstData in chartData.alarmDataList.LPCDL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt3">
                                 <li>
                                     <div class="mapGps">
@@ -198,7 +198,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for dataList in chartData.alarmDataList.LPCAL.dataList %}
+                                        {% for dataList in chartData.alarmDataList.LPCDL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
 
-                            {% for firstData in chartData.alarmDataList.EPCAL.firstData %}
+                            {% for firstData in chartData.alarmDataList.EPCDL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt4">
                                 <li>
                                     <div class="mapGps">
@@ -244,7 +244,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for dataList in chartData.alarmDataList.EPCAL.dataList %}
+                                        {% for dataList in chartData.alarmDataList.EPCDL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
@@ -255,7 +255,7 @@
                                     </table>
                                 </div>
                             </div>
-                            {% for firstData in chartData.alarmDataList.RUSAL.firstData %}
+                            {% for firstData in chartData.alarmDataList.RUEDL.firstData %}
                             <a class="expansionWrap mouse-over-cursor" id="zoneBt5">
                             <li>
                                 <div class="mapGps">
@@ -289,7 +289,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        {% for dataList in chartData.alarmDataList.RUSAL.dataList %}
+                                        {% for dataList in chartData.alarmDataList.RUEDL.dataList %}
                                             <tr>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
