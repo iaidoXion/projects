@@ -222,7 +222,7 @@
 
 .pop-korea{
     width: 1000px;
-    height: 600px;
+    height: 580px;
     background: #fff;
     position: absolute;
     top: 50%;
@@ -241,41 +241,23 @@
 
 .popMap{
     width: 950px;
-    height: 550px;
+    height: 580px;
     margin: auto;
 }
 
-.popTable{
-    width: 950px;
-}
-
-.popTable .width250 {
-    width: 250px;
-}
-
-.popTable .width300 {
-    width: 300px;
-}
-
-.popTable .width400 {
-    width: 400px;
-}
-
-.popTable thead tr th {
-    font-size: 13px;
-    font-weight: bold;
-    height: 30px;
-    line-height: 30px;
+.popTable thead {
     background: #e18a0a;
-    border-bottom: 1px solid #d9d9d9;
     color: #fff;
 }
 
-.popTable tbody tr td {
-    font-size: 12px;
-    height: 20px;
-    line-height: 20px;
-    border-bottom: 1px solid #d9d9d9;
+.dataTables_wrapper .dataTables_paginate {
+    float: right;
+    text-align: right;
+    padding-top: 2em;
+}
+
+.dataTables_length {
+    padding-bottom: 0.5em;
 }
 
 .shadow{
