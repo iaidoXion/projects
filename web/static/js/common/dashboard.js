@@ -271,16 +271,13 @@ $("#demo2").als({
 
 //datatable
 $(document).ready(function(){
-    $("#popTable").DataTable({
-        "dom": 'tflip',
-        "pageLength": 5,
+    $(".popTable").DataTable({
+        "dom": 'ltfip',
+        "pageLength": 10,
         "searching": false,
         "ordering": false,
-        "info": false,
+        "info": true,
         "paging": true,
-        "lengthChange": false,
-        "scrollY": 300,
-        "scrollCollapse": true
-
+        "lengthChange": true,
    });
 });
