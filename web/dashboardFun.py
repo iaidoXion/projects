@@ -1,19 +1,15 @@
-from api.views import DashboardData, DashboardDataNew
+from api.views import DashboardData
 
 def DashboardDataList() :
-    DCDL = DashboardDataNew()
-   
-
+    DCDL = DashboardData()
     barChartData = DCDL["barChartData"]
     lineChartData = DCDL["lineChartData"]
     pieChartData = DCDL["pieChartData"]
     bannerData = DCDL["bannerData"]
     alarmData = DCDL["alarmListData"]
-
-    DCDLO = DashboardData()
-    AssociationData = DCDLO['AssociationDataList']
-    #print(AssociationData)
+    AssociationData = DCDL["AssociationDataList"]
     returnData = {'barChartDataList': barChartData,'lineChartDataList' : lineChartData, 'pieChartDataList': pieChartData, 'bannerDataList': bannerData, 'alarmDataList': alarmData, 'AssociationDataList' : AssociationData}
+
     return returnData
 
 

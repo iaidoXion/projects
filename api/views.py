@@ -1,46 +1,27 @@
 from api.Call.Auth import SessionKey
-from api.Call.Asset import Data as AssetAPI
-from api.Call.Sensor import Data as SensorAPI
-from DataParsing.Extract.Asset import Yesterday as EAY
-from DataParsing.Extract.Zabbix import Yesterday as EZY
+from api.Call.Asset import data as AssetAPI
+from api.Call.Sensor import data as SensorAPI
+from DataParsing.Extract.Asset import past_data as EAY
 from DataParsing.Extract.Statistics import Yesterday as ESY, FiveDay as ESF
-from DataParsing.Transform.Asset import OrgDaily as AODT, DataFrame as TACD
-from DataParsing.Transform.Statistics import chartData as SDT, banner as TSBA, alarm as TSAL, lineChart as TSLC, chartDataNew as TSCD
-from Analysis.Statistics.Asset import DailyCount as ASDC, Association, ChartData as SACD
-from Analysis.Statistics.Statistics import calculation as ASSC, alarmCaseDetection as ASSACD, network as ASSN
+from DataParsing.Transform.Asset import data_frame as TACD
+from DataParsing.Transform.Statistics import banner as TSBA, alarm as TSAL, line_chart as TSLC, chart_data as TSCD
+from Analysis.Statistics.Asset import chart_data as SACD
+from Analysis.Statistics.Statistics import calculation as ASSC, alarm_case_detection as ASSACD, network as ASSN
 import urllib3
 import json
 
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
-
 core = SETTING['PROJECT']['CORE']
 projectType = SETTING['PROJECT']['TYPE']
-
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def DashboardData() :
-    if core == 'Tanium' :
-        SK = SessionKey()                                                           # API Sesstion KEY Call
-        assetData = AssetAPI(SK)                                                    # API Asset(Now) Data Call
-        EAYL = EAY()                                                                # DB Asset(yesterday) Data Select
-        sensorData = SensorAPI(SK)                                                  # API Sensor(Now) Data Call
-        if projectType == 'System' :
-            TDL = AODT(assetData['dataList'], EAYL, sensorData['dataList'])         # API Asset(Now), DB Asset(yesterday) Data & API Sensor(Now) Data Transform
-            #print(TDL)
-            ASDCL = ASDC(TDL)                                                       # Count Statistics
-            AssociationS = Association(TDL)                                         # Association Statistics
-            RD = SDT(ASDCL, AssociationS)
-    return RD
-
-def DashboardDataNew() :
 
     if core == 'Tanium' :
         SK = SessionKey()                                                       # API Sesstion KEY Call
-        #print(SK)
         assetData = AssetAPI(SK)                                                # API Asset(Now) Data Call
-
         EAYL = EAY()                                                            # DB Asset(yesterday) Data Select
         sensorData = SensorAPI(SK)                                              # API Sensor(Now) Data Call
         assetAPI = assetData['dataList']
@@ -136,7 +117,7 @@ def DashboardDataNew() :
             SRUSND = ASSN(SRUSADL, 'group', 'RUE')
             SLPCND = ASSN(SLPCADL, 'group', 'LPC')
             SEPCND = ASSN(SEPCADL, 'group', 'EPC')
-            #NDL = [SDUSNDL,SLHNDL,SRUSNDL,SLPCNDL,SEPCNDL]
+
             TDUSND = TSAL(SDUSND, 'network', 'DUS')
             TLHND = TSAL(SLHND, 'network', 'LH')
             TRUSND = TSAL(SRUSND, 'network', 'RUE')
@@ -144,34 +125,34 @@ def DashboardDataNew() :
             TEPCND = TSAL(SEPCND, 'network', 'EPC')
 
             NDL = [TDUSND[0], TDUSND[1]+TLHND[1]+TRUSND[1]+TLPCND[1]+TEPCND[1]]
-            ASSN(NDL, 'max', 'all')
-
+            NCDL = ASSN(NDL, 'max', 'all')
 
             # BAR Chart
             BDL = TSCD(SAIDL, "Bar")
             # Line Chart
             LDL = TSCD(ESAIDL, "Line")
+            #LDL = {}
             # Pie Chart
             PDL = TSCD(SOIDL, "Pie")
             # Banner
             BNDL = TSCD(SBNDL, "Banner")
             # Alarm List
             ALDL = TSCD(ALD, "alarmList")
-            #print(ALDL)
+
 
         elif projectType == 'Service':
             print()
     elif core == 'Zabbix':
-        EZYL = EZY()
+        print()
 
     RD = {
         "barChartData": BDL,
         "lineChartData" : LDL,
         "pieChartData" : PDL,
         "bannerData" : BNDL,
-        "alarmListData" : ALDL[0]
+        "alarmListData" : ALDL[0],
+        "AssociationDataList" : NCDL
     }
-    #print(PDL)
 
     return RD
 

@@ -11,7 +11,7 @@ Authorization = SETTING['API']['Authorization']
 ContentType = SETTING['API']['ContentType']
 SensorAPIPath = SETTING['API']['PATH']['Sensor']
 SensorID = SETTING['API']['SensorID']
-def Data(SK) :
+def data(SK) :
     path = SensorAPIPath+SensorID
     urls = apiUrl + path
     headers = {

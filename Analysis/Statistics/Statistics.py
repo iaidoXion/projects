@@ -28,7 +28,7 @@ def calculation(pastData, todayData) :
     RD = DLMerge
     return RD
 
-def alarmCaseDetection(data, case) :
+def alarm_case_detection(data, case) :
     if case == 'DUS':
         AT = alarmCaseFirst
     elif case == 'LH':
@@ -90,19 +90,29 @@ def network(data, type, case) :
         RD = pd.DataFrame(ADL, columns=['group']).groupby(['group']).size().reset_index(name='counts')
         RD['alarmCase'] = AT
     elif type == 'max' :
+        nodeDataList = []
+        linksDataList = []
         odf = pd.DataFrame(data[1], columns=data[0])
         MDF = odf.loc[odf.groupby(['group'])['alarmCount'].idxmax()]
         MDF['point'] = 'true'
         df = pd.merge(left=odf, right=MDF, how="left",on=['id', 'group', 'alarmCount', 'name', 'alarmCase']).sort_values(by="id", ascending=True).reset_index()
-        DFG = df.groupby(['group']).size().reset_index(name='counts')
-        print(DFG)
+
+        DFG = df.groupby(['group']).sum(['alarmCount']).reset_index()
+        for j in range(len(DFG.group)):
+            groupNameCountSplit = DFG.group[j].split('.')
+            groupNameCount = groupNameCountSplit[0]+groupNameCountSplit[1]+groupNameCountSplit[2]
+            nodeDataList.append({'group': DFG.group[j],'alarmCount': str(DFG.alarmCount[j]), 'id': 'groupCenter'+str(groupNameCount), 'name': DFG.group[j], 'alarmCase': DFG.group[j]})
         for i in range(len(df.id)) :
+            groupNameCountSplit = df.group[i].split('.')
+            groupNameCount = groupNameCountSplit[0] + groupNameCountSplit[1] + groupNameCountSplit[2]
             if df.point[i] == 'true' :
                 point = 'true'
             else :
                 point = 'false'
-            #print({'group' : df.group[i], 'alarmCount': str(df.alarmCount[i]), 'id':df.id[i], 'name':df.name[i], 'alarmCase':df.alarmCase[i], 'point':point})
-        RD ={}
+            nodeDataList.append({'group' : df.group[i], 'alarmCount': str(df.alarmCount[i]), 'id':df.id[i], 'name':df.name[i], 'alarmCase':df.alarmCase[i], 'point':point})
+            linksDataList.append({'source': df.id[i], 'target': 'groupCenter'+str(groupNameCount)})
+        RD ={'nodeDataList':nodeDataList, 'linksDataList':linksDataList}
+
     return RD
 
 
