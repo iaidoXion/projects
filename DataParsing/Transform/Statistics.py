@@ -13,19 +13,6 @@ alarmCaseFourth = SETTING['PROJECT']['Alarm']['Case']['Fourth']
 alarmCaseFifth = SETTING['PROJECT']['Alarm']['Case']['Fifth']
 
 
-
-def chartData(ASDCL,AssociationS):
-    LHAL = {'firstData':[ASDCL['ADL']['LHAL'][0]], 'dataList' : ASDCL['ADL']['LHAL']}
-    if ASDCL['ADL']['DSAL'] :
-        DSAL = {'firstData':[ASDCL['ADL']['DSAL'][0]], 'dataList' : ASDCL['ADL']['DSAL']}
-    else :
-        DSAL = {'firstData': [], 'dataList': []}
-    LPCAL = {'firstData':[ASDCL['ADL']['LPCAL'][0]], 'dataList' : ASDCL['ADL']['LPCAL']}
-    EPCAL = {'firstData':[ASDCL['ADL']['EPCAL'][0]], 'dataList' : ASDCL['ADL']['EPCAL']}
-    RUSAL = {'firstData':[ASDCL['ADL']['RUSCAL'][0]], 'dataList' : ASDCL['ADL']['RUSCAL']}
-    RD = {'alarmDataList':{'LHAL' : LHAL, 'DSAL': DSAL, 'LPCAL': LPCAL, 'EPCAL':EPCAL, 'RUSAL' : RUSAL}, 'AssociationDataList' : AssociationS}
-    return RD
-
 def banner(data, type) :
     DFDL = []
     DFCNM=['name', 'value']
@@ -56,24 +43,18 @@ def banner(data, type) :
     RD = pd.DataFrame(DFDL, columns=DFCNM)
     return RD
 
+def line_chart(data) :
+    DL = []
 
-def lineChart(data) :
-    NMDL = []
-    VDL = []
-    TDL = []
     today = datetime.today().strftime("%Y-%m-%d")
     for i in range(len(data[1]['name'])) :
-        NMDL.append(data[1]['name'][i])
-        VDL.append(data[1]['value'][i])
-        TDL.append(today)
+        DL.append([data[1]['name'][i],data[1]['value'][i],today])
     for j in range(len(data[0])) :
         if data[0][j][1] != 'all':
-            NMDL.append(data[0][j][1])
-            VDL.append(data[0][j][2])
-            TDL.append(data[0][j][3].strftime("%Y-%m-%d"))
-    RD = {'name' : NMDL, 'value' : VDL, 'date' : TDL}
+            DL.append([data[0][j][1], data[0][j][2], data[0][j][3].strftime("%Y-%m-%d")])
+    df = pd.DataFrame(DL,columns=['name','value','date']).sort_values(by="date", ascending=True).reset_index(drop=True)
+    RD = df
     return RD
-
 
 def alarm(data, type, case) :
     if case == 'DUS':
@@ -100,24 +81,13 @@ def alarm(data, type, case) :
         DL = []
         DC = ['group','alarmCount','id','name','alarmCase']
         for i in range(len(data.group)) :
-            groupNameCount = int(data.group[i].split('.')[2]) + 1
+            groupNameCountSplit = data.group[i].split('.')
+            groupNameCount = groupNameCountSplit[0]+groupNameCountSplit[1]+groupNameCountSplit[2]
             DL.append([data.group[i], data.counts[i], 'group'+str(groupNameCount)+case, case, AT])
         RD=[DC,DL]
-
-
     return RD
 
-
-
-
-
-
-
-
-
-
-
-def chartDataNew(data, type) :
+def chart_data(data, type) :
     ChartDataList = []
     if type == 'alarmList' :
         DUSDL = data[0]
@@ -136,14 +106,3 @@ def chartDataNew(data, type) :
                 ChartDataList.append({"name": data['name'][i], "value": data['value'][i], "date" : data['date'][i]})
     RD = ChartDataList
     return RD
-    #print(RD)
-
-
-
-
-
-
-
-
-
-

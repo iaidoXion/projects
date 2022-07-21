@@ -11,7 +11,7 @@ Authorization = SETTING['API']['Authorization']
 ContentType = SETTING['API']['ContentType']
 AssetAPIPath = SETTING['API']['PATH']['Asset']
 
-def Data(sessionKey):
+def data(sessionKey):
 
     sessionKey = sessionKey
     path = AssetAPIPath
