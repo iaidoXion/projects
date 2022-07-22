@@ -82,10 +82,11 @@ def network(data, type, case) :
 
     if type == 'group' :
         ADL = []
-        if data['name'][0]:
-            for i in range(len(data['name'])):
+        if data['value'][0]:
+            for i in range(len(data['value'])):
                 IPS = data['value'][i].split('.')
-                IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
+                if len(IPS) == 4 :
+                    IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
                 ADL.append([IP])
         RD = pd.DataFrame(ADL, columns=['group']).groupby(['group']).size().reset_index(name='counts')
         RD['alarmCase'] = AT
