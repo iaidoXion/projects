@@ -1,3 +1,5 @@
+import pandas as pd
+
 from api.Call.Auth import SessionKey
 from api.Call.Asset import data as AssetAPI
 from api.Call.Sensor import data as SensorAPI
@@ -126,7 +128,12 @@ def DashboardData() :
 
             NDL = [TDUSND[0], TDUSND[1]+TLHND[1]+TRUSND[1]+TLPCND[1]+TEPCND[1]]
             NCDL = ASSN(NDL, 'max', 'all')
-
+            a = [NDL[0][0], NDL[0][1], NDL[0][4]]
+            b = []
+            for i in range(len(NDL[1])) :
+                b.append([NDL[1][i][0], NDL[1][i][1], NDL[1][i][4]])
+            c = pd.DataFrame(b, columns = a)
+            #print(c)
             # BAR Chart
             BDL = TSCD(SAIDL, "Bar")
             # Line Chart

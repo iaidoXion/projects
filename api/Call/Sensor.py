@@ -30,10 +30,8 @@ def data(SK) :
     for j in range(len(dataList)) :
         DL = []
         for k in range(len(dataList[j]['data'])) :
-
             DL.append(dataList[j]['data'][k][0]['text'])
         dataListAppend.append(DL)
-
     returnList = {'resCode': resCode, 'dataList': dataListAppend}
     return returnList
 
