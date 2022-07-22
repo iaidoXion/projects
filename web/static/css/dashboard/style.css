@@ -260,6 +260,18 @@
     padding-bottom: 0.5em;
 }
 
+table.dataTable thead th, table.dataTable thead td {
+    border-bottom: 1px solid #dedede;
+}
+
+table.popTable thead tr th {
+    font-size: 12px;
+}
+
+table.popTable tbody tr td {
+    font-size: 12px;
+}
+
 .shadow{
     position: fixed;
     left: 0;top: 0;
