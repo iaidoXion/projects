@@ -192,7 +192,6 @@ setInterval(function(){
 
 
 function koreaMapChart(worldMapData, mapNetwork) {
-    var placeid = "";
     var koreaMapWidth = 0;
     var koreaMapHeight = 0;
 
@@ -247,7 +246,39 @@ mapSvg.selectAll("circle")
     .attr("class","dot")
     .attr("transform",translateCircle)
     .attr("r",4)
-    .style("fill", "#e08a0b");
+    .style("fill", "#e08a0b")
+    .style("stroke", "#e18a0a");
+
+var nodePosition = mapSvg.selectAll("g")
+            .data(worldMapData)
+            .enter()
+            .append("g")
+            .attr("transform", translateCircle)
+            .on("mouseover", function(d) {
+            d3.select(this)
+                .style("cursor", "pointer")
+            });
+
+var nodeIMG = mapSvg.selectAll("g")
+        .data(koreaNetwork)
+        .enter()
+        .append
+
+var centerIMG = ["/web/static/img/dashboard/group_orange-1.png",
+                 "/web/static/img/dashboard/group_orange-2.png",
+                 "/web/static/img/dashboard/group_orange-3.png",
+                 "/web/static/img/dashboard/group_orange-4.png"];
+
+var imgX = [40, -120, -40, -120];
+var imgY = [40, -120, -120, 40];
+
+var circles = nodePosition.append("image")
+            .attr('width',80)
+            .attr('height',80)
+            .attr('x', function(d,i){return imgX[i];})
+            .attr('y', function(d,i){return imgY[i];})
+            .attr("xlink:href", function(d,i) {return centerIMG[i];});
+
 
 function translateCircle(datum, index)
           {
@@ -331,25 +362,18 @@ d3.json("/web/static/data/mapTopo/korea.json", function(json)
     });
 
   var simulation = d3v4.forceSimulation()
-    .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
-    .force("charge", d3v4.forceManyBody().strength(-170));
+    .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }));
 
-koreaNetwork.forEach(function(graph) {
+/*koreaNetwork.forEach(function(graph) {
       var link = mapSvg.append("g")
         .attr("class", "links")
         .selectAll("line")
-        .data(graph.links)
+        .data(graph.links);
         .enter().append("line")
-          .attr("stroke-width", "1.7")
-          .style("stroke", "#e18a0a");
+        .attr("stroke-width", "1.7")
+        .style("stroke", "#e18a0a");
 
-      var fillCircle = function(g){
-            if(g == "Ncrd"){
-                return "/web/static/img/dashboard/ncrd.png";
-            }else if(g=="Ncalpha"){
-                return "/web/static/img/dashboard/ncalpha.png";
-            }
-        };
+
 
       simulation
           .nodes(graph.nodes)
@@ -408,14 +432,14 @@ koreaNetwork.forEach(function(graph) {
         .attr('height',80)
         .attr('x', -40)
         .attr('y', -40)
-        .attr("xlink:href", function(d) { return fillCircle(d.id); })
+        .attr("xlink:href", function(d,i) {return centerIMG[i];})
         .style("filter", "url(#seoul-drop-shadow)");
 
         node.append("title")
         .text("- Assets unchanged in number of listen port\n- Assets without established ports\n- Assets without login history");
     /*      .text(function(d) { return d.name; });*/
 
-        var dropShadowFilter = mapSvg.append('svg:filter')
+        /*var dropShadowFilter = mapSvg.append('svg:filter')
           .attr('id', 'seoul-drop-shadow')
           .attr('filterUnits', "userSpaceOnUse")
           .attr('width', '250%')
@@ -436,7 +460,7 @@ koreaNetwork.forEach(function(graph) {
           .attr('in', 'SourceGraphic')
           .attr('in2', 'the-shadow');
 
-    });
+    });*/
 
 };
 
