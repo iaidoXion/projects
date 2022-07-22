@@ -56,7 +56,8 @@ def software(request):
 
 @login_required(login_url='common:login')
 def security(request):
-    return render(request, 'tanium/security.html', menuSettingList)
+    returnData = {'menuList': menuSettingList}
+    return render(request, 'tanium/security.html', returnData)
 
 @login_required(login_url='common:login')
 def report(request):
