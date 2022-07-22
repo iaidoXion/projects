@@ -1,7 +1,7 @@
 <!-- 네비게이션바 -->
 {% load static %}
 <nav class="navWrap navbar navbar-expand-lg navbar-light bg-white border-bottom">
-    <a class="navbar-brand navCop" href="/">Xion</a>
+    <a class="navbar-brand navCop" href="/">X-Factor</a>
     <div class="collapse navbar-collapse flex-grow-0 navMenuWrap">
         {% if menuList.menuList %}
             <ul class="navbar-nav">
@@ -27,10 +27,10 @@
         <li class="navRight nav-item">
 
                 <div class="navUserInfo">
-                    <select name="language" class="navLanguage">
+<!--                    <select name="language" class="navLanguage">
                       <option value="Korean" selected="selected">Korean(한국어)</option>
                       <option value="English">English(English)</option>
-                    </select>
+                    </select>-->
                     <p class="navUserTime">
                         Access Time : {{ user.last_login|date:'Y-m-d a H:i' }}
                     </p>
