@@ -1,6 +1,7 @@
 {
   "PROJECT" : {
     "CORE" : "Tanium",
+    "CUSTOMER" : "NC",
     "TYPE" : "System",
     "MAP" : {
       "World" : "block",
