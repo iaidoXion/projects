@@ -1,183 +1,3 @@
-// world 이상징후 팝업
-
-$(function() {
-    $('.worldBt1').click(function() {
-        $('.popWorldBt1').show();
-        $(".shadow").show();
-    });
-
-    $('.closeWorldBt1').click(function() {
-        $('.popWorldBt1').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.worldBt2').click(function() {
-        $('.popWorldBt2').show();
-        $(".shadow").show();
-    });
-
-    $('.closeWorldBt2').click(function() {
-        $('.popWorldBt2').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.worldBt3').click(function() {
-        $('.popWorldBt3').show();
-        $(".shadow").show();
-    });
-
-    $('.closeWorldBt3').click(function() {
-        $('.popWorldBt3').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.worldBt4').click(function() {
-        $('.popWorldBt4').show();
-        $(".shadow").show();
-    });
-
-    $('.closeWorldBt4').click(function() {
-        $('.popWorldBt4').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.worldBt5').click(function() {
-        $('.popWorldBt5').show();
-        $(".shadow").show();
-    });
-
-    $('.closeWorldBt5').click(function() {
-        $('.popWorldBt5').hide();
-        $('.shadow').hide();
-    });
-});
-
-//Korea 이상징후 팝업
-$(function() {
-    $('.koreaBt1').click(function() {
-        $('.popWorldBt1').show();
-        $(".shadow").show();
-    });
-
-    $('.closeKoreaBt1').click(function() {
-        $('.popWorldBt1').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.koreaBt2').click(function() {
-        $('.popWorldBt2').show();
-        $(".shadow").show();
-    });
-
-    $('.closeKoreaBt2').click(function() {
-        $('.popWorldBt2').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.koreaBt3').click(function() {
-        $('.popWorldBt3').show();
-        $(".shadow").show();
-    });
-
-    $('.closeKoreaBt3').click(function() {
-        $('.popWorldBt3').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.koreaBt4').click(function() {
-        $('.popWorldBt4').show();
-        $(".shadow").show();
-    });
-
-    $('.closeKoreaBt4').click(function() {
-        $('.popWorldBt4').hide();
-        $('.shadow').hide();
-    });
-});
-
-$(function() {
-    $('.koreaBt5').click(function() {
-        $('.popWorldBt5').show();
-        $(".shadow").show();
-    });
-
-    $('.closeKoreaBt5').click(function() {
-        $('.popWorldBt5').hide();
-        $('.shadow').hide();
-    });
-});
-
-//Area 이상징후 팝업
-$(function() {
-    $('#areaBt1').click(function() {
-        $('#popAreaBt1').show();
-        $(".shadow").show();
-    });
-
-    $('#closeAreaBt1').click(function() {
-        $('#popAreaBt1').hide();
-        $('.shadow').hide();
-    });
-});
-$(function() {
-    $('#areaBt2').click(function() {
-        $('#popAreaBt2').show();
-        $(".shadow").show();
-    });
-
-    $('#closeAreaBt2').click(function() {
-        $('#popAreaBt2').hide();
-        $('.shadow').hide();
-    });
-});
-$(function() {
-    $('#areaBt3').click(function() {
-        $('#popAreaBt3').show();
-        $(".shadow").show();
-    });
-
-    $('#closeAreaBt3').click(function() {
-        $('#popAreaBt3').hide();
-        $('.shadow').hide();
-    });
-});
-$(function() {
-    $('#areaBt4').click(function() {
-        $('#popAreaBt4').show();
-        $(".shadow").show();
-    });
-
-    $('#closeAreaBt4').click(function() {
-        $('#popAreaBt4').hide();
-        $('.shadow').hide();
-    });
-});
-$(function() {
-    $('#areaBt5').click(function() {
-        $('#popAreaBt5').show();
-        $(".shadow").show();
-    });
-
-    $('#closeAreaBt5').click(function() {
-        $('#popAreaBt5').hide();
-        $('.shadow').hide();
-    });
-});
-
 //Zone 이상징후 팝업
 $(function() {
     $('#zoneBt1').click(function() {
@@ -271,15 +91,63 @@ $("#demo2").als({
 
 //datatable
 $(document).ready(function(){
-     $('.popTable').DataTable({
+    var tNum1 = $('.tableNum1').DataTable({
         dom: 'litfp',
         pageLength: 10,
         searching: false,
-        ordering: false,
+        ordering: true,
         info: true,
         paging: true,
         lengthChange: false,
+        columnDefs: [
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0,
+            },
+        ],
+        order: [[1, 'asc']],
         language: {
+            emptyTable: "데이터가 없어요.",
+            lengthMenu: "페이지당 _MENU_ 개씩 보기",
+            info: "현재 _START_ - _END_ / _TOTAL_건",
+            infoEmpty: "데이터 없음",
+            infoFiltered: "( _MAX_건의 데이터에서 필터링됨 )",
+            search: "에서 검색: ",
+            zeroRecords: "일치하는 데이터가 없어요.",
+            loadingRecords: "로딩중...",
+            processing:     "잠시만 기다려 주세요...",
+            paginate: {
+                next: "다음",
+                previous: "이전"
+            }
+        }
+    });
+    tNum1.on('order.dt search.dt', function () {
+        let i = 1;
+
+        tNum1.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
+
+    var tNum2 = $('.tableNum2').DataTable({
+            dom: 'litfp',
+            pageLength: 10,
+            searching: false,
+            ordering: true,
+            info: true,
+            paging: true,
+            lengthChange: false,
+            columnDefs: [
+                {
+                    searchable: false,
+                    orderable: false,
+                    targets: 0,
+                },
+            ],
+            order: [[1, 'asc']],
+            language: {
                 emptyTable: "데이터가 없어요.",
                 lengthMenu: "페이지당 _MENU_ 개씩 보기",
                 info: "현재 _START_ - _END_ / _TOTAL_건",
@@ -293,7 +161,137 @@ $(document).ready(function(){
                     next: "다음",
                     previous: "이전"
                 }
-        }
-   });
+            }
+    });
 
-});
+    tNum2.on('order.dt search.dt', function () {
+        let i = 1;
+
+        tNum2.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
+
+    var tNum3 = $('.tableNum3').DataTable({
+        dom: 'litfp',
+        pageLength: 10,
+        searching: false,
+        ordering: true,
+        info: true,
+        paging: true,
+        lengthChange: false,
+        columnDefs: [
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0,
+            },
+        ],
+        order: [[1, 'asc']],
+        language: {
+            emptyTable: "데이터가 없어요.",
+            lengthMenu: "페이지당 _MENU_ 개씩 보기",
+            info: "현재 _START_ - _END_ / _TOTAL_건",
+            infoEmpty: "데이터 없음",
+            infoFiltered: "( _MAX_건의 데이터에서 필터링됨 )",
+            search: "에서 검색: ",
+            zeroRecords: "일치하는 데이터가 없어요.",
+            loadingRecords: "로딩중...",
+            processing:     "잠시만 기다려 주세요...",
+            paginate: {
+                next: "다음",
+                previous: "이전"
+            }
+        }
+    });
+
+    tNum3.on('order.dt search.dt', function () {
+        let i = 1;
+
+        tNum3.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
+
+    var tNum4 = $('.tableNum4').DataTable({
+        dom: 'litfp',
+        pageLength: 10,
+        searching: false,
+        ordering: true,
+        info: true,
+        paging: true,
+        lengthChange: false,
+        columnDefs: [
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0,
+            },
+        ],
+        order: [[1, 'asc']],
+        language: {
+            emptyTable: "데이터가 없어요.",
+            lengthMenu: "페이지당 _MENU_ 개씩 보기",
+            info: "현재 _START_ - _END_ / _TOTAL_건",
+            infoEmpty: "데이터 없음",
+            infoFiltered: "( _MAX_건의 데이터에서 필터링됨 )",
+            search: "에서 검색: ",
+            zeroRecords: "일치하는 데이터가 없어요.",
+            loadingRecords: "로딩중...",
+            processing:     "잠시만 기다려 주세요...",
+            paginate: {
+                next: "다음",
+                previous: "이전"
+            }
+        }
+    });
+
+    tNum4.on('order.dt search.dt', function () {
+        let i = 1;
+
+        tNum4.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
+
+    var tNum5 = $('.tableNum5').DataTable({
+        dom: 'litfp',
+        pageLength: 10,
+        searching: false,
+        ordering: true,
+        info: true,
+        paging: true,
+        lengthChange: false,
+        columnDefs: [
+            {
+                searchable: false,
+                orderable: false,
+                targets: 0,
+            },
+        ],
+        order: [[1, 'asc']],
+        language: {
+            emptyTable: "데이터가 없어요.",
+            lengthMenu: "페이지당 _MENU_ 개씩 보기",
+            info: "현재 _START_ - _END_ / _TOTAL_건",
+            infoEmpty: "데이터 없음",
+            infoFiltered: "( _MAX_건의 데이터에서 필터링됨 )",
+            search: "에서 검색: ",
+            zeroRecords: "일치하는 데이터가 없어요.",
+            loadingRecords: "로딩중...",
+            processing:     "잠시만 기다려 주세요...",
+            paginate: {
+                next: "다음",
+                previous: "이전"
+            }
+        }
+    });
+
+    tNum5.on('order.dt search.dt', function () {
+        let i = 1;
+
+        tNum5.cells(null, 0, { search: 'applied', order: 'applied' }).every(function (cell) {
+            this.data(i++);
+        });
+    }).draw();
+ });
