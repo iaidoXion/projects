@@ -105,6 +105,16 @@
     height: 36px;
 }
 
+.navbar-brand div {
+    width: 135px;
+    height: 26px;
+}
+
+.navbar-brand div.img {
+    width: 135px;
+    height: 26px;
+}
+
 .logoutWrap{
     text-decoration: none;
     color: #858796;

@@ -91,9 +91,10 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <table class="popTable">
+                                    <table class="popTable tableNum1">
                                         <thead>
                                             <tr>
+                                                <th>NO</th>
                                                 <th>ID</th>
                                                 <th>IP</th>
                                                 <th>AlarmText</th>
@@ -102,6 +103,7 @@
                                         <tbody>
                                         {% for dataList in chartData.alarmDataList.LHDL.dataList %}
                                             <tr>
+                                                <td></td>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
                                                 <td>{{dataList.alarmText}}</td>
@@ -132,9 +134,10 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <table class="popTable">
+                                    <table class="popTable tableNum2">
                                         <thead>
                                             <tr>
+                                                <th>NO</th>
                                                 <th>ID</th>
                                                 <th>IP</th>
                                                 <th>AlarmText</th>
@@ -143,6 +146,7 @@
                                         <tbody>
                                         {% for dataList in chartData.alarmDataList.DUSDL.dataList %}
                                             <tr>
+                                                <td></td>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
                                                 <td>{{dataList.alarmText}}</td>
@@ -174,9 +178,10 @@
                                          height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <table class="popTable">
+                                    <table class="popTable tableNum3">
                                         <thead>
                                             <tr>
+                                                <th>NO</th>
                                                 <th>ID</th>
                                                 <th>IP</th>
                                                 <th>AlarmText</th>
@@ -185,6 +190,7 @@
                                         <tbody>
                                         {% for dataList in chartData.alarmDataList.LPCDL.dataList %}
                                             <tr>
+                                                <td></td>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
                                                 <td>{{dataList.alarmText}}</td>
@@ -215,9 +221,10 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <table class="popTable">
+                                    <table class="popTable tableNum4">
                                         <thead>
                                             <tr>
+                                                <th>NO</th>
                                                 <th>ID</th>
                                                 <th>IP</th>
                                                 <th>AlarmText</th>
@@ -226,6 +233,7 @@
                                         <tbody>
                                         {% for dataList in chartData.alarmDataList.EPCDL.dataList %}
                                             <tr>
+                                                <td></td>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
                                                 <td>{{dataList.alarmText}}</td>
@@ -255,9 +263,10 @@
                                     <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
                                 </a>
                                 <div class="popMap">
-                                    <table class="popTable">
+                                    <table class="popTable tableNum5">
                                         <thead>
                                             <tr>
+                                                <th>NO</th>
                                                 <th>ID</th>
                                                 <th>IP</th>
                                                 <th>AlarmText</th>
@@ -266,6 +275,7 @@
                                         <tbody>
                                         {% for dataList in chartData.alarmDataList.RUEDL.dataList %}
                                             <tr>
+                                                <td></td>
                                                 <td>{{dataList.id}}</td>
                                                 <td>{{dataList.ip}}</td>
                                                 <td>{{dataList.alarmText}}</td>
@@ -288,7 +298,7 @@
                     {% if chartData.bannerDataList %}
                     {% for bannerData in chartData.bannerDataList %}
                     <li class="als-item my-border">
-                        <div class="conBotTop">{{bannerData.name}}</div>
+                        <div class="conBotTop">{{bannerData.name}} Count</div>
                         <div class="conBotBot">
                             <p class="botConTotalNum">{{bannerData.value}}</p>
                             <div class="my-float-left conBotImg">

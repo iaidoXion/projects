@@ -221,8 +221,8 @@
 }
 
 .pop-korea{
-    width: 1000px;
-    height: 580px;
+    width: 800px;
+    height: 460px;
     background: #fff;
     position: absolute;
     top: 50%;
@@ -240,8 +240,8 @@
 }
 
 .popMap{
-    width: 950px;
-    height: 580px;
+    width: 750px;
+    height: 460px;
     margin: auto;
 }
 
@@ -250,26 +250,8 @@
     color: #fff;
 }
 
-.dataTables_wrapper .dataTables_paginate {
-    float: right;
-    text-align: right;
-    padding-top: 2em;
-}
-
-.dataTables_length {
-    padding-bottom: 0.5em;
-}
-
-table.dataTable thead th, table.dataTable thead td {
-    border-bottom: 1px solid #dedede;
-}
-
-table.popTable thead tr th {
-    font-size: 12px;
-}
-
-table.popTable tbody tr td {
-    font-size: 12px;
+table.popTable tbody tr.even {
+    background-color: #faf8f0;
 }
 
 .shadow{
