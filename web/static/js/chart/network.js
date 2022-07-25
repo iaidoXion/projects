@@ -34,17 +34,16 @@ networkData.forEach(function(graph) {
   };
 
   var fillCenter = function(g){
-        if(g == "groupCenter1"){
-            return "/web/static/img/dashboard/ncrd.png";
-        }else if(g == "groupCenter2"){
-            return "/web/static/img/dashboard/ncalpha.png";}
+        if(g.startsWith('groupCenter1') == true){
+            return "/web/static/img/dashboard/group_orange-1.png";
+        }
   };
 
   var CircleSize = function(g){
         if(g.startsWith('groupCenter') == true){
-            return "80";
-        }else{
             return "60";
+        }else{
+            return "40";
         }
     };
 
@@ -85,7 +84,7 @@ networkData.forEach(function(graph) {
   var labels = node.append("text")
         .text(function(d) { return d.name;})
         .style("fill", function(d) { return textColor(d.point); })
-        .attr("text-anchor", "middle").attr('x', 0).attr('y', -18);
+        .attr("text-anchor", "middle").attr('x', -11).attr('y', -28);
 
   node.append("title")
         .text(function(d) {
