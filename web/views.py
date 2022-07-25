@@ -8,7 +8,8 @@ import urllib3
 import json
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
-ProjectName = SETTING['PROJECT']['TYPE']
+ProjectType = SETTING['PROJECT']['TYPE']
+Customer = SETTING['PROJECT']['CUSTOMER']
 WorldUse = SETTING['PROJECT']['MAP']['World']
 KoreaUse = SETTING['PROJECT']['MAP']['Korea']
 AreaUse = SETTING['PROJECT']['MAP']['Area']
@@ -40,8 +41,8 @@ def signup(request):
 @login_required(login_url='common:login')
 def dashboard(request):
     chartData = DashboardDataList()
-    MapUse = {"WorldUse" : WorldUse, "KoreaUse" : KoreaUse, "AreaUse" : AreaUse, "ZoneUse" : ZoneUse  }
-    returnData = { 'menuList': menuSettingList, 'chartData' : chartData, 'MapUse' : MapUse}
+    MapUse = {"WorldUse" : WorldUse, "KoreaUse" : KoreaUse, "AreaUse" : AreaUse, "ZoneUse" : ZoneUse}
+    returnData = { 'menuList': menuSettingList, 'chartData' : chartData, 'MapUse' : MapUse, 'Customer' : Customer}
     #print(chartData)
     return render(request, 'tanium/dashboard.html', returnData)
 
