@@ -130,6 +130,7 @@
     height: 635px;
     float: left;
     padding-top: 52px;
+    position: relative;
 }
 
 .mapRight{
@@ -233,6 +234,12 @@
     z-index: 8888;
 }
 
+.mapExpand {
+    position: absolute;
+    right: 0;
+    top: 30px;
+}
+
 .popClose{
     padding: 10px;
     float: right;
@@ -242,7 +249,7 @@
 .popMap{
     width: 750px;
     height: 460px;
-    margin: auto;
+    margin: O auto;
 }
 
 .popTable thead {

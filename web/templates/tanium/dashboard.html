@@ -53,241 +53,241 @@
 
             </div>
             <div class="mapChartMenuWorld">
-                    <div class="mapChartMenuWrap">
-                        {% if MapUse.WorldUse == 'block' %}
-                        <button type="button" class="btn btn-secondary btnWorld">World</button>
-                        {%endif%}
-                        {% if MapUse.KoreaUse == 'block' %}
-                        <button type="button" class="btn btn-secondary btnKorea">Korea</button>
-                        {%endif%}
-                        {% if MapUse.AreaUse == 'block' %}
-                        <button type="button" class="btn btn-secondary btnSi">Area</button>
-                        {%endif%}
-                        {% if MapUse.ZoneUse == 'block' %}
-                        <button type="button" class="btn btn-secondary btnGu">Zone</button>
-                        {%endif%}
-                    </div>
+                <div class="mapChartMenuWrap">
+                    {% if MapUse.WorldUse == 'block' %}
+                    <button type="button" class="btn btn-secondary btnWorld">World</button>
+                    {%endif%}
+                    {% if MapUse.KoreaUse == 'block' %}
+                    <button type="button" class="btn btn-secondary btnKorea">Korea</button>
+                    {%endif%}
+                    {% if MapUse.AreaUse == 'block' %}
+                    <button type="button" class="btn btn-secondary btnSi">Area</button>
+                    {%endif%}
+                    {% if MapUse.ZoneUse == 'block' %}
+                    <button type="button" class="btn btn-secondary btnGu">Zone</button>
+                    {%endif%}
+                </div>
             </div>
             <div class="mapRight">
-                        <ul class="mapRightWrap">
-                           {% if chartData.alarmDataList %}
-                           {% for firstData in chartData.alarmDataList.LHDL.firstData %}
-                            <a class="expansionWrap mouse-over-cursor" id="zoneBt1">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
-                                        <div>Asset ID : {{firstData.id}}</div>
-                                        <div>Asset IP : {{firstData.ip}}</div>
-                                    </div>
-                                </li>
-                            </a>
-                            {% endfor %}
-                            <div class="shadow"></div>
-                            <div id="popZoneBt1" class="pop-korea" style="display: none;">
-                                <a id="closeZoneBt1" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <table class="popTable tableNum1">
-                                        <thead>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>ID</th>
-                                                <th>IP</th>
-                                                <th>AlarmText</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for dataList in chartData.alarmDataList.LHDL.dataList %}
-                                            <tr>
-                                                <td></td>
-                                                <td>{{dataList.id}}</td>
-                                                <td>{{dataList.ip}}</td>
-                                                <td>{{dataList.alarmText}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
+                <ul class="mapRightWrap">
+                    {% if chartData.alarmDataList %}
+                    {% for firstData in chartData.alarmDataList.LHDL.firstData %}
+                    <a class="expansionWrap mouse-over-cursor" id="zoneBt1">
+                        <li>
+                            <div class="mapGps">
+                                <img src="{% static 'img/dashboard/gps.png' %}"/>
                             </div>
-
-                            {% for firstData in chartData.alarmDataList.DUSDL.firstData %}
-                            <a class="expansionWrap mouse-over-cursor" id="zoneBt2">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
-                                        <div>Asset ID : {{firstData.id}}</div>
-                                        <div>Asset IP : {{firstData.ip}}</div>
-                                    </div>
-                                </li>
-                            </a>
-                            {% endfor %}
-                            <div class="shadow"></div>
-                            <div id="popZoneBt2" class="pop-korea" style="display: none;">
-                                <a id="closeZoneBt2" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <table class="popTable tableNum2">
-                                        <thead>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>ID</th>
-                                                <th>IP</th>
-                                                <th>AlarmText</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for dataList in chartData.alarmDataList.DUSDL.dataList %}
-                                            <tr>
-                                                <td></td>
-                                                <td>{{dataList.id}}</td>
-                                                <td>{{dataList.ip}}</td>
-                                                <td>{{dataList.alarmText}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="mapCont">
+                                <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                <div>Asset ID : {{firstData.id}}</div>
+                                <div>Asset IP : {{firstData.ip}}</div>
                             </div>
-
-                            {% for firstData in chartData.alarmDataList.LPCDL.firstData %}
-                            <a class="expansionWrap mouse-over-cursor" id="zoneBt3">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
-                                        <div>Asset ID : {{firstData.id}}</div>
-                                        <div>Asset IP : {{firstData.ip}}</div>
-                                    </div>
-                                </li>
-                            </a>
-                            {% endfor %}
-                            <div class="shadow"></div>
-                            <div id="popZoneBt3" class="pop-korea" style="display: none;">
-                                <a id="closeZoneBt3" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
-                                         height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <table class="popTable tableNum3">
-                                        <thead>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>ID</th>
-                                                <th>IP</th>
-                                                <th>AlarmText</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for dataList in chartData.alarmDataList.LPCDL.dataList %}
-                                            <tr>
-                                                <td></td>
-                                                <td>{{dataList.id}}</td>
-                                                <td>{{dataList.ip}}</td>
-                                                <td>{{dataList.alarmText}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            {% for firstData in chartData.alarmDataList.EPCDL.firstData %}
-                            <a class="expansionWrap mouse-over-cursor" id="zoneBt4">
-                                <li>
-                                    <div class="mapGps">
-                                        <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                    </div>
-                                    <div class="mapCont">
-                                        <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
-                                        <div>Asset ID : {{firstData.id}}</div>
-                                        <div>Asset IP : {{firstData.ip}}</div>
-                                    </div>
-                                </li>
-                            </a>
-                            {% endfor %}
-                            <div class="shadow"></div>
-                            <div id="popZoneBt4" class="pop-korea" style="display: none;">
-                                <a id="closeZoneBt4" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <table class="popTable tableNum4">
-                                        <thead>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>ID</th>
-                                                <th>IP</th>
-                                                <th>AlarmText</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for dataList in chartData.alarmDataList.EPCDL.dataList %}
-                                            <tr>
-                                                <td></td>
-                                                <td>{{dataList.id}}</td>
-                                                <td>{{dataList.ip}}</td>
-                                                <td>{{dataList.alarmText}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            {% for firstData in chartData.alarmDataList.RUEDL.firstData %}
-                            <a class="expansionWrap mouse-over-cursor" id="zoneBt5">
-                            <li>
-                                <div class="mapGps">
-                                    <img src="{% static 'img/dashboard/gps.png' %}"/>
-                                </div>
-                                <div class="mapCont">
-                                    <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
-                                    <div>Asset ID : {{firstData.id}}</div>
-                                    <div>Asset IP : {{firstData.ip}}</div>
-                                </div>
-                            </li>
-                            </a>
-                            {% endfor %}
-                            <div class="shadow"></div>
-                            <div id="popZoneBt5" class="pop-korea" style="display: none;">
-                                <a id="closeZoneBt5" class="popClose mouse-over-cursor">
-                                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
-                                </a>
-                                <div class="popMap">
-                                    <table class="popTable tableNum5">
-                                        <thead>
-                                            <tr>
-                                                <th>NO</th>
-                                                <th>ID</th>
-                                                <th>IP</th>
-                                                <th>AlarmText</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for dataList in chartData.alarmDataList.RUEDL.dataList %}
-                                            <tr>
-                                                <td></td>
-                                                <td>{{dataList.id}}</td>
-                                                <td>{{dataList.ip}}</td>
-                                                <td>{{dataList.alarmText}}</td>
-                                            </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            {% endif%}
-                        </ul>
+                        </li>
+                    </a>
+                    {% endfor %}
+                    <div class="shadow"></div>
+                    <div id="popZoneBt1" class="pop-korea" style="display: none;">
+                        <a id="closeZoneBt1" class="popClose mouse-over-cursor">
+                            <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                        </a>
+                        <div class="popMap">
+                            <table class="popTable tableNum1">
+                                <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ID</th>
+                                    <th>IP</th>
+                                    <th>AlarmText</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for dataList in chartData.alarmDataList.LHDL.dataList %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{dataList.id}}</td>
+                                    <td>{{dataList.ip}}</td>
+                                    <td>{{dataList.alarmText}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
+                    {% for firstData in chartData.alarmDataList.DUSDL.firstData %}
+                    <a class="expansionWrap mouse-over-cursor" id="zoneBt2">
+                        <li>
+                            <div class="mapGps">
+                                <img src="{% static 'img/dashboard/gps.png' %}"/>
+                            </div>
+                            <div class="mapCont">
+                                <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                <div>Asset ID : {{firstData.id}}</div>
+                                <div>Asset IP : {{firstData.ip}}</div>
+                            </div>
+                        </li>
+                    </a>
+                    {% endfor %}
+                    <div class="shadow"></div>
+                    <div id="popZoneBt2" class="pop-korea" style="display: none;">
+                        <a id="closeZoneBt2" class="popClose mouse-over-cursor">
+                            <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                        </a>
+                        <div class="popMap">
+                            <table class="popTable tableNum2">
+                                <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ID</th>
+                                    <th>IP</th>
+                                    <th>AlarmText</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for dataList in chartData.alarmDataList.DUSDL.dataList %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{dataList.id}}</td>
+                                    <td>{{dataList.ip}}</td>
+                                    <td>{{dataList.alarmText}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {% for firstData in chartData.alarmDataList.LPCDL.firstData %}
+                    <a class="expansionWrap mouse-over-cursor" id="zoneBt3">
+                        <li>
+                            <div class="mapGps">
+                                <img src="{% static 'img/dashboard/gps.png' %}"/>
+                            </div>
+                            <div class="mapCont">
+                                <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                <div>Asset ID : {{firstData.id}}</div>
+                                <div>Asset IP : {{firstData.ip}}</div>
+                            </div>
+                        </li>
+                    </a>
+                    {% endfor %}
+                    <div class="shadow"></div>
+                    <div id="popZoneBt3" class="pop-korea" style="display: none;">
+                        <a id="closeZoneBt3" class="popClose mouse-over-cursor">
+                            <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px"
+                                 height="10px"/>
+                        </a>
+                        <div class="popMap">
+                            <table class="popTable tableNum3">
+                                <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ID</th>
+                                    <th>IP</th>
+                                    <th>AlarmText</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for dataList in chartData.alarmDataList.LPCDL.dataList %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{dataList.id}}</td>
+                                    <td>{{dataList.ip}}</td>
+                                    <td>{{dataList.alarmText}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {% for firstData in chartData.alarmDataList.EPCDL.firstData %}
+                    <a class="expansionWrap mouse-over-cursor" id="zoneBt4">
+                        <li>
+                            <div class="mapGps">
+                                <img src="{% static 'img/dashboard/gps.png' %}"/>
+                            </div>
+                            <div class="mapCont">
+                                <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                <div>Asset ID : {{firstData.id}}</div>
+                                <div>Asset IP : {{firstData.ip}}</div>
+                            </div>
+                        </li>
+                    </a>
+                    {% endfor %}
+                    <div class="shadow"></div>
+                    <div id="popZoneBt4" class="pop-korea" style="display: none;">
+                        <a id="closeZoneBt4" class="popClose mouse-over-cursor">
+                            <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                        </a>
+                        <div class="popMap">
+                            <table class="popTable tableNum4">
+                                <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ID</th>
+                                    <th>IP</th>
+                                    <th>AlarmText</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for dataList in chartData.alarmDataList.EPCDL.dataList %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{dataList.id}}</td>
+                                    <td>{{dataList.ip}}</td>
+                                    <td>{{dataList.alarmText}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {% for firstData in chartData.alarmDataList.RUEDL.firstData %}
+                    <a class="expansionWrap mouse-over-cursor" id="zoneBt5">
+                        <li>
+                            <div class="mapGps">
+                                <img src="{% static 'img/dashboard/gps.png' %}"/>
+                            </div>
+                            <div class="mapCont">
+                                <div class="my-margin-bot-4 mapContTop">Alarm Case : {{firstData.alarmText}}</div>
+                                <div>Asset ID : {{firstData.id}}</div>
+                                <div>Asset IP : {{firstData.ip}}</div>
+                            </div>
+                        </li>
+                    </a>
+                    {% endfor %}
+                    <div class="shadow"></div>
+                    <div id="popZoneBt5" class="pop-korea" style="display: none;">
+                        <a id="closeZoneBt5" class="popClose mouse-over-cursor">
+                            <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                        </a>
+                        <div class="popMap">
+                            <table class="popTable tableNum5">
+                                <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>ID</th>
+                                    <th>IP</th>
+                                    <th>AlarmText</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for dataList in chartData.alarmDataList.RUEDL.dataList %}
+                                <tr>
+                                    <td></td>
+                                    <td>{{dataList.id}}</td>
+                                    <td>{{dataList.ip}}</td>
+                                    <td>{{dataList.alarmText}}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    {% endif%}
+                </ul>
+            </div>
         </div>
     </div>
     <div class="container-color container-bot my-border">
@@ -312,9 +312,9 @@
                             </div>
                             <p class="botConNum my-float-left">
                                 {% if bannerData.roc < 0 %}
-                                    {% widthratio bannerData.roc 1 -1 %}
+                                {% widthratio bannerData.roc 1 -1 %}
                                 {% else %}
-                                    {{bannerData.roc}}
+                                {{bannerData.roc}}
                                 {% endif %}
                             </p>
                         </div>
