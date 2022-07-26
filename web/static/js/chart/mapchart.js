@@ -250,13 +250,14 @@ mapSvg.selectAll("circle")
     .style("stroke", "#e18a0a");
 
 
-var imgX = [40, -120, 40, -120];
-var imgY = [40, -120, -120, 40];
+var imgX = [40, -120, 40, -120, 60];
+var imgY = [40, -120, -120, 40, 60];
 
 var centerIMG = ["/web/static/img/dashboard/group_orange-1.png",
                  "/web/static/img/dashboard/group_orange-2.png",
                  "/web/static/img/dashboard/group_orange-3.png",
-                 "/web/static/img/dashboard/group_orange-4.png"];
+                 "/web/static/img/dashboard/group_orange-4.png"]
+
 
 var node = mapSvg.append("g")
             .attr("class", "nodes")
@@ -269,23 +270,15 @@ var node = mapSvg.append("g")
                 .style("cursor", "pointer")
             });
 
-
-
-
-
-
-
-
-
-
-
-
 var circles = node.append("image")
             .attr('width',80)
             .attr('height',80)
             .attr('x', function(d,i){return imgX[i];})
             .attr('y', function(d,i){return imgY[i];})
-            .attr("xlink:href", function(d,i) {return centerIMG[i];});
+            .attr("xlink:href", function(d,i){return centerIMG[i];});
+
+
+
 /*            .style("filter", "url(#seoul-drop-shadow)");
 
 var dropShadowFilter = mapSvg.append('svg:filter')
@@ -390,8 +383,8 @@ d3.json("/web/static/data/mapTopo/korea.json", function(json)
               .text(function(d) { return d.name; });
     });
 
-  var simulation = d3v4.forceSimulation()
-    .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }));
+/*  var simulation = d3v4.forceSimulation()
+    .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }));*/
 
 /*koreaNetwork.forEach(function(graph) {
       var link = mapSvg.append("g")

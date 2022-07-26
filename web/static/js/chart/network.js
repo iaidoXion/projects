@@ -8,7 +8,7 @@ var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard
 
 var simulation = d3v4.forceSimulation()
     .force("link", d3v4.forceLink().distance(150).id(function(d) { return d.id; }))
-    .force("charge", d3v4.forceManyBody().strength(-280))
+    .force("charge", d3v4.forceManyBody().strength(-200))
     .force("center", d3v4.forceCenter(width / 2, height / 3));
 
 networkData.forEach(function(graph) {
@@ -39,9 +39,11 @@ networkData.forEach(function(graph) {
         }
   };
 
+
+
   var CircleSize = function(g){
         if(g.startsWith('groupCenter') == true){
-            return "60";
+            return "50";
         }else{
             return "40";
         }
@@ -56,20 +58,39 @@ networkData.forEach(function(graph) {
             return "transparent";
         }
     };
+/*function(d,i) {
+            for (i = 0; i < worldMapData.length; i++) {
+            console.log(centerIMG[i])
+                return centerIMG[i]
+            }
+            ;}*/
 
   var circles = node.append("image")
     .attr('width',function(d) { return CircleSize(d.id); })
     .attr('height',function(d) { return CircleSize(d.id); })
     .attr('x', -31)
-    .attr('y', -55)
+    .attr('y', -35)
     .attr("xlink:href", function(d) { return fillCenter(d.id); })
+    /*.style("opacity", function(d,i) {
+    for (var i = 0; i < networkData.length; i++) {
+
+        console.log(networkData.group)
+
+
+    if (networkData.group[i].startsWith('groupCenter') == true){
+console.log(networkData.group[i])
+    }}
+
+     })*/
     .style("filter", "url(#drop-shadow)");
+
+
 
   var centerCircles = node.append("image")
     .attr('width',function(d) { return CircleSize(d.id); })
     .attr('height',function(d) { return CircleSize(d.id); })
     .attr('x', -31)
-    .attr('y', -55)
+    .attr('y', -35)
     .attr("xlink:href", function(d) { return fillCircle(d.point); })
     .style("filter", "url(#drop-shadow)");
 
@@ -84,7 +105,9 @@ networkData.forEach(function(graph) {
   var labels = node.append("text")
         .text(function(d) { return d.name;})
         .style("fill", function(d) { return textColor(d.point); })
-        .attr("text-anchor", "middle").attr('x', -11).attr('y', -28);
+        .style("font-size", "12px")
+        .style("font-weight", "bold")
+        .attr("text-anchor", "middle").attr('x', -11).attr('y', -10);
 
   node.append("title")
         .text(function(d) {
@@ -157,4 +180,4 @@ dropShadowFilter.append('svg:feBlend')
   .attr('in', 'SourceGraphic')
   .attr('in2', 'the-shadow');
 
-}
+};

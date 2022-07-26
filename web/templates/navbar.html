@@ -2,7 +2,13 @@
 {% load static %}
 <nav class="navWrap navbar navbar-expand-lg navbar-light bg-white border-bottom">
     <a class="navbar-brand navCop" href="/">
-        <div><img src="{% static 'img/common/menu/NC_logo1.png' %}"></div>
+        <div>
+            {% if Customer == 'NC' %}
+            <img src="{% static 'img/common/menu/NC_logo1.png' %}">
+            {% else %}
+            X-Factor
+            {% endif %}
+        </div>
     </a>
     <div class="collapse navbar-collapse flex-grow-0 navMenuWrap">
         {% if menuList.menuList %}

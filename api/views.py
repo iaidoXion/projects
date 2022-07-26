@@ -28,7 +28,7 @@ def DashboardData() :
         EAYL = EAY()                                                            # DB Asset(yesterday) Data Select
         sensorData = SensorAPI(SK)                                              # API Sensor(Now) Data Call
         assetAPI = assetData['dataList']
-        if Customer == 'NC' :
+        if Customer == 'NC' or 'Xfactor' :
             if ProjectType == 'System' :
                 # Asset Item Statistics
                 TAIDL = TACD(assetAPI, "today", "assetItem", 'asset')
