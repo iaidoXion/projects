@@ -117,6 +117,7 @@
     width: 100%;
     min-height: 680px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .container-center {
@@ -234,12 +235,6 @@
     z-index: 8888;
 }
 
-.mapExpand {
-    position: absolute;
-    right: 0;
-    top: 30px;
-}
-
 .popClose{
     padding: 10px;
     float: right;
@@ -249,7 +244,7 @@
 .popMap{
     width: 750px;
     height: 460px;
-    margin: O auto;
+    margin: 0 auto;
 }
 
 .popTable thead {
@@ -259,6 +254,20 @@
 
 table.popTable tbody tr.even {
     background-color: #faf8f0;
+}
+
+table.dataTable thead th,
+table.dataTable tbody td {
+    border-right: 1px solid #e5e5e5;
+}
+
+table.dataTable thead th:last-child,
+table.dataTable tbody td:last-child {
+    border-right: none;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .shadow{
