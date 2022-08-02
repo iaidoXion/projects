@@ -66,6 +66,20 @@
                     {% if MapUse.ZoneUse == 'block' %}
                     <button type="button" class="btn btn-secondary btnGu">Zone</button>
                     {%endif%}
+                    <div class="expandIconWrap">
+                        <div id="expandIconBt1" class="expandIcon mouse-over-cursor">
+                            <img src="{% static 'img/dashboard/arrows_expand.png' %}"/>
+                        </div>
+                        <div id="expandIconBt2" class="expandIcon mouse-over-cursor">
+                            <img src="{% static 'img/dashboard/arrows_expand.png' %}"/>
+                        </div>
+                        <div id="expandIconBt3" class="expandIcon mouse-over-cursor">
+                            <img src="{% static 'img/dashboard/arrows_expand.png' %}"/>
+                        </div>
+                        <div id="expandIconBt4" class="expandIcon mouse-over-cursor">
+                            <img src="{% static 'img/dashboard/arrows_expand.png' %}"/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="mapRight">
@@ -289,6 +303,32 @@
                 </ul>
             </div>
         </div>
+        <div class="expandMapWrap">
+            <div id="popExpandBt1" class="popExpandWorld" style="display: none;">
+                <a id="closeExpandBt1" class="closeExpand mouse-over-cursor">
+                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                </a>
+                <div id="popExpandWorld"></div>
+            </div>
+            <div id="popExpandBt2" class="popExpandKorea" style="display: none;">
+                <a id="closeExpandBt2" class="closeExpand mouse-over-cursor">
+                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                </a>
+                <div id="popExpandKorea"></div>
+            </div>
+            <div id="popExpandBt3" class="popExpandArea" style="display: none;">
+                <a id="closeExpandBt3" class="closeExpand mouse-over-cursor">
+                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                </a>
+                <div id="popExpandArea"></div>
+            </div>
+            <div id="popExpandBt4" class="popExpandZone" style="display: none;">
+                <a id="closeExpandBt4" class="closeExpand mouse-over-cursor">
+                    <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px"/>
+                </a>
+                <div id="popExpandZone"></div>
+            </div>
+        </div>
     </div>
     <div class="container-color container-bot my-border">
         <div class="als-container" id="demo2">
@@ -334,6 +374,8 @@
 <script src="{% static 'js/chart/piechart.js' %}"></script>
 <script src="{% static 'js/chart/mapchart.js' %}"></script>
 <script src="{% static 'js/chart/network.js' %}"></script>
+<script src="{% static 'js/chart/expandmapchart.js' %}"></script>
+<script src="{% static 'js/chart/expandnetwork.js' %}"></script>
 <script type="text/javascript">
 	{% if chartData.barChartDataList %}
 	var barChartData = [
@@ -367,6 +409,19 @@
 		{x:37.397501793831225,y:127.11068799834034}
 	];
 var networkData = [{
+  "nodes": [
+    {% for nodeData in chartData.AssociationDataList.nodeDataList %}
+    {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
+    {% endfor %}
+  ],
+  "links": [
+    {% for linksData in chartData.AssociationDataList.linksDataList %}
+    {"source": '{{linksData.source}}', "target": '{{linksData.target}}', "distance": 200},
+    {% endfor %}
+  ]
+}];
+
+var expandnetworkData = [{
   "nodes": [
     {% for nodeData in chartData.AssociationDataList.nodeDataList %}
     {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
@@ -426,7 +481,10 @@ var seongnamNetwork = [
 	koreaMapChart(worldMapData, koreaNetwork);
 	seongnamMap(worldMapData, seongnamNetwork);
 	networkChart(networkData);
-
+	expandWorldMapChart(worldMapData, mapNetwork);
+	expandKoreaMapChart(worldMapData, mapNetwork);
+    expandSeongnamMap(worldMapData, seongnamNetwork);
+    expandnetworkChart(networkData);
 
 
 

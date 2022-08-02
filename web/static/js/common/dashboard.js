@@ -57,27 +57,78 @@ $(function() {
 
 //맵차트 탭
 $(function() {
-    $('.btnKorea').click(function() {
-        $('.world-map, .si-map, .gu-map, .dong-map').hide();
-        $('.korea-map').show();
-    });
     $('.btnWorld').click(function() {
         $('.korea-map, .si-map, .gu-map, .dong-map').hide();
+        $('#expandIconBt2, #expandIconBt3, #expandIconBt4').hide();
         $('.world-map').show();
+        $('#expandIconBt1').show();
+    });
+    $('.btnKorea').click(function() {
+        $('.world-map, .si-map, .gu-map, .dong-map').hide();
+        $('#expandIconBt1, #expandIconBt3, #expandIconBt4').hide();
+        $('.korea-map').show();
+        $('#expandIconBt2').show();
     });
     $('.btnSi').click(function() {
         $('.korea-map, .world-map, .gu-map, .dong-map').hide();
+        $('#expandIconBt1, #expandIconBt2, #expandIconBt4').hide();
         $('.si-map').show();
+        $('#expandIconBt3').show();
     });
     $('.btnGu').click(function() {
         $('.korea-map, .world-map, .si-map, .dong-map').hide();
+        $('#expandIconBt1, #expandIconBt2, #expandIconBt3').hide();
         $('.gu-map').show();
+        $('#expandIconBt4').show();
     });
     $('.btnDong').click(function() {
         $('.korea-map, .world-map, .si-map, .gu-map').hide();
         $('.dong-map').show();
     });
 
+});
+
+// 맵 화면 확장 아이콘
+$(document).ready(function(){
+    $('#expandIconBt1').show();
+});
+
+// 맵 화면 팝업
+$(function(){
+    $('#expandIconBt1').click(function(){
+        $('#popExpandBt1').show();
+    });
+
+    $('#closeExpandBt1').click(function(){
+        $('#popExpandBt1').hide();
+    });
+});
+$(function(){
+    $('#expandIconBt2').click(function(){
+        $('#popExpandBt2').show();
+    });
+
+    $('#closeExpandBt2').click(function(){
+        $('#popExpandBt2').hide();
+    });
+});
+$(function(){
+    $('#expandIconBt3').click(function(){
+        $('#popExpandBt3').show();
+    });
+
+    $('#closeExpandBt3').click(function(){
+        $('#popExpandBt3').hide();
+    });
+});
+$(function(){
+    $('#expandIconBt4').click(function(){
+        $('#popExpandBt4').show();
+    });
+
+    $('#closeExpandBt4').click(function(){
+        $('#popExpandBt4').hide();
+    });
 });
 
 //슬라이드배너
