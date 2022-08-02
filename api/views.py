@@ -28,35 +28,36 @@ def DashboardData() :
         EAYL = EAY()                                                            # DB Asset(yesterday) Data Select
         sensorData = SensorAPI(SK)                                              # API Sensor(Now) Data Call
         assetAPI = assetData['dataList']
+        sensorAPI = sensorData['dataList']
         if Customer == 'NC' or 'Xfactor' :
             if ProjectType == 'System' :
                 # Asset Item Statistics
-                TAIDL = TACD(assetAPI, "today", "assetItem", 'asset')
+                TAIDL = TACD(sensorAPI, "today", "assetItem")
                 SAIDL = SACD(TAIDL, "assetItem", "group")
 
                 # OS Item Statistics
-                TOIDL = TACD(assetAPI, "today", "osItem", 'asset')
+                TOIDL = TACD(sensorAPI, "today", "osItem")
                 SOIDL = SACD(TOIDL, "osItem", "group")
 
                 # Drive Use Size Statistics
                 ## Today compare Count (now Asset API Data & yesterday Asset Table Data)
-                TDUSDLT = TACD(assetAPI, "today", "DUS", 'asset')
-                TDUSDLY = TACD(EAYL, "yesterday", "DUS", '')
+                TDUSDLT = TACD(sensorAPI, "today", "DUS")
+                TDUSDLY = TACD(EAYL, "yesterday", "DUS")
                 DUSCTDL = [TDUSDLT, TDUSDLY]
                 SDUSDLT = SACD(DUSCTDL, "DUS", "count")
 
                 # No Login History Statistics
                 ## Today compare Count (now Asset API Data & yesterday Asset Table Data)
-                TNLHDLT = TACD(assetAPI, "today", "LH", 'asset')
-                TNLHDLY = TACD(EAYL, "yesterday", "LH", '')
+                TNLHDLT = TACD(sensorAPI, "today", "LH")
+                TNLHDLY = TACD(EAYL, "yesterday", "LH")
                 NLHCTDL = [TNLHDLT, TNLHDLY]
                 SNLHDLT = SACD(NLHCTDL, "LH", "count")
-
+                #print(TNLHDLT)
                 # RAM USE Size Statistics
                 ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
-                TRUSDLT = TACD(sensorData['dataList'], "today", "RUET", 'sensor')
+                TRUSDLT = TACD(sensorAPI, "today", "RUET")
                 #print(TRUSDLT)
-                TRUSDLU = TACD(sensorData['dataList'], "today", "RUEU", 'sensor')
+                TRUSDLU = TACD(sensorAPI, "today", "RUEU")
                 #print(TRUSDLU)
                 #TRUSDLY = TACD(EAYL, "yesterday", "ramUseSize", '')
                 RUSCTDL = [TRUSDLT, TRUSDLU]
@@ -64,15 +65,15 @@ def DashboardData() :
 
                 # Listen Port Count Statistics
                 ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
-                TLPCDLT = TACD(sensorData['dataList'], "today", "LPC", 'sensor')
-                TLPCDLY = TACD(EAYL, "yesterday", "LPC", '')
+                TLPCDLT = TACD(sensorAPI, "today", "LPC")
+                TLPCDLY = TACD(EAYL, "yesterday", "LPC")
                 LPCCTDL = [TLPCDLT, TLPCDLY]
                 LPCDLT = SACD(LPCCTDL, "LPC", "count")
 
                 # Established Port Count Statistics
                 ## Today compare Count (now sensor API Data & yesterday Asset Table Data)
-                TEPCDLT = TACD(sensorData['dataList'], "today", "EPC", 'sensor')
-                TEPCDLY = TACD(EAYL, "yesterday", "EPC", '')
+                TEPCDLT = TACD(sensorAPI, "today", "EPC")
+                TEPCDLY = TACD(EAYL, "yesterday", "EPC")
                 EPCCTDL = [TEPCDLT, TEPCDLY]
                 EPCDLT = SACD(EPCCTDL, "EPC", "count")
 
@@ -113,7 +114,6 @@ def DashboardData() :
                 TEPCALDL = TSAL(SEPCADL, 'list', 'EPC')
                 ALD = [TDUSALDL, TLHALDL, TRUSALDL, TLPCALDL, TEPCALDL]
 
-
                 ## Network
                 ### Data Grouping(Statistics) by case
                 SDUSND = ASSN(SDUSADL, 'group', 'DUS')
@@ -147,7 +147,6 @@ def DashboardData() :
                 BNDL = TSCD(SBNDL, "Banner")
                 # Alarm List
                 ALDL = TSCD(ALD, "alarmList")
-
 
             elif ProjectType == 'Service':
                 print()

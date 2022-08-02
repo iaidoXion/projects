@@ -7,6 +7,7 @@ today = datetime.today().strftime("%Y-%m-%d")
 
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
+AlarmStandard = SETTING['PROJECT']['Alarm']['StandardDate']
 AlarmRamUsage = SETTING['PROJECT']['Alarm']['RamUsage']
 alarmCaseFirst = SETTING['PROJECT']['Alarm']['Case']['First']
 alarmCaseSecond = SETTING['PROJECT']['Alarm']['Case']['Second']
@@ -40,7 +41,7 @@ def chart_data(data, type, statistics) :
             DUSCY = len(DLMerge['driveSize_x'].compare(DLMerge['driveSize_y']))
             INM = [alarmCaseFirst]
         elif type == 'LH':
-            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < weekAgo)])
+            DUSCY = len(DLMerge[(DLMerge['lastLogin_x'] < AlarmStandard)])
             INM = [alarmCaseSecond]
         elif type == 'RUE':
             DUSCY = 0
@@ -56,8 +57,10 @@ def chart_data(data, type, statistics) :
         elif type == 'EPC':
             DUSCY = len(DLMerge['establishedPortCount_x'].compare(DLMerge['establishedPortCount_y']))
             INM = [alarmCaseFifth]
-
-        IC = [DTC-DUSCY]
+        if type == 'LH':
+            IC = [DUSCY]
+        else :
+            IC = [DTC-DUSCY]
 
     RD = {"name": INM, "value": IC}
     return RD

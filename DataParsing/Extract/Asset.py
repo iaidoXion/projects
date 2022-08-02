@@ -24,7 +24,7 @@ def past_data() :
         AssetSelectQ = """
             select 
                 computer_id,
-                drive_use_size,
+                disk_used_space,
                 listen_port_count,
                 established_port_count,
                 ram_use_size,
