@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 
 import pandas as pd
 import json
+
 weekAgo = (datetime.today() - timedelta(7)).strftime("%Y-%m-%d")
 today = datetime.today().strftime("%Y-%m-%d")
 
@@ -29,6 +30,7 @@ def calculation(pastData, todayData) :
     return RD
 
 def alarm_case_detection(data, case) :
+    #print(data)
     if case == 'DUS':
         AT = alarmCaseFirst
     elif case == 'LH':
@@ -48,10 +50,13 @@ def alarm_case_detection(data, case) :
     DLC =['name', 'value', 'alarmText']
     for j in range(len(DLMerge)):
         if case == 'LH':
-            if DLMerge['Today'][j] < AlarmStandard :
-                AI = DLMerge['id'][j]
-                IP = DLMerge['ip'][j]
-                DL.append([AI, IP, AT])
+            if type(DLMerge['Today'][j]) != float and DLMerge['Today'][j] != '[current result unavailable]':
+                #date = datetime.strptime(DLMerge['Today'][j].split(' +')[0], "%a, %d %b %Y %H:%M:%S")
+                #date = str(date).split(' ')[0]
+                if DLMerge['Today'][j] < AlarmStandard :
+                    AI = DLMerge['id'][j]
+                    IP = DLMerge['ip'][j]
+                    DL.append([AI, IP, AT])
         elif case == 'RUE':
             if DLMerge['Today'][j] != 0 and DLMerge['Past'][j] != 0 :
                 usage = DLMerge['Past'][j]/DLMerge['Today'][j]*100
