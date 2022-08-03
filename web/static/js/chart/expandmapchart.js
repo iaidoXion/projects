@@ -486,11 +486,11 @@ d3.json("/web/static/data/mapTopo/korea.json", function(json)
 
 };
 
-function expandSeongnamMap(worldMapData, seongnamNetwork){
+function expandSeongnamMap(worldMapData, seongnamNetworkExpand){
     var width = 1880, height = 880;
     var svg = d3.select("#popExpandArea").append("svg").attr("width", width).attr("height", height).style("margin-left", '1%');
     var map = svg.append("g").attr("id", "map"),places = svg.append("g").attr("id", "places");
-    var projection = d3.geo.mercator().center([127.1094211519, 37.399]).scale(180000).translate([width/2, height/2]);
+    var projection = d3.geo.mercator().center([127.1094211519, 37.399]).scale(265000).translate([width/2, height/2]);
     var path = d3.geo.path().projection(projection);
 
 svg.selectAll("circle")
@@ -549,7 +549,7 @@ setInterval(function(){
     .force("link", d3v4.forceLink().distance(d => d.distance).id(function(d) { return d.id; }))
     .force("charge", d3v4.forceManyBody().strength(-170));
 
-      seongnamNetwork.forEach(function(graph) {
+      seongnamNetworkExpand.forEach(function(graph) {
       var link = svg.append("g")
         .attr("class", "links")
         .selectAll("line")
