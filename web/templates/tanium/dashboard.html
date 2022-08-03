@@ -408,71 +408,83 @@
 		{x:37.3994744444141,y:127.11131206038527},
 		{x:37.397501793831225,y:127.11068799834034}
 	];
-var networkData = [{
-  "nodes": [
-    {% for nodeData in chartData.AssociationDataList.nodeDataList %}
-    {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
-    {% endfor %}
-  ],
-  "links": [
-    {% for linksData in chartData.AssociationDataList.linksDataList %}
-    {"source": '{{linksData.source}}', "target": '{{linksData.target}}', "distance": 200},
-    {% endfor %}
-  ]
-}];
+    var networkData = [{
+      "nodes": [
+        {% for nodeData in chartData.AssociationDataList.nodeDataList %}
+        {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
+        {% endfor %}
+      ],
+      "links": [
+        {% for linksData in chartData.AssociationDataList.linksDataList %}
+        {"source": '{{linksData.source}}', "target": '{{linksData.target}}', "distance": 200},
+        {% endfor %}
+      ]
+    }];
 
-var expandnetworkData = [{
-  "nodes": [
-    {% for nodeData in chartData.AssociationDataList.nodeDataList %}
-    {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
-    {% endfor %}
-  ],
-  "links": [
-    {% for linksData in chartData.AssociationDataList.linksDataList %}
-    {"source": '{{linksData.source}}', "target": '{{linksData.target}}', "distance": 200},
-    {% endfor %}
-  ]
-}];
+    var expandnetworkData = [{
+      "nodes": [
+        {% for nodeData in chartData.AssociationDataList.nodeDataList %}
+        {"id": '{{nodeData.id}}', "group": '{{nodeData.group}}', "name": '{{nodeData.name}}', "alarmCase" :  '{{nodeData.alarmCase}}', "alarmCount" :  '{{nodeData.alarmCount}}', "point": '{{nodeData.point}}'},
+        {% endfor %}
+      ],
+      "links": [
+        {% for linksData in chartData.AssociationDataList.linksDataList %}
+        {"source": '{{linksData.source}}', "target": '{{linksData.target}}', "distance": 200},
+        {% endfor %}
+      ]
+    }];
 
-var mapNetwork = [
-{
-  "nodes": [
-    {"id": "Ncrd", "group": "ncrd", "x":830, "y":254},
-    {"id": "Ncalpha", "group": "ncalpha", "x":730, "y":354}
-  ],
-  "links": [
-    {"source": "Ncrd", "target": "Ncalpha", "distance": 200},
-    {"source": "Ncalpha", "target": "Ncrd", "distance": 200}
-  ]
-}
-];
+    var mapNetwork = [
+    {
+      "nodes": [
+        {"id": "Ncrd", "group": "ncrd", "x":830, "y":254},
+        {"id": "Ncalpha", "group": "ncalpha", "x":730, "y":354}
+      ],
+      "links": [
+        {"source": "Ncrd", "target": "Ncalpha", "distance": 200},
+        {"source": "Ncalpha", "target": "Ncrd", "distance": 200}
+      ]
+    }
+    ];
 
-var koreaNetwork = [
-{
-  "nodes": [
-    {"id": "Ncrd", "group": "ncrd", "x":455, "y":91},
-    {"id": "Ncalpha", "group": "ncalpha", "x":355, "y":191}
-  ],
-  "links": [
-    {"source": "Ncrd", "target": "Ncalpha", "distance": 250},
-    {"source": "Ncalpha", "target": "Ncrd", "distance": 250}
-  ]
-}
-];
+    var koreaNetwork = [
+    {
+      "nodes": [
+        {"id": "Ncrd", "group": "ncrd", "x":455, "y":91},
+        {"id": "Ncalpha", "group": "ncalpha", "x":355, "y":191}
+      ],
+      "links": [
+        {"source": "Ncrd", "target": "Ncalpha", "distance": 250},
+        {"source": "Ncalpha", "target": "Ncrd", "distance": 250}
+      ]
+    }
+    ];
 
-var seongnamNetwork = [
-{
-  "nodes": [
-    {"id": "Ncrd", "group": "ncrd", "x":555, "y":251},
-    {"id": "Ncalpha", "group": "ncalpha", "x":455, "y":351}
-  ],
-  "links": [
-    {"source": "Ncrd", "target": "Ncalpha", "distance": 300},
-    {"source": "Ncalpha", "target": "Ncrd", "distance": 300}
-  ]
-}
-];
+    var seongnamNetwork = [
+    {
+      "nodes": [
+        {"id": "Ncrd", "group": "ncrd", "x":555, "y":251},
+        {"id": "Ncalpha", "group": "ncalpha", "x":455, "y":351}
+      ],
+      "links": [
+        {"source": "Ncrd", "target": "Ncalpha", "distance": 300},
+        {"source": "Ncalpha", "target": "Ncrd", "distance": 300}
+      ]
+    }
+    ];
 
+    var seongnamNetworkExpand = [
+    {
+      "nodes": [
+        {"id": "Ncrd", "group": "ncrd", "x":555, "y":251},
+        {"id": "Ncalpha", "group": "ncalpha", "x":455, "y":351}
+      ],
+      "links": [
+        {"source": "Ncrd", "target": "Ncalpha", "distance": 400},
+        {"source": "Ncalpha", "target": "Ncrd", "distance": 400}
+      ]
+    }
+    ];
 
 	barChart(barChartData);
 	lineChart(lineChartData);
@@ -483,7 +495,7 @@ var seongnamNetwork = [
 	networkChart(networkData);
 	expandWorldMapChart(worldMapData, mapNetwork);
 	expandKoreaMapChart(worldMapData, mapNetwork);
-    expandSeongnamMap(worldMapData, seongnamNetwork);
+    expandSeongnamMap(worldMapData, seongnamNetworkExpand);
     expandnetworkChart(networkData);
 
 
