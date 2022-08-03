@@ -37,10 +37,17 @@ def banner(data, type) :
         elif type == 'today' :
             for j in range(len(data[i]['name'])) :
                 name = data[i]['name'][j]
+                if i == 1 :
+                    if name == 'Other' :
+                        name = 'Other Asset'
+                if i == 2:
+                    if name == 'Other' :
+                        name = 'Other OS'
                 value = data[i]['value'][j]
                 DFDL.append([name, value])
 
     RD = pd.DataFrame(DFDL, columns=DFCNM)
+    #print(RD)
     return RD
 
 def line_chart(data) :

@@ -48,7 +48,7 @@ def chart_data(data, type, statistics) :
             for i in range(len(DLMerge['id'])):
                 if DLMerge['ramSize_x'][i] != 0 and DLMerge['ramSize_y'][i] != 0 :
                     usage = DLMerge['ramSize_y'][i]/DLMerge['ramSize_x'][i]*100
-                    if usage < AlarmRamUsage :
+                    if usage > AlarmRamUsage :
                         DUSCY = DUSCY+1
             INM = [alarmCaseThird]
         elif type == 'LPC':
@@ -57,10 +57,11 @@ def chart_data(data, type, statistics) :
         elif type == 'EPC':
             DUSCY = len(DLMerge['establishedPortCount_x'].compare(DLMerge['establishedPortCount_y']))
             INM = [alarmCaseFifth]
-        if type == 'LH':
+        if type == 'LH' or type == 'RUE':
             IC = [DUSCY]
         else :
             IC = [DTC-DUSCY]
+
 
     RD = {"name": INM, "value": IC}
     return RD

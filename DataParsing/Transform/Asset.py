@@ -16,9 +16,14 @@ def data_frame(data, day, type):
                     item = 'Notebook'
                 if itemPer.startswith('imac'):
                     item = 'Desktop'
+                if itemPer == '[current result unavailable]' :
+                    item = 'Other'
                 itemIndex = 'assetItem'
             if type == 'osItem':
                 item = d[5]
+                itemPer = item.lower()
+                if itemPer == '[current result unavailable]':
+                    item = 'Other'
                 itemIndex = 'os'
             if type == 'DUS':
                 item = d[4]

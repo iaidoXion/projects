@@ -21,6 +21,7 @@ def calculation(pastData, todayData) :
     PTDLMerge = pd.merge(left=pastData, right=todayData, how="outer", on="name").sort_values(by="name", ascending=True).reset_index(drop=True)
     ROCDFDL = []
     ROCDFCNM = ['name','ROC']
+    PTDLMerge = PTDLMerge.fillna(0)
     for i in range(len(PTDLMerge['name'])) :
         value = int(PTDLMerge['value_y'][i]) - int(PTDLMerge['value_x'][i])
         ROCDFDL.append([PTDLMerge['name'][i], value])
