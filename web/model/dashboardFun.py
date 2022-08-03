@@ -1,4 +1,4 @@
-from api.views import DashboardData
+from web.model.views import DashboardData
 
 def DashboardDataList() :
     DCDL = DashboardData()

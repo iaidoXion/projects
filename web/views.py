@@ -2,8 +2,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from web.forms import UserForm
-from web.commonFun import MenuList
-from web.dashboardFun import DashboardDataList
+from web.model.commonFun import MenuList
+from web.model.dashboardFun import DashboardDataList
 import urllib3
 import json
 with open("setting.json", encoding="UTF-8") as f:

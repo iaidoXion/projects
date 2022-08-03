@@ -7,7 +7,6 @@ urlpatterns = [
     path('web/', include('web.urls')),
     path('login/', auth_views.LoginView.as_view(template_name='common/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    #path('api/', include('api.urls')),
     path('', views.index, name='index'),  # '/' 에 해당되는 path
     path('admin/', admin.site.urls),
     path('signup/', views.signup, name='signup'),

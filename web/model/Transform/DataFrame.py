@@ -1,7 +1,7 @@
 import pandas as pd
-from datetime import datetime, timedelta
-def data_frame(data, day, type):
-    #print(data)
+from datetime import datetime
+
+def plug_in(data, day, type):
     PDLC = len(data)
     DFL = []
     for d in data :
@@ -62,9 +62,6 @@ def data_frame(data, day, type):
             elif type == 'LH':
                 item = str(d[5]).split(' ')[0]
                 itemIndex = 'lastLogin'
-            #elif type == 'ramUseSize':
-                #    item = str(data[i][4])
-                #itemIndex = 'ramSize'
             elif type == 'LPC':
                 item = str(d[2])
                 itemIndex = 'listenPortCount'
