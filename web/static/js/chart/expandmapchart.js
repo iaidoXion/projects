@@ -619,10 +619,10 @@ setInterval(function(){
                 .style("cursor", "pointer")
           })
         var circles = node.append("image")
-        .attr('width',80)
-        .attr('height',80)
-        .attr('x', 410)
-        .attr('y', 100)
+        .attr('width',120)
+        .attr('height',120)
+        .attr('x', 370)
+        .attr('y', 70)
         .attr("xlink:href", function(d) { return fillCircle(d.id); })
         .style("filter", "url(#seongnam-drop-shadow)");
 

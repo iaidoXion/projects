@@ -1,4 +1,4 @@
-function expandnetworkChart(networkData){
+function expandnetworkChart(expandnetworkData){
 
 var width = 1880, height = 880;
 
