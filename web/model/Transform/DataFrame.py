@@ -1,6 +1,6 @@
 import pandas as pd
 from datetime import datetime
-
+today = datetime.today().strftime("%Y-%m-%d")
 def plug_in(data, day, type):
     PDLC = len(data)
     DFL = []
@@ -32,6 +32,8 @@ def plug_in(data, day, type):
                 if d[2] != '[current result unavailable]':
                     date = datetime.strptime(d[2].split(' +')[0], "%a, %d %b %Y %H:%M:%S")
                     item = str(date).split(' ')[0]
+                else :
+                    item = today
                 itemIndex = 'lastLogin'
             if type == 'RUET':
                 item = d[13].split(' ')[0]
