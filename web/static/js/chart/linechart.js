@@ -41,7 +41,7 @@ var yScale = d3.scale.linear()
   .domain([yMin, yMax])
   .range([height - marginTop, 0]);
 
-var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96"];
+var color = ["#e08a0b","#f5a631","#f8c477","#f2cd96","#e08a0b"];
 /* Add SVG */
 const svg = d3.select("#lineChart")
   .style("margin-left", '3%')

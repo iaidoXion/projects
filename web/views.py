@@ -6,6 +6,14 @@ from web.model.commonFun import MenuList
 from web.model.dashboardFun import DashboardDataList
 import urllib3
 import json
+
+
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+
+
+
 with open("setting.json", encoding="UTF-8") as f:
     SETTING = json.loads(f.read())
 ProjectType = SETTING['PROJECT']['TYPE']
@@ -69,3 +77,23 @@ def report(request):
 def setting(request):
     returnData = {'menuList': menuSettingList}
     return render(request, 'common/setting.html', returnData)
+
+@login_required(login_url='common:login')
+def userinfo(request):
+    return render(request, 'common/userInfo.html')
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'common/change_password.html', {
+        'form': form
+    })
