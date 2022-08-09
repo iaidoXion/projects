@@ -80,7 +80,8 @@ def setting(request):
 
 @login_required(login_url='common:login')
 def userinfo(request):
-    return render(request, 'common/userInfo.html')
+    returnData = {'menuList': menuSettingList}
+    return render(request, 'common/change_password.html', returnData)
 
 def change_password(request):
     if request.method == 'POST':
