@@ -45,6 +45,7 @@ def alarm_case_detection(data, case) :
     TDL = data[0]
     PDL = data[1]
     DLMerge = pd.merge(left=TDL, right=PDL, how="outer", on="id").sort_values(by="id", ascending=True).reset_index(drop=True).drop(['ip_y'], axis=1)
+    #DLMerge = DLMerge.dropna(axis=0)
     DLMerge.columns = ['id', 'Today', 'ip', 'Past']
     DL = []
     DLC =['name', 'value', 'alarmText']
@@ -92,8 +93,6 @@ def network(data, type, case) :
                 IPS = data['value'][i].split('.')
                 if len(IPS) == 4 :
                     IP = IPS[0] + '.' + IPS[1] + '.' + IPS[2]
-                else :
-                    IP = ''
                 ADL.append([IP])
         RD = pd.DataFrame(ADL, columns=['group']).groupby(['group']).size().reset_index(name='counts')
         RD['alarmCase'] = AT
