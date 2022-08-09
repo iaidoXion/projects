@@ -18,6 +18,6 @@ urlpatterns = [
     path('security/', views.security, name='security'),
     path('report/', views.report, name='report'),
     path('setting/', views.setting, name='setting'),
-    #path('userinfo/', views.userinfo, name='userinfo'),
-    path('userinfo/', views.change_password, name='change_password'),
+    path('userinfo/', views.userinfo, name='userinfo'),
+    path('changepassword/', views.change_password, name='change_password'),
 ]
