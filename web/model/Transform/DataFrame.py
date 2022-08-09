@@ -2,7 +2,6 @@ import pandas as pd
 from datetime import datetime
 today = datetime.today().strftime("%Y-%m-%d")
 def plug_in(data, day, type):
-    PDLC = len(data)
     DFL = []
     for d in data :
         if day == 'today' :
@@ -32,8 +31,6 @@ def plug_in(data, day, type):
                 if d[2] != '[current result unavailable]':
                     date = datetime.strptime(d[2].split(' +')[0], "%a, %d %b %Y %H:%M:%S")
                     item = str(date).split(' ')[0]
-                else :
-                    item = today
                 itemIndex = 'lastLogin'
             if type == 'RUET':
                 item = d[13].split(' ')[0]
@@ -76,13 +73,3 @@ def plug_in(data, day, type):
     DF = pd.DataFrame(DFL, columns=DFC).sort_values(by="id", ascending=False).reset_index(drop=True)
     #print(DF)
     return DF
-
-
-
-
-
-
-
-
-
-

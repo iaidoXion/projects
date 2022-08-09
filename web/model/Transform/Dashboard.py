@@ -88,11 +88,8 @@ def alarm(data, type, case) :
         DL = []
         DC = ['group','alarmCount','id','name','alarmCase']
         for i in range(len(data.group)) :
-            if data.group[i] :
-                groupNameCountSplit = data.group[i].split('.')
-                groupNameCount = groupNameCountSplit[0]+groupNameCountSplit[1]+groupNameCountSplit[2]
-            else :
-                groupNameCount = 100
+            groupNameCountSplit = data.group[i].split('.')
+            groupNameCount = groupNameCountSplit[0]+groupNameCountSplit[1]+groupNameCountSplit[2]
             DL.append([data.group[i], data.counts[i], 'group'+str(groupNameCount)+case, case, AT])
         RD=[DC,DL]
     return RD
