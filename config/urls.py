@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.template.defaulttags import url
 from django.urls import path, include
 from web import views
 
@@ -18,6 +17,7 @@ urlpatterns = [
     path('security/', views.security, name='security'),
     path('report/', views.report, name='report'),
     path('setting/', views.setting, name='setting'),
-    path('userinfo/', views.userinfo, name='userinfo'),
-    path('changepassword/', views.change_password, name='change_password'),
+    path('userinfo/', views.change_password, name='change_password'),
+    path('oldDashboard/', views.software, name='software'),
 ]
+
