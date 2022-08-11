@@ -21,4 +21,15 @@
     <p class="text-center text-muted small">Don't have an account? <a href="/signup/">Sign up here!</a></p>
 </div>
 
+{% if messages %}
+{% for message in messages %}
+{% if message.tags %}
+<script>
+    alert('{{ message }}')
+</script>
+    {% endif %}
+    {% endfor %}
+
+{% endif %}
+
 {% endblock %}

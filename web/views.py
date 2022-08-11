@@ -6,11 +6,11 @@ from web.model.commonFun import MenuList
 from web.model.dashboardFun import DashboardDataList
 import urllib3
 import json
-
-
-from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib import messages
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
 
 
 
@@ -61,7 +61,11 @@ def assetWeb(request):
 
 @login_required(login_url='common:login')
 def software(request):
-    return render(request, 'tanium/software.html', menuSettingList)
+    chartData = DashboardDataList()
+    MapUse = {"WorldUse": WorldUse, "KoreaUse": KoreaUse, "AreaUse": AreaUse, "ZoneUse": ZoneUse}
+    returnData = {'menuList': menuSettingList, 'chartData': chartData, 'MapUse': MapUse, 'Customer': Customer}
+    # print(chartData)
+    return render(request, 'tanium/software.html', returnData)
 
 @login_required(login_url='common:login')
 def security(request):
@@ -83,18 +87,16 @@ def userinfo(request):
     returnData = {'menuList': menuSettingList}
     return render(request, 'common/change_password.html', returnData)
 
+@login_required(login_url='common:login')
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
-        else:
-            messages.error(request, 'Please correct the error below.')
+            messages.success(request, '패스워드가 성공적으로 변경되었습니다.')
+            return redirect('login')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'common/change_password.html', {
-        'form': form
-    })
+    return render(request, 'common/change_password.html', {'form': form, 'menuList': menuSettingList})
+
