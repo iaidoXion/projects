@@ -1,85 +1,85 @@
-<!-- 네비게이션바 -->
-{% load static %}
-<nav class="navWrap navbar navbar-expand-lg navbar-light bg-white border-bottom">
-    <a class="navbar-brand navCop" href="/">
-        <div>
-            {% if Customer == 'NC' %}
-            <img src="{% static 'img/common/menu/NC_logo1.png' %}">
-            {% else %}
-            <img src="{% static 'img/common/menu/X-Factor_logo.png' %}">
-            {% endif %}
-        </div>
-    </a>
-    <div class="collapse navbar-collapse flex-grow-0 navMenuWrap">
-        {% if menuList.menuList %}
-            <ul class="navbar-nav">
-                {% for menu in menuList.menuList %}
-                    {% if menu.menuUse == '1' %}
-                        <li class="nav-item ">
-                            <!--img class="navImg" src="{% static menu.menuImg %}"/-->
-                            <a  class="nav-link navTxt" style="font-weight : bold" href="/{{menu.menuUrl}}/">
-                                {{ menu.menuName }}
-                            </a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        {% else %}
-            <ul class="navbar-nav">
-                <li class="nav-item">메뉴를 설정해 주세요</li>
-            </ul>
-        {% endif %}
-    </div>
-    <ul class="my-float-right navUser">
-        {% if user.is_authenticated %}
-        <li class="navRight nav-item">
+<!--&lt;!&ndash; 네비게이션바 &ndash;&gt;-->
+<!--{% load static %}-->
+<!--<nav class="navWrap navbar navbar-expand-lg navbar-light bg-white border-bottom">-->
+<!--    <a class="navbar-brand navCop" href="/">-->
+<!--        <div>-->
+<!--            {% if Customer == 'NC' %}-->
+<!--            <img src="{% static 'img/common/menu/NC_logo1.png' %}">-->
+<!--            {% else %}-->
+<!--            <img src="{% static 'img/common/menu/X-Factor_logo.png' %}">-->
+<!--            {% endif %}-->
+<!--        </div>-->
+<!--    </a>-->
+<!--    <div class="collapse navbar-collapse flex-grow-0 navMenuWrap">-->
+<!--        {% if menuList.menuList %}-->
+<!--            <ul class="navbar-nav">-->
+<!--                {% for menu in menuList.menuList %}-->
+<!--                    {% if menu.menuUse == '1' %}-->
+<!--                        <li class="nav-item ">-->
+<!--                            &lt;!&ndash;img class="navImg" src="{% static menu.menuImg %}"/&ndash;&gt;-->
+<!--                            <a  class="nav-link navTxt" style="font-weight : bold" href="/{{menu.menuUrl}}/">-->
+<!--                                {{ menu.menuName }}-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    {% endif %}-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
+<!--        {% else %}-->
+<!--            <ul class="navbar-nav">-->
+<!--                <li class="nav-item">메뉴를 설정해 주세요</li>-->
+<!--            </ul>-->
+<!--        {% endif %}-->
+<!--    </div>-->
+<!--    <ul class="my-float-right navUser">-->
+<!--        {% if user.is_authenticated %}-->
+<!--        <li class="navRight nav-item">-->
 
-                <div class="navUserInfo">
-<!--                    <select name="language" class="navLanguage">
-                      <option value="Korean" selected="selected">Korean(한국어)</option>
-                      <option value="English">English(English)</option>
-                    </select>-->
-                    <p class="navUserTime">
-                        Access Time : {{ user.last_login|date:'Y-m-d a H:i' }}
-                    </p>
-                  <div class="userInfo">
-                     <a class="mouse-over-cursor navUserImg" href="#">
-                            <img class="my-float-left" src="{% static 'img/common/menu/user.png' %}" width="20px" height="20px" />
-                        </a>
-                  </div>
-                </div>
-        </li>
-        <li>
-            <div class="userInfoOpen">
-                <div class="userInfoTop">
-                    <div class="userInfoTopLeft">
-                        <img src="{% static 'img/common/menu/user.png' %}" width="70px" height="70px" />
-                    </div>
-                    <div class="userInfoClose mouse-over-cursor">
-                        <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px">
-                    </div>
-                    <ul class="userInfoTopRight">
-                            <p>
-                                {{ user.last_name }}{{ user.first_name }}
-                            </p>
-                            <p>
-                                {{ user.email }}<br>
-                            </p>
-                        </ul>
-                    </div>
-                    <div class="userInfoMid">
-                        <p class="userInfoMidT">계정 관리</p>
-                        <p class="userInfoMidB">개인 계정</p>
-                    </div>
-                    <div class="userInfoBot">
-                        <div>
-                            <a href="javascript:void(0);" onclick="confirmLogout();" class="logoutWrap mouse-over-cursor">
-                                로그아웃
-                            </a>
-                        </div>
-                    </div>
-                </div>
-        </li>
-        {% endif %}
-    </ul>
-</nav>
+<!--                <div class="navUserInfo">-->
+<!--&lt;!&ndash;                    <select name="language" class="navLanguage">-->
+<!--                      <option value="Korean" selected="selected">Korean(한국어)</option>-->
+<!--                      <option value="English">English(English)</option>-->
+<!--                    </select>&ndash;&gt;-->
+<!--                    <p class="navUserTime">-->
+<!--                        Access Time : {{ user.last_login|date:'Y-m-d a H:i' }}-->
+<!--                    </p>-->
+<!--                  <div class="userInfo">-->
+<!--                     <a class="mouse-over-cursor navUserImg" href="#">-->
+<!--                            <img class="my-float-left" src="{% static 'img/common/menu/user.png' %}" width="20px" height="20px" />-->
+<!--                        </a>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div class="userInfoOpen">-->
+<!--                <div class="userInfoTop">-->
+<!--                    <div class="userInfoTopLeft">-->
+<!--                        <img src="{% static 'img/common/menu/user.png' %}" width="70px" height="70px" />-->
+<!--                    </div>-->
+<!--                    <div class="userInfoClose mouse-over-cursor">-->
+<!--                        <img class="imgCloseGray" src="{% static 'img/common/close.png' %}" width="10px" height="10px">-->
+<!--                    </div>-->
+<!--                    <ul class="userInfoTopRight">-->
+<!--                            <p>-->
+<!--                                {{ user.last_name }}{{ user.first_name }}-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                                {{ user.email }}<br>-->
+<!--                            </p>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <div class="userInfoMid">-->
+<!--                        <p class="userInfoMidT">계정 관리</p>-->
+<!--                        <p class="userInfoMidB">개인 계정</p>-->
+<!--                    </div>-->
+<!--                    <div class="userInfoBot">-->
+<!--                        <div>-->
+<!--                            <a href="javascript:void(0);" onclick="confirmLogout();" class="logoutWrap mouse-over-cursor">-->
+<!--                                로그아웃-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--        </li>-->
+<!--        {% endif %}-->
+<!--    </ul>-->
+<!--</nav>-->

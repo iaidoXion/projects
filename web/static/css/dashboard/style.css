@@ -406,28 +406,7 @@ table.dataTable.no-footer {
 }
 
 #barChart{
-    font-size: 11px;;
-}
-
-#barChart .axis path,
-.axis line{
-    fill: none;
-    stroke: #919191;
-    shape-rendering: crispEdges;
-}
-
-#barLegend svg {
-    position: absolute;
-    width: 150px;
-    height: 50px;
-    font-size: 11px;
-    margin-left: 300px;
-    top: 85px;
-    left: 41px;
-}
-
-#barLegend text {
-    fill: #858796;
+    height: 520px;
 }
 
 #lineChart {
@@ -460,9 +439,8 @@ table.dataTable.no-footer {
     fill: #858796;
 }
 
-#pieChart text{
-    pointer-events: none;
-    fill: #717384;
+#pieChart {
+    height: 220px;
 }
 
 #koreaMap path {
@@ -562,14 +540,6 @@ stroke-width: 0.2px; stroke: #fff;
 #koreaPopMap #road path { fill: none; stroke: #df7454; stroke-width: 1px; opacity: 1;
 }
 #koreaPopMap #maps #path-99 { fill: #fff;
-}
-
-#guMap{
-    width: 900px;
-    height: 571px;
-    margin-left: 5%;
-    float: left;
-    margin-top: 22px;
 }
 
 #guMap .link line {

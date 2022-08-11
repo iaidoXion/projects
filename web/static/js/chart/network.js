@@ -1,14 +1,12 @@
 function networkChart(networkData){
 
-var width = 960, height = 600;
+var width = 1140, height = 440;
 
 var svg = d3v4.select("#guMap").append("svg").attr("width", width).attr("height", height);
 
-var imgs = svg.append("svg:image").attr("xlink:href", "/web/static/img/dashboard/zone-background.png").attr("x", 0).attr("y", 0).attr("width", "960").attr("height", "600");
-
 var simulation = d3v4.forceSimulation()
     .force("link", d3v4.forceLink().distance(150).id(function(d) { return d.id; }))
-    .force("charge", d3v4.forceManyBody().strength(-200))
+    .force("charge", d3v4.forceManyBody().strength(-150))
     .force("center", d3v4.forceCenter(width / 2, height / 3));
 
 networkData.forEach(function(graph) {
@@ -122,7 +120,7 @@ console.log(networkData.group[i])
   function ticked() {
 /*  node.attr("transform", function(d) {return "translate(" + d.x + "," + d.y + ")";})*/
     node.attr("transform", (d) => {
-    return "translate(" + (d.x < 80 ? dx = 80 : d.x > 960 ? d.x = 960 : d.x) + "," + (d.y < 80 ? d.y = 80 : d.y > 600 ? d.y = 600 : d.y) + ")"
+    return "translate(" + (d.x < 80 ? dx = 80 : d.x > 1100 ? d.x = 1100 : d.x) + "," + (d.y < 80 ? d.y = 80 : d.y > 400 ? d.y = 400 : d.y) + ")"
   })
 
   link.attr("x1", function(d) {

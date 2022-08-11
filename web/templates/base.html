@@ -44,7 +44,7 @@
 <body>
     {% if request.get_full_path == '/' or request.get_full_path == '/signup/' or  request.get_full_path == '/login/'%}
     {% else %}
-        {% include "navbar.html" %}
+<!--        {% include "navbar.html" %}-->
     {% endif %}
     <!-- 기본 템플릿 안에 삽입될 내용 Start -->
     {% block content %}
@@ -53,7 +53,7 @@
     <!-- 푸터 -->
     {% if request.get_full_path == '/' or request.get_full_path == '/signup/' or  request.get_full_path == '/login/'%}
     {% else %}
-        {% include "footer.html" %}
+<!--        {% include "footer.html" %}-->
     {% endif %}
     <!-- 푸터 End -->
 

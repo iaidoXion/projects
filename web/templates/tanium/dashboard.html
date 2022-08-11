@@ -650,7 +650,7 @@
                                                             <h3 class="mb-0">$35.2K</h3>
                                                         </div>-->
 							<div class="col-12">
-								<div class="mt-n2" data-render="apexchart" data-type="line" data-title="Visitors" data-height="30"></div>
+								<canvas id="lineChart"></canvas>
 							</div>
 						</div>
 						<!-- END stat-lg -->
@@ -697,7 +697,7 @@
                                                             <h3 class="mb-0">4,490</h3>
                                                         </div>-->
 							<div class="col-12">
-								<canvas id="pieChart"></canvas>
+								<canvas id="pieChart" height="180"></canvas>
 							</div>
 						</div>
 						<!-- END stat-lg -->
@@ -1415,8 +1415,8 @@
 <!-- ================== END core-js ================== -->
 
 <!-- ================== BEGIN page-js ================== -->
-<script src="{% static 'assets/plugins/jvectormap-next/jquery-jvectormap.min.js' %}"></script>
-<script src="{% static 'assets/plugins/jvectormap-content/world-mill.js' %}"></script>
+<!--<script src="{% static 'assets/plugins/jvectormap-next/jquery-jvectormap.min.js' %}"></script>-->
+<!--<script src="{% static 'assets/plugins/jvectormap-content/world-mill.js' %}"></script>-->
 <script src="{% static 'assets/plugins/apexcharts/dist/apexcharts.min.js' %}"></script>
 <script src="{% static 'assets/plugins/chart.js/dist/chart.min.js' %}"></script>
 <script src="{% static 'assets/js/demo/dashboard.demo.js' %}"></script>
@@ -1441,7 +1441,7 @@
    data: {
      labels: [{% for barChartData in chartData.barChartDataList %}'{{barChartData.name}}',{% endfor %}],
      datasets: [{
-      label: 'Total Visitors',
+      label: 'count',
       data: [{% for barChartData in chartData.barChartDataList %}{{barChartData.value}},{% endfor %}],
       backgroundColor: 'rgba('+ app.color.themeRgb +', .2)',
       borderColor: app.color.theme,
@@ -1450,6 +1450,56 @@
    }
   });
 {% endif %}
+
+
+
+
+
+var ctx = document.getElementById('lineChart');
+{% if chartData.lineChartDataList %}
+  var lineChartData =  [
+            {% for lineChartData in chartData.lineChartDataList %}
+                {asset: '{{lineChartData.name}}', price: {{lineChartData.value}}, date : '{{lineChartData.date}}'},
+            {% endfor %}
+        ];
+
+  var lineChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+      datasets: [{
+        color: app.color.theme,
+        backgroundColor: 'rgba('+ app.color.themeRgb +', .2)',
+        borderColor: app.color.theme,
+        borderWidth: 1.5,
+        pointBackgroundColor: app.color.white,
+        pointBorderWidth: 1.5,
+        pointRadius: 4,
+        pointHoverBackgroundColor: app.color.theme,
+        pointHoverBorderColor: app.color.white,
+        pointHoverRadius: 7,
+        label: 'Total Sales',
+        data: [12, 19, 4, 5, 2, 3]
+      },{
+        color: app.color.theme,
+        backgroundColor: 'rgba('+ app.color.themeRgb +', .2)',
+        borderColor: app.color.theme,
+        borderWidth: 1.5,
+        pointBackgroundColor: app.color.white,
+        pointBorderWidth: 1.5,
+        pointRadius: 4,
+        pointHoverBackgroundColor: app.color.theme,
+        pointHoverBorderColor: app.color.white,
+        pointHoverRadius: 7,
+        label: 'T2',
+        data: [3, 5, 6, 7, 8, 9]
+      }]
+    }
+  });
+{% endif %}
+
+
+
 
 
 
