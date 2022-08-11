@@ -27,6 +27,7 @@
 
 .assetText {
     display: flex;
+    wid
 }
 
 .asset-search a {
@@ -35,3 +36,5 @@
     margin-right: 1500px;
 }
 
+.assetList {
+}
