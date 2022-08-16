@@ -406,11 +406,15 @@ table.dataTable.no-footer {
 }
 
 #barChart{
-    height: 520px;
+    height: 308px;
 }
 
 #lineChart {
-    font-size: 11px;
+    height: 308px;
+}
+
+#pieChart {
+    height: 326px;
 }
 
 #lineChart path {
@@ -437,10 +441,6 @@ table.dataTable.no-footer {
 
 #lineLegend text {
     fill: #858796;
-}
-
-#pieChart {
-    height: 220px;
 }
 
 #koreaMap path {
